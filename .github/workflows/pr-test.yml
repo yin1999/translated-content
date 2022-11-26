@@ -39,6 +39,20 @@ jobs:
         run: |
           yarn --frozen-lockfile
 
+      - name: Diff
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pull_url = context.payload.pull_request.url
+            const result = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: context.payload.pull_request.number,
+              mediaType: {
+                format: "diff",
+              },
+            });
+            console.log(result)
+
       - name: Config git core.quotePath
         run: |
           # If you don't do this, the get-diff-action won't be able to
