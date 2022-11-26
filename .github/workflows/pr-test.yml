@@ -31,7 +31,7 @@ jobs:
         id: diffset
         uses: softprops/diffset@v1
         with:
-          base: main
+          base: ${{ github.base_ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
