@@ -33646,22 +33646,6 @@
       "disoul"
     ]
   },
-  "WebAssembly/C_to_wasm": {
-    "modified": "2020-11-17T22:59:58.305Z",
-    "contributors": [
-      "CGerAJ",
-      "zhanyuzhang",
-      "xinghuolei",
-      "rui-space",
-      "jinliming2",
-      "johncido",
-      "eeve",
-      "kingysu",
-      "hungtcs",
-      "AdrianDuan",
-      "disoul"
-    ]
-  },
   "WebAssembly/Concepts": {
     "modified": "2019-03-18T20:54:48.847Z",
     "contributors": ["xiongcong", "rui-space", "ziyunfei", "kingysu"]
@@ -33774,6 +33758,22 @@
       "kingysu",
       "skyfore",
       "xgqfrms-GitHub"
+    ]
+  },
+  "WebAssembly/Wasm_to_c": {
+    "modified": "2020-11-17T22:59:58.305Z",
+    "contributors": [
+      "CGerAJ",
+      "zhanyuzhang",
+      "xinghuolei",
+      "rui-space",
+      "jinliming2",
+      "johncido",
+      "eeve",
+      "kingysu",
+      "hungtcs",
+      "AdrianDuan",
+      "disoul"
     ]
   }
 }

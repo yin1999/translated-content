@@ -27,6 +27,17 @@ jobs:
           repository: mdn/content
           path: mdn/content
 
+      - name: Diffset
+        id: diffset
+        uses: softprops/diffset@v1
+        with:
+          base: ${{ github.base_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print Diffset
+        run: ls -al ${{ steps.diffset.outputs.files }}
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
