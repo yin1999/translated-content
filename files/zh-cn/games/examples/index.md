@@ -9,8 +9,6 @@ slug: Games/Examples
 
 ## 免费/演示游戏
 
-- [Beloola](http://www.beloola.com)
-  - : 一个连接充满激情的人们的网络虚拟现实（WebVR）平台。可以同时在 2D 屏幕和虚拟现实头盔显示器（设置/转为 VR 模式）上体验。
 - [Tanx](http://playcanv.as/p/aP0oxhUr)
   - : 一个多人坦克对战游戏，由[PlayCanvas](https://playcanvas.com/)开发。
 - [Hyper Vanguard Force](https://robertsspaceindustries.com/comm-link/transmission/14704-Hyper-Vanguard-Force)
@@ -53,6 +51,8 @@ slug: Games/Examples
   - : 基于 WebGL 和 asm.js 的策略游戏：捕获所有的太阳以获取胜利！
 - [BrowserQuest](http://browserquest.mozilla.org/)
   - : 由 Little Workshop 和 Mozilla 开发的 MMORPG。
+
+![test: mention test.jpg](test.jpg)
 
 ## 商业游戏
 
