@@ -1,6 +1,6 @@
 ---
 title: Examples
-slug: Games/Examples
+slug: Games/Example
 ---
 
 {{GamesSidebar}}
