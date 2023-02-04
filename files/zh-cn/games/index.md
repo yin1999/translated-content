@@ -21,8 +21,6 @@ slug: Games
 
 如果你是一个本地游戏开发者 (例如你用 C++开发游戏)，并且你对如何将本地游戏移植到 Web 感兴趣，你应该更多的学习关于我们的[Emscripten](http://kripken.github.io/emscripten-site/index.html) 工具—— 这是一个 LLVM JavaScript 编译器。它能获取 LLVM 字节码 (例如用 Clang 编译 C/C++或者其他语言生成的字节码）并且将它们编译成[asm.js](/zh-CN/docs/Games/Tools/asm.js)以在 Web 上运行。
 
-开始，查看以下：
-
 - [关于 Emscripten](https://kripken.github.io/emscripten-site/docs/introducing_emscripten/about_emscripten.html)——简介和高级特性。
 - [下载和安装](https://kripken.github.io/emscripten-site/docs/getting_started/downloads.html)——安装工具链。
 - [Emscripten 教程](https://kripken.github.io/emscripten-site/docs/getting_started/Tutorial.html)——指导你如何开始。
