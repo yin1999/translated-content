@@ -45,7 +45,7 @@ jobs:
         id: get-changed-files
         uses: yin1999/get-changed-files@main
         with:
-          paths: '^files/.*'
+          paths: "^files/.*"
 
       - name: Set up environment variables
         run: |
