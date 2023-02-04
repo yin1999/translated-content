@@ -15,21 +15,8 @@ on:
       - "files/**"
 
 jobs:
-  get-changed-files:
-    uses: yin1999/workflows/.github/workflows/pr-get-changed-files.yml@setup-get-changed-files
-    with:
-      paths: "^files/.*"
-    secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   tests:
     runs-on: ubuntu-latest
-    needs: get-changed-files
-    if: ${{ needs.get-changed-files.outputs.files }}
-    env:
-      BASE_SHA: ${{ github.event.pull_request.base.sha }}
-      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-
     steps:
       - uses: actions/checkout@v3
         # Needed otherswise it will check out a merge commit which means
@@ -55,17 +42,21 @@ jobs:
           yarn --frozen-lockfile
 
       - name: Get changed files
+        id: get-changed-files
+        uses: yin1999/get-changed-files@main
+        with:
+          paths: '^files/.*'
+
+      - name: Set up environment variables
         run: |
           # filter out files that are not markdown files
-          GIT_DIFF_CONTENT=$(echo "${{ needs.get-changed-files.outputs.files }}" | egrep -i "^files/.*\.md$" | xargs)
+          GIT_DIFF_CONTENT=$(echo "${{ steps.get-changed-files.outputs.files }}" | egrep -i "^files/.*\.md$" | xargs)
           echo "GIT_DIFF_CONTENT=${GIT_DIFF_CONTENT}" >> $GITHUB_ENV
 
           # filter out files that are not attachments
           # note that we should get the absolute path of the changed attachments
-          GIT_DIFF_FILES=$(echo "${{ needs.get-changed-files.outputs.files }}" | egrep -i "^files/.*\.(png|jpeg|jpg|gif|svg|webp)$" | xargs readlink -e | xargs)
+          GIT_DIFF_FILES=$(echo "${{ steps.get-changed-files.outputs.files }}" | egrep -i "^files/.*\.(png|jpeg|jpg|gif|svg|webp)$" | xargs readlink -e | xargs)
           echo "GIT_DIFF_FILES=${GIT_DIFF_FILES}" >> $GITHUB_ENV
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build changed content
         if: ${{ env.GIT_DIFF_CONTENT }}
