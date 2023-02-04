@@ -125,6 +125,9 @@ jobs:
           # The purpose of this is for the PR Review Companion to later
           # be able to use this raw diff file for the benefit of analyzing.
           wget https://github.com/${{ github.repository }}/compare/${{ env.BASE_SHA }}...${{ env.HEAD_SHA }}.diff -O $BUILD_OUT_ROOT/DIFF
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
 
       - name: Merge static assets with built documents
         if: ${{ env.GIT_DIFF_CONTENT }}
