@@ -13,8 +13,6 @@ slug: Games/Tutorials/2D_Breakout_game_pure_JavaScript/Bounce_off_the_walls
 
 ## 简单的碰撞
 
-我们将检查球体是否与边缘接触，如果有接触我们将相应的改变它的运动方向。
-
 为了运算方便我们定义一个名为 ballRadius 的变量，来存储球的半径。向代码中添加一下内容：
 
 ```js
