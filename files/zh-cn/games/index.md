@@ -7,17 +7,21 @@ slug: Games
 
 游戏是最流行的计算机活动之一。新技术不断涌现，使得开发者有可能开发出更好、更强大、可以在任何符合标准的 web 浏览器运行的游戏。
 
-## 开发网页游戏
+## 开发网页游戏 
 
 欢迎来到 MDN 游戏开发中心！在网站的这一模块，我们为想要开发游戏的 web 开发者提供了资源。你可以在左侧主菜单中找到很多有用的教程和技术文档，尽情去探索吧。
 
 我们同样提供了参考部分，因此你可以轻易地找到有关游戏开发所有常用的 API。
 
+```css
+div {background-color: red;}
+```
+
 > **备注：** 在创建一个网页游戏之前你至少需要掌握几种核心的 web 技术，例如 HTML、CSS 和 Javascript。你可以在[学习区](/zh-CN/docs/Learn)开始这些基础知识的学习。
 
 ## 将本地游戏移植到 web
 
-如果你是一个本地游戏开发者（例如使用 C++ 开发游戏），并且你对如何将这些游戏移植到 Web 感兴趣，你应该更多地了解 [Emscripten](https://emscripten.org/index.html) 工具——这是一个 LLVM 转 JavaScript 编译器。它能接受 LLVM 字节码（例如用 Clang 编译 C/C++ 或者其他语言生成的字节码）输入并将它们编译成 [asm.js](/zh-CN/docs/Games/Tools/asm.js) 以在 Web 上运行。
+如果你是一个本地游戏开发者（例如使用 C++ 开发游戏），并且你对如何将这些游戏移植到 Web 感兴趣，你应该更多地了解 [Emscripten](https://emscripten.org/index.html) 工具——这是一个 LLVM 转 JavaScript 编译器。它能接受 *LLVM* 字节码（例如用 Clang 编译 C/C++ 或者其他语言生成的字节码）输入并将它们编译成 [asm.js](/zh-CN/docs/Games/Tools/asm.js) 以在 Web 上运行。
 
 要入门相关知识，请参阅：
 
