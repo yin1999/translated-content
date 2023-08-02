@@ -12,7 +12,7 @@ slug: Web/JavaScript/Closures
 请看下面的代码：
 
 ```js
-function init() {
+function init()      {
   var name = "Mozilla"; // name 是一个被 init 创建的局部变量
   function displayName() {
     // displayName() 是内部函数，一个闭包
