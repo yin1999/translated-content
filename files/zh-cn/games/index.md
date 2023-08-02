@@ -29,7 +29,7 @@ slug: Games
 
 有关网页游戏示例的列表，请参阅[教程页面](/zh-CN/docs/Games/Tutorials)。此外，请访问 [games.mozilla.org](https://games.mozilla.org/) 以获得更多有用的资源！
 
-## 参见
+## 参见  
 
 - [Build New Games](http://buildnewgames.com/)
   - : 这是一个以大量开放式网页游戏开发教程为特色的协作网站。最近还不是很活跃，但还是拥有一些不错的资源。
