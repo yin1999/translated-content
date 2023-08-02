@@ -55,11 +55,17 @@ jobs:
             const fs = require('fs');
             fs.writeFileSync('${{github.workspace}}/diff.zip', Buffer.from(download.data));
 
-      - name: Unzip what was downloaded
+      - name: Prepare input data
         run: |
           7z x diff.zip -odiff -bb1
           GITHUB_REF=$(cat diff/event.json | jq -r .pull_request.head.sha)
           echo "GITHUB_REF=${GITHUB_REF}" >> $GITHUB_ENV
+          # Because reviewdog submits suggestion if the
+          # OWNER ID of the PR's HEAD and the repository are the same, or
+          # the branch is created from the same repository.
+          # As a workaround, replace those OWNER IDs with `1`.
+          EVENT=$(jq '.pull_request.head.repo.owner.id = 1 | .pull_request.base.repo.owner.id = 1' diff/event.json)
+          echo "${EVENT}" > diff/event.json
 
       - name: "Checkout PR"
         uses: actions/checkout@v3
