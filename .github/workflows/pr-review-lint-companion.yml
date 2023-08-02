@@ -1,0 +1,76 @@
+# NOTE! This is a copy of
+# https://github.com/mdn/content/blob/main/.github/workflows/pr-review-companion.yml
+# with absolutely minor differences.
+
+# Things to do and run after a "PR Test" workflow has finished successfully.
+# Note, as of right now, this workflow does a bunch of things. It might be
+# worth considering to break it up so there's a dedicated post-PR
+# workflow just to posting PR comments about flaws, for example.
+
+name: PR review lint companion
+
+on:
+  workflow_run:
+    workflows: ["Add lint reviews to PRs"]
+    types:
+      - completed
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    if: github.event.workflow_run.conclusion == 'failure'
+
+    steps:
+      - name: "Download artifact"
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: ${{ github.event.workflow_run.id }},
+            });
+            const matchArtifacts = artifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "diff"
+            });
+            if (matchArtifacts.length === 0) {
+              console.warn(
+                'No artifacts to download probably just means nothing ' +
+                'was built in the "PR test" workflow. That\'s OK. ' +
+                'This is actually not a genuine CI error.'
+              );
+              throw new Error(
+                'No matched build artifacts. ' +
+                'Perhaps nothing built in the "PR test" workflow'
+              );
+            }
+            const matchArtifact = matchArtifacts[0];
+            const download = await github.rest.actions.downloadArtifact({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                artifact_id: matchArtifact.id,
+                archive_format: 'zip',
+            });
+            const fs = require('fs');
+            fs.writeFileSync('${{github.workspace}}/diff.zip', Buffer.from(download.data));
+
+      - name: Unzip what was downloaded
+        run: |
+          7z x diff.zip -odiff -bb1
+
+      - name: Setup reviewdog
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
+      - name: Run reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export GITHUB_EVENT_PATH="diff/event.json"
+          reviewdog \
+            -name="mdn-linter" \
+            -f=diff \
+            -f.diff.strip=1 \
+            -reporter=github-pr-review < "diff/diff"
