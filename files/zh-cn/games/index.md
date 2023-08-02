@@ -21,7 +21,7 @@ div {background-color: red;}
 
 ## 将本地游戏移植到 web
 
-如果你是一个本地游戏开发者（例如使用 C++ 开发游戏），并且你对如何将这些游戏移植到 Web 感兴趣，你应该更多地了解 [Emscripten](https://emscripten.org/index.html) 工具——这是一个 LLVM 转 JavaScript 编译器。它能接受 *LLVM* 字节码（例如用 Clang 编译 C/C++ 或者其他语言生成的字节码）输入并将它们编译成 [asm.js](/zh-CN/docs/Games/Tools/asm.js) 以在 Web 上运行。
+如果你是一个本地游戏开发者（例如使用 C++ 开发游戏），并且你对如何将这些游戏移植到 Web 感兴趣，你应该更多地了解 [Emscripten](https://emscripten.org/index.html) 工具——这是一个 LLVM 转 JavaScript 编译器。它能接受 _LLVM_ 字节码（例如用 Clang 编译 C/C++ 或者其他语言生成的字节码）输入并将它们编译成 [asm.js](/zh-CN/docs/Games/Tools/asm.js) 以在 Web 上运行。
 
 要入门相关知识，请参阅：
 
