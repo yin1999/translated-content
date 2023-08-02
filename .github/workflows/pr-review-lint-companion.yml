@@ -82,4 +82,4 @@ jobs:
             -name="mdn-linter" \
             -f=diff \
             -f.diff.strip=1 \
-            -reporter=github-pr-review < "diff/diff"
+            -reporter=github-pr-review < "${{github.workspace}}/diff/diff"
