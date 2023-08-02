@@ -74,7 +74,9 @@ jobs:
         run: |
           TMP_DIR=$(mktemp -d)
           git diff > "${TMP_DIR}/diff"
-          cp "${{ env.GITHUB_EVENT_PATH }}" "${TMP_DIR}/event.json"
+          # print environment
+          env
+          cp "$GITHUB_EVENT_PATH" "${TMP_DIR}/event.json"
           git stash -u && git stash drop
           echo "ASSETS_DIR=${TMP_DIR}" >> $GITHUB_ENV
 
