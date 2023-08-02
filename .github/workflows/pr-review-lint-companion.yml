@@ -58,7 +58,7 @@ jobs:
       - name: Unzip what was downloaded
         run: |
           7z x diff.zip -odiff -bb1
-          GITHUB_REF=$(cat diff/event.json | jq -r .pull_request.head.ref)
+          GITHUB_REF=$(cat diff/event.json | jq -r .pull_request.head.sha)
           echo "GITHUB_REF=${GITHUB_REF}" >> $GITHUB_ENV
 
       - name: "Checkout PR"
