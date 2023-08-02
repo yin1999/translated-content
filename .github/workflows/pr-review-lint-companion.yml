@@ -67,10 +67,14 @@ jobs:
           ref: ${{ env.GITHUB_REF }}
           path: content
 
-      - name: Setup reviewdog
-        uses: reviewdog/action-setup@v1
+      - uses: actions/setup-go@v4
         with:
-          reviewdog_version: latest
+          go-version: '1.20'
+      - run: go version
+      
+      - name: Setup reviewdog
+        run: |
+          go install github.com/OnkarRuikar/reviewdog/cmd/reviewdog@latest
 
       - name: Run reviewdog
         env:
