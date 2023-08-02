@@ -58,6 +58,14 @@ jobs:
       - name: Unzip what was downloaded
         run: |
           7z x diff.zip -odiff -bb1
+          GITHUB_REF=$(cat diff/event.json | jq -r .pull_request.head.ref)
+          echo "GITHUB_REF=${GITHUB_REF}" >> $GITHUB_ENV
+
+      - name: "Checkout PR"
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ env.GITHUB_REF }}
+          path: content
 
       - name: Setup reviewdog
         uses: reviewdog/action-setup@v1
@@ -68,7 +76,8 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          export GITHUB_EVENT_PATH="diff/event.json"
+          export GITHUB_EVENT_PATH="${{github.workspace}}/diff/event.json"
+          cd content
           reviewdog \
             -name="mdn-linter" \
             -f=diff \
