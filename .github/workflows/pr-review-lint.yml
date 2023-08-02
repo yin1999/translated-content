@@ -77,6 +77,8 @@ jobs:
           # print environment
           env
           cp "$GITHUB_EVENT_PATH" "${TMP_DIR}/event.json"
+          # print event
+          cat "$GITHUB_EVENT_PATH"
           git stash -u && git stash drop
           echo "ASSETS_DIR=${TMP_DIR}" >> $GITHUB_ENV
 
