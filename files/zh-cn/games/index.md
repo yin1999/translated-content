@@ -25,9 +25,11 @@ div {background-color: red;}
 
 要入门相关知识，请参阅：
 
-- [关于 Emscripten](https://emscripten.org/docs/introducing_emscripten/about_emscripten.html)——简介和高级特性。
-- [下载和安装](https://emscripten.org/docs/getting_started/downloads.html)——安装工具链。
+* [关于 Emscripten](https://emscripten.org/docs/introducing_emscripten/about_emscripten.html)——简介和高级特性。
++ [下载和安装](https://emscripten.org/docs/getting_started/downloads.html)——安装工具链。
 - [Emscripten 教程](https://emscripten.org/docs/getting_started/Tutorial.html)——指导你如何开始使用。
+* abc
++ efg
 
 ## 示例
 
