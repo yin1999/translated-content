@@ -17,7 +17,7 @@ slug: Web/JavaScript/Reference/Classes
 
 ```js
 class Rectangle {
-  constructor(height, width) {
+  constructor(height, width) {  
     this.height = height;
     this.width = width;
   }
