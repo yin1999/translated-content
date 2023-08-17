@@ -16,10 +16,10 @@ on:
       - "files/**"
 
 jobs:
-  tests:
-    # do not run on PRs in forks
-    if: github.repository == 'mdn/translated-content'
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      has_build: ${{ steps.get-changed-files.outputs.has_build }}
     env:
       BASE_SHA: ${{ github.event.pull_request.base.sha }}
       HEAD_SHA: ${{ github.event.pull_request.head.sha }}
@@ -70,6 +70,10 @@ jobs:
           # note that we should get the absolute path of the changed attachments
           GIT_DIFF_FILES=$(echo "${DIFF_DOCUMENTS}" | egrep -i "^files/.*\.(png|jpeg|jpg|gif|svg|webp)$" | xargs readlink -e | xargs)
           echo "GIT_DIFF_FILES=${GIT_DIFF_FILES}" >> $GITHUB_ENV
+
+          if [ -n "${GIT_DIFF_CONTENT}" ]; then
+            echo "::set-output name=has_build::true"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -151,3 +155,18 @@ jobs:
           echo ${{ env.GIT_DIFF_FILES }}
 
           yarn filecheck ${{ env.GIT_DIFF_FILES }}
+
+  after-build:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ needs.build.outputs.has_build }}
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: ${{ github.workspace }}/build
+
+      - name: show build artifact
+        run: |
+          ls -l ${{ github.workspace }}/build
