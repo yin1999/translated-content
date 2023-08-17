@@ -56,6 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get changed files
+        id: get-changed-files
         run: |
           # Use the GitHub API to get the list of changed files
           # documenation: https://docs.github.com/rest/commits/commits#compare-two-commits
@@ -72,7 +73,7 @@ jobs:
           echo "GIT_DIFF_FILES=${GIT_DIFF_FILES}" >> $GITHUB_ENV
 
           if [ -n "${GIT_DIFF_CONTENT}" ]; then
-            echo "::set-output name=has_build::true"
+            echo "has_build=true" >> "$GITHUB_OUTPUT"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
