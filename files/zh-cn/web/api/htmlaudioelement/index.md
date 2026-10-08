@@ -7,7 +7,7 @@ slug: Web/API/HTMLAudioElement
 
 **`HTMLAudioElement`** 接口提供对 {{HTMLElement("audio")}} 元素的属性访问及一系列操控它的方法，它基于并从 {{domxref("HTMLMediaElement")}} 接口继承属性和方法。
 
-{{InheritanceDiagram(600, 120)}}
+{{InheritanceDiagram}}
 
 ## 构造函数
 
@@ -76,6 +76,6 @@ _从父类 {{domxref("HTMLMediaElement")}} 和祖先 {{domxref("HTMLElement")}} 
 
 ## 参见
 
-- [Web media technologies](/zh-CN/docs/Web/Media)
-- [Using audio and video in HTML](/zh-CN/docs/Web/Media/HTML_media)
-- HTML element implementing this interface: {{HTMLElement("audio")}}.
+- [Web 媒体技术](/zh-CN/docs/Web/Media)
+- [在 HTML 中使用音视频](/zh-CN/docs/Web/Media/Guides/Audio_and_video_delivery)
+- 实现此接口的 HTML 元素：{{HTMLElement("audio")}}。

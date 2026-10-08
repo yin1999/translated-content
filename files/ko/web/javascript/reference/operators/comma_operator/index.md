@@ -7,7 +7,21 @@ slug: Web/JavaScript/Reference/Operators/Comma_operator
 
 **쉼표 연산자**는 각각의 피연산자를 왼쪽에서 오른쪽 순서로 평가하고, 마지막 연산자의 값을 반환합니다.
 
-{{EmbedInteractiveExample("pages/js/expressions-commaoperators.html")}}
+{{InteractiveExample("JavaScript Demo: Expressions - Comma operator")}}
+
+```js interactive-example
+let x = 1;
+
+x = (x++, x);
+
+console.log(x);
+// Expected output: 2
+
+x = (2, 3);
+
+console.log(x);
+// Expected output: 3
+```
 
 ## 구문
 
@@ -43,7 +57,7 @@ for (let i = 0, j = 9; i <= 9; i++, j--) {
 ```js
 var a, b, c;
 
-(a = b = 3), (c = 4); // 콘솔에는 4를 반환
+((a = b = 3), (c = 4)); // 콘솔에는 4를 반환
 console.log(a); // 3 (제일 왼쪽)
 
 var x, y, z;
@@ -60,7 +74,7 @@ console.log(x); // 6 (제일 오른쪽)
 function myFunc() {
   var x = 0;
 
-  return (x += 1), x; // ++x 와 같은 효과
+  return ((x += 1), x); // ++x 와 같은 효과
 }
 ```
 

@@ -1,10 +1,9 @@
 ---
 title: 網路如何運作
 slug: Learn_web_development/Getting_started/Web_standards/How_the_web_works
-original_slug: Learn/Getting_started_with_the_web/How_the_Web_works
 ---
 
-{{LearnSidebar}}{{PreviousMenu("Learn/Getting_started_with_the_web/Publishing_your_website", "Learn/Getting_started_with_the_web")}}
+{{NextMenu("Learn_web_development/Getting_started/Web_standards/The_Web_standards_model", "Learn_web_development/Getting_started/Web_standards")}}
 
 _〈網路如何運作〉將簡單介紹_，當你透過電腦或手機瀏覽器瀏覽網頁時，究竟發生什麼事。
 
@@ -34,7 +33,6 @@ _〈網路如何運作〉將簡單介紹_，當你透過電腦或手機瀏覽器
 - **DNS**：網域名稱系統（Domain Name Servers）就像是網站的電話簿。當你在瀏覽器輸入網址時，瀏覽器會在取得網站前，先去看 DNS 以查到網站的真實地址。瀏覽器需要找到哪個伺服器在託管指定的網站、這樣才能把 HTTP 訊息傳送到對的地方（可以參考下文）。這就像你在去商店前會先翻開電話簿，才好去商店一般。
 - **HTTP**超文本傳輸協定（Hypertext Transfer Protocol）是定義用戶端語言，和伺服器如何對話的應用{{Glossary("Protocol" , "協議")}}。可以想成你買東西時會用來溝通的語言。
 - **Component files**：網站由許多不同的文件組成，如同商店內許多不同的商品。這些檔案分為以下類型：
-
   - **程式檔**：網站主要是由 HTML、CSS、JavaScript 建立，雖然你知會看到其他工具或技術。
   - **Asset**：這是構成網站其他內容的集體名稱，裡面可能包含圖像、音樂、影片、Word、PDF……之類的。
 
@@ -61,7 +59,7 @@ _〈網路如何運作〉將簡單介紹_，當你透過電腦或手機瀏覽器
 
 ## 參見
 
-- [How the Internet works](/zh-TW/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work)
+- [How the Internet works](/zh-TW/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work)
 - [HTTP — an Application-Level Protocol](https://dev.opera.com/articles/http-basic-introduction/)
 - [HTTP: Let's GET It On!](https://dev.opera.com/articles/http-lets-get-it-on/)
 - [HTTP: Response Codes](https://dev.opera.com/articles/http-response-codes/)
@@ -70,4 +68,4 @@ _〈網路如何運作〉將簡單介紹_，當你透過電腦或手機瀏覽器
 
 街頭的照片：[Street composing](https://www.flickr.com/photos/kdigga/9110990882/in/photolist-cXrKFs-c1j6hQ-mKrPUT-oRTUK4-7jSQQq-eT7daG-cZEZrh-5xT9L6-bUnkip-9jAbvr-5hVkHn-pMfobT-dm8JuZ-gjwYYM-pREaSM-822JRW-5hhMf9-9RVQNn-bnDMSZ-pL2z3y-k7FRM4-pzd8Y7-822upY-8bFN4Y-kedD87-pzaATg-nrF8ft-5anP2x-mpVky9-ceKc9W-dG75mD-pY62sp-gZmXVZ-7vVJL9-h7r9AQ-gagPYh-jvo5aM-J32rC-ibP2zY-a4JBcH-ndxM5Y-iFHsde-dtJ15p-8nYRgp-93uCB1-o6N5Bh-nBPUny-dNJ66P-9XWmVP-efXhxJ)、作者是[Kevin D](https://www.flickr.com/photos/kdigga/)。
 
-{{PreviousMenu("Learn/Getting_started_with_the_web/Publishing_your_website", "Learn/Getting_started_with_the_web")}}
+{{NextMenu("Learn_web_development/Getting_started/Web_standards/The_web_standards_model", "Learn_web_development/Getting_started/Web_standards")}}

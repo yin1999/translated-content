@@ -4,11 +4,20 @@ slug: Web/JavaScript/Reference/Global_Objects/RegExp/Symbol.replace
 original_slug: Web/JavaScript/Reference/Global_Objects/RegExp/@@replace
 ---
 
-{{JSRef}}
-
 La méthode **`[@@replace]()`** remplace toutes ou certaines correspondances d'un motif `this` dans une chaîne de caractère avec un outil de remplacement. La valeur renvoyée est la nouvelle chaîne ainsi créée. Cet outil de remplacement peut être une chaîne de caractère ou une fonction appelée pour chacune des correspondances.
 
-{{EmbedInteractiveExample("pages/js/regexp-prototype-@@replace.html")}}
+{{InteractiveExample("JavaScript Demo: RegExp.prototype[SYmbol.replace]()")}}
+
+```js interactive-example
+class RegExp1 extends RegExp {
+  [Symbol.replace](str) {
+    return RegExp.prototype[Symbol.replace].call(this, str, "#!@?");
+  }
+}
+
+console.log("football".replace(new RegExp1("foo")));
+// Expected output: "#!@?tball"
+```
 
 ## Syntaxe
 
@@ -93,8 +102,8 @@ console.log(newstr); // ###34567
 ## Voir aussi
 
 - {{jsxref("String.prototype.replace()")}}
-- {{jsxref("RegExp.prototype.@@match()", "RegExp.prototype[@@match]()")}}
-- {{jsxref("RegExp.prototype.@@search()", "RegExp.prototype[@@search]()")}}
-- {{jsxref("RegExp.prototype.@@split()", "RegExp.prototype[@@split]()")}}
+- {{jsxref("RegExp/Symbol.match", "RegExp.prototype[@@match]()")}}
+- {{jsxref("RegExp/Symbol.search", "RegExp.prototype[@@search]()")}}
+- {{jsxref("RegExp/Symbol.split", "RegExp.prototype[@@split]()")}}
 - {{jsxref("RegExp.prototype.exec()")}}
 - {{jsxref("RegExp.prototype.test()")}}

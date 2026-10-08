@@ -3,13 +3,25 @@ title: Constructeur RegExp()
 slug: Web/JavaScript/Reference/Global_Objects/RegExp/RegExp
 ---
 
-{{JSRef}}
-
 Le constructeur **`RegExp`** crée une expression rationnelle pour manipuler les correspondances trouvées dans un texte par rapport à un motif.
 
 Pour une introduction au sujet des expressions rationnelles, nous vous conseillons de lire [le chapitre sur les expressions rationnelles](/fr/docs/Web/JavaScript/Guide/Regular_expressions) du [Guide JavaScript](/fr/docs/Web/JavaScript/Guide).
 
-{{EmbedInteractiveExample("pages/js/regexp-constructor.html")}}
+{{InteractiveExample("JavaScript Demo: RegExp Constructor")}}
+
+```js interactive-example
+const regex1 = /\w+/;
+const regex2 = new RegExp("\\w+");
+
+console.log(regex1);
+// Expected output: /\w+/
+
+console.log(regex2);
+// Expected output: /\w+/
+
+console.log(regex1 === regex2);
+// Expected output: false
+```
 
 ## Syntaxe
 
@@ -24,13 +36,11 @@ RegExp(motif[, marqueurs])
 ### Paramètres
 
 - `motif`
-
   - : Le texte de l'expression rationnelle.
 
     Avec ES5, ce peut être un autre objet `RegExp` ou une valeur littérale (uniquement lorsqu'on utilise la notation avec la fonction / le constructeur). Un motif peut contenir [des caractères spéciaux](/fr/docs/Web/JavaScript/Guide/Regular_expressions) pour cibler un ensemble plus large de valeurs que ce que permet une chaîne de caractère littérale.
 
 - `marqueurs`
-
   - : Si cet argument est utilisé, c'est une chaîne de caractères qui contient les marqueurs à ajouter à l'expression rationnelle.
 
     Si c'est un objet qui est fourni pour le motif, les marqueurs fournis par ce deuxième paramètre remplaceront les marqueurs provenant de l'objet (et `lastIndex` sera réinitialisé à `0`) (ES2015).
@@ -38,7 +48,6 @@ RegExp(motif[, marqueurs])
     Si `marqueurs` n'est pas indiqué comme argument et que le premier paramètre est un objet représentant une expression rationnelle, les marqueurs de ce dernier (y compris `lastIndex`) seront recopiés sur la nouvelle instance.
 
     `marqueurs` peut contenir toute combinaison avec les caractères suivants&nbsp;:
-
     - `d` (indices)
       - : Génère les indices des positions pour les sous-chaînes correspondantes.
     - `g` (recherche globale)

@@ -3,11 +3,26 @@ title: yield
 slug: Web/JavaScript/Reference/Operators/yield
 ---
 
-{{jsSidebar("Operators")}}
-
 Le mot-clé `yield` est utilisé pour suspendre et reprendre une fonction génératrice ({{jsxref("Statements/function*", "function*")}} ou [une fonction génératrice historique](/fr/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features)).
 
-{{EmbedInteractiveExample("pages/js/expressions-yield.html")}}
+{{InteractiveExample("JavaScript Demo: Expressions - yield")}}
+
+```js interactive-example
+function* foo(index) {
+  while (index < 2) {
+    yield index;
+    index++;
+  }
+}
+
+const iterator = foo(0);
+
+console.log(iterator.next().value);
+// Expected output: 0
+
+console.log(iterator.next().value);
+// Expected output: 1
+```
 
 ## Syntaxe
 
@@ -73,6 +88,6 @@ console.log(magasinPommes.next()); // { value: undefined, done: true }
 ## Voir aussi
 
 - [Le protocole itérateur](/fr/docs/Web/JavaScript/Reference/Iteration_protocols)
-- L'instruction {{jsxref("Instructions/function*", "function*")}}
-- L'expression {{jsxref("Opérateurs/function*", "function*")}}
-- L'opérateur {{jsxref("Opérateurs/yield*", "yield*")}}
+- L'instruction {{jsxref("Statements/function*", "function*")}}
+- L'expression {{jsxref("Operators/function*", "function*")}}
+- L'opérateur {{jsxref("Operators/yield*", "yield*")}}

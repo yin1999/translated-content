@@ -1,20 +1,19 @@
 ---
 title: "Django Tutorial Part 4: Django admin site"
 slug: Learn_web_development/Extensions/Server-side/Django/Admin_site
-original_slug: Learn/Server-side/Django/Admin_site
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Server-side/Django/Models", "Learn/Server-side/Django/Home_page", "Learn/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Models", "Learn_web_development/Extensions/Server-side/Django/Home_page", "Learn_web_development/Extensions/Server-side/Django")}}
 
 現在，我們已經為本地圖書館網站 [LocalLibrary](/zh-TW/docs/Learn_web_development/Extensions/Server-side/Django/Tutorial_local_library_website) 創建了模型，我們接下來使用 Django 管理網站，去添加 一些 「真實的」 書本數據。首先，我們展示如何用管理網站註冊模型，然後展示如何登錄和創建一些數據。本文最後，我們介紹可以進一步改進管理網站的建議。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">前提:</th>
       <td>
         先完成:
-        <a href="/zh-TW/docs/Learn/Server-side/Django/Models"
+        <a href="/zh-TW/docs/Learn_web_development/Extensions/Server-side/Django/Models"
           >Django Tutorial Part 3: Using models</a
         >.
       </td>
@@ -129,13 +128,11 @@ Django 在「透過註冊模型的資訊建立管理站」這方面做得非常�
 你可以進一步訂製介面讓它更好用，以下是你可以進一步做的：
 
 - 列表視圖(List views)：
-
   - 為每一筆紀錄增加額外的字段/資訊陳列。
   - 為這些紀錄列表增加篩選器(例如：使用日期、使用狀態進行過濾)
   - 為動作選單(action menu)添加額外的動作，並選擇是否要讓此選單在表格中呈現。
 
 - 細節視圖(Detail views)：
-
   - 選擇那些字段要隨著「順序、分組、可否編輯、是否被模組使用、取向」而陳列(或排除)。
   - 添加相關的字段來允許內聯編輯(inline editing)(例如：添加一個功能讓你可以在新增一個作者的時候也順便能夠新增或編輯他的書本記錄)。
 
@@ -252,7 +249,8 @@ class BookInstanceAdmin(admin.ModelAdmin):
 
 默認情況下，局部視圖按照模型中聲明的順序垂直排列所有字段。 你可以更改聲明的順序，顯示（或排除）哪些字段，使用分段來組織資訊，水平顯示還是垂直顯示字段，甚至管理表單中使用哪些編輯小部件。
 
-> **備註：** _LocalLibrary_ 模型相對簡單，因此我們無須更改佈局。 但我們仍然會進行一些更改，向你展示如何進行。
+> [!NOTE]
+> _LocalLibrary_ 模型相對簡單，因此我們無須更改佈局。 但我們仍然會進行一些更改，向你展示如何進行。
 
 #### 控制那些欄位顯示並佈置
 
@@ -341,4 +339,4 @@ In this case all we've done is declare our tabular inline class, which just adds
 - [Writing your first Django app, part 2: Introducing the Django Admin](https://docs.djangoproject.com/en/2.0/intro/tutorial02/#introducing-the-django-admin) (Django docs)
 - [The Django Admin site](https://docs.djangoproject.com/en/2.0/ref/contrib/admin/) (Django Docs)
 
-{{PreviousMenuNext("Learn/Server-side/Django/Models", "Learn/Server-side/Django/Home_page", "Learn/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Models", "Learn_web_development/Extensions/Server-side/Django/Home_page", "Learn_web_development/Extensions/Server-side/Django")}}

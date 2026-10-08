@@ -1,15 +1,25 @@
 ---
 title: TypedArray.prototype.values()
+short-title: values()
 slug: Web/JavaScript/Reference/Global_Objects/TypedArray/values
 l10n:
-  sourceCommit: e01fd6206ce2fad2fe09a485bb2d3ceda53a62de
+  sourceCommit: cd22b9f18cf2450c0cc488379b8b780f0f343397
 ---
-
-{{JSRef}}
 
 **`values()`** は {{jsxref("TypedArray")}} インスタンスのメソッドで、配列内の各インデックスに対する値を持つ新しい[配列イテレーター](/ja/docs/Web/JavaScript/Reference/Global_Objects/Iterator)オブジェクトを返します。このメソッドのアルゴリズムは {{jsxref("Array.prototype.values()")}} と同じです。
 
-{{EmbedInteractiveExample("pages/js/typedarray-values.html")}}
+{{InteractiveExample("JavaScript デモ: TypedArray.prototype.values()")}}
+
+```js interactive-example
+const bytes = new Uint8Array([10, 20, 30, 40, 50]);
+const iterator = bytes.values();
+
+iterator.next();
+iterator.next();
+
+console.log(iterator.next().value);
+// 予想される結果: 30
+```
 
 ## 構文
 
@@ -68,6 +78,6 @@ console.log(values.next().value); // 50
 - {{jsxref("TypedArray")}}
 - {{jsxref("TypedArray.prototype.entries()")}}
 - {{jsxref("TypedArray.prototype.keys()")}}
-- [`TypedArray.prototype[@@iterator]()`](/ja/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/@@iterator)
+- [`TypedArray.prototype[Symbol.iterator]()`](/ja/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/Symbol.iterator)
 - {{jsxref("Array.prototype.values()")}}
 - [反復処理プロトコル](/ja/docs/Web/JavaScript/Reference/Iteration_protocols)

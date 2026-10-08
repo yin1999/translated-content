@@ -1,15 +1,29 @@
 ---
 title: RegExp.prototype[Symbol.match]()
+short-title: "[Symbol.match]()"
 slug: Web/JavaScript/Reference/Global_Objects/RegExp/Symbol.match
 l10n:
-  sourceCommit: 6fbdb78c1362fae31fbd545f4b2d9c51987a6bca
+  sourceCommit: 544b843570cb08d1474cfc5ec03ffb9f4edc0166
 ---
-
-{{JSRef}}
 
 **`[Symbol.match]()`** は {{jsxref("RegExp")}} インスタンスのメソッドで、 [`String.prototype.match()`](/ja/docs/Web/JavaScript/Reference/Global_Objects/String/match) がどのように動作するのかを指定します。さらに、これが存在するかどうかが、そのオブジェクトが正規表現とみなされるかどうかにも影響します。
 
-{{EmbedInteractiveExample("pages/js/regexp-prototype-@@match.html")}}
+{{InteractiveExample("JavaScript デモ: RegExp.prototype[Symbol.match]()")}}
+
+```js interactive-example
+class RegExp1 extends RegExp {
+  [Symbol.match](str) {
+    const result = RegExp.prototype[Symbol.match].call(this, str);
+    if (result) {
+      return "VALID";
+    }
+    return "INVALID";
+  }
+}
+
+console.log("2012-07-02".match(new RegExp1("(\\d+)-(\\d+)-(\\d+)")));
+// 予想される結果: "VALID"
+```
 
 ## 構文
 
@@ -81,7 +95,7 @@ console.log("😄".match(/(?:)/gu)); // [ '', '' ]
 このメソッドは、_ほとんど_ {{jsxref("String.prototype.match()")}} と同じ方法で使用することができますが、 `this` と引数の並び順が異なります。
 
 ```js
-const re = /[0-9]+/g;
+const re = /\d+/g;
 const str = "2016-01-02";
 const result = re[Symbol.match](str);
 console.log(result); // ["2016", "01", "02"]
@@ -104,7 +118,7 @@ class MyRegExp extends RegExp {
   }
 }
 
-const re = new MyRegExp("([0-9]+)-([0-9]+)-([0-9]+)");
+const re = new MyRegExp("(\\d+)-(\\d+)-(\\d+)");
 const str = "2016-01-02";
 const result = str.match(re); // String.prototype.match は re[Symbol.match]() を呼び出す
 console.log(result.group(1)); // 2016

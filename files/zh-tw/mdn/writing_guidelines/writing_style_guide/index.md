@@ -3,8 +3,6 @@ title: 寫作風格指南
 slug: MDN/Writing_guidelines/Writing_style_guide
 ---
 
-{{MDNSidebar}}
-
 為了讓文件更加組織化、標準化而易於閱讀，MDN 風格指南描述了文件的組織方式、拼寫、格式等問題。這些規則只是指導方針而非強制規定。與格式相比，我們對內容更感興趣，因此不用覺得在開始貢獻之前有被迫要學習這些指南的壓力。若之後有其他支援者修改了你的內容以便讓它符合這些指南，你也不需要因此而感到沮喪或驚訝。
 
 在語言方面，本指南主要適用於英語文件，其它語言可擁有（且歡迎建立）自己的風格指南。它們會以當地語系團隊頁面的子頁面發佈。
@@ -41,7 +39,7 @@ slug: MDN/Writing_guidelines/Writing_style_guide
 - [JavaScript/指南](/zh-TW/docs/Web/JavaScript/Guide) ——主內容表頁面
 - [JavaScript/指南/JavaScript 概述](/zh-TW/docs/Web/JavaScript/Guide/Introduction)
 - [JavaScript/指南/函數](/zh-TW/docs/Web/JavaScript/Guide/Functions)
-- [JavaScript/指南/物件模型細節](/zh-TW/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+- [JavaScript/指南/物件模型細節](/zh-TW/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain)
 
 請儘量避免將你的文章放在頂層，不然會拖慢網站的下載速度，降低網站導覽和搜索的效率。
 
@@ -93,7 +91,7 @@ slug: MDN/Writing_guidelines/Writing_style_guide
 
 > The {{domxref("CanvasRenderingContext2D")}} method **`strokeText()`**, part of the [Canvas 2D API](/zh-TW/docs/Web/API/Canvas_API), strokes—that is, draws the outlines of—the characters of a specified string, anchored at the position indicated by the given X and Y coordinates. The text is drawn using the context's current {{domxref("CanvasRenderingContext2D.font", "font")}}, and is justified and aligned according to the {{domxref("CanvasRenderingContext2D.textAlign", "textAlign")}}, {{domxref("CanvasRenderingContext2D.textBaseline", "textBaseline")}}, and {{domxref("CanvasRenderingContext2D.direction", "direction")}} properties.
 >
-> For more details and further examples, see the [Text](/zh-TW/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics#text) section on the Drawing graphics page as well as our main article on the subject, [Drawing text](/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_text).
+> For more details and further examples, see the [Text](/zh-TW/docs/Learn_web_development/Extensions/Client-side_APIs/Drawing_graphics#text) section on the Drawing graphics page as well as our main article on the subject, [Drawing text](/zh-TW/docs/Web/API/Canvas_API/Tutorial/Drawing_text).
 
 #### 涵蓋所有相關的範例
 
@@ -235,7 +233,6 @@ HTML 元素在撰寫時有它們特殊的規則。這些規則可以對元素及
 #### 在備註與括弧中
 
 - 常見的拉丁縮寫（ etc. 、 i.e. 、 e.g. ）可以在括號表達、或備註內使用。這些縮寫都要用半形句號（.）並緊隨著逗號或其他恰當的標點符號。
-
   - **正確**：Web browsers (e.g., Firefox) can be used ...
   - **不正確**：Web browsers e.g. Firefox can be used ...
   - **不正確**：Web browsers, e.g. Firefox, can be used ...
@@ -244,7 +241,6 @@ HTML 元素在撰寫時有它們特殊的規則。這些規則可以對元素及
 #### 在行文中
 
 - 在普通行文中（也就是備註與括號以外的文字）請使用與該縮寫相等的文字表達。
-
   - **正確**: ... web browsers, and so on.
   - **不正確**: ... web browsers, etc.
   - **正確**: Web browsers such as Firefox can be used ...

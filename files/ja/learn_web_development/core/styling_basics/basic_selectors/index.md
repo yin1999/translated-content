@@ -1,55 +1,263 @@
 ---
-title: CSS セレクター
+title: 基本的な CSS セレクター
+short-title: 基本的なセレクター
 slug: Learn_web_development/Core/Styling_basics/Basic_selectors
-original_slug: Learn/CSS/Building_blocks/Selectors
 l10n:
-  sourceCommit: 4bddde3e2b86234eb4594809082873fc5bf00ee3
+  sourceCommit: bb4be34c00686ddc46a1cef3123cdf825e9495ec
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors", "Learn/CSS/Building_blocks")}}
+{{PreviousMenuNext("Learn_web_development/Core/Styling_basics/Styling_a_bio_page", "Learn_web_development/Core/Styling_basics/Attribute_selectors", "Learn_web_development/Core/Styling_basics")}}
 
-{{Glossary("CSS")}}では、セレクター (selector) を使って装飾したい {{glossary("HTML")}} 要素を選択します。CSS セレクターは種類豊富なので、装飾したい要素を細かく選択できます。この記事では、さまざまな種類のセレクターについて、その機能を詳しく確認します。
+{{Glossary("CSS")}} において、スタイル設定したいウェブページ上の {{glossary("HTML")}} 要素を対象とするためにセレクターを使用する方法については、すでに説明しました。 CSS セレクターにはさまざまな種類があり、スタイル設定する要素を選択する際にきめ細かい精度を実現できます。次のいくつかの記事では、さまざまな種類について詳しく見ていきます。この記事では、基本的な型、クラスおよび ID セレクター、セレクターリストなど、セレクターの基本についておさらいします。また、全称セレクターについても紹介します。
 
 <table>
   <tbody>
     <tr>
-      <th scope="row">前提条件:</th>
+      <th scope="row">前提知識:</th>
       <td>
-        <a
-          href="/ja/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >基本的なソフトウェアがインストールされていること</a
-        >, basic knowledge of
-        <a
-          href="/ja/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
-          >ファイルの扱い</a
-        >, HTML basics (study
-        <a href="/ja/docs/Learn/HTML/Introduction_to_HTML"
-          >HTML 入門</a
-        >)、および CSS がどのように動作するかという考え（<a href="/ja/docs/Learn/CSS/First_steps"
-          >CSS の第一歩</a
-        >）に関する基本的な知識を得ている。
+        HTML の基本（
+        <a href="/ja/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax"
+          >基本的な HTML の構文</a
+        >を学んでいること）。
       </td>
     </tr>
     <tr>
-      <th scope="row">目的:</th>
-      <td>CSS セレクターがどのように機能するかを学ぶ。</td>
+      <th scope="row">学習成果:</th>
+      <td>
+        <ul>
+          <li>基本的なセレクター型（要素型、クラス、ID）。</li>
+          <li>ID は文書内の固有であるため、特定の要素を 1 つ選択するには ID を使用すべきであることを理解すること。</li>
+          <li>それぞれの要素に複数のクラスを指定することができ、必要に応じてスタイルのレイヤーとして使用することができること。</li>
+          <li>セレクターリスト。</li>
+          <li>全称セレクター。</li>
+        <ul>
+      </td>
     </tr>
   </tbody>
 </table>
 
 ## セレクターとは
 
-CSS セレクターは、CSS ルール (CSS Rule) の最初の部分です。CSS セレクターは要素やその他の用語の組み合わせで、どの HTML 要素を選択するかブラウザーに伝えます。選択された要素には CSS プロパティ値 (property value) が適用されます。セレクターによって選択された要素を、_選択対象_ (_subject of the selector_) と呼びます。
+CSS セレクターは、CSS ルール (CSS Rule) の最初の部分です。CSS セレクターは要素やその他の用語の組み合わせであり、どの HTML 要素にルール内の CSS プロパティ値 (property value) を適用するかをブラウザーに伝えます。セレクターによって選択された要素を、_選択対象_ (_subject of the selector_) と呼びます。
 
 ![多少のコードで、 h1 が強調されている。](selector.png)
 
-他にもいろいろな記事で、様々なセレクターに出会い、様々な方法で文書を対象とするセレクターがあることを知ることができたと思います。例えば、`h1` は HTML 要素で選択する一方 `.special` はクラスで選択します。
+以前の記事では、様々なセレクターに出会い、様々な方法で文書を対象にするセレクターがあることを学びました。例えば、`h1` のような要素や、`.special` のようなクラスを選択する方法です。まずは、これまでに学んだ主なセレクターを復習しましょう。
 
-セレクターは CSS セレクター仕様で定義されます。ほとんどのセレクターは [Level 3 Selectors specification](https://www.w3.org/TR/selectors-3/) や [Level 4 Selectors specification](https://www.w3.org/TR/selectors-4/) で定義されています。CSS の他の部分と同様に、セレクターが機能するにはブラウザーの対応が必要ですが、どちらも成熟した仕様なのでブラウザーの対応も充実しています。
+## 要素型セレクター
+
+**要素型セレクター**は、文書内の HTML のタグや要素を選択するものであるため、タグ名セレクターまたは要素セレクターと呼ばれることもあります。例えば、下記では `span`、`em`、`strong` セレクターを使用しています。
+
+次の例を編集して（**"Play"** をクリックすると MDN Playground で開きます）、`<h1>` 要素を選択し、その色を青に変更する CSS ルールを追加してみてください。
+
+```html live-sample___type
+<h1>要素型セレクター</h1>
+<p>
+  Veggies es bonus vobis, proinde vos postulo essum magis
+  <span>kohlrabi welsh onion</span> daikon amaranth tatsoi tomatillo melon azuki
+  bean garlic.
+</p>
+
+<p>
+  Gumbo beet greens corn soko <strong>endive</strong> gumbo gourd. Parsley
+  shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+  wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+</p>
+
+<p>
+  Turnip greens yarrow ricebean rutabaga <em>endive cauliflower</em> sea lettuce
+  kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter
+  purslane kale. Celery potato scallion desert raisin horseradish spinach
+</p>
+```
+
+```css live-sample___type
+body {
+  font-family: sans-serif;
+}
+
+span {
+  background-color: yellow;
+}
+
+strong {
+  color: rebeccapurple;
+}
+
+em {
+  color: rebeccapurple;
+}
+```
+
+{{EmbedLiveSample("type", "", "280px")}}
+
+## クラスセレクター
+
+クラスセレクターは大文字と小文字を区別し、ドット (`.`) 文字で始まります。文書内でそのクラスが適用されているすべての要素が選択されます。次のライブサンプルでは、`highlight` というクラスを作成し、文書内の複数の箇所に適用しています。このクラスを持つすべての要素がハイライト表示されます。
+
+```html live-sample___class
+<h1 class="highlight">クラスセレクター</h1>
+<p>
+  Veggies es bonus vobis, proinde vos postulo essum magis
+  <span class="highlight">kohlrabi welsh onion</span> daikon amaranth tatsoi
+  tomatillo melon azuki bean garlic.
+</p>
+
+<p class="highlight">
+  Gumbo beet greens corn soko <strong>endive</strong> gumbo gourd. Parsley
+  shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+  wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+</p>
+```
+
+```css live-sample___class
+body {
+  font-family: sans-serif;
+}
+
+.highlight {
+  background-color: yellow;
+}
+```
+
+{{EmbedLiveSample("class", "", "220px")}}
+
+### クラスセレクターの実践
+
+上記の例を編集して（MDN Playground を使用）、以下の変更を加えてみてください。
+
+1. HTML を編集して、`.highlight` スタイルが適用されるコンテンツを変更しましょう。例えば、既存コンテンツの異なる部分を囲む `<span>` 要素を追加して `highlight` クラスを適用したり、既存の `highlight` クラスを除去したり、`highlight` クラスを適用する新しいコンテンツを追加したりしましょう。
+2. CSS を編集して、`.highlight` ルールの内部にある宣言を変更し、場合に応じて新しい宣言を追加しましょう。これにより、`highlight` クラスが適用されているすべての要素のスタイル設定がどのように影響を受けるかを確認しましょう。
+3. CSS 内に新しいクラスルールを作成し、その中に異なる宣言を記述しましょう（例えば、`.highlight2` というセレクターを使用）。その後、そのクラスを HTML の特定部分に適用してみましょう。
+
+### 特定の要素についたクラスを対象にする
+
+クラスが適用された特定の要素を対象とするセレクターを作成することができます。次の例では、 `<span>` のうちクラス名が `highlight` であるものを、`<h1>` 見出しでクラス名が `highlight` であるものとは異なる形で強調表示します。 対象とする要素型セレクターを使用し、クラス名の間にホワイトスペースを入れずにドットでつなげます。
+
+```html live-sample___class-type
+<h1 class="highlight">クラスセレクター</h1>
+<p>
+  Veggies es bonus vobis, proinde vos postulo essum magis
+  <span class="highlight">kohlrabi welsh onion</span> daikon amaranth tatsoi
+  tomatillo melon azuki bean garlic.
+</p>
+
+<p class="highlight">
+  Gumbo beet greens corn soko <strong>endive</strong> gumbo gourd. Parsley
+  shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+  wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+</p>
+```
+
+```css live-sample___class-type
+body {
+  font-family: sans-serif;
+}
+
+span.highlight {
+  background-color: yellow;
+}
+
+h1.highlight {
+  background-color: pink;
+}
+```
+
+{{EmbedLiveSample("class-type", "", "200px")}}
+
+この手法はルールの適用範囲を縮小します。ルールは、その具体的な要素とクラスとの組み合わせにのみ適用されます。ルールを他の要素にも適用したい場合は、別のセレクターを追加する必要があります。
+
+### 要素に複数のクラスが適用されていた時の対象
+
+要素に複数のクラスを適用し、それらを個別に対象にすることも、セレクター内のクラスがすべて存在する場合に要素だけを選択することもできます。これは、サイト上でさまざまな方法で結合できる部分を構築する際に役立つでしょう。
+
+次の例では、メモを含む `<div>` があります。ボックスに `notebox` クラスが設定されている場合、灰色の境界線が適用されます。ボックスに `warning` または `danger` クラスが設定されている場合は、 {{cssxref("border-color")}} を変更します。
+
+2 つのクラスがホワイトスペースなしで連結されている場合、要素が一致するようにブラウザーに指示することができます。最後の `<div>` には `danger` クラスのみが適用されているため、スタイル設定が適用されないことがわかります。スタイルを設定するには、`notebox` クラスも必要です。
+
+```html live-sample___class-many
+<div class="notebox">これは情報のメモです。</div>
+
+<div class="notebox warning">このメモは警告を表します。</div>
+
+<div class="notebox danger">このメモは危険であることを表します。</div>
+
+<div class="danger">
+  これはスタイル設定されません。また、 notebox クラスを持つ必要があります。
+</div>
+```
+
+```css live-sample___class-many
+body {
+  font-family: sans-serif;
+}
+
+.notebox {
+  border: 4px solid #666666;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.notebox.warning {
+  border-color: orange;
+  font-weight: bold;
+}
+
+.notebox.danger {
+  border-color: red;
+  font-weight: bold;
+}
+```
+
+{{EmbedLiveSample("class-many", "", "200px")}}
+
+## ID セレクター
+
+ID セレクターは大文字と小文字を区別し、ドット文字の代わりに `#` で始めますが、クラスセレクターと同じ方法で使用します。違いは、ID は 1 ページにつき 1 回しか使用できず、要素は 1 つの `id` 値しか保有できない点です。ID セレクターは特定の `id` を持つ要素を選択し、要素と ID の両方が一致する場合にのみ対象とするには、ID の前に要素型セレクターを付けることができます。次の例で両方の使用法を確認できます。
+
+```html live-sample___id
+<h1 id="heading">ID セレクター</h1>
+<p>
+  Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion
+  daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+</p>
+
+<p id="one">
+  Gumbo beet greens corn soko <strong>endive</strong> gumbo gourd. Parsley
+  shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+  wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+</p>
+```
+
+```css live-sample___id
+body {
+  font-family: sans-serif;
+}
+
+#one {
+  background-color: yellow;
+}
+
+h1#heading {
+  color: rebeccapurple;
+}
+```
+
+{{EmbedLiveSample("id", "", "200px")}}
+
+> [!WARNING]
+> 文書内で同じ ID を複数回使用すると、スタイル設定の目的では動作しているように見えるかもしれませんが、これは行わないでください。これは無効なコードとなり、多くの場所で奇妙な動作を引き起こすことになります。
+
+### ID セレクターの実践
+
+上の例を編集して、以下の変更を加えてみてください。
+
+1. HTML を編集して、`#one` スタイルを 2 つ目ではなく最初の段落に適用しましょう。
+2. この CSS を編集して ID セレクター内の宣言を変更し、HTML の見た目がどのように変わるかを確認しましょう。
 
 ## セレクターリスト
 
-同じ CSS を使用する場合は、それぞれのセレクターを _セレクターリスト_ (_selector list_) にまとめてルールを適用できます。たとえば、`h1` と `.special` の CSS が同じ場合、2 つの個別のルールとして記述できます。
+同じ CSS を複数のアイテムに適用したい場合、個々のセレクターをセレクターリストにまとめることができます。このルールはその後、すべての個々のセレクターに適用されます。例えば、`h1` セレクターと `.special` セレクターに同じ CSS を適用する場合、これを 2 つの別個のルールとして記述できます。
 
 ```css
 h1 {
@@ -61,7 +269,7 @@ h1 {
 }
 ```
 
-カンマ区切りでセレクターリストにもできます。
+同時に、これらをカンマで区切ることでセレクターリストにまとめることも可能です。
 
 ```css-nolint
 h1, .special {
@@ -78,13 +286,55 @@ h1,
 }
 ```
 
-以下のライブサンプルを使って、同じ宣言を持つ 2 つのセレクターを結合してみてください。作業の前後で見た目が変わらないはずです。
+### セレクターリストの実践
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/selector-list.html", '100%', 1150)}}
+次の例を使って、同じ宣言を持つ 2 つのセレクターを結合してみてください。その後でも表示は変わらないはずです。
 
-この方法でセレクターをまとめている場合、間違った文法で書かれたセレクターを 1 つでも含んでいるとルール全体が無視されます。
+```html live-sample___selector-list
+<h1>要素型セレクター</h1>
+<p>
+  Veggies es bonus vobis, proinde vos postulo essum magis
+  <span>kohlrabi welsh onion</span> daikon amaranth tatsoi tomatillo melon azuki
+  bean garlic.
+</p>
 
-次の例では、不正なクラスセレクターのルールは無視され、 `h1` がスタイル設定されます。
+<p>
+  Gumbo beet greens corn soko <strong>endive</strong> gumbo gourd. Parsley
+  shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+  wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+</p>
+
+<p>
+  Turnip greens yarrow ricebean rutabaga <em>endive cauliflower</em> sea lettuce
+  kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter
+  purslane kale. Celery potato scallion desert raisin horseradish spinach
+</p>
+```
+
+```css live-sample___selector-list
+body {
+  font-family: sans-serif;
+}
+span {
+  background-color: yellow;
+}
+
+strong {
+  color: rebeccapurple;
+}
+
+em {
+  color: rebeccapurple;
+}
+```
+
+{{EmbedLiveSample("selector-list", "", "280px")}}
+
+### セレクターリスト内の無効なセレクター
+
+この方法でセレクターをまとめた場合、間違った構文で書かれたセレクターを 1 つでも含んでいると、ルール全体が無視されます。
+
+次の例では、無効なクラスセレクターのルールは無視され、 `h1` がスタイル設定されます。
 
 ```css-nolint
 h1 {
@@ -96,7 +346,7 @@ h1 {
 }
 ```
 
-しかし、結合された場合、 `h1` もクラスもスタイル設定されず、ルール全体が不正なものとみなされます。
+しかし、結合された場合、 `h1` もクラスもスタイル設定されず、ルール全体が無効なものとみなされます。
 
 ```css-nolint
 h1, ..special {
@@ -104,79 +354,76 @@ h1, ..special {
 }
 ```
 
-## セレクターの種類
+## 全称セレクター
 
-セレクターにはいくつかのグループ分けがあり、どの種類のセレクターが必要かを知ることは、その仕事に正しいツールを探すのに役立ちます。この記事の下位の記事では、異なるセレクターのグループについてより詳しく見ていきます。
+全称セレクター (universal selector) はアスタリスク (`*`) で示します。これは文書内のすべての要素を選択します。`*` が[子孫結合子](/ja/docs/Web/CSS/Reference/Selectors/Descendant_combinator)を使用して連結されている場合、その祖先要素内のすべてが選択されます。例えば、 `p *` は `<p>` 要素の中に含まれているすべての要素を選択します。
 
-### 要素型、クラス、ID セレクター
+次の例では、全称セレクターを使用してすべての要素のマージンを削除します。 見出しや段落にマージンを設けて間隔を空けるブラウザーの既定のスタイルではなく、すべてが密接に配置されます。
 
-[`<h1>`](/ja/docs/Web/HTML/Element/Heading_Elements) のような HTML 要素を選択するセレクターがこのグループに属します。
+```html live-sample___universal
+<h1>全称セレクター</h1>
+<p>
+  Veggies es bonus vobis, proinde vos postulo essum magis
+  <span>kohlrabi welsh onion</span> daikon amaranth tatsoi tomatillo melon azuki
+  bean garlic.
+</p>
 
-```css
-h1 {
+<p>
+  Gumbo beet greens corn soko <strong>endive</strong> gumbo gourd. Parsley
+  shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra
+  wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+</p>
+```
+
+```css live-sample___universal
+body {
+  font-family: sans-serif;
+}
+
+* {
+  margin: 0;
 }
 ```
 
-クラスセレクターは、 [`class`](/ja/docs/Web/HTML/Global_attributes/class) 属性に特定の値が示されている要素を対象とします。
+{{EmbedLiveSample("universal")}}
+
+この種の動作は、ブラウザーのスタイル設定をすべて削除する「リセットスタイルシート」で時折見られます。全称セレクターはグローバルな変更を行うため、下記に記述されているような特定の状況でのみ使用しています。
+
+### 全称セレクターを使用して、セレクターを読みやすくする
+
+全称セレクターの用途の一つは、セレクターをより読みやすく理解しやすいものにすることです。例えば、`<article>` 要素の子孫要素で、親要素の最初の子（直接の子を含む）である要素すべてを選択したい場合、{{cssxref(":first-child")}} 擬似クラスを使用することができます。このことについては[擬似クラスと擬似要素](/ja/docs/Learn_web_development/Core/Styling_basics/Pseudo_classes_and_elements)で詳しく学びます。
 
 ```css
-.box {
+article :first-child {
+  font-weight: bold;
 }
 ```
 
-ID セレクターは、 [`id`](/ja/docs/Web/HTML/Global_attributes/id) 属性に特定の値がある要素を対象とします。
+しかし、この記事のセレクターは `article:first-child`、すうなわち他の要素の最初の子であるすべての `<article>` 要素を選択するセレクターと混同される可能性があります。
+
+この混乱を避けるために、全称セレクターを `:first-child` 擬似クラスに追加すると、セレクターが何をしているのかがより明確になるようにします。これは、 `<article>` 要素の最初の子である、または `<article>` の任意の子孫要素の最初の子である、任意の要素を選択します。
 
 ```css
-#unique {
+article *:first-child {
+  font-weight: bold;
 }
 ```
 
-### 属性セレクター
+どちらも同等ですが、2 つ目の方が読みやすいと感じる人もいます。
 
-このセレクターのグループは、要素上の特定の属性の存在に基づいて要素を選択するさまざまな方法を提供します。
-
-```css
-a[title] {
-}
-```
-
-特定の属性を持ち、かつ、特定の属性値を持つ要素を選択するセレクターもあります。
-
-```css
-a[href="https://example.com"]
-{
-}
-```
-
-### 擬似クラスおよび擬似要素
-
-このセレクターのグループには、要素の特定の状態をスタイル設定する擬似クラスが含まれます。例えば、`:hover`擬似クラスは、マウスポインターが上に置かれたときだけ要素を選択します。
-
-```css
-a:hover {
-}
-```
-
-擬似要素 (pseudo-element) 、つまり要素自体ではなく要素の特定の部分を選択するセレクターもあります。たとえば、`::first-line` は要素（以下の例では `<p>`）内の最初の行をまるで `<span>` で囲んでスタイル設定したかのように動作します。
-
-```css
-p::first-line {
-}
-```
-
-### 結合子
-
-最後のグループのセレクターは、セレクター同士を組み合わせて文書内のターゲット要素を選択します。たとえば、以下の例では子結合子（子コンビネーター、child combinator）(`>`) によって `<article>` 要素の直接の子である段落を選択します。
-
-```css
-article > p {
-}
-```
+> [!NOTE]
+> この手法が公開されたウェブサイトで頻繁に使用されることはまずないでしょう。例えば MDN でもあまり使用していません。ただし、理解しやすいと感じる場合は、自身のコードでこの手法を使用することを考えてみるべきです。
 
 ## まとめ
 
-この記事や MDN にあるさまざまなセレクターについては、下の方にある表を参照してください。または、[要素型、クラス、ID セレクター](/ja/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)から見ていくこともできます。
+この記事では、前回よりも少し掘り下げて、型、クラス、 ID セレクターに注目しながら、具体的な HTML 要素を対象とするための CSS セレクターについてまとめました。次の記事では、属性セレクターについて掘り下げていきます。
 
-セレクターの完全なリストについては、 [CSS セレクターリファレンス](/ja/docs/Web/CSS/CSS_selectors)を参照してください。
+> [!NOTE]
+> セレクターの完全なリストについては、 [CSS セレクターリファレンス](/ja/docs/Web/CSS/Guides/Selectors)を参照してください。
 
-{{NextMenu("Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors", "Learn/CSS/Building_blocks")}}
+## 関連情報
+
+- [CSS classes](https://v2.scrimba.com/the-frontend-developer-career-path-c0j/~01d?via=mdn), Scrimba <sup>[_MDN 学習パートナー_](/ja/docs/MDN/Writing_guidelines/Learning_content#パートナーリンクと埋め込み)
+  - : 対話型レッスンであり、 CSS クラスに関するいくつかのガイダンスを提供します。
+
+{{PreviousMenuNext("Learn_web_development/Core/Styling_basics/Styling_a_bio_page", "Learn_web_development/Core/Styling_basics/Attribute_selectors", "Learn_web_development/Core/Styling_basics")}}

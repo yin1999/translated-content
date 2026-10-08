@@ -6,7 +6,7 @@ l10n:
   sourceCommit: 9de3d03957f1d66f02f45400a6981372aa368c1f
 ---
 
-{{QuicklinksWithSubPages("Learn/Common_questions")}}
+{{QuicklinksWithSubPages("/es/docs/Learn/Common_questions")}}
 
 En este artículo se describen varios conceptos referidos a la web: Páginas web, sitios web, servidores web, y motores de búsqueda. Estos términos con frecuencia son confundidos por recién llegados a la web, o son incorrectamente usados. ¡Vamos a aprender qué significa cada uno!
 
@@ -16,7 +16,7 @@ En este artículo se describen varios conceptos referidos a la web: Páginas web
       <th scope="row">Prerrequisitos:</th>
       <td>
         Debes saber
-        <a href="/es/docs/Learn/Common_questions/How_does_the_Internet_work"
+        <a href="/es/docs/Learn_web_development/Howto/Web_mechanics/How_does_the_Internet_work"
           >¿Cómo funciona internet?</a
         >.
       </td>
@@ -61,7 +61,7 @@ Vamos a comparar la biblioteca con un servidor web:
 
 ## Aprendizaje activo
 
-_Todavía no hay ningún aprendizaje activo disponible. [Por favor, considere la posibilidad de contribuir](/es/docs/MDN/Community/Contributing/Getting_started)._
+_Todavía no hay ningún aprendizaje activo disponible. [Por favor, considere la posibilidad de contribuir](/es/docs/MDN/Community/Getting_started)._
 
 ## Profundizando
 
@@ -112,5 +112,5 @@ Aquí hay una instancia de Firefox que muestra un cuadro de búsqueda de Google 
 
 ## Próximos pasos
 
-- Profundizar más: [Qué es un servidor Web](/es/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server)
-- Vea cómo las páginas web están enlazadas en un sitio web: [Entendiendo los enlaces en la web](/es/docs/Learn/Common_questions/Web_mechanics/What_are_hyperlinks)
+- Profundizar más: [Qué es un servidor Web](/es/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server)
+- Vea cómo las páginas web están enlazadas en un sitio web: [Entendiendo los enlaces en la web](/es/docs/Learn_web_development/Howto/Web_mechanics/What_are_hyperlinks)

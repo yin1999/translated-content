@@ -1,12 +1,9 @@
 ---
 title: HTML 表格基础
 slug: Learn_web_development/Core/Structuring_content/HTML_table_basics
-original_slug: Learn/HTML/Tables/Basics
 ---
 
-{{LearnSidebar}}
-
-{{PreviousMenuNext("Learn_web_development/Core/Structuring_content/Mozilla_splash_page", "Learn_web_development/Core/Structuring_content/Table_accessibility", "Learn_web_development/Core/Structuring_content")}}
+{{PreviousMenuNext("Learn_web_development/Core/Structuring_content/Splash_page", "Learn_web_development/Core/Structuring_content/Table_accessibility", "Learn_web_development/Core/Structuring_content")}}
 
 本文将从 HTML 表格开始，介绍一些基本的内容，如行和单元格、标题、使单元格跨越多个列和行，以及如何将列中的所有单元组合在一起进行样式化。
 
@@ -217,11 +214,11 @@ td {
 
 ### 什么时候你不应该使用 HTML 表格？
 
-HTML 表格应该用于表格数据，这正是 HTML 表格设计出来的用途。不幸的是，许多人习惯用 HTML 表格来实现网页布局，例如：一行包含头部，一行包含几列内容，一行包含尾部。你可以在我们的[无障碍学习模块](/zh-CN/docs/Learn_web_development/Core/Accessibility)中的[页面布局](/zh-CN/docs/Learn/Accessibility/HTML#页面布局)章节获得更多细节内容和一个示例。这种做法以前是很常见的，因为以前 CSS 在不同浏览器上的兼容性比较糟糕；表格布局现在不太普遍，但你可能仍然会在网络的某些角落看到它们。
+HTML 表格应该用于表格数据，这正是 HTML 表格设计出来的用途。不幸的是，许多人习惯用 HTML 表格来实现网页布局，例如：一行包含头部，一行包含几列内容，一行包含尾部。你可以在我们的[无障碍学习模块](/zh-CN/docs/Learn_web_development/Core/Accessibility)中的[页面布局](/zh-CN/docs/Learn_web_development/Core/Accessibility/HTML#页面布局)章节获得更多细节内容和一个示例。这种做法以前是很常见的，因为以前 CSS 在不同浏览器上的兼容性比较糟糕；表格布局现在不太普遍，但你可能仍然会在网络的某些角落看到它们。
 
 简单来说，使用表格布局而不使用 [CSS 布局技巧](/zh-CN/docs/Learn_web_development/Core/CSS_layout)是很糟糕的。主要的理由有以下几个：
 
-1. **表格布局减少了视觉受损的用户的无障碍**: 盲人所使用的[屏幕阅读器](/zh-CN/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility#屏幕阅读器)会解析存在于 HTML 页面上的标签，然后为用户读出其中的内容。因为对于布局来说，表格不是一个正确的工具，使用的标记比使用 CSS 布局技术更复杂，所以屏幕阅读器的输出会让他们的用户感到困惑。
+1. **表格布局减少了视觉受损的用户的无障碍**: 盲人所使用的[屏幕阅读器](/zh-CN/docs/Learn_web_development/Core/Accessibility/Tooling#屏幕阅读器)会解析存在于 HTML 页面上的标签，然后为用户读出其中的内容。因为对于布局来说，表格不是一个正确的工具，使用的标记比使用 CSS 布局技术更复杂，所以屏幕阅读器的输出会让他们的用户感到困惑。
 2. **表格会产生很多标签**: 正如刚才提到的，表格布局通常会比正确的布局技术涉及更复杂的标签结构，这会导致代码变得更难于编写、维护、调试。
 3. **表格不能自动响应**: 当你使用正确的布局容器（比如 {{htmlelement("header")}}、{{htmlelement("section")}}、{{htmlelement("article")}} 或是 {{htmlelement("div")}}）时，它们的默认宽度是父元素的 100%；而表格的默认大小是根据其内容而定的。因此，需要采取额外的措施来获取表格布局样式，以便有效地在各种设备上工作。
 
@@ -230,8 +227,8 @@ HTML 表格应该用于表格数据，这正是 HTML 表格设计出来的用途
 对于表格的理论知识，我们已经说了很多了，所以，让我们来看一个使用的例子，并建立一个简单的表格。
 
 1. 首先，将 [blank-template.html](https://github.com/mdn/learning-area/blob/main/html/tables/basic/blank-template.html) 和 [minimal-table.css](https://github.com/mdn/learning-area/blob/main/html/tables/basic/minimal-table.css) 文件拷贝到你的本地环境上。
-2. 每一个表格的内容都包含在这两个标签中：**[`<table></table>`](/zh-CN/docs/Web/HTML/Element/table)**。在你的 HTML 的 {{htmlelement("body")}} 中添加这些内容。
-3. 在表格中，最小的内容容器是单元格，是通过 **[`<td>`](/zh-CN/docs/Web/HTML/Element/td)** 元素创建的（其中“td”代表“table data”）。把下面的内容添加到你的表格标签中：
+2. 每一个表格的内容都包含在这两个标签中：**[`<table></table>`](/zh-CN/docs/Web/HTML/Reference/Elements/table)**。在你的 HTML 的 {{htmlelement("body")}} 中添加这些内容。
+3. 在表格中，最小的内容容器是单元格，是通过 **[`<td>`](/zh-CN/docs/Web/HTML/Reference/Elements/td)** 元素创建的（其中“td”代表“table data”）。把下面的内容添加到你的表格标签中：
 
    ```html
    <td>我是第一个单元格</td>
@@ -248,7 +245,7 @@ HTML 表格应该用于表格数据，这正是 HTML 表格设计出来的用途
 
 你会看到，单元格不会放置在彼此的下方，而是自动与同一行上的其他单元格对齐。每个 `<td>` 元素 创建一个单独单元格，它们共同组成了第一行。我们添加的每个单元格都使行的长度变长。
 
-如果想让这一行停止增加，并让单元格从第二行开始，我们需要使用 **[`<tr>`](/zh-CN/docs/Web/HTML/Element/tr)** 元素（其中“tr”代表“table row”）。让我们现在来证实一下。
+如果想让这一行停止增加，并让单元格从第二行开始，我们需要使用 **[`<tr>`](/zh-CN/docs/Web/HTML/Reference/Elements/tr)** 元素（其中“tr”代表“table row”）。让我们现在来证实一下。
 
 1. 把你已经创建好的 4 个单元格放入 `<tr>` 标签，就像这样：
 
@@ -367,7 +364,7 @@ th {
 让我们来改进这个表格。
 
 1. 首先，把 [dogs-table.html](https://github.com/mdn/learning-area/blob/main/html/tables/basic/dogs-table.html) 和 [minimal-table.css](https://github.com/mdn/learning-area/blob/main/html/tables/basic/minimal-table.css) 文件保存到你的本地环境，HTML 文件包含上文你看到的几种狗的数据。
-2. 为了将表格的标题在视觉上和语义上都能被识别为标题，你可以使用 **[`<th>`](/zh-CN/docs/Web/HTML/Element/th)** 元素（其中“th”代表“table header”），用法和 `<td>`是一样的，除了它表示为标题，不是普通的单元格以外。进入你的 HTML 文件，将表格中应该是标题的 `<td>` 元素标记的内容，都改为用 `<th>` 元素标记。
+2. 为了将表格的标题在视觉上和语义上都能被识别为标题，你可以使用 **[`<th>`](/zh-CN/docs/Web/HTML/Reference/Elements/th)** 元素（其中“th”代表“table header”），用法和 `<td>`是一样的，除了它表示为标题，不是普通的单元格以外。进入你的 HTML 文件，将表格中应该是标题的 `<td>` 元素标记的内容，都改为用 `<th>` 元素标记。
 3. 保存你的 HTML 文件，然后在浏览器中加载，然后你应该会看到，现在的标题更像标题了。
 
 > [!NOTE]
@@ -447,10 +444,10 @@ th {
 
 ### 不使用 \<col> 应用样式
 
-在继续阅读之前，我们将在本文介绍最后一个特性。HTML 有一种为整列数据的定义样式信息的方法：就是 **[`<col>`](/zh-CN/docs/Web/HTML/Element/col)** 和 **[`<colgroup>`](/zh-CN/docs/Web/HTML/Element/colgroup)** 元素。它们存在是因为如果你想让一列中的每个数据的样式都一样，那么你就要为每个数据都添加一个样式，这样的做法是令人厌烦和低效的。你通常需要在列中的每个 `<td>` 或 `<th>` 上定义样式，或者使用一个复杂的选择器，比如 {{cssxref(":nth-child()")}}。
+在继续阅读之前，我们将在本文介绍最后一个特性。HTML 有一种为整列数据的定义样式信息的方法：就是 **[`<col>`](/zh-CN/docs/Web/HTML/Reference/Elements/col)** 和 **[`<colgroup>`](/zh-CN/docs/Web/HTML/Reference/Elements/colgroup)** 元素。它们存在是因为如果你想让一列中的每个数据的样式都一样，那么你就要为每个数据都添加一个样式，这样的做法是令人厌烦和低效的。你通常需要在列中的每个 `<td>` 或 `<th>` 上定义样式，或者使用一个复杂的选择器，比如 {{cssxref(":nth-child()")}}。
 
 > [!NOTE]
-> 这样设计列的样式[仅限于几个属性](https://www.w3.org/TR/CSS22/tables.html#columns)：[`border`](/zh-CN/docs/Web/CSS/border)、[`background`](/zh-CN/docs/Web/CSS/background)、[`width`](/zh-CN/docs/Web/CSS/width) 和 [`visibility`](/zh-CN/docs/Web/CSS/visibility)。要设置其他属性，必须对列中的每个 `<td>` 或 `<th>` 进行样式设置，或者使用复杂的选择器，如 {{cssxref(":nth-child")}}。
+> 这样设计列的样式[仅限于几个属性](https://www.w3.org/TR/CSS22/tables.html#columns)：[`border`](/zh-CN/docs/Web/CSS/Reference/Properties/border)、[`background`](/zh-CN/docs/Web/CSS/Reference/Properties/background)、[`width`](/zh-CN/docs/Web/CSS/Reference/Properties/width) 和 [`visibility`](/zh-CN/docs/Web/CSS/Reference/Properties/visibility)。要设置其他属性，必须对列中的每个 `<td>` 或 `<th>` 进行样式设置，或者使用复杂的选择器，如 {{cssxref(":nth-child")}}。
 
 下面是一个简单的示例：
 
@@ -515,7 +512,7 @@ th {
 就像 `colspan` 和 `rowspan` 一样，`span` 需要一个无单位的数字值，用来指定让这个样式应用到表格中多少列。
 
 > [!NOTE]
-> 如果表格、列和列中的单元格都是单独样式化的，那么应用于单元格的样式将绘制在列样式之上，而列样式将绘制在表格之上。这是因为先渲染表格层，然后渲染列层，[单元格层渲染在所有其他表格层之上](/zh-CN/docs/Web/HTML/Element/table#table_layers_and_transparency)。
+> 如果表格、列和列中的单元格都是单独样式化的，那么应用于单元格的样式将绘制在列样式之上，而列样式将绘制在表格之上。这是因为先渲染表格层，然后渲染列层，[单元格层渲染在所有其他表格层之上](/zh-CN/docs/Web/HTML/Reference/Elements/table#table_layers_and_transparency)。
 
 ### 动手练习：colgroup 和 col
 
@@ -542,4 +539,4 @@ th {
 
 本章节仅仅包含了 HTML 表格的基础。在下一篇文章中，我们将介绍一些[表格进阶特性](/zh-CN/docs/Learn_web_development/Core/Structuring_content/Table_accessibility)，并开始考虑方便视力障碍的人士的访问。
 
-{{PreviousMenuNext("Learn_web_development/Core/Structuring_content/Mozilla_splash_page", "Learn_web_development/Core/Structuring_content/Table_accessibility", "Learn_web_development/Core/Structuring_content")}}
+{{PreviousMenuNext("Learn_web_development/Core/Structuring_content/Splash_page", "Learn_web_development/Core/Structuring_content/Table_accessibility", "Learn_web_development/Core/Structuring_content")}}

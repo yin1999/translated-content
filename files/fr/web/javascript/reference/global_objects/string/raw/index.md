@@ -3,11 +3,18 @@ title: String.raw()
 slug: Web/JavaScript/Reference/Global_Objects/String/raw
 ---
 
-{{JSRef}}
-
 La méthode statique **`String.raw()`** est une fonction d'étiquetage (_tag function_) pour les [gabarits de chaînes de caractères](/fr/docs/Web/JavaScript/Reference/Template_literals#les_gabarits_étiquetés) (elle est [semblable](https://bugs.chromium.org/p/v8/issues/detail?id=5016) au préfixe `r` en Python ou au préfixe `@` en C#). Cette fonction permet d'obtenir la chaîne brute pour un gabarit (les caractères spéciaux ne sont pas pris en compte mais retranscrits tels quels, les séquences d'échappement ne sont pas interprétées et les emplacements (ex. `${toto}`) sont traités).
 
-{{EmbedInteractiveExample("pages/js/string-raw.html")}}
+{{InteractiveExample("JavaScript Demo: String.raw()")}}
+
+```js interactive-example
+// Create a variable that uses a Windows
+// path without escaping the backslashes:
+const filePath = String.raw`C:\Development\profile\aboutme.html`;
+
+console.log(`The file was uploaded from: ${filePath}`);
+// Expected output: "The file was uploaded from: C:\Development\profile\aboutme.html"
+```
 
 ## Syntaxe
 
@@ -37,7 +44,7 @@ La chaîne de caractères brute correspondant à un gabarit donné.
 
 ## Description
 
-Dans la plupart des cas, `String.raw()` est utilisé avec des gabarits de chaînes de caractères. La première syntaxe, présentée ci-avant est rarement utilisée. En effet, le moteur JavaScript appellera cette forme avec les arguments appropriés, comme pour les [fonctions d'étiquetage (_tag_)](/fr/docs/Web/JavaScript/Reference/Template_literals#les_gabarits_de_cha.c3.aenes_.c3.a9tiquett.c3.a9s).
+Dans la plupart des cas, `String.raw()` est utilisé avec des gabarits de chaînes de caractères. La première syntaxe, présentée ci-avant est rarement utilisée. En effet, le moteur JavaScript appellera cette forme avec les arguments appropriés, comme pour les [fonctions d'étiquetage (_tag_)](/fr/docs/Web/JavaScript/Reference/Template_literals#les_gabarits_de_cha.c3.aenes_étiquettés).
 
 La méthode `String.raw()` est la seule méthode d'étiquetage native pour les chaînes de caractères. Elle fonctionne comme la fonction par défaut pour les gabarits et permet d'effectuer des concaténations. Il est également possible d'implémenter cette méthode avec du code JavaScript.
 

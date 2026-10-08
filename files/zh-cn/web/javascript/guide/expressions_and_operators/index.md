@@ -3,7 +3,7 @@ title: 表达式与运算符
 slug: Web/JavaScript/Guide/Expressions_and_operators
 ---
 
-{{jsSidebar("JavaScript Guide")}} {{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_dates")}}
+{{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_strings")}}
 
 本章描述了 JavaScript 的表达式和运算符，包括了赋值、比较、算数、位运算、逻辑、字符串、三元，等等。
 
@@ -73,7 +73,7 @@ JavaScript 拥有二元和一元运算符和一个特殊的三元运算符（条
 
 #### 解构
 
-对于更复杂的赋值，[解构赋值](/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)语法是一个能从数组或对象对应的数组结构或对象字面量里提取数据的 Javascript 表达式。
+对于更复杂的赋值，[解构](/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring)语法是一个能从数组或对象对应的数组结构或对象字面量里提取数据的 Javascript 表达式。
 
 ```js
 var foo = ["one", "two", "three"];
@@ -96,16 +96,16 @@ var var1 = 3;
 var var2 = 4;
 ```
 
-| 运算符                                                                                                                 | 描述                                                                                                                                                  | 返回 true 的示例                     |
-| ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| [等于 Equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#equality) (`==`)                                           | 如果两边操作数相等时返回 true。                                                                                                                       | `3 == var1` `"3" == var1` `3 == '3'` |
-| [不等于 Not equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#inequality) (`!=`)                                   | 如果两边操作数不相等时返回 true                                                                                                                       | `var1 != 4 var2 != "3"`              |
-| [全等 Strict equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#identity) (`===`)                                   | 两边操作数相等且类型相同时返回 true。参见 {{jsxref("Object.is")}} and [sameness in JS](/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness). | `3 === var1`                         |
-| [不全等 Strict not equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#nonidentity) (`!==`)                          | 两边操作数不相等或类型不同时返回 true。                                                                                                               | `var1 !== "3" 3 !== '3'`             |
-| [大于 Greater than](/zh-CN/docs/Web/JavaScript/Reference/Operators#greater_than_operator) (`>`)                        | 左边的操作数大于右边的操作数返回 true                                                                                                                 | `var2 > var1 "12" > 2`               |
-| [大于等于 Greater than or equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#greater_than_or_equal_operator) (`>=`) | 左边的操作数大于或等于右边的操作数返回 true                                                                                                           | `var2 >= var1 var1 >= 3`             |
-| [小于 Less than](/zh-CN/docs/Web/JavaScript/Reference/Operators#less_than_operator) (`<`)                              | 左边的操作数小于右边的操作数返回 true                                                                                                                 | `var1 < var2 "2" < 12`               |
-| [小于等于 Less than or equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#less_than_or_equal_operator) (`<=`)       | 左边的操作数小于或等于右边的操作数返回 true                                                                                                           | `var1 <= var2 var2 <= 5`             |
+| 运算符                                                                                                                 | 描述                                                                                                                                                        | 返回 true 的示例                     |
+| ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| [等于 Equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#equality) (`==`)                                           | 如果两边操作数相等时返回 true。                                                                                                                             | `3 == var1` `"3" == var1` `3 == '3'` |
+| [不等于 Not equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#inequality) (`!=`)                                   | 如果两边操作数不相等时返回 true                                                                                                                             | `var1 != 4 var2 != "3"`              |
+| [全等 Strict equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#identity) (`===`)                                   | 两边操作数相等且类型相同时返回 true。参见 {{jsxref("Object.is")}} and [sameness in JS](/zh-CN/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness). | `3 === var1`                         |
+| [不全等 Strict not equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#nonidentity) (`!==`)                          | 两边操作数不相等或类型不同时返回 true。                                                                                                                     | `var1 !== "3" 3 !== '3'`             |
+| [大于 Greater than](/zh-CN/docs/Web/JavaScript/Reference/Operators#greater_than_operator) (`>`)                        | 左边的操作数大于右边的操作数返回 true                                                                                                                       | `var2 > var1 "12" > 2`               |
+| [大于等于 Greater than or equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#greater_than_or_equal_operator) (`>=`) | 左边的操作数大于或等于右边的操作数返回 true                                                                                                                 | `var2 >= var1 var1 >= 3`             |
+| [小于 Less than](/zh-CN/docs/Web/JavaScript/Reference/Operators#less_than_operator) (`<`)                              | 左边的操作数小于右边的操作数返回 true                                                                                                                       | `var1 < var2 "2" < 12`               |
+| [小于等于 Less than or equal](/zh-CN/docs/Web/JavaScript/Reference/Operators#less_than_or_equal_operator) (`<=`)       | 左边的操作数小于或等于右边的操作数返回 true                                                                                                                 | `var1 <= var2 var2 <= 5`             |
 
 > [!NOTE]
 > （**=>**）不是运算符，而是[箭头函数](/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)的标记符号。
@@ -597,9 +597,9 @@ a * c + b * c; // 9
 
 Comprehensions 是一个带有实验性质的 JavaScript 特性，计划将在未来的 ECMAScript 版本中加入该特性。有两种类型的 comprehensions:
 
-- {{experimental_inline}} {{jsxref("Operators/Array_comprehensions", "[for (x of y) x]")}}
+- {{experimental_inline}} {{jsxref("Deprecated_and_obsolete_features", "[for (x of y) x]")}}
   - : 数列数值推导（非标准用法）
-- {{experimental_inline}} {{jsxref("Operators/Generator_comprehensions", "(for (x of y) y)")}}
+- {{experimental_inline}} {{jsxref("Deprecated_and_obsolete_features", "(for (x of y) y)")}}
   - : 生成器数值推导（译者注：生成器数值推导标准化可能不大，推荐使用 [生成器函数](/zh-CN/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features)）
 
 Comprehensions 特性被许多编程语言所采用，该特性能够使你快速地通过一个已有的数组来创建出一个新的数组，比如：
@@ -633,4 +633,4 @@ var objectName = new objectType([param1, param2, ..., paramN]);
 super([arguments]); // calls the parent constructor. super.functionOnParent([arguments]);
 ```
 
-{{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_dates")}}
+{{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_strings")}}

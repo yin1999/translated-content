@@ -3,11 +3,16 @@ title: String.length
 slug: Web/JavaScript/Reference/Global_Objects/String/length
 ---
 
-{{JSRef}}
-
 La propriété **`length`** représente la longueur d'une chaine de caractères, exprimée en nombre de points de code UTF-16. C'est une propriété accessible en lecture seule.
 
-{{EmbedInteractiveExample("pages/js/string-length.html")}}
+{{InteractiveExample("JavaScript Demo: String.length")}}
+
+```js interactive-example
+const str = "Life, the universe and everything. Answer:";
+
+console.log(`${str} ${str.length}`);
+// Expected output: "Life, the universe and everything. Answer: 42"
+```
 
 ## Syntaxe
 

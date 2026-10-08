@@ -1,10 +1,9 @@
 ---
 title: "Django Tutorial Part 6: Generic list and detail views"
 slug: Learn_web_development/Extensions/Server-side/Django/Generic_views
-original_slug: Learn/Server-side/Django/Generic_views
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Server-side/Django/Home_page", "Learn/Server-side/Django/Sessions", "Learn/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Home_page", "Learn_web_development/Extensions/Server-side/Django/Sessions", "Learn_web_development/Extensions/Server-side/Django")}}
 
 本教程擴充了 [LocalLibrary](/zh-TW/docs/Learn_web_development/Extensions/Server-side/Django/Tutorial_local_library_website) 網站，為書本與作者增加列表與細節頁面。此處我們將學到通用類別視圖，並演示如何降低你必須為一般使用案例撰寫的程式碼數量。我們也會更加深入 URL 處理細節，演示如何實施基本模式匹配。
 
@@ -14,7 +13,7 @@ original_slug: Learn/Server-side/Django/Generic_views
       <th scope="row">前提:</th>
       <td>
         Complete all previous tutorial topics, including
-        <a href="/zh-TW/docs/Learn/Server-side/Django/Home_page"
+        <a href="/zh-TW/docs/Learn_web_development/Extensions/Server-side/Django/Home_page"
           >Django Tutorial Part 5: Creating our home page</a
         >.
       </td>
@@ -596,4 +595,4 @@ In our next articles we'll extend this library to support user accounts, and the
 - [Built-in template tags and filters](https://docs.djangoproject.com/en/2.0/ref/templates/builtins) (Django docs).
 - [Pagination](https://docs.djangoproject.com/en/2.0/topics/pagination/) (Django docs)
 
-{{PreviousMenuNext("Learn/Server-side/Django/Home_page", "Learn/Server-side/Django/Sessions", "Learn/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Home_page", "Learn_web_development/Extensions/Server-side/Django/Sessions", "Learn_web_development/Extensions/Server-side/Django")}}

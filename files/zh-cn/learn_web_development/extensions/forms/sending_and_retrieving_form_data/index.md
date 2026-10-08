@@ -1,10 +1,9 @@
 ---
 title: 发送表单数据
 slug: Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data
-original_slug: Learn/Forms/Sending_and_retrieving_form_data
 ---
 
-{{LearnSidebar}}{{PreviousMenu("Learn_web_development/Extensions/Forms/Form_validation", "Learn_web_development/Extensions/Forms")}}
+{{PreviousMenu("Learn_web_development/Extensions/Forms/Form_validation", "Learn_web_development/Extensions/Forms")}}
 
 本文将讨论当用户提交表单时发生了什么——数据去了哪，以及当它到达时该如何处理？我们还研究了与发送表单数据相关的一些安全问题。
 
@@ -50,7 +49,7 @@ web 基于非常基本的客户端/服务器体系结构，可以总结如下：
 
 ### 在客户端：定义如何发送数据
 
-{{HTMLElement("form")}}元素定义了如何发送数据。它的所有属性都是为了让你配置当用户点击提交按钮时发送的请求。两个最重要的属性是[`action`](/zh-CN/docs/Web/HTML/Element/form#action)和[`method`](/zh-CN/docs/Web/HTML/Element/form#method)。
+{{HTMLElement("form")}}元素定义了如何发送数据。它的所有属性都是为了让你配置当用户点击提交按钮时发送的请求。两个最重要的属性是[`action`](/zh-CN/docs/Web/HTML/Reference/Elements/form#action)和[`method`](/zh-CN/docs/Web/HTML/Reference/Elements/form#method)。
 
 #### `action` 属性
 
@@ -74,14 +73,14 @@ web 基于非常基本的客户端/服务器体系结构，可以总结如下：
 <form>…</form>
 ```
 
-许多较老的页面使用下面的符号表示数据应该被发送到包含表单的相同页面；这是必需的，因为直到 HTML5[`action`](/zh-CN/docs/Web/HTML/Element/form#action)属性都需要该符号。现在，这不再需要了。
+许多较老的页面使用下面的符号表示数据应该被发送到包含表单的相同页面；这是必需的，因为直到 HTML5[`action`](/zh-CN/docs/Web/HTML/Reference/Elements/form#action)属性都需要该符号。现在，这不再需要了。
 
 ```html
 <form action="#">…</form>
 ```
 
 > [!NOTE]
-> 可以指定使用 HTTPS(安全 HTTP) 协议的 URL。当你这样做时，数据将与请求的其余部分一起加密，即使表单本身是托管在使用 HTTP 访问的不安全页面上。另一方面，如果表单是在安全页面上托管的，但是你指定了一个不安全的 HTTP URL，它带有[`action`](/zh-CN/docs/Web/HTML/Element/form#action)属性，所有的浏览器都会在每次尝试发送数据时向用户显示一个安全警告，因为数据不会被加密。
+> 可以指定使用 HTTPS(安全 HTTP) 协议的 URL。当你这样做时，数据将与请求的其余部分一起加密，即使表单本身是托管在使用 HTTP 访问的不安全页面上。另一方面，如果表单是在安全页面上托管的，但是你指定了一个不安全的 HTTP URL，它带有[`action`](/zh-CN/docs/Web/HTML/Reference/Elements/form#action)属性，所有的浏览器都会在每次尝试发送数据时向用户显示一个安全警告，因为数据不会被加密。
 
 #### `method` 属性
 
@@ -122,7 +121,7 @@ HTTP 请求由两个部分组成：一个包含关于浏览器功能的全局元
 
 HTTP 请求如下：
 
-```plain
+```http
 GET /?say=Hi&to=Mom HTTP/2.0
 Host: foo.com
 ```
@@ -134,7 +133,7 @@ Host: foo.com
 
 `POST`方法略有不同。这是浏览器在询问响应时使用与服务器通信的方法，该响应考虑了 HTTP 请求正文中提供的数据:“嘿，服务器，看一下这些数据，然后给我回一个适当的结果。”如果使用该方法发送表单，则将数据追加到 HTTP 请求的主体中。
 
-让我们来看一个例子，这是我们在上面的`GET`部分中所看到的相同的形式，但是使用[`method`](/zh-CN/docs/Web/HTML/Element/form#method)属性设置为`post`。
+让我们来看一个例子，这是我们在上面的`GET`部分中所看到的相同的形式，但是使用[`method`](/zh-CN/docs/Web/HTML/Reference/Elements/form#method)属性设置为`post`。
 
 ```html
 <form action="http://foo.com" method="post">
@@ -154,7 +153,7 @@ Host: foo.com
 
 当使用`POST`方法提交表单时，没有数据会附加到 URL，HTTP 请求看起来是这样的，而请求主体中包含的数据是这样的：
 
-```plain
+```http
 POST / HTTP/2.0
 Host: foo.com
 Content-Type: application/x-www-form-urlencoded
@@ -218,7 +217,7 @@ HTTP 请求永远不会显示给用户 (如果你想要看到它们，你需要�
 这个例子展示了如何使用 Python 完成同样的事情——在 web 页面上显示提交的数据。
 这将使用[Flask framework](http://flask.pocoo.org/)来呈现模板、处理表单数据提交等 (参见[python-example.py](https://github.com/mdn/learning-area/blob/main/html/forms/sending-form-data/python-example.py))。
 
-```plain
+```python
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
@@ -241,11 +240,11 @@ if __name__ == "__main__":
   这是通过前面所见的`hello()`函数完成的，该函数在`/hello`URL 被导向时运行。
 
 > [!NOTE]
-> 同样，如果你只是尝试将其直接加载到浏览器中，那么这段代码将无法工作。Python 的工作方式与 PHP 略有不同——要在本地运行此代码，你需要[安装 Python/pip](/zh-CN/docs/Learn/Server-side/Django/development_environment#installing_python_3)，然后使用`pip3 install flask`安装 Flask。此时，你应该能够使用`python3 python-example.py`来运行这个示例，然后在浏览器中导航到`localhost:5000`。
+> 同样，如果你只是尝试将其直接加载到浏览器中，那么这段代码将无法工作。Python 的工作方式与 PHP 略有不同——要在本地运行此代码，你需要[安装 Python/pip](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django/development_environment#安装_python_3)，然后使用`pip3 install flask`安装 Flask。此时，你应该能够使用`python3 python-example.py`来运行这个示例，然后在浏览器中导航到`localhost:5000`。
 
 #### 其他语言和框架
 
-还有许多其他的服务器端技术可以用于表单处理，包括[Perl](/zh-CN/docs/Web)、[Java](/zh-CN/docs/Web)、 [.Net](https://www.microsoft.com/net)、[Ruby](/zh-CN/docs/Web)等。只挑你最喜欢的用就好。话虽如此，但值得注意的是，直接使用这些技术并不常见，因为这可能很棘手。更常见的是使用许多优秀的框架，这些框架使处理表单变得更容易，例如：
+还有许多其他的服务器端技术可以用于表单处理，包括 [Perl](/zh-CN/docs/Web)、[Java](/zh-CN/docs/Web)、[.Net](https://www.microsoft.com/net)、[Ruby](/zh-CN/docs/Web) 等。只挑你最喜欢的用就好。话虽如此，但值得注意的是，直接使用这些技术并不常见，因为这可能很棘手。更常见的是使用许多优秀的框架，这些框架使处理表单变得更容易，例如：
 
 - [Django](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django) for Python（比[Flask](http://flask.pocoo.org/)要重量级一些，但是有更多的工具和选项。）
 - [Express](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs) for Node.js
@@ -268,9 +267,9 @@ if __name__ == "__main__":
 
 如果你想要发送文件，你需要额外的三个步骤：
 
-- 将[`method`](/zh-CN/docs/Web/HTML/Element/form#method)属性设置为`POST`，因为文件内容不能放入 URL 参数中。
-- 将[`enctype`](/zh-CN/docs/Web/HTML/Element/form#enctype)的值设置为`multipart/form-data`，因为数据将被分成多个部分，每个文件单独占用一个部分，表单正文中包含的文本数据（如果文本也输入到表单中）占用一个部分。
-- 包含一个或多个[File picker](/zh-CN/docs/Learn/Forms/Basic_native_form_controls#file_picker)小部件，允许用户选择将要上传的文件。
+- 将[`method`](/zh-CN/docs/Web/HTML/Reference/Elements/form#method)属性设置为`POST`，因为文件内容不能放入 URL 参数中。
+- 将[`enctype`](/zh-CN/docs/Web/HTML/Reference/Elements/form#enctype)的值设置为`multipart/form-data`，因为数据将被分成多个部分，每个文件单独占用一个部分，表单正文中包含的文本数据（如果文本也输入到表单中）占用一个部分。
+- 包含一个或多个[文件选择器](/zh-CN/docs/Learn_web_development/Extensions/Forms/Basic_native_form_controls#文件选择器)微件，允许用户选择将要上传的文件。
 
 例如：
 
@@ -287,7 +286,7 @@ if __name__ == "__main__":
 ```
 
 > [!NOTE]
-> 一些浏览器支持{{HTMLElement("input")}}的[`multiple`](/zh-CN/docs/Web/HTML/Element/input#multiple)属性，它允许只用一个 `<input>` 元素选择一个以上的文件上传。服务器如何处理这些文件取决于服务器上使用的技术。如前所述，使用框架将使你的生活更轻松。
+> 一些浏览器支持{{HTMLElement("input")}}的[`multiple`](/zh-CN/docs/Web/HTML/Reference/Elements/input#multiple)属性，它允许只用一个 `<input>` 元素选择一个以上的文件上传。服务器如何处理这些文件取决于服务器上使用的技术。如前所述，使用框架将使你的生活更轻松。
 
 > [!WARNING]
 > 为了防止滥用，许多服务器配置了文件和 HTTP 请求的大小限制。在发送文件之前，先检查服务器管理员的权限是很重要的。
@@ -302,7 +301,7 @@ if __name__ == "__main__":
 
 跨站脚本 (XSS) 和跨站点请求伪造 (CSRF) 是常见的攻击类型，它们发生在当你将用户发送的数据显示给这个用户或另一个用户时。
 
-XSS 允许攻击者将客户端脚本注入到其他用户查看的 Web 页面中。攻击者可以使用跨站点脚本攻击的漏洞来绕过诸如[同源策略](/zh-CN/docs/Web/Security/Same-origin_policy)之类的访问控制。这些攻击的影响可能从一个小麻烦到一个重大的安全风险。
+XSS 允许攻击者将客户端脚本注入到其他用户查看的 Web 页面中。攻击者可以使用跨站点脚本攻击的漏洞来绕过诸如[同源策略](/zh-CN/docs/Web/Security/Defenses/Same-origin_policy)之类的访问控制。这些攻击的影响可能从一个小麻烦到一个重大的安全风险。
 
 CSRF 攻击类似于 XSS 攻击，因为它们以相同的方式开始攻击——向 Web 页面中注入客户端脚本——但它们的目标是不同的。CSRF 攻击者试图将权限升级到特权用户 (比如站点管理员) 的级别，以执行他们不应该执行的操作 (例如，将数据发送给一个不受信任的用户)。
 

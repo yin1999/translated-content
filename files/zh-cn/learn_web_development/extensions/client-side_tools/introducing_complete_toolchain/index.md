@@ -1,10 +1,9 @@
 ---
 title: 介绍完整的工具链
 slug: Learn_web_development/Extensions/Client-side_tools/Introducing_complete_toolchain
-original_slug: Learn/Tools_and_testing/Understanding_client-side_tools/Introducing_complete_toolchain
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Extensions/Client-side_tools/Package_management","Learn_web_development/Extensions/Client-side_tools/Deployment", "Learn_web_development/Extensions/Client-side_tools")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Client-side_tools/Package_management","Learn_web_development/Extensions/Client-side_tools/Deployment", "Learn_web_development/Extensions/Client-side_tools")}}
 
 在本系列的最后几篇文章中，我们将通过演示如何构建一个示例案例工具链来巩固你的工具知识。我们将从设置合理的开发环境和设置转换工具开始，一直到在 Netlify 上实际部署应用程序。在本文中，我们将介绍研究案例、设置开发环境和设置代码构建转换工具。
 
@@ -105,7 +104,7 @@ original_slug: Learn/Tools_and_testing/Understanding_client-side_tools/Introduci
 
 ### 软件包安装工具
 
-我们将使用 npm 安装我们的工具，我们已经在第二章中介绍了它。你应该已经安装了 Node.js 和 npm，但如果没有，请[参考该部分](/zh-CN/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line#添加工具)。
+我们将使用 npm 安装我们的工具，我们已经在第二章中介绍了它。你应该已经安装了 Node.js 和 npm，但如果没有，请[参考该部分](/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup/Command_line#添加工具)。
 
 > [!NOTE]
 > 虽然不清楚具体的安装过程，但安装 npm 时还会安装一个名为 npx 的补充工具。我们稍后将使用 npx 来帮助运行作为项目本地依赖项安装的工具。
@@ -132,7 +131,7 @@ Git 可以通过 git-scm 网站[下载和安装](https://git-scm.com/downloads)�
 
 ### 代码格式化工具
 
-我们将在本项目中使用 Prettier——我们在第二章中介绍了它——来格式化我们的代码。如果你按照[安装 Prettier](/zh-CN/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line#下载pprettier) 部分中的说明进行操作，那么你可能已经安装了 Prettier。如果没有，我们将让你立即使用终端将 Prettier 安装为全局程序。
+我们将在本项目中使用 Prettier——我们在第二章中介绍了它——来格式化我们的代码。如果你按照[安装 Prettier](/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup/Command_line#下载_prettier) 部分中的说明进行操作，那么你可能已经安装了 Prettier。如果没有，我们将让你立即使用终端将 Prettier 安装为全局程序。
 
 你可以使用以下命令检查是否已在全局安装它：
 
@@ -366,7 +365,7 @@ npm install --save-dev eslint prettier babel-eslint
 
 转换工具有很多选择，尽管 WebPack 是一个特别流行的选择，但本项目将使用 Parcel——因为它只需要很少的配置。
 
-Parcel 的工作原理是它会尝试根据你的开发需求进行动态配置。Parcel 会监视代码并在开发过程中运行实时重新加载的 Web 服务器。这也意味着 Parcel 会自动安装我们的软件依赖项，因为它们在源代码中被引用，就像我们在[第三章](/zh-CN/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Package_management#使用软件包生态系统)中所看到的那样。
+Parcel 的工作原理是它会尝试根据你的开发需求进行动态配置。Parcel 会监视代码并在开发过程中运行实时重新加载的 Web 服务器。这也意味着 Parcel 会自动安装我们的软件依赖项，因为它们在源代码中被引用，就像我们在[第三章](/zh-CN/docs/Learn_web_development/Extensions/Client-side_tools/Package_management#使用软件包生态系统)中所看到的那样。
 
 Parcel 将处理安装任何所需的转换工具和配置，而我们不需要干预（在大多数情况下）。
 

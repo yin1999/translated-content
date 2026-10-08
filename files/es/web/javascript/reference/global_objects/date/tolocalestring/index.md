@@ -7,7 +7,19 @@ slug: Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
 
 El método **`toLocaleString()`** devuelve un cadena con la representación al idioma de la fecha especificada. Los nuevos argumentos `locales` y `options` permiten a las aplicaciones especificar el idioma cuyas convenciones de formato deben usarse y personalizar el comportamiento de la función. En implementaciones anteriores, ignoran los argumentos de las configuraciones `locales` y `options` , la configuración regional utilizada y la forma de la cadena devuelta dependen completamente de la implementación .
 
-{{EmbedInteractiveExample("pages/js/date-tolocalestring.html")}}
+{{InteractiveExample("JavaScript Demo: Date.toLocaleString()")}}
+
+```js interactive-example
+const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+
+// British English uses day-month-year order and 24-hour time without AM/PM
+console.log(event.toLocaleString("en-GB", { timeZone: "UTC" }));
+// Expected output: "20/12/2012, 03:00:00"
+
+// Korean uses year-month-day order and 12-hour time with AM/PM
+console.log(event.toLocaleString("ko-KR", { timeZone: "UTC" }));
+// Expected output: "2012. 12. 20. 오전 3:00:00"
+```
 
 ## Syntax
 
@@ -140,7 +152,7 @@ For this reason you cannot expect to be able to compare the results of `toLocale
 
 ## Performance
 
-When formatting large numbers of dates, it is better to create an {{jsxref("Global_Objects/DateTimeFormat", "Intl.DateTimeFormat")}} object and use the function provided by its {{jsxref("DateTimeFormat.prototype.format", "format")}} property.
+When formatting large numbers of dates, it is better to create an {{jsxref("Intl/DateTimeFormat", "Intl.DateTimeFormat")}} object and use the function provided by its {{jsxref("Intl/DateTimeFormat/format", "format")}} property.
 
 ## Especificaciones
 
@@ -152,7 +164,7 @@ When formatting large numbers of dates, it is better to create an {{jsxref("Glob
 
 ## See also
 
-- {{jsxref("Global_Objects/DateTimeFormat", "Intl.DateTimeFormat")}}
+- {{jsxref("Intl/DateTimeFormat", "Intl.DateTimeFormat")}}
 - {{jsxref("Date.prototype.toLocaleDateString()")}}
 - {{jsxref("Date.prototype.toLocaleTimeString()")}}
 - {{jsxref("Date.prototype.toString()")}}

@@ -3,11 +3,20 @@ title: TypedArray.prototype.every()
 slug: Web/JavaScript/Reference/Global_Objects/TypedArray/every
 ---
 
-{{JSRef}}
-
 La méthode **`every()`** teste si tous les éléments du tableau typé satisfont une condition implémentée par la fonction de test fournie. Cette méthode utilise le même algorithme {{jsxref("Array.prototype.every()")}}. Pour le reste de cet article, _TypedArray_ correspond à un des [types de tableaux typés](/fr/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#les_objets_typedarray).
 
-{{EmbedInteractiveExample("pages/js/typedarray-every.html")}}
+{{InteractiveExample("JavaScript Demo: TypedArray.every()")}}
+
+```js interactive-example
+function isNegative(element, index, array) {
+  return element < 0;
+}
+
+const int8 = new Int8Array([-10, -20, -30, -40, -50]);
+
+console.log(int8.every(isNegative));
+// Expected output: true
+```
 
 ## Syntaxe
 
@@ -18,9 +27,7 @@ typedarray.every(callback[, thisArg])>
 ### Paramètres
 
 - `callback`
-
   - : La fonction utilisée pour tester chaque élément du tableau. Elle utilise trois arguments :
-
     - `valeurCourante`
       - : L'élément du tableau typé qui est en cours de traitement.
     - `index`

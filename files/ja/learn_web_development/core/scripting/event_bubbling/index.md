@@ -1,20 +1,40 @@
 ---
 title: イベントのバブリング
 slug: Learn_web_development/Core/Scripting/Event_bubbling
-original_slug: Learn/JavaScript/Building_blocks/Event_bubbling
 l10n:
-  sourceCommit: c20c12fab32381b983b4148d712fda227d34e2bd
+  sourceCommit: a73e5b9e881645835a254c4b3d07c48230010d29
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Building_blocks/Events","Learn/JavaScript/Building_blocks/Image_gallery", "Learn/JavaScript/Building_blocks")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Events","Learn_web_development/Core/Scripting/Test_your_skills/Events", "Learn_web_development/Core/Scripting")}}
 
 ウェブページは見出し、テキストの段落、画像、ボタンなどの「要素」で構成されており、これらの要素に発生するイベントを待ち受けすることができることを見てきました。例えば、ボタンにリスナーを追加すると、ユーザーがボタンをクリックしたときに実行することができます。
 
 また、これらの要素は他の要素の中に「入れ子」にすることができます。例えば、{{htmlelement("button")}} は {{htmlelement("div")}} 要素の中に置くことができます。この場合、 `<div>` 要素を親要素、 `<button>` 要素を子要素と呼びます。
 
-この章では、親要素にイベントリスナーを追加し、ユーザーが子要素をクリックするとどうなるかを見ていきます。
+この章では、**イベントのバブリング**を見てみます。これは、親要素にイベントリスナーを追加し、ユーザーが子要素をクリックしたときに現れるものです。
 
-## イベントのバブリングの紹介
+<table>
+  <tbody>
+    <tr>
+      <th scope="row">前提知識:</th>
+      <td><a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a>および<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS の基礎</a>を理解し、これまでのレッスンで説明した JavaScript を把握していること。</td>
+    </tr>
+    <tr>
+      <th scope="row">学習成果:</th>
+      <td>
+        <ul>
+          <li>イベントの委譲は、イベントバブリングまたはイベントキャプチャによって実現されること。</li>
+          <li>イベントの移譲を <code>stopPropagation()</code> で止めること。</li>
+          <li>イベントオブジェクトからイベント対象にアクセスすること。</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## イベントのバブリング入門
+
+イベントのバブリングについて、例を挙げて紹介し、定義してみましょう。
 
 ### 親要素へのリスナーの設定
 
@@ -80,7 +100,7 @@ button.addEventListener("click", handleClick);
 
 {{ EmbedLiveSample('Bubbling example', '100%', 200, "", "") }}
 
-ユーザーがボタンをクリックすると、3つの要素すべてでクリックイベントが発行されることが分かります。
+ユーザーがボタンをクリックすると、 3 つの要素すべてでクリックイベントが発行されることが分かります。
 
 ```plain
 BUTTON 要素をクリックしました
@@ -113,9 +133,7 @@ HTML はこのようになります。
 
 <div class="hidden">
   <video>
-    <source
-      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-      type="video/webm" />
+    <source src="/shared-assets/videos/flower.webm" type="video/webm" />
     <p>
       このブラウザーは HTML の動画に対応していません。
       代わりに<a href="rabbit320.mp4">動画へのリンク</a>があります。
@@ -136,7 +154,7 @@ CSS を使用して、`"hidden"` クラスを設定した要素を非表示に�
 div {
   width: 100%;
   height: 100%;
-  background-color: #eee;
+  background-color: #eeeeee;
 }
 
 .hidden {
@@ -175,7 +193,7 @@ box.addEventListener("click", () => box.classList.add("hidden"));
 
 ボタンをクリックすると、ボックスとコンテナーそのものが表示されます。しかし、動画をクリックすると、動画の再生は始まりますが、ボックスは再び非表示になります。
 
-動画は `<div>` の中にあり、その一部なので、動画をクリックすると両方のイベント ハンドラーが実行され、このような動作が発生します。
+動画は `<div>` の中にあり、その一部なので、動画をクリックすると両方のイベントハンドラーが実行され、このような動作が発生します。
 
 ### stopPropagation() でこの問題を修正する
 
@@ -208,9 +226,7 @@ box.addEventListener("click", () => box.classList.add("hidden"));
 
 <div class="hidden">
   <video>
-    <source
-      src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-      type="video/webm" />
+    <source src="/shared-assets/videos/flower.webm" type="video/webm" />
     <p>
       このブラウザーは HTML の動画に対応していません。
       代わりに<a href="rabbit320.mp4">動画へのリンク</a>があります。
@@ -223,7 +239,7 @@ box.addEventListener("click", () => box.classList.add("hidden"));
 div {
   width: 100%;
   height: 100%;
-  background-color: #eee;
+  background-color: #eeeeee;
 }
 
 .hidden {
@@ -287,7 +303,7 @@ BUTTON 要素をクリックしました
 
 前節では、イベントバブリングが発生させる問題と、それを修正する方法について見ていきました。しかし、イベントバブリングは単に迷惑なだけではありません。具体的な例としては、**イベント委譲** があります。この方法では、ユーザーが多数の子要素のいずれかを操作したときにコードを実行したい場合、子要素にイベントリスナーを個別に設定するのではなく、子要素の親要素にイベントリスナーを設定し、子要素で発生したイベントが親要素にバブルアップされるようにします。
 
-最初の例に戻りましょう。ユーザーがボタンをクリックしたときにページ全体の背景色を設定しました。その代わりに、ページが 16 のタイルに分割されていて、ユーザーがタイルをクリックしたときに各タイルにランダムな色を設定したいとします。
+[最初の例](/ja/docs/Learn_web_development/Core/Scripting/Events#例_クリックイベントの扱い)に戻りましょう。ユーザーがボタンをクリックしたときにページ全体の背景色を設定しました。その代わりに、ページが 16 のタイルに分割されていて、ユーザーがタイルをクリックしたときに各タイルにランダムな色を設定したいとします。
 
 こちらが HTML です。
 
@@ -315,10 +331,10 @@ BUTTON 要素をクリックしました
 タイルのサイズと位置を設定するために、ちょっとした CSS を設定します。
 
 ```css
-.tile {
-  height: 100px;
-  width: 25%;
-  float: left;
+#container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 100px;
 }
 ```
 
@@ -375,8 +391,8 @@ JavaScript はほとんど同じですが、`target` と `currentTarget` の両�
 ```js
 const output = document.querySelector("#output");
 function handleClick(e) {
-  const logTarget = `Target: ${e.target.tagName}`;
-  const logCurrentTarget = `Current target: ${e.currentTarget.tagName}`;
+  const logTarget = `target: ${e.target.tagName}`;
+  const logCurrentTarget = `currentTarget: ${e.currentTarget.tagName}`;
   output.textContent += `${logTarget}, ${logCurrentTarget}\n`;
 }
 
@@ -392,27 +408,21 @@ button.addEventListener("click", handleClick);
 
 {{embedlivesample("target and currentTarget")}}
 
-`target` プロパティは、上記の[イベント移譲](#イベント移譲)の例のように、イベント移譲でよく使用します。
-
-## スキルテスト
-
-この記事の最後に達しましたが、最も大切な情報を覚えていますか？次に進む前に、この情報が身に付いたかどうかを確認するテストがあります。[スキルテスト: イベント](/ja/docs/Learn/JavaScript/Building_blocks/Test_your_skills:_Events)を参照してください。
+`target` プロパティは、上記の[イベント移譲](#イベント移譲)の例にあるように、イベント移譲でよく使用します。
 
 ## まとめ
 
-これで、この早い段階でウェブイベントについて知っておくべきことはすべてわかったはずです。
-前述したように、イベントは実のところ JavaScript のコアには属しません。ブラウザーの Web API で定義されています。
+これで、この早い段階でウェブイベントについて知っておくべきことはすべてわかったはずです。前述したように、イベントは実のところ JavaScript のコアには属しません。ブラウザーの Web API で定義されています。
 
-また、JavaScript が使用されるさまざまなコンテキストには、異なるイベントモデルがあることを理解することが重要です。Web API から、ブラウザーの WebExtensions や Node.js (サーバーサイド JavaScript) などの他の領域までです。
-これでこれらの領域をすべて理解できるとは思っていませんが、ウェブ開発を学習していく上で、イベントの基本を理解しておくことはとても役に立ちます。
-
-> [!NOTE]
-> 行き詰まった場合は、[コミュニケーションチャンネル](/ja/docs/MDN/Community/Communication_channels)のいずれかに連絡してください。
+次の記事では、イベントに関するこれまでの内容をどれだけ理解し、記憶できているかを確認するためのテストをいくつかご紹介します。
 
 ## 関連情報
 
-- [domevents.dev](https://domevents.dev/) — 探究を通して DOM イベントシステムの動作について学ぶことができる、とても有益なインタラクティブな遊び場アプリです。
-- [イベントリファレンス](/ja/docs/Web/Events)
-- [Event order](https://www.quirksmode.org/js/events_order.html) （キャプチャとバブリングの議論） — Peter-Paul Koch による素晴らしい作品です。
+- [domevents.dev](https://domevents.dev/)
+  - : 探究を通して DOM イベントシステムの動作について学ぶことができる、とても有益なインタラクティブな遊び場アプリです。
+- [イベントリファレンス](/ja/docs/Web/API/Document_Object_Model/Events)
+  - : イベントの理解と対処に関する包括的なガイドです。
+- [Event order](https://www.quirksmode.org/js/events_order.html)
+  - : Peter-Paul Koch による、キャプチャとバブリングの素晴らしい詳細な議論です。
 
-{{PreviousMenuNext("Learn/JavaScript/Building_blocks/Events","Learn/JavaScript/Building_blocks/Image_gallery", "Learn/JavaScript/Building_blocks")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Events","Learn_web_development/Core/Scripting/Test_your_skills/Events", "Learn_web_development/Core/Scripting")}}

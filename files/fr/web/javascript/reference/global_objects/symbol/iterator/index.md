@@ -3,11 +3,22 @@ title: Symbol.iterator
 slug: Web/JavaScript/Reference/Global_Objects/Symbol/iterator
 ---
 
-{{JSRef}}
-
 Le symbole **`Symbol.iterator`** définit l'itérateur par défaut d'un objet. C'est l'itérateur qui sera utilisé par [`for...of`](/fr/docs/Web/JavaScript/Reference/Statements/for...of).
 
-{{EmbedInteractiveExample("pages/js/symbol-iterator.html")}}
+{{InteractiveExample("JavaScript Demo: Symbol.iterator")}}
+
+```js interactive-example
+const iterable1 = {};
+
+iterable1[Symbol.iterator] = function* () {
+  yield 1;
+  yield 2;
+  yield 3;
+};
+
+console.log([...iterable1]);
+// Expected output: Array [1, 2, 3]
+```
 
 ## Description
 
@@ -15,11 +26,11 @@ Lorsqu'on doit itérer sur un objet (par exemple avec une boucle `for..of`), sa 
 
 Certains types natifs possèdent un comportement par défaut pour l'itération, d'autres types (tels qu'{{jsxref("Object")}}) n'ont pas de tel comportement. Les types natifs qui disposent d'une méthode `@@iterator` sont :
 
-- {{jsxref("Array.@@iterator", "Array.prototype[@@iterator]()")}}
-- {{jsxref("TypedArray.@@iterator", "TypedArray.prototype[@@iterator]()")}}
-- {{jsxref("String.@@iterator", "String.prototype[@@iterator]()")}}
-- {{jsxref("Map.@@iterator", "Map.prototype[@@iterator]()")}}
-- {{jsxref("Set.@@iterator", "Set.prototype[@@iterator]()")}}
+- {{jsxref("Array/Symbol.iterator", "Array.prototype[@@iterator]()")}}
+- {{jsxref("TypedArray/Symbol.iterator", "TypedArray.prototype[@@iterator]()")}}
+- {{jsxref("String/Symbol.iterator", "String.prototype[@@iterator]()")}}
+- {{jsxref("Map/Symbol.iterator", "Map.prototype[@@iterator]()")}}
+- {{jsxref("Set/Symbol.iterator", "Set.prototype[@@iterator]()")}}
 
 Pour plus d'informations, voir aussi [la page sur les protocoles d'itération](/fr/docs/Web/JavaScript/Reference/Iteration_protocols).
 
@@ -84,8 +95,8 @@ itérableMalFormé[Symbol.iterator] = () => 1
 ## Voir aussi
 
 - [Les protocoles d'itération](/fr/docs/Web/JavaScript/Reference/Iteration_protocols)
-- {{jsxref("Array.@@iterator", "Array.prototype[@@iterator]()")}}
-- {{jsxref("TypedArray.@@iterator", "TypedArray.prototype[@@iterator]()")}}
-- {{jsxref("String.@@iterator", "String.prototype[@@iterator]()")}}
-- {{jsxref("Map.@@iterator", "Map.prototype[@@iterator]()")}}
-- {{jsxref("Set.@@iterator", "Set.prototype[@@iterator]()")}}
+- {{jsxref("Array/Symbol.iterator", "Array.prototype[@@iterator]()")}}
+- {{jsxref("TypedArray/Symbol.iterator", "TypedArray.prototype[@@iterator]()")}}
+- {{jsxref("String/Symbol.iterator", "String.prototype[@@iterator]()")}}
+- {{jsxref("Map/Symbol.iterator", "Map.prototype[@@iterator]()")}}
+- {{jsxref("Set/Symbol.iterator", "Set.prototype[@@iterator]()")}}

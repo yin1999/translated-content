@@ -3,11 +3,16 @@ title: String.prototype.codePointAt()
 slug: Web/JavaScript/Reference/Global_Objects/String/codePointAt
 ---
 
-{{JSRef}}
-
 La méthode **`codePointAt()`** renvoie un entier positif qui correspond au code Unicode (_code point_) du caractère de la chaîne à la position donnée.
 
-{{EmbedInteractiveExample("pages/js/string-codepointat.html")}}
+{{InteractiveExample("JavaScript Demo: String.codePointAt()")}}
+
+```js interactive-example
+const icons = "☃★♲";
+
+console.log(icons.codePointAt(1));
+// Expected output: "9733"
+```
 
 ## Syntaxe
 

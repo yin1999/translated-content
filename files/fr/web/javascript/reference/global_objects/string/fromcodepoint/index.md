@@ -3,11 +3,14 @@ title: String.fromCodePoint()
 slug: Web/JavaScript/Reference/Global_Objects/String/fromCodePoint
 ---
 
-{{JSRef}}
-
 La méthode statique **`String.fromCodePoint()`** renvoie une chaîne de caractères créée à partir d'un suite de codets.
 
-{{EmbedInteractiveExample("pages/js/string-fromcodepoint.html")}}
+{{InteractiveExample("JavaScript Demo: String.fromCodePoint()")}}
+
+```js interactive-example
+console.log(String.fromCodePoint(9731, 9733, 9842, 0x2f804));
+// Expected output: "☃★♲你"
+```
 
 ## Syntaxe
 
@@ -26,7 +29,7 @@ Une chaîne de caractères créée à partir de la séquence de codets indiquée
 
 ### Exceptions
 
-- Une exception {{jsxref("Erreurs/Not_a_codepoint","RangeError")}} est renvoyée si un codet (Unicode) invalide est utilisé (par exemple, on pourra avoir "RangeError: NaN is not a valid code point").
+- Une exception {{jsxref("Errors/Not_a_valid_code_point","RangeError")}} est renvoyée si un codet (Unicode) invalide est utilisé (par exemple, on pourra avoir "RangeError: NaN is not a valid code point").
 
 ## Description
 

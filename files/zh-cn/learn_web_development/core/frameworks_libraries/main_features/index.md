@@ -1,10 +1,7 @@
 ---
 title: 框架的主要特性
 slug: Learn_web_development/Core/Frameworks_libraries/Main_features
-original_slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Main_features
 ---
-
-{{LearnSidebar}}
 
 {{PreviousMenuNext("Learn_web_development/Core/Frameworks_libraries/Main_features","Learn_web_development/Core/Frameworks_libraries/React_getting_started", "Learn_web_development/Core/Frameworks_libraries")}}
 
@@ -31,7 +28,7 @@ original_slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Main_fe
 
 基于 Angular 框架的应用程序会大量地使用 **TypeScript**。TypeScript 不关心用户界面的编写，但它仍然是一种领域特定语言（DSL），而且与原生 JavaScript 有着很大的不同。
 
-DSL 不能直接由浏览器解析；它们首先要被转换成 JavaScript 或 HTML。虽然[转换在开发流程中是一个额外的步骤](/zh-CN/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview#转换)，但是框架通常会包含处理此步骤所需的工具，或者与该步骤相适应。虽然你可以不使用这些领域特定语言构建框架应用程序，但使用它们会简化你的开发过程，还能更容易地从这些框架的周边社区中找到帮助。
+DSL 不能直接由浏览器解析；它们首先要被转换成 JavaScript 或 HTML。虽然[转换在开发流程中是一个额外的步骤](/zh-CN/docs/Learn_web_development/Extensions/Client-side_tools/Overview#转换)，但是框架通常会包含处理此步骤所需的工具，或者与该步骤相适应。虽然你可以不使用这些领域特定语言构建框架应用程序，但使用它们会简化你的开发过程，还能更容易地从这些框架的周边社区中找到帮助。
 
 ### JSX
 
@@ -48,7 +45,7 @@ const header = (
 );
 ```
 
-小括号内的表达式表示一个 HTML [`<header>`](/zh-CN/docs/Web/HTML/Element/header) 元素，里面还有一个 [`<h1>`](/zh-CN/docs/Web/HTML/Element/Heading_Elements) 元素。第 4 行 `subject` 周围的花括号告诉应用程序要读取常量 `subject` 的值并将其插入到我们的 `<h1>` 元素当中。
+小括号内的表达式表示一个 HTML [`<header>`](/zh-CN/docs/Web/HTML/Reference/Elements/header) 元素，里面还有一个 [`<h1>`](/zh-CN/docs/Web/HTML/Reference/Elements/Heading_Elements) 元素。第 4 行 `subject` 周围的花括号告诉应用程序要读取常量 `subject` 的值并将其插入到我们的 `<h1>` 元素当中。
 
 当与 React 一起使用时，上一个片段中的 JSX 将被编译成这样：
 
@@ -158,7 +155,7 @@ function AuthorCredit(props) {
 />
 ```
 
-这将最终在浏览器中呈现以下 [`<figure>`](/zh-CN/docs/Web/HTML/Element/figure) 元素，其结构由 `AuthorCredit` 组件定义，其内容由 `AuthorCredit` 组件调用中的 props 定义：
+这将最终在浏览器中呈现以下 [`<figure>`](/zh-CN/docs/Web/HTML/Reference/Elements/figure) 元素，其结构由 `AuthorCredit` 组件定义，其内容由 `AuthorCredit` 组件调用中的 props 定义：
 
 ```html
 <figure>
@@ -281,7 +278,7 @@ Angular 把这个过程称为[依赖注入](https://angular.io/guide/dependency-
 
 ## 路由
 
-正如[前一章中提到的，路由](/zh-CN/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Introduction#路由)是网络体验的一个重要部分。为了避免在具有大量视图的足够复杂的应用程序中出现破碎的体验，本模块中涉及的每个框架都提供了一个库（或多个库），帮助开发人员在其应用程序中实现客户端路由。
+正如[前一章中提到的，路由](/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries/Introduction#路由)是网络体验的一个重要部分。为了避免在具有大量视图的足够复杂的应用程序中出现破碎的体验，本模块中涉及的每个框架都提供了一个库（或多个库），帮助开发人员在其应用程序中实现客户端路由。
 
 ## 测试
 
@@ -319,12 +316,6 @@ it("Increments the count when clicked", () => {
 
 ## 总结
 
-现在，你应该对你在使用框架创建应用程序时要使用的实际语言、功能和工具有了更多的了解。我相信你一定很想去做一些编码工作，这就是你接下来要做的事情！在这一点上，你可以选择你想先开始学习哪个框架：
+现在，你应该对你在使用框架创建应用程序时要使用的实际语言、功能和工具有了更多的了解。我相信你一定很想去做一些编码工作，这就是你接下来要做的事情！
 
-- [React](/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries/React_getting_started)
-- [Ember](/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries/Ember_getting_started)
-- [Vue](/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries/Vue_getting_started)
-- [Svelte](/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries/Svelte_getting_started)
-- [Angular](/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries/Angular_getting_started)
-
-{{PreviousMenuNext("Learn_web_development/Core/Frameworks_libraries/Main_features","Learn_web_development/Core/Frameworks_libraries/React_getting_started", "Learn_web_development/Core/Frameworks_libraries")}}
+{{PreviousMenuNext("Learn_web_development/Core/Frameworks_libraries/Introduction","Learn_web_development/Core/Frameworks_libraries/React_getting_started", "Learn_web_development/Core/Frameworks_libraries")}}

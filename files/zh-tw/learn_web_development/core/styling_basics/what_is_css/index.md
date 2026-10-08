@@ -1,27 +1,25 @@
 ---
 title: How CSS works
 slug: Learn_web_development/Core/Styling_basics/What_is_CSS
-original_slug: Learn/CSS/First_steps/How_CSS_works
 ---
 
-{{LearnSidebar}}
-{{PreviousMenuNext("Learn/CSS/First_steps/How_CSS_is_structured", "Learn/CSS/First_steps/Using_your_new_knowledge", "Learn/CSS/First_steps")}}
+{{NextMenu("Learn_web_development/Core/Styling_basics/Getting_started", "Learn_web_development/Core/Styling_basics")}}
 
 我們已經學會基本 CSS 的用途與用法了，這堂課我們就來看看瀏覽器是如何將 CSS 和 HTML 變化成網頁的吧。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">需求：</th>
       <td>
         基本電腦操作、<a
-          href="/zh-TW/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
+          href="/zh-TW/docs/Learn_web_development/Getting_started/Environment_setup/Installing_software"
           >已安裝基本的軟體</a
         >、
-        <a href="/zh-TW/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
+        <a href="/zh-TW/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
           >檔案處理的基本知識</a
         >、HTML 基礎 (請參閱
-        <a href="/zh-TW/docs/Learn/HTML/Introduction_to_HTML">HTML 入門</a>)。
+        <a href="/zh-TW/docs/Learn_web_development/Core/Structuring_content">HTML 入門</a>)。
       </td>
     </tr>
     <tr>
@@ -44,10 +42,6 @@ original_slug: Learn/CSS/First_steps/How_CSS_works
 4. 瀏覽器解析 (parse) CSS，先按照選擇器的類型(如元素、類別、ID 等等)，將規則放入相對應的「桶子(buckets)」裡。接著再依找到的選擇器，推算哪些規則應該要套用在哪些 DOM 節點上，並將樣式附著上去，最後產生的東西叫做轉譯樹(render tree)。
 5. 當規則都套用完畢後，開始按照網頁結構布局(layout)轉譯樹。
 6. 網頁被呈現在螢幕上，這個步驟稱為繪製(painting)。
-
-下面是此流程的示意圖。
-
-![](rendering.svg)
 
 ## 關於 DOM
 
@@ -121,7 +115,7 @@ span {
 
 {{EmbedLiveSample('將_CSS_套用至_DOM', '100%', 55)}}
 
-在下個主題裡的[為 CSS 除錯](/zh-TW/docs/Learn/CSS/Building_blocks/Debugging_CSS)中我們將會使用瀏覽器的 DevTools 來為 CSS 除錯，屆時我們將會學到更多瀏覽器解析 CSS 的方法。
+在下個主題裡的[為 CSS 除錯](/zh-TW/docs/Learn_web_development/Core/Styling_basics/Debugging_CSS)中我們將會使用瀏覽器的 DevTools 來為 CSS 除錯，屆時我們將會學到更多瀏覽器解析 CSS 的方法。
 
 ## 瀏覽器遇到不認識的 CSS 時會發生什麼事？
 
@@ -164,6 +158,6 @@ p {
 
 ## 最後
 
-你已經快完成這個主題了，但是還差臨門一腳，在下篇文章裡，你將會[利用你學到的新知識](/zh-TW/docs/Learn/CSS/First_steps/Styling_a_biography_page)來重新美化一個範例，並在過程中重溫你所學到的 CSS 技巧。
+你已經快完成這個主題了，但是還差臨門一腳，在下篇文章裡，你將會[利用你學到的新知識](/zh-TW/docs/Learn_web_development/Core/Styling_basics/Styling_a_bio_page)來重新美化一個範例，並在過程中重溫你所學到的 CSS 技巧。
 
-{{PreviousMenuNext("Learn/CSS/First_steps/How_CSS_is_structured", "Learn/CSS/First_steps/Using_your_new_knowledge", "Learn/CSS/First_steps")}}
+{{NextMenu("Learn_web_development/Core/Styling_basics/Getting_started", "Learn_web_development/Core/Styling_basics")}}

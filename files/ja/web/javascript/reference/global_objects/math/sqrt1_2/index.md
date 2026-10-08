@@ -1,15 +1,23 @@
 ---
 title: Math.SQRT1_2
+short-title: SQRT1_2
 slug: Web/JavaScript/Reference/Global_Objects/Math/SQRT1_2
 l10n:
-  sourceCommit: 761b9047d78876cbd153be811efb1aa77b419877
+  sourceCommit: 544b843570cb08d1474cfc5ec03ffb9f4edc0166
 ---
 
-{{JSRef}}
+**`Math.SQRT1_2`** は静的データプロパティで、1/2 の平方根、約 0.707 を表します。
 
-**`Math.SQRT2`** プロパティは、 1/2 の平方根、約 0.707 を表します。
+{{InteractiveExample("JavaScript デモ: Math.SQRT1_2", "shorter")}}
 
-{{EmbedInteractiveExample("pages/js/math-sqrt1_2.html", "shorter")}}
+```js interactive-example
+function getRoot1Over2() {
+  return Math.SQRT1_2;
+}
+
+console.log(getRoot1Over2());
+// 予想される結果: 0.7071067811865476
+```
 
 ## 値
 

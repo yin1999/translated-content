@@ -3,15 +3,28 @@ title: setter
 slug: Web/JavaScript/Reference/Functions/set
 ---
 
-{{jsSidebar("Functions")}}
-
 **`set`** 語法會在物件屬性被嘗試定義時，將其屬性綁定到要呼叫的函式內。
 
-{{EmbedInteractiveExample("pages/js/functions-setter.html")}}
+{{InteractiveExample("JavaScript Demo: Functions Setter")}}
+
+```js interactive-example
+const language = {
+  set current(name) {
+    this.log.push(name);
+  },
+  log: [],
+};
+
+language.current = "EN";
+language.current = "FA";
+
+console.log(language.log);
+// Expected output: Array ["EN", "FA"]
+```
 
 ## 語法
 
-```plain
+```js-nolint
 {set prop(val) { . . . }}
 {set [expression](val) { . . . }}
 ```
@@ -113,7 +126,7 @@ console.log(obj.baz); // "baz"
 ## 參見
 
 - [getter](/zh-TW/docs/Web/JavaScript/Reference/Functions/get)
-- {{jsxref("Operators/delete", "delete")}}
+- {{jsxref("delete")}}
 - {{jsxref("Object.defineProperty()")}}
 - [`Object.prototype.__defineGetter__()`](/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineGetter__)
 - [`Object.prototype.__defineSetter__()`](/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineSetter__)

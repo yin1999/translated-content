@@ -5,15 +5,13 @@ l10n:
   sourceCommit: e4783c03e39807e0060a2f4df3bf3962d25d8388
 ---
 
-{{GamesSidebar}}
-
-{{Next("Games/Workflows/2D_Breakout_game_Phaser/Initialize_the_framework")}}
+{{Next("Games/Tutorials/2D_breakout_game_Phaser/Initialize_the_framework")}}
 
 En este tutorial paso a paso, creamos un sencillo juego móvil: **MDN Breakout**, escrito en JavaScript, utilizando el framework [Phaser](https://phaser.io/).
 
 Cada paso tiene muestras editables y en vivo disponibles para jugar, para que puedas ver cómo deberían ser las etapas intermedias. Aprenderás los fundamentos del uso del framework Phaser para implementar mecánicas de juego fundamentales como la renderización y el movimiento de imágenes, la detección de colisiones, los mecanismos de control, las funciones de ayuda específicas del framework, las animaciones y los tweens, y los estados de victoria y derrota.
 
-Para sacar el máximo provecho de esta serie de artículos, deberías tener conocimientos básicos o intermedios de [JavaScript](/es/docs/Learn/Getting_started_with_the_web/JavaScript_basics). Después de terminar este tutorial, deberías ser capaz de construir tus propios juegos web simples con Phaser.
+Para sacar el máximo provecho de esta serie de artículos, deberías tener conocimientos básicos o intermedios de [JavaScript](/es/docs/Learn_web_development/Getting_started/Your_first_website/Adding_interactivity). Después de terminar este tutorial, deberías ser capaz de construir tus propios juegos web simples con Phaser.
 
 ![Pantalla de juego del juego MDN Breakout creado con Phaser en el que se puede utilizar la paleta para hacer rebotar la pelota y destruir el campo de ladrillos, manteniendo registro de los puntos y las vidas](mdn-breakout-phaser.png)
 
@@ -22,8 +20,8 @@ Para sacar el máximo provecho de esta serie de artículos, deberías tener cono
 Todas las lecciones - y las diferentes versiones del [juego MDN Breakout](https://end3r.github.io/Gamedev-Phaser-Content-Kit/demos/lesson16.html) que estamos construyendo juntos - están [disponibles en GitHub](https://end3r.github.io/Gamedev-Phaser-Content-Kit/demos/):
 
 1. [Inicializar el framework](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Initialize_the_framework)
-2. [Escalar](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Scaling)
-3. [Cargar los archivos e imprimirlos en pantalla](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Load_the_assets_and_print_them_on_screen)
+2. [Escalar](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Initialize_the_framework)
+3. [Cargar los archivos e imprimirlos en pantalla](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Move_the_ball)
 4. [Mover la bola](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Move_the_ball)
 5. [Físicas](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Physics)
 6. [Rebote en las paredes](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Bounce_off_the_walls)
@@ -49,4 +47,4 @@ Después de eso, puedes elegir cualquier framework que te guste y usarlo para tu
 
 ¡Comencemos! Dirígete a la primera parte de la serie - [Inicializar el framework](/es/docs/Games/Tutorials/2D_breakout_game_Phaser/Initialize_the_framework).
 
-{{Next("Games/Workflows/2D_Breakout_game_Phaser/Initialize_the_framework")}}
+{{Next("Games/Tutorials/2D_breakout_game_Phaser/Initialize_the_framework")}}

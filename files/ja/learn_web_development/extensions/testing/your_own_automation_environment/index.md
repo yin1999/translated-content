@@ -1,12 +1,12 @@
 ---
-title: テスト自動化環境のセットアップ
+title: 自分のテスト自動化環境のセットアップ
+short-title: 自動化環境のセットアップ
 slug: Learn_web_development/Extensions/Testing/Your_own_automation_environment
-original_slug: Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment
 l10n:
-  sourceCommit: 047f9990cac7d82e399a024e509f1b8be270501a
+  sourceCommit: 6030ef1aadf967b80e2c79c3d3463cccc8ea0c95
 ---
 
-{{LearnSidebar}}{{PreviousMenu("Learn/Tools_and_testing/Cross_browser_testing/Automated_testing", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenu("Learn_web_development/Extensions/Testing/Automated_testing", "Learn_web_development/Extensions/Testing")}}
 
 この記事では、 Selenium/WebDriver や selenium-webdriver for Node のようなテストライブラリーを使って、自動化環境のインストールとテストを実行する方法を説明します。またローカルテスト環境と、以前の記事で見てきたような商用アプリとを統合する方法についても見て行きます。
 
@@ -15,11 +15,8 @@ l10n:
     <tr>
       <th scope="row">前提条件:</th>
       <td>
-        <a href="/ja/docs/Learn/HTML">HTML</a>、<a href="/ja/docs/Learn/CSS">CSS</a>、<a href="/ja/docs/Learn/JavaScript">JavaScript</a> 言語の主要部に通じていること。
-        <a
-          href="/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction"
-          >ブラウザー横断テストの基本</a
-        >について高水準の考えを持っていること。
+        <a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a>、<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS</a>、<a href="/ja/docs/Learn_web_development/Core/Scripting">JavaScript</a> 言語の主要部に通じていること。
+        <a href="/ja/docs/Learn_web_development/Extensions/Testing/Introduction">ブラウザー横断テストの基本</a>および<a href="/ja/docs/Learn_web_development/Extensions/Testing/Automated_testing">自動化テスト</a>について高水準の考えを持っていること。
       </td>
     </tr>
     <tr>
@@ -46,7 +43,7 @@ Node.js を使用した Selenium テストの作成と実行については、�
 
 ### Node で Selenium のセットアップ
 
-1. まず、前章の [Node と npm の設定](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Automated_testing#node_と_npm_の設定) で説明しているように、新しい npm プロジェクトをセットアップします。`selenium-test`のように違うものを呼んでください。
+1. まず、前章の [Node と npm の設定](/ja/docs/Learn_web_development/Extensions/Testing/Automated_testing#node_と_npm_の設定) で説明しているように、新しい npm プロジェクトをセットアップします。`selenium-test`のように違うものを呼んでください。
 2. 次に、 Node の内部から Selenium が機能するようにフレームワークをインストールする必要があります。 更新頻度が高く、よく改善されるため、 [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) を選択します。もしも他の選択をするならば [webdriver.io](https://webdriver.io/) と [nightwatch.js](https://nightwatchjs.org/) もいい選択です。selenium-webdriver をインストールするため, プロジェクトフォルダーの下で以下のコマンドを走らせます。
 
    ```bash
@@ -58,7 +55,7 @@ Node.js を使用した Selenium テストの作成と実行については、�
 
 次に、 WebDriver がテストしたいブラウザーを制御するために、関連するドライバーをダウンロードする必要があります。どこから取得するかは、 [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) ページに詳細があります（最初の節の表を見てください）。もちろん、いくつかのブラウザーは OS 固有のものですが、主要な OS で利用できる Firefox と Chrome に絞って説明します。
 
-1. 最新の [GeckoDriver](https://github.com/mozilla/geckodriver/releases/) （Firefox 用）と [ChromeDriver](https://chromedriver.chromium.org/downloads) ドライバーをダウンロードします。
+1. 最新の [GeckoDriver](https://github.com/mozilla/geckodriver/releases/) （Firefox 用）と [ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/#stable) ドライバーをダウンロードします。
 2. ホームユーザーディレクトリーのルートなど、移動しやすい場所に展開します。
 3. `chromedriver` と `geckodriver` ドライバーの場所をシステムの `PATH` 変数に追加してください。これは、ハードディスクのルートから、ドライバーを格納するディレクトリーへの絶対パスでなければなりません。例えば、macOS マシンを使用していて、ユーザー名が bob で、ドライバーをホームフォルダーのルートに置くとしたら、パスは `/Users/bob` となります。
 
@@ -67,35 +64,31 @@ Node.js を使用した Selenium テストの作成と実行については、�
 
 macOS システムとほとんどの Linux システムで `PATH` 変数を設定するには、次のようにします。
 
-1. まだ `bash` シェルを使用していない場合（例えば、 macOS システムの既定では `bash` ではなく `zsh` シェルです）、`bash` シェルに切り替えます。
+1. `.zprofile` （または `bash` シェルを使用している場合はまだ `bash_profile`）を開きます。
+   > [!NOTE]
+   > 隠しファイルが表示されていない場合は表示させる必要があります。 [Show/Hide hidden files in macOS](https://ianlunn.co.uk/articles/quickly-showhide-hidden-files-mac-os-x-mavericks/) または [Show hidden folders in Ubuntu](https://askubuntu.com/questions/470837/how-to-show-hidden-folders-in-file-manager-nautilus-on-ubuntu) を参照してください。
+2. ファイルの一番下に以下を貼り付けます（パスは自分のマシンで実際に使用されているものに更新してください）。
 
    ```bash
-   exec bash
-   ```
-
-2. `.bash_profile`（または `.bashrc`）ファイルを開きます（隠しファイルが表示されていない場合は表示させる必要があります。 [Show/Hide hidden files in macOS](https://ianlunn.co.uk/articles/quickly-showhide-hidden-files-mac-os-x-mavericks/) または [Show hidden folders in Ubuntu](https://askubuntu.com/questions/470837/how-to-show-hidden-folders-in-file-manager-nautilus-on-ubuntu) を参照してください）。
-3. ファイルの一番下に以下を貼り付けます（パスはあなたのマシンで実際に使用されているものに更新してください）。
-
-   ```bash
-   #Add WebDriver browser drivers to PATH
-
+   # WebDriver ブラウザードライバーを PATH へ追加
    export PATH=$PATH:/Users/bob
    ```
 
-4. このファイルを保存して閉じてから、端末/コマンドプロンプトを再起動して Bash 設定を再適用します。
-5. 新しいパスが `PATH` 変数に入っているか、端末に以下のように入力して調べます。
+3. このファイルを保存して閉じてから、端末/コマンドプロンプトを再起動して Bash 設定を再適用します。
+4. 新しいパスが `PATH` 変数に入っているか、端末に以下のように入力して調べます。
 
    ```bash
    echo $PATH
    ```
 
-6. 端末に表示されるはずです。
+   端末に表示されるはずです。
 
-Windows で `PATH` 変数を設定するには、[How can I add a new folder to my system path?](https://www.itprotoday.com/) の指示に従ってください。
+> [!NOTE]
+> Windows で `PATH` 変数を設定するには、[How can I add a new folder to my system path?](https://stackoverflow.com/questions/44272416/add-a-folder-to-the-path-environment-variable-in-windows-10-with-screenshots)<sup>(英語)</sup> の指示に従ってください。
 
-では、すべてが動作していることを確認するために、簡単なテストをしてみましょう。
+すべてが動作していることを確認するために、簡単なテストをしてみましょう。
 
-1. 自分のプロジェクトディレクトリーに `google_test.js` と呼ばれる新しいファイルを作成します。
+1. 自分のプロジェクトディレクトリーに `duck_test.js` と呼ばれる新しいファイルを作成します。
 2. そのファイルに以下のコンテンツを追加し、保存します。
 
    ```js
@@ -104,11 +97,14 @@ Windows で `PATH` 変数を設定するには、[How can I add a new folder to 
    (async function example() {
      const driver = await new Builder().forBrowser(Browser.FIREFOX).build();
      try {
-       await driver.get("https://www.google.com/ncr");
+       await driver.get("https://duckduckgo.com/");
        await driver.findElement(By.name("q")).sendKeys("webdriver", Key.RETURN);
-       await driver.wait(until.titleIs("webdriver - Google Search"), 1000);
+       await driver.wait(until.titleIs("webdriver at DuckDuckGo"), 1000);
+       console.log("Test passed!");
+     } catch (e) {
+       console.log(`Error: ${e}`);
      } finally {
-       await driver.sleep(2000); // Delay long enough to see search page!
+       await driver.sleep(2000); // 検索ページが見えるように待つ
        await driver.quit();
      }
    })();
@@ -120,55 +116,56 @@ Windows で `PATH` 変数を設定するには、[How can I add a new folder to 
 3. 端末で、自分のプロジェクトフォルダー内にいることを確認し、以下のコマンドを入力します。
 
    ```bash
-   node google_test
+   node duck_test
    ```
 
-Firefox のインスタンスが自動的に開くのが確認できるはずです。 Google が自動的にタブに読み込まれ、検索ボックスに "webdriver" と入力され、検索ボタンがクリックされます。その後、 WebDriver は 1 秒待ちます。文書タイトルがアクセスされ、 "webdriver - Google Search" であれば、テストが合格したとメッセージを返します。
-その後 4 秒待ち、 WebDriver は Firefox インスタンスを閉じて、停止します。
+Firefox のインスタンスが自動的に開くのが確認できるはずです。 Google が自動的にタブに読み込まれ、検索ボックスに "webdriver" と入力され、検索ボタンがクリックされます。その後、 WebDriver は 1 秒待ちます。文書タイトルがアクセスされ、 "webdriver at DuckDuckGo" であれば、テストが合格したとメッセージを返します。
+
+それから 2 秒待ち、 WebDriver は Firefox インスタンスを閉じて、停止します。
 
 ## 一度に複数ブラウザーでテストする
 
-複数のブラウザーで同時にテストを実行することを妨げるものは何もありません。試してみましょう！
+複数のブラウザーで同時にテストを実行することを妨げるものは何もありません。試してみましょう。
 
-1. 自分のプロジェクトのディレクトリーに、 `google_test_multiple.js` と呼ばれる新しいファイルを作成します。どのブラウザーが利用できるか応じて、追加した他のブラウザーへの参照を自由に変更したり、削除したりしてください。正しいブラウザードライバーを設定する必要があります。他のブラウザーのために `.forBrowser()` メソッド内で使用する文字列に関しては、 [Browser enum](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_Browser.html) のリファレンスページを参照してください。
+1. 自分のプロジェクトのディレクトリーに、 `duck_test_multiple.js` と呼ばれる新しいファイルを作成します。どのブラウザーが利用できるか応じて、追加した他のブラウザーへの参照を自由に変更したり、削除したりしてください。正しいブラウザードライバーを設定する必要があります。他のブラウザーのために `.forBrowser()` メソッド内で使用する文字列に関しては、 [Browser enum](https://www.selenium.dev/selenium/docs/api/javascript/global.html#Browser) のリファレンスページを参照してください。
 2. 以下の内容を記述し、保存してください。
 
    ```js
    const { Builder, Browser, By, Key } = require("selenium-webdriver");
 
-   const driver_fx = new Builder().forBrowser(Browser.FIREFOX).build();
-
-   const driver_chr = new Builder().forBrowser(Browser.CHROME).build();
+   const driverFx = new Builder().forBrowser(Browser.FIREFOX).build();
+   const driverChr = new Builder().forBrowser(Browser.CHROME).build();
 
    async function searchTest(driver) {
      try {
-       await driver.get("http://www.google.com");
+       await driver.get("https://duckduckgo.com/");
        await driver.findElement(By.name("q")).sendKeys("webdriver", Key.RETURN);
-       await driver.sleep(2000).then(async () => {
-         await driver.getTitle().then(async (title) => {
-           if (title === "webdriver - Google Search") {
-             console.log("Test passed");
-           } else {
-             console.log("Test failed");
-           }
-         });
-       });
+       await driver.sleep(2000);
+       const title = await driver.getTitle();
+       if (title === "webdriver at DuckDuckGo") {
+         console.log("Test passed");
+       } else {
+         console.log("Test failed");
+       }
      } finally {
        driver.quit();
      }
    }
 
-   searchTest(driver_fx);
-   searchTest(driver_chr);
+   searchTest(driverFx);
+   searchTest(driverChr);
    ```
 
 3. 端末で、自分のプロジェクトフォルダー内にいることを確認し、以下のコマンドを入力してください。
 
    ```bash
-   node google_test_multiple
+   node duck_test_multiple
    ```
 
-4. もしMacを使用していてSafariをテストしようとすると、エラーメッセージ "Could not create a session. "が表示され るかもしれません： WebDriverを使用してSafariを制御するには、SafariのDevelopメニューで'Allow Remote Automation'オプションを有効にする必要があります。これが表示された場合は、指定された指示に従ってもう一度試してください。
+> [!NOTE]
+> もし Mac を使用していて Safari をテストしようとすると、エラーメッセージ "Could not create a session: You must enable the 'Allow Remote Automation' option in Safari's Develop menu to control Safari via WebDriver." が表示され るかもしれません。これが表示された場合は、指定された指示に従ってもう一度試してください。
+>
+> ドライバーアプリが検証済みのソースからダウンロードされていないため、開くことができないというメッセージが表示される場合があります。 これが出た場合、そのドライバアプリに対してのみセキュリティ設定を上書きすることができます。 例えば、 Mac では、 <kbd>Ctrl</kbd> キーを押しながらアプリをクリックし、「開く」を選び、表示されるダイアログボックスで再度「開く」を選ぶことができます。
 
 ここで、今回は `searchTest()` という関数の中にラップしたことを除いて、前と同じようにテストを行いました。複数のブラウザー用に新しいブラウザーインスタンスを作成し、それぞれを関数に渡すことで、 3 つのブラウザーすべてでテストが実行されるようにしています。
 
@@ -176,7 +173,7 @@ Firefox のインスタンスが自動的に開くのが確認できるはずで
 
 ## WebDriver 構文速習コース
 
-webdriver 構文のいくつかの主要な機能を見ていきましょう。完全に詳細を知りたい場合は、[selenium-webdriver JavaScript API reference](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/) を参照してください。また、 Selenium main documentation の [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/) には、様々な言語で書かれた複数の例が格納されています。
+webdriver 構文のいくつかの主要な機能を見ていきましょう。完全に詳細を知りたい場合は、[selenium-webdriver JavaScript API reference](https://www.selenium.dev/selenium/docs/api/javascript/) を参照してください。また、 Selenium main documentation の [Selenium WebDriver](https://www.selenium.dev/documentation/webdriver/) には、様々な言語で書かれた複数の例が格納されています。
 
 ### 新しいテストを始める
 
@@ -187,7 +184,7 @@ const { Builder, Browser } = require("selenium-webdriver");
 ```
 
 `Builder()` コンストラクターを使用して新しいドライバーのインスタンスを作成し、 `forBrowser()` メソッドを連結して、このビルダーでテストしたいブラウザーを指定します。
-最後に `build()` メソッドを連結して、実際にドライバのインスタンスを構築します （これらの機能の詳細情報は [Builder クラスリファレンス](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_Builder.html) を参照してください）。
+最後に `build()` メソッドを連結して、実際にドライバのインスタンスを構築します （これらの機能の詳細情報は [Builder クラスリファレンス](https://www.selenium.dev/selenium/docs/api/javascript/Builder.html) を参照してください）。
 
 ```js
 let driver = new Builder().forBrowser(Browser.FIREFOX).build();
@@ -196,13 +193,13 @@ let driver = new Builder().forBrowser(Browser.FIREFOX).build();
 なお、テストするブラウザーに固有の構成オプションを設定することは可能です。例えば、 `forBrowser()`　メソッドで、テストする特定のバージョンとOSを設定することができます。
 
 ```js
-let driver = new Builder().forBrowser(Browser.FIREFOX, "46", "MAC").build();
+let driver = new Builder().forBrowser(Browser.FIREFOX, "130", "MAC").build();
 ```
 
 例えば、環境変数を使ってこれらのオプションを設定することもできます。
 
 ```bash
-SELENIUM_BROWSER=firefox:46:MAC
+SELENIUM_BROWSER=firefox:130:MAC
 ```
 
 新しいテストを作成して、このコードを調べながら話を進めましょう。自分の selenium test プロジェクトディレクトリー内に、 `quick_test.js` と呼ばれる新しいファイルを作成し、以下のコードを追加してください。
@@ -215,6 +212,12 @@ const { Builder, Browser } = require("selenium-webdriver");
 })();
 ```
 
+端末に次のコマンドを入力して、この例をテストすることができます。
+
+```bash
+node quick_test
+```
+
 ### テストする文書の取得
 
 実際にテストしたいページを読み込むには、例えば先ほど作成したドライバーのインスタンスの `get()` メソッドを使用します。
@@ -224,34 +227,30 @@ driver.get("http://www.google.com");
 ```
 
 > [!NOTE]
-> この章とその下記の機能の詳細については、[WebDriver クラスリファレンス](https://www.selenium.dev/selenium/docs/api/javascript/module/selenium-webdriver/lib/webdriver_exports_WebDriver.html)を参照してください。
+> この章とその下記の機能の詳細については、[WebDriver クラスリファレンス](https://www.selenium.dev/selenium/docs/api/javascript/WebDriver.html)を参照してください。
 
 リソースを指す URL であればなんでも使用することができます。ローカル文書をテストするためには `file://` URL を含めることもできます。
 
 ```js
-driver.get(
-  "file:///Users/chrismills/git/learning-area/tools-testing/cross-browser-testing/accessibility/fake-div-buttons.html",
-);
+driver.get("file:///Users/bob/git/examples/test_file.html");
 ```
 
 または
 
 ```js
-driver.get("http://localhost:8888/fake-div-buttons.html");
+driver.get("http://localhost:8888/test_file.html");
 ```
 
 しかし、リモートサーバーの場所を使用したほうがコードの柔軟性が高まります。リモートサーバーを使用してテストを実行し始める際には （後述します）、ローカルパスを使用しようとするとコードが壊れてしまいます。
 
-`example()` 関数を以下のように更新してください。
+`example()` 関数を以下のように更新し、プレースホルダーのパスを、自分のコンピュータ上の実際の HTML ファイルへのローカルパスに置き換えてください。その後、実行してみてください。
 
 ```js
 const { Builder, Browser } = require("selenium-webdriver");
 
 (async function example() {
   const driver = await new Builder().forBrowser(Browser.FIREFOX).build();
-  driver.get(
-    "https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/accessibility/native-keyboard-accessibility.html",
-  );
+  driver.get("file:///Users/bob/git/examples/test_file.html");
 })();
 ```
 
@@ -311,13 +310,7 @@ const { Builder, Browser, By } = require("selenium-webdriver");
 })();
 ```
 
-自分のプロジェクトディレクトリー内にいることを確認して、テストを実行してみてください。
-
-```bash
-node quick_test.js
-```
-
-ボタンのテキストラベルがコンソールに表示されるはずです。
+`node` を使用して、以前と同じように例を実行してください。コンソール内に、ボタンのテキストラベルが表示されるはずです。
 
 もう少し有益なことをしてみましょう。前回のコード項目を下記のように `button.click();` という行に置き換えてください。
 
@@ -369,7 +362,7 @@ const { Builder, Browser, By, until } = require("selenium-webdriver");
 次に、フォーム要素のひとつにテキストを入力してみましょう。 `example()` 関数を以下のように更新して、もう一度テストを実行してみましょう。
 
 ```js
-const { Builder, Browser, By, until } = require("selenium-webdriver");
+const { Builder, Browser, By, Key } = require("selenium-webdriver");
 
 (async function example() {
   const driver = await new Builder().forBrowser(Browser.FIREFOX).build();
@@ -378,47 +371,29 @@ const { Builder, Browser, By, until } = require("selenium-webdriver");
   );
 
   const input = driver.findElement(By.id("name"));
-  input.sendKeys("Filling in my form");
+  input.sendKeys("Bob Smith");
 
-  const button = driver.findElement(By.css("button:nth-of-type(1)"));
+  input.sendKeys(Key.TAB);
 
-  button.click();
-  await driver.wait(until.alertIsPresent());
-
-  const alert = driver.switchTo().alert();
-
-  alert.getText().then((text) => {
-    console.log(`Alert text is '${text}'`);
-  });
-
-  alert.accept();
+  const input2 = driver.findElement(By.id("age"));
+  input2.sendKeys("65");
 })();
 ```
 
 `Key` オブジェクトのプロパティを使用して、通常の文字で表せないキーを送信することができます。例えば、上ではフォーム入力を送信する前にタブで抜けるためにこの構文を使用しました。
 
 ```js
-driver.sleep(1000).then(() => {
-  driver.findElement(By.name("q")).sendKeys(Key.TAB);
-});
+input.sendKeys(Key.TAB);
 ```
 
 ### 何かが完了するのを待つ
 
 WebDriver が何かを完了するまで待ってからテストを行いたい時があります。例えば新しいページを読み込んだ場合、ページの DOM の読み込みが完了するまで待ってから要素を操作する必要があり、そうしないとテストが失敗する可能性が高くなります。
 
-例えばこの例の `google_test.js` テストでは、次のようなブロックを含んでいます。
+例えばこの例の `duck_test_multiple.js` テストでは、次のようなブロックを含んでいます。
 
 ```js
-driver.sleep(2000).then(() => {
-  driver.getTitle().then((title) => {
-    if (title === "webdriver - Google Search") {
-      console.log("Test passed");
-    } else {
-      console.log("Test failed");
-    }
-  });
-});
+await driver.sleep(2000);
 ```
 
 `sleep()` メソッドにはミリ秒単位で待つ時間を指定する値を受け入れます。このメソッドはその時間の終わりに解決するプロミスを返し、この時点で `then()` 内のコードが実行されます。このケースでは `getTitle()` メソッドで現在のページのタイトルを取得し、その返値に応じて合格か不合格かを返しています。
@@ -426,44 +401,26 @@ driver.sleep(2000).then(() => {
 `quick_test.js` のテストにも `sleep()` メソッドを追加することができます。 `example()` 関数をこの例のように更新してみてください。
 
 ```js
-const { Builder, Browser, By, until } = require("selenium-webdriver");
-
-const driver = new Builder().forBrowser("firefox").build();
+const { Builder, Browser, By, Key } = require("selenium-webdriver");
 
 (async function example() {
-  try {
-    driver.get(
-      "https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/accessibility/native-keyboard-accessibility.html",
-    );
+  const driver = await new Builder().forBrowser(Browser.FIREFOX).build();
+  driver.get(
+    "https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/accessibility/native-keyboard-accessibility.html",
+  );
 
-    driver.sleep(2000).then(() => {
-      const input = driver.findElement(By.id("name"));
+  const input = driver.findElement(By.id("name"));
+  input.sendKeys("Bob Smith");
 
-      input.sendKeys("Filling in my form");
-      input.getAttribute("value").then((value) => {
-        if (value !== "") {
-          console.log("Form input editable");
-        }
-      });
+  driver.sleep(1000).then(() => {
+    input.getAttribute("value").then((value) => {
+      if (value !== "") {
+        console.log("Form input filled out");
+      } else {
+        console.log("Text could not be entered");
+      }
     });
-
-    const button = driver.findElement(By.css("button:nth-of-type(1)"));
-
-    button.click();
-
-    await driver.wait(until.alertIsPresent());
-
-    const alert = driver.switchTo().alert();
-
-    alert.getText().then((text) => {
-      console.log(`Alert text is '${text}'`);
-    });
-
-    alert.accept();
-  } finally {
-    await driver.sleep(4000); // Delay long enough to see search page!
-    driver.quit();
-  }
+  });
 })();
 ```
 
@@ -474,23 +431,48 @@ const driver = new Builder().forBrowser("firefox").build();
 
 ### 使用後のドライバーのシャットダウン
 
-テストの実行が完了したら、あなたのマシンに不正なブラウザーインスタンスが読み込まれたままにならないように、開いたためのドライバーインスタンスをすべてシャットダウンする必要があります。これは `quit()` メソッドを使用して行います。ドライバーインスタンスを終了するときにこのメソッドを呼び出してください。これで `quick_test.js` テストの一番下にこの行を追加します。
+テストの実行が完了したら、 `driver.quit()` メソッドを使用して開いたドライバインスタンスをすべてシャットダウンし、不必要なリソースを使用したままにしないようにする必要があります。 `quick_test.js` を以下のように更新します。
 
 ```js
-driver.quit();
+const { Builder, Browser, By, Key } = require("selenium-webdriver");
+
+(async function example() {
+  const driver = await new Builder().forBrowser(Browser.FIREFOX).build();
+  driver.get(
+    "https://mdn.github.io/learning-area/tools-testing/cross-browser-testing/accessibility/native-keyboard-accessibility.html",
+  );
+
+  const input = driver.findElement(By.id("name"));
+  input.sendKeys("Bob Smith");
+
+  driver.sleep(1000).then(() => {
+    input
+      .getAttribute("value")
+      .then((value) => {
+        if (value !== "") {
+          console.log("Form input filled out");
+        } else {
+          console.log("Text could not be entered");
+        }
+      })
+      .finally(() => {
+        driver.quit();
+      });
+  });
+})();
 ```
 
-これで実行すると、テストが実行され、テスト完了後にブラウザーインスタンスがシャットダウンされます。これはコンピューターにブラウザーインスタンスを読み込ませないようにするのに有益な機能です。特に、ブラウザーインスタンスの数が多すぎてコンピューターの動作が遅くなるような場合に有効です。
+これで実行すると、テストが実行され、テスト完了後にブラウザーインスタンスがシャットダウンされます。
 
 ## テストのベストプラクティス
 
 テストを書くための最善の手法については、これまで多くのことが書かれてきました。[テストプラクティス](https://www.selenium.dev/documentation/test_practices/)を参照ください。一般的には、あなたのテストが次のようなものであることを確認すべきです。
 
 1. 良いロケーター戦略を用いること。[文書とのやりとり](#文書とのやりとり)のときには、ロケーターとページオブジェクトが変更されにくいものを使用するようにしましょう。テストを実行したいテスト可能な要素がある場合、次のサイトの反復処理で変更されることのない、安定した ID や CSS セレクターで選択できるページ上の位置を持つようにしましょう。テストは可能な限りもろくならないように、つまり、何かが変わっても壊れないようにしたいものです。
-2. アトミックなテストを書きます。各テストはひとつのことだけをテストするようにし、 どのテストファイルがどの基準をテストしているのかを簡単に把握できるようにします。例えば、上で見た `google_test.js` のテストは、検索結果ページのタイトルが正しく設定されているかどうかという単一のことをテストするだけなので、とても良いものです。このテストにもっと良い名前をつけて、 google のテストを追加したときに、このテストが何をするのかがわかりやすいようにすることもできます。おそらく、 `results_page_title_set_correctly.js` が少し良いでしょうか？
-3. 自律的なテストを書きましょう。各テストは自分自身で動作し、他のテストに依存して動作しないようにしましょう。
+2. アトミックなテストを書きます。各テストはひとつのことだけをテストするようにし、 どのテストファイルがどの基準をテストしているのかを簡単に把握できるようにします。例えば、上で見た `duck_test.js` のテストは、検索結果ページのタイトルが正しく設定されているかどうかという単一のことをテストするだけなので、とても良いものです。このテストにもっと良い名前をつけて、テストを追加したときに、このテストが何をするのかがわかりやすいようにすることもできます。おそらく、 `results_page_title_set_correctly.js` が少し良いでしょうか？
+3. 自律的なテストコードを書きましょう。各テストは自分自身で動作し、他のテストに依存して動作しないようにしましょう。
 
-上記の例では単純な `console.log()` 文を使って結果を報告していますが、これはすべて JavaScript で行っているため、 [Mocha](https://mochajs.org/) や [Chai](https://www.chaijs.com/)、他にも好きなテスト実行・報告システムを使用することができます。
+さらに、テスト結果/報告についても言及すべきでしょう。上記の例では単純な `console.log()` 文を使って結果を報告していますが、これはすべて JavaScript で行っているため、 [Mocha](https://mochajs.org/) や [Chai](https://www.chaijs.com/)、他にも好きなテスト実行・報告システムを使用することができます。簡単な例を見てみましょう。
 
 1. 例えば、 [`mocha_test.js`](https://github.com/mdn/learning-area/blob/main/tools-testing/cross-browser-testing/selenium/mocha_test.js) のローカルコピーを自分のプロジェクトディレクトリー内に作ってみてください。それを `test` というサブフォルダーに入れてください。この例では長いプロミスの連鎖を使用して、テストに必要なすべての段階を実行しています - WebDriver が使用するプロミスベースのメソッドは正しく作業するために解決する必要があります。
 2. 自分のプロジェクトディレクトリーで以下のコマンドを実行して、 mocha テストハーネスをインストールします。
@@ -507,114 +489,22 @@ driver.quit();
 
 4. Mocha の任意のタイムアウト（3 秒）のためにテストが失敗してしまうことがないように、`--no-timeouts` フラグを記載する必要があります。
 
-> **メモ:** [saucelabs-sample-test-frameworks](https://github.com/saucelabs-sample-test-frameworks) には、テスト/アサーションツールのさまざまな組み合わせを設定する方法を示す有益な例がいくつか含まれています。
+> [!NOTE]
+> [saucelabs-sample-test-frameworks](https://github.com/saucelabs-sample-test-frameworks) には、テスト/アサーションツールのさまざまな組み合わせを設定する方法を示す有益な例がいくつか含まれています。
 
 ## リモートテストの実行
 
 リモートサーバー上でテストを実行するのは、ローカルで実行するよりもそれほど難しくないことがわかりました。ドライバーのインスタンスを作成するだけですが、テストしたいブラウザーに必要な機能、 サーバーのアドレス、アクセスするために必要なユーザー資格情報（もしあれば）をいくつか指定します。
 
-### LambdaTest
-
-Selenium テストを LambdaTest 上でリモート動作させるのはとても簡単です。必要なコードは下記パターンに従ってください。
-
-例を書いてみましょう。
-
-1. 自分のプロジェクトディレクトリーに、 `lambdatest_google_test.js` という新しいファイルを作成します。
-2. ファイルの内容は以下のようにします。
-
-   ```js
-   const { By, Builder } = require("selenium-webdriver");
-
-   // username: Username can be found at automation dashboard
-   const USERNAME = "{username}";
-
-   // AccessKey: AccessKey can be generated from automation dashboard or profile section
-   const KEY = "{accessKey}";
-
-   // gridUrl: gridUrl can be found at automation dashboard
-   const GRID_HOST = "hub.lambdatest.com/wd/hub";
-
-   function searchTextOnGoogle() {
-     // Setup Input capabilities
-     const capabilities = {
-       platform: "windows 10",
-       browserName: "chrome",
-       version: "67.0",
-       resolution: "1280x800",
-       network: true,
-       visual: true,
-       console: true,
-       video: true,
-       name: "Test 1", // name of the test
-       build: "NodeJS build", // name of the build
-     };
-
-     // URL: https://{username}:{accessToken}@hub.lambdatest.com/wd/hub
-     const gridUrl = `https://${USERNAME}:${KEY}@${GRID_HOST}`;
-
-     // setup and build selenium driver object
-     const driver = new Builder()
-       .usingServer(gridUrl)
-       .withCapabilities(capabilities)
-       .build();
-
-     // navigate to a URL, search for a text and get title of page
-     driver.get("https://www.google.com/ncr").then(function () {
-       driver
-         .findElement(By.name("q"))
-         .sendKeys("LambdaTest\n")
-         .then(function () {
-           driver.getTitle().then((title) => {
-             setTimeout(() => {
-               if (title === "LambdaTest - Google Search") {
-                 driver.executeScript("lambda-status=passed");
-               } else {
-                 driver.executeScript("lambda-status=failed");
-               }
-               driver.quit();
-             }, 5000);
-           });
-         });
-     });
-   }
-
-   searchTextOnGoogle();
-   ```
-
-3. [LambdaTest automation dashboard](https://www.lambdatest.com/selenium-automation) にアクセスし、右上の **key** アイコンをクリックして LambdaTest のユーザー名とアクセスキーを取得します（_Username and Access Keys_ 参照）。コード内の `{username}` と `{accessKey}` のプレースホルダーを、実際のユーザー名とアクセスキーの値に置き換えてください (そして、それらを安全に管理してください)。
-4. 端末で下記コマンドを実行し、テストを実行します。
-
-   ```bash
-   node lambdatest_google_test
-   ```
-
-   テストは LambdaTest に送信され、テストの出力は LambdaTest コンソールに反映されます。
-   これらの結果を LambdaTest プラットフォームからレポート目的で抽出したい場合は、 [LambdaTest restful API](https://www.lambdatest.com/blog/lambdatest-launches-api-for-selenium-automation/) を使用することができます。
-
-5. これで [LambdaTest Automation dashboard](https://accounts.lambdatest.com/dashboard) に行くと、テストが載っています。ここから動画やスクリーンショット、他にもそのようなデータを見ることができます。
-   また、 `if` や `else` のコードブロックがあるため、ステータスが **completed** ではなく、 **passed** や **failed** と表示されます。
-
-   [![LambdaTest Automation Dashboard](automation-logs-1.jpg)](https://www.lambdatest.com/blog/wp-content/uploads/2019/02/Automation-logs-1.jpg)
-   テストビルド内のすべてのテストについて、ネットワーク、コマンド、例外、Selenium ログを取得できます。また、Selenium スクリプトの実行を録画した動画も探すことができます。
-
-> [!NOTE]
-> LambdaTest Automation Dashboard の _HELP_ ボタンをクリックすると、LambdaTest オートメーションを始めるには十分な情報が提供されます。また、[Node JS で最初の Selenium スクリプトを実行する](https://www.lambdatest.com/support/docs/quick-guide-to-run-node-js-tests-on-lambdatest-selenium-grid/)ことに関する私たちの文書化にも対応しています。
-
-> [!NOTE]
-> テストのためのケイパビリティオブジェクトを手で書きたくない場合は、 [Selenium Desired Capabilities Generator](https://www.lambdatest.com/capabilities-generator/) を用いて生成することができます。
-
 ### BrowserStack
 
-BrowserStack で Selenium テストをリモートで動作するように取得するのは簡単です。必要なコードは下記パターンに従うことです。
+BrowserStack で Selenium テストをリモートで動作するようにする方法の例を作成してみましょう。
 
-例を書いてみましょう。
-
-1. 自分のプロジェクトディレクトリーに、 `bstack_google_test.js` という新しいファイルを作成します。
+1. 自分のプロジェクトディレクトリーに、 `bstack_duck_test.js` という新しいファイルを作成します。
 2. 内容を以下のようにします。
 
    ```js
    const { Builder, By, Key } = require("selenium-webdriver");
-   const request = require("request");
 
    // Input capabilities
    const capabilities = {
@@ -637,11 +527,11 @@ BrowserStack で Selenium テストをリモートで動作するように取得
 
    (async function bStackGoogleTest() {
      try {
-       await driver.get("https://www.google.com/");
+       await driver.get("https://duckduckgo.com/");
        await driver.findElement(By.name("q")).sendKeys("webdriver", Key.RETURN);
        await driver.sleep(2000);
        const title = await driver.getTitle();
-       if (title === "webdriver - Google Search") {
+       if (title === "webdriver at DuckDuckGo") {
          console.log("Test passed");
        } else {
          console.log("Test failed");
@@ -653,107 +543,94 @@ BrowserStack で Selenium テストをリモートで動作するように取得
    })();
    ```
 
-3. [BrowserStack Account - Summary](https://www.browserstack.com/accounts/profile/details) から、ユーザー名とアクセシビリティキーを取得します（_Username and Access Keys_ 参照）。コード内の `YOUR-USER-NAME` と `YOUR-ACCESS-KEY` プレースホルダーを、実際のユーザー名とアクセスキーの値に置き換えてください（そして、それらを安全に保管してください）。
+3. [Account & Profile details page](https://www.browserstack.com/accounts/profile/details) から、ユーザー名とアクセシビリティキーを取得します（_Username and Access Keys_ 参照）。コード内の `YOUR-USER-NAME` と `YOUR-ACCESS-KEY` プレースホルダーを、実際のユーザー名とアクセスキーの値に置き換えてください（そして、それらを安全に保管してください）。
 4. 以下のコマンドでテストを実行します。
 
    ```bash
-   node bstack_google_test
+   node bstack_duck_test
    ```
 
    テストは BrowserStack に送信され、テスト結果がコンソールに返されます。これは、何らかの結果報告メカニズムを記載することの重要性を示しています。
 
-5. これで、 [BrowserStack automation dashboard](https://www.browserstack.com/automate) のページに戻ると、テストが掲載されています。
+5. これで、 [BrowserStack Automate dashboard](https://automate.browserstack.com/dashboard/) のページに戻ると、テストの一覧が表示され、テストを録画した動画や、テストに関する複数の詳細なログ情報などの詳細を見ることができます。
    ![BrowserStack automated results](bstack_automated_results.png)
 
-テストのリンクをクリックすると、新しい画面が取得され、テストの録画動画や、テストに関連する複数の詳細なログ情報を見ることができます。
-
 > [!NOTE]
-> Browserstack 自動化ダッシュボードの _Resources_ メニューオプションには、自動テストを実行するために使用するための有益な情報が豊富に格納されています。ノード固有の情報については、 [Node JS Documentation for writing automate test scripts in Node JS](https://www.browserstack.com/docs/automate/selenium/getting-started/nodejs) を参照してください。 BrowserStack で使用することができますすべての有益なことを見つけるために、ドキュメントを探索してください。
-
-> [!NOTE]
-> テストのためのケイパビリティオブジェクトを手で書きたくなければ、 ドキュメントにあるジェネレーターを使用して生成することができます。 [Run your first test](https://www.browserstack.com/docs/automate/selenium/getting-started/nodejs#run-your-first-test) を参照ください。
+> Browserstack 自動化ダッシュボードの _Resources_ メニューオプションには、自動テストを実行するために使用するための有益な情報が豊富に格納されています。ノード固有の情報については、 [Selenium with NodeJS](https://www.browserstack.com/docs/automate/selenium/getting-started/nodejs) を参照してください。
 
 #### プログラムによる BrowserStack テストの詳細の入力
 
 BrowserStack REST API や他にもいくつかの機能を使用して、自分のテストに、合格したかどうか、合格した理由、テストがどのプロジェクトの一部であるかなどの詳細をアノテーションすることができます。 BrowserStack は既定ではこれらの詳細を知りません！
 
-それでは、 `bstack_google_test.js` デモを更新して、これらがどのように動作するのかを示してみましょう。
+それでは、 `bstack_duck_test.js` デモを更新して、これらがどのように動作するのかを示してみましょう。
 
-1. 自分のプロジェクトディレクトリー内で次のコマンドを実行することで、リクエストモジュールをインストールします。
+1. [axios](https://www.npmjs.com/package/axios) モジュールをインストールするために、プロジェクトのディレクトリーから次のコマンドを実行します。
 
-   ```js
-   npm install request
+   ```bash
+   npm install axios
    ```
 
-2. 次に、 node request モジュールをインポートして、 REST API にリクエストを送信するために使用することができます。コードの一番上に以下の行を追加します。
+2. axios モジュールをインポートして、 BrowserStack の REST API にリクエストを送信することができるようにします。コードの一番上に以下の行を追加します。
 
    ```js
-   const request = require("request");
+   const axios = require("axios");
    ```
 
 3. これで、 `capabilities` オブジェクトを更新して、プロジェクト名を含めることができます。 閉じ中括弧の前に以下の行を追加し、前の行の終わりにカンマを追加することを忘れないでください（BrowserStack オートメーションダッシュボードの異なるウィンドウでテストを整理するために、ビルド名とプロジェクト名を変えることができます）。
 
    ```js
-   'project' : 'Google test 2'
+   const capabilities = {
+     // …
+     project: "DuckDuckGo test 2",
+   };
    ```
 
-4. 次に、現在のセッションの `sessionId` にアクセスして、リクエストをどこに送ればよいかを知る必要があります （後で説明するように、この ID はリクエスト URL に記載されます）。以下の行を `driver` オブジェクトを作成するブロック (`let driver …`) のすぐ下に記載してください。
+4. 次に、現在のセッションの `sessionId` にアクセスして、リクエストをどこに送ればよいかを知る必要があります （後で説明するように、この ID はリクエスト URL に記載されます）。以下の行を `driver` オブジェクトを作成するブロック（`const driver = new Builder()` で始まるもの）のすぐ下に記載してください。
 
    ```js
    let sessionId;
+   let bstackURL;
 
    driver.session_.then((sessionData) => {
      sessionId = sessionData.id_;
+     bstackURL = `https://${capabilities["bstack:options"].userName}:${capabilities["bstack:options"].accessKey}@www.browserstack.com/automate/sessions/${sessionId}.json`;
    });
    ```
 
-5. 最後に、コードの一番下にある `driver.sleep(2000)` ブロックを更新して、 REST API 呼び出しを追加します（この場合も、コード内の `YOUR-USER-NAME` と `YOUR-ACCESS-KEY` のプレースホルダーを、実際のユーザー名とアクセスキーの値に置き換えます）。
+5. 最後に、コードの下部付近にある `if...else` ブロックを更新し、検査が成功したか失敗したかに応じて適切な API 呼び出しを BrowserStack に送信するようにします。
 
    ```js
-   driver.sleep(2000).then(() => {
-     driver.getTitle().then((title) => {
-       if (title === "webdriver - Google Search") {
-         console.log("Test passed");
-         request({
-           uri: `https://YOUR-USER-NAME:YOUR-ACCESS-KEY@www.browserstack.com/automate/sessions/${sessionId}.json`,
-           method: "PUT",
-           form: {
-             status: "passed",
-             reason: "Google results showed correct title",
-           },
-         });
-       } else {
-         console.log("Test failed");
-         request({
-           uri: `https://YOUR-USER-NAME:YOUR-ACCESS-KEY@www.browserstack.com/automate/sessions/${sessionId}.json`,
-           method: "PUT",
-           form: {
-             status: "failed",
-             reason: "Google results showed wrong title",
-           },
-         });
-       }
+   if (title === "webdriver at DuckDuckGo") {
+     console.log("Test passed");
+     axios.put(bstackURL, {
+       status: "passed",
+       reason: "DuckDuckGo results showed correct title",
      });
-   });
+   } else {
+     console.log("Test failed");
+     axios.put(bstackURL, {
+       status: "failed",
+       reason: "DuckDuckGo results showed wrong title",
+     });
+   }
    ```
 
 テストが完全に完了すると、 API を BrowserStack に呼び出して、テストの合格、不合格、結果の理由を更新します。
 
-これで [BrowserStack automation dashboard](https://live.browserstack.com/dashboard) ページに戻ると、以前と同じように、更新されたデータが添付されたテストセッションが利用できるはずです。
+これで [BrowserStack Automate dashboard](https://automate.browserstack.com/dashboard) ページに戻ると、以前と同じように、更新されたデータが添付されたテストセッションが利用できるはずです。
 
 ![BrowserStack Custom Results](bstack_custom_results.png)
 
 ### Sauce Labs
 
-Sauce Labs 上で Selenium テストをリモートで実行するための取得もとても単純で、いくつかの構文の違いはあるものの、 BrowserStack と非常によく似ています。必要なコードは下記パターンのようになります。
-
-例を書いてみましょう。
+Selenium テストを Sauce Labs 上でリモートで実行する方法の例を見ていきましょう。
 
 1. 自分のプロジェクトディレクトリー内に、 `sauce_google_test.js` という新しいファイルを作成します。
 2. 中身を次のようにします。
 
    ```js
    const { Builder, By, Key } = require("selenium-webdriver");
+
    const username = "YOUR-USER-NAME";
    const accessKey = "YOUR-ACCESS-KEY";
 
@@ -823,7 +700,7 @@ Sauce Labs API を使用することで、合格したかどうか、テスト�
    npm install saucelabs --save-dev
    ```
 
-2. saucelabsが必要です。 `sauce_google_test.js` ファイルの一番上、前回宣言した変数のすぐ下記に記述してください。
+2. saucelabs が必要です。 `sauce_google_test.js` ファイルの一番上、前回宣言した変数のすぐ下記に記述してください。
 
    ```js
    const SauceLabs = require("saucelabs");
@@ -869,7 +746,7 @@ Sauce Labs API を使用することで、合格したかどうか、テスト�
    });
    ```
 
-ここでは、テストの合格と不合格に応じて `testPassed` 変数を `true` または `false` に設定し、`saucelabs.updateJob()` メソッドを使用して詳細を更新しています。
+ここでは、テストの合格と不合格に応じて `testPassed` 変数を `true` または `false` に設定し、 `saucelabs.updateJob()` メソッドを使用して詳細を更新しています。
 
 これで [Sauce Labs Automated Test dashboard](https://app.saucelabs.com/dashboard/tests) ページに戻ると、新しいジョブに更新されたデータが添付されていることが確認できるはずです。
 
@@ -913,7 +790,7 @@ Sauce Labs や BrowserStack のようなサービスを使用したくない場�
 
 ## Selenium と CI ツールのインテグレーション
 
-別の点として、 Selenium と LambdaTest や Sauce Labs のような関連ツールを継続的インテグレーション（CI）ツールと統合することも可能です。これは、 CI ツールを介してテストを実行し、テストが合格した場合にのみ新しい変更をコードリポジトリーにコミットできることを意味しているので便利です。
+別の点として、 Selenium と Sauce Labs のような関連ツールを{{glossary("continuous integration","継続的インテグレーション")}} (CI) ツールと統合することも可能です。これは、CI ツールを介してテストを実行し、テストが合格した場合にのみ新しい変更をコードリポジトリーにコミットできることを意味しているので便利です。
 
 この記事でこの分野を詳しく見ていくのは範囲外ですが、 Travis CI で始めることを提案します - これはおそらく最も簡単に取得できるCIツールであり、 GitHub や Node のようなウェブツールとの統合もあります。
 
@@ -921,15 +798,13 @@ Sauce Labs や BrowserStack のようなサービスを使用したくない場�
 
 - [Travis CI for complete beginners](https://docs.travis-ci.com/user/for-beginners)
 - [Building a Node.js project](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/) (with Travis)
-- [Using LambdaTest with Travis CI](https://www.lambdatest.com/support/docs/travis-ci-with-lambdatest/)
-- [Using LambdaTest with CircleCI](https://www.lambdatest.com/support/docs/circleci-integration-with-lambdatest/)
-- [Using LambdaTest with Jenkins](https://www.lambdatest.com/support/docs/jenkins-with-lambdatest/)
 - [Using Sauce Labs with Travis CI](https://docs.travis-ci.com/user/sauce-connect/)
 
-> **メモ:** **コードレス自動化**で継続的なテストを行いたい場合は、 [Endtest](https://endtest.io) または [TestingBot](https://testingbot.com) を使用することができます。
+> [!NOTE]
+> **コードレス自動化**で継続的なテストを行いたい場合は、 [Endtest](https://endtest.io/) や [TestingBot](https://testingbot.com/) を使用することができます。
 
 ## まとめ
 
 このモジュールは楽しいもので、自分自身で自動テストを書いて取得するのに十分な、自動テストの書き方や実行方法に関する知識が得られたことでしょう。
 
-{{PreviousMenu("Learn/Tools_and_testing/Cross_browser_testing/Automated_testing", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenu("Learn_web_development/Extensions/Testing/Automated_testing", "Learn_web_development/Extensions/Testing")}}

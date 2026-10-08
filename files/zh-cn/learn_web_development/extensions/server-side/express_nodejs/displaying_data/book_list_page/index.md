@@ -1,7 +1,6 @@
 ---
 title: 书本列表页面
 slug: Learn_web_development/Extensions/Server-side/Express_Nodejs/Displaying_data/Book_list_page
-original_slug: Learn/Server-side/Express_Nodejs/Displaying_data/Book_list_page
 ---
 
 接下来我们将实现书本列表页面。这个页面需要呈现数据库中所有书本的列表，包含每本书的作者、标题，标题将成为一个超链接，链接到书本详细内容页面。
@@ -59,7 +58,7 @@ block content
 
 ## 它看起來像是？
 
-运行本应用（参见[测试路由](/zh-CN/docs/Learn/Server-side/Express_Nodejs/routes#测试路由)以了解相关命令，并打开你的浏览器，访问 `http://localhost:3000/`。然后选择 _All books_ 链接。如果每样东西都设定正确了，你的网站看起来应该像底下的截图。
+运行本应用（参见[测试路由](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/routes#测试路由)以了解相关命令，并打开你的浏览器，访问 `http://localhost:3000/`。然后选择 _All books_ 链接。如果每样东西都设定正确了，你的网站看起来应该像底下的截图。
 
 ![书本列表页面 - Express 教程：本地图书馆网站](new_book_list.png)
 

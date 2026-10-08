@@ -7,7 +7,17 @@ slug: Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf
 
 Метод **`lastIndexOf()`** возвращает последний индекс, по которому данный элемент может быть найден в массиве или -1, если такого индекса нет. Массив просматривается от конца к началу, начиная с индекса `fromIndex`.
 
-{{EmbedInteractiveExample("pages/js/array-lastindexof.html")}}
+{{InteractiveExample("JavaScript Demo: Array.lastIndexOf()")}}
+
+```js interactive-example
+const animals = ["Dodo", "Tiger", "Penguin", "Dodo"];
+
+console.log(animals.lastIndexOf("Dodo"));
+// Expected output: 3
+
+console.log(animals.lastIndexOf("Tiger"));
+// Expected output: 1
+```
 
 ## Синтаксис
 
@@ -64,7 +74,7 @@ console.log(indices);
 
 ## Полифил
 
-Метод `lastIndexOf()` был добавлен к стандарту ECMA-262 в 5-м издании; поэтому он может отсутствовать в других реализациях стандарта. Вы можете работать с ним, добавив следующий код в начало ваших скриптов, он позволяет использовать `lastIndexOf()` в реализациях, которые не поддерживают этот метод. Этот алгоритм является точно тем, что описан в ECMA-262 5-го издания; он предполагает, что {{jsxref("Global_Objects/Object", "Object")}}, {{jsxref("Global_Objects/TypeError", "TypeError")}}, {{jsxref("Global_Objects/Number", "Number")}}, {{jsxref("Math.floor()")}}, {{jsxref("Math.abs()")}} и {{jsxref("Math.min()")}} имеют свои первоначальные значения.
+Метод `lastIndexOf()` был добавлен к стандарту ECMA-262 в 5-м издании; поэтому он может отсутствовать в других реализациях стандарта. Вы можете работать с ним, добавив следующий код в начало ваших скриптов, он позволяет использовать `lastIndexOf()` в реализациях, которые не поддерживают этот метод. Этот алгоритм является точно тем, что описан в ECMA-262 5-го издания; он предполагает, что {{jsxref("Object")}}, {{jsxref("TypeError")}}, {{jsxref("Number")}}, {{jsxref("Math.floor()")}}, {{jsxref("Math.abs()")}} и {{jsxref("Math.min()")}} имеют свои первоначальные значения.
 
 ```js
 // Шаги алгоритма ECMA-262, 5-е издание, 15.4.4.15

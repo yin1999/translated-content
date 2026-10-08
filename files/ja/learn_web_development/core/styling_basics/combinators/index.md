@@ -1,36 +1,35 @@
 ---
 title: 結合子
 slug: Learn_web_development/Core/Styling_basics/Combinators
-original_slug: Learn/CSS/Building_blocks/Selectors/Combinators
 l10n:
-  sourceCommit: 4bddde3e2b86234eb4594809082873fc5bf00ee3
+  sourceCommit: 57bc2729e3963907c0b54158ae1a31318a2ebbd1
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements", "Learn/CSS/Building_blocks/Cascade_and_inheritance", "Learn/CSS/Building_blocks")}}
+{{PreviousMenuNext("Learn_web_development/Core/Styling_basics/Pseudo_classes_and_elements", "Learn_web_development/Core/Styling_basics/Test_your_skills/Selectors", "Learn_web_development/Core/Styling_basics")}}
 
-ここで取り上げる最後のセレクターは、他のセレクターと、ドキュメント内のコンテンツの場所や場所との有用な関係を提供する方法で組み合わせるため、結合子と呼ばれます。
+最後に見ていくセレクターは、結合子と呼ばれます。結合子は他のセレクターを組み合わせるために使用され、DOM 内の他の要素に対する位置関係（子要素や兄弟要素など）に基づいて要素を選択することができるようにします。
 
 <table>
   <tbody>
     <tr>
-      <th scope="row">前提条件:</th>
+      <th scope="row">前提知識:</th>
       <td>
-        <a
-          href="/ja/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
-          >基本的なソフトウェアのインストール</a
-        >、<a
-          href="/ja/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
-          >ファイルの扱い</a
-        >、の基本知識、 HTML の基本（<a href="/ja/docs/Learn/HTML/Introduction_to_HTML"
-          >HTML 入門</a
-        >で学習）および CSS の動作が分かっていること（<a href="/ja/docs/Learn/CSS/First_steps">CSS の第一歩</a>で学習）
+        HTML の基本（
+        <a href="/ja/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax"
+          >基本的な HTML の構文</a
+        >を学んでいること）、<a href="/ja/docs/Learn_web_development/Core/Styling_basics/Basic_selectors">基本的な CSS セレクター</a>。
       </td>
     </tr>
     <tr>
-      <th scope="row">目的:</th>
+      <th scope="row">学習成果:</th>
       <td>
-        CSS で使用できるさまざまな結合子セレクターについて学ぶ。
-        CSS.
+        <ul>
+          <li>結合子の基本概念。</li>
+          <li>子孫結合子と子結合子。</li>
+          <li>次兄弟結合子と後続兄弟結合子。</li>
+          <li>入れ子。</li>
+          <li>結合子とセレクターの組み合わせ。</li>
+        <ul>
       </td>
     </tr>
   </tbody>
@@ -38,96 +37,153 @@ l10n:
 
 ## 子孫結合子
 
-**子孫結合子** (descendant combinator) は、通常は単一のスペース（" "）文字で表され、2 つのセレクターを結合して、最初のセレクターと一致する祖先（親、親の親、親の親の親など）要素がある場合、 2 番目のセレクターと一致する要素が選択されるようにします。 子孫結合子を利用するセレクターは、子孫セレクターと呼ばれます。
+**子孫結合子** (descendant combinator) は、単一の空白（<code> </code>）文字で表され、2 つのセレクターを結合して、最初のセレクターと一致する祖先（親、親の親、親の親の親など）要素がある場合、 2 番目のセレクターと一致する要素が選択されるようにします。 子孫結合子を利用するセレクターは、子孫セレクターと呼ばれます。
 
 ```css
-body article p
+body article p {
+}
 ```
 
 以下の例は、 `.box` クラスのついた要素の内部にある `<p>` 要素のみに一致します。
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/descendant.html", '100%', 500)}}
+```html live-sample___descendant
+<div class="box"><p>.box の中のテキスト</p></div>
+<p>.box の外のテキスト</p>
+```
+
+```css live-sample___descendant
+.box p {
+  color: red;
+}
+```
+
+{{EmbedLiveSample("descendant")}}
+
+> [!NOTE]
+> [Aside: Compound selectors](https://scrimba.com/frontend-path-c0j/~0br?via=mdn) <sup>[_MDN 学習パートナー_](/ja/docs/MDN/Writing_guidelines/Learning_content#パートナーリンクと埋め込み)</sup>（Scrimba 提供）は、子孫結合子の実践的な解説を提供するインタラクティブなレッスンです。
 
 ## 子結合子
 
 **子結合子** (child combinator, `>`) は 2 つの CSS セレクターの間に配置されます。 2 つ目のセレクターで一致した要素のうち、最初のセレクターで一致した要素の直接の子要素にのみ一致します。さらに下の階層の要素には一致しません。例えば、 `<article>` 要素の直接の子である `<p>` 要素のみを選択するためには、次のようにします。
 
 ```css
-article > p
+article > p {
+  /* … */
+}
 ```
 
-次の例では、順序付けられていないリストがあり、その中にネストされているのは別の順序付けられていないリストです。子コンビネータを使用して、`<ul>` の直接の子である `<li>` 要素のみを選択し、上部の境界線を設定しています。
+次の例では、順序付きリスト（{{htmlelement("ol")}}）が順序なしリスト（{{htmlelement("ul")}}）内に含まれています。子結合子は `<ul>` の直接の子である `<li>` 要素のみを選択し、それらに上部の境界線を適用します。
 
-これを子結合子として指定している `>` を削除すると、子孫セレクターになり、すべての `<li>` 要素に赤い境界線が表示されます。
+```html live-sample___child
+<ul>
+  <li>順序なしアイテム</li>
+  <li>
+    順序なしアイテム
+    <ol>
+      <li>アイテム 1</li>
+      <li>アイテム 2</li>
+    </ol>
+  </li>
+</ul>
+```
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/child.html", '100%', 600)}}
+```css live-sample___child
+ul > li {
+  border-top: 5px solid red;
+}
+```
+
+{{EmbedLiveSample("child")}}
+
+前の例で、子セレクターとして指定している `>` を削除すると、子孫セレクターになり、すべての `<li>` 要素に赤い境界線が表示されます。
 
 ## 次兄弟結合子
 
-**次兄弟結合子** (next-sibling combinator, `+`) は 2 つの CSS セレクターの間に配置されます。2つ目のセレクターに一致する要素のうち、最初のセレクターの次の兄弟要素で あるものだけに一致します。例えば、`<p>` 要素の直後に来るすべての `<img>` 要素を選択するためには、次のようにします。
+**次兄弟結合子** (next-sibling combinator, `+`) は 2 つの CSS セレクターの間に配置されます。2つ目のセレクターに一致する要素のうち、最初のセレクターの次の兄弟要素であるものだけに一致します。例えば、`<p>` 要素の直後に来るすべての `<img>` 要素を選択するためには、次のようにします。
 
 ```css
-p + img
+p + img {
+  /* … */
+}
 ```
 
-一般的な用途としては、次の例のように見出しに続く段落に何かをすることです。この例では、 `<h1>` と親要素を共有し、その `<h1>` の直後に続く段落を探します。
+一般的な用途としては、次の例のように見出しに続く段落に何かをすることです。ここでは、`<h1>` と親要素を共有し、かつその `<h1>` の次の段落を選択します。
 
-もし `<h1>` と `<p>` の間に `<h2>` のような他の要素を挿入すると、段落はセレクターに一致しなくなり、要素が隣接しているときに適用される背景色と前景色が適用されなくなります。
+```html live-sample___adjacent
+<article>
+  <h1>見出し</h1>
+  <p>
+    Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion
+    daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+  </p>
 
-<!-- This example lives https://github.com/mdn/css-examples/blob/main/learn/selectors/adjacent.html -->
+  <p>
+    Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette
+    tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato.
+    Dandelion cucumber earthnut pea peanut soko zucchini.
+  </p>
+</article>
+```
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/adjacent.html", '100%', 800)}}
+```css live-sample___adjacent
+body {
+  font-family: sans-serif;
+}
+
+h1 + p {
+  font-weight: bold;
+  background-color: #333333;
+  color: white;
+  padding: 0.5em;
+}
+```
+
+{{EmbedLiveSample("adjacent", "", "220px")}}
+
+前の例で次のことを試してみましょう。
+
+1. `<h2>` などの別の要素を `<h1>` と `<p>` の間に挿入してみてください。そうすると、段落がセレクターと一致しなり、隣接する要素に対して背景色と前景色が取得されなくなることがわかります。
+2. これで、`h1 + p` セレクターを変更し、特別なスタイルがまず最初の段落に再度適用されるようにします。
 
 ## 後続兄弟結合子
 
 要素が直接隣接していなくても、その要素の兄弟を選択したい場合は、**後続兄弟結合子** (subsequent-sibling combinator, `~`) を使うことができます。 `<p>` 要素の後のどこかに来る `<img>` 要素をすべて選択するには、次のようにします。
 
 ```css
-p ~ img
+p ~ img {
+  /* … */
+}
 ```
 
 以下の例では、`<h1>` の後に続くすべての `<p>` 要素を選択しています。また、ドキュメントに `<div>` がある場合でも、その後にある `<p>` が選択されています。
 
-<!-- This example lives https://github.com/mdn/css-examples/blob/main/learn/selectors/general.html -->
+```html live-sample___general
+<article>
+  <h1>見出し</h1>
+  <p>これは段落です。</p>
+  <div>これは div です</div>
+  <p>これは他の段落です。</p>
+</article>
+```
 
-{{EmbedGHLiveSample("css-examples/learn/selectors/general.html", '100%', 600)}}
-
-## 入れ子による複雑なセレクターの作成
-
-[CSS 入れ子モジュール](/ja/docs/Web/CSS/CSS_nesting/Using_CSS_nesting#結合子)により、結合子を使って[複雑なセレクター](/ja/docs/Web/CSS/CSS_selectors/Selector_structure#複雑なセレクター)を作るルールを書くことができます。
-
-```css
-p {
-  ~ img {
-  }
+```css live-sample___general
+body {
+  font-family: sans-serif;
 }
-/* ブラウザーは次のように解釈します。 */
-p ~ img {
+
+h1 ~ p {
+  font-weight: bold;
+  background-color: #333333;
+  color: white;
+  padding: 0.5em;
 }
 ```
 
-[`&` 入れ子セレクター](/ja/docs/Web/CSS/Nesting_selector)も、複合セレクターを作成するために使用されることがあります。
+{{EmbedLiveSample("general", "", "220px")}}
 
-```css
-p {
-  & img {
-  }
-}
-/* ブラウザーは次のように解釈します。 */
-p img {
-}
-```
+## 結合子とセレクターの組み合わせ
 
-<!-- This example lives https://github.com/mdn/css-examples/blob/main/learn/selectors/nesting.html -->
-
-{{EmbedGHLiveSample("css-examples/learn/selectors/nesting.html", '100%', 800)}}
-
-> [!NOTE]
-> 上の例では、 `&` 入れ子セレクターは必須ではありませんが、これを追加することで、CSSの入れ子が使用されていることを明示的に示すことができます。
-
-## 結合子の使用
-
-前回学んだセレクターを結合子と組み合わせることで、文書内の一部を選択することができます。例えば、 `<ul>` の直接の子であるクラスが "a" のリストアイテムを選択するには、次の例のようにします。
+以前のレッスンで学んだセレクターは、結合子と組み合わせて文書の一部を選択できます。例えば、`<ul>` の直接の子要素であり、`class` が `a` のリストアイテムを選択するには、次のように指定してみてください。
 
 ```css
 ul > li[class="a"] {
@@ -138,12 +194,8 @@ ul > li[class="a"] {
 
 単純なクラスを作成し、それを対象の要素に適用する方が多いでしょう。とはいえ、結合子の知識は、文書内の何かをスタイル設定する必要があるときに、おそらく {{Glossary("CMS")}} によって生成された HTML にアクセスすることができない場合に、とても有益なものになるでしょう。
 
-## スキルテスト
-
-この記事の最後に達しましたが、最も大切な情報を覚えていますか？次に進む前に、この情報が身に付いたかどうかを確認するテストがあります。[スキルテスト: セレクター](/ja/docs/Learn/CSS/Building_blocks/Selectors/Selectors_Tasks)を参照してください。
-
 ## まとめ
 
-セレクターの学習はこの章で終わりです。次は、 CSS のもう一つの重要な部分である[カスケード、詳細度、継承](/ja/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)に進みます。
+セレクターの説明は以上です。次は、CSS セレクターに関する情報をどれだけ理解し、記憶できたかを調べるための確認テストを用意しました。
 
-{{PreviousMenuNext("Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements", "Learn/CSS/Building_blocks/Cascade_and_inheritance", "Learn/CSS/Building_blocks")}}
+{{PreviousMenuNext("Learn_web_development/Core/Styling_basics/Pseudo_classes_and_elements", "Learn_web_development/Core/Styling_basics/Test_your_skills/Selectors", "Learn_web_development/Core/Styling_basics")}}

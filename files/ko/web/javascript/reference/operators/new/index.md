@@ -7,7 +7,20 @@ slug: Web/JavaScript/Reference/Operators/new
 
 **`new` 연산자**는 사용자 정의 객체 타입 또는 내장 객체 타입의 인스턴스를 생성한다.
 
-{{EmbedInteractiveExample("pages/js/expressions-newoperator.html")}}
+{{InteractiveExample("JavaScript Demo: Expressions - new operator")}}
+
+```js interactive-example
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+const car1 = new Car("Eagle", "Talon TSi", 1993);
+
+console.log(car1.make);
+// Expected output: "Eagle"
+```
 
 ## 구문
 
@@ -145,4 +158,4 @@ car2.owner.name;
 
 - {{jsxref("Function")}}
 - {{jsxref("Reflect.construct()")}}
-- {{jsxref("Object.prototype")}}
+- {{jsxref("Object")}}

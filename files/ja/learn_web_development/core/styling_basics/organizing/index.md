@@ -1,12 +1,9 @@
 ---
 title: CSS の整理
 slug: Learn_web_development/Core/Styling_basics/Organizing
-original_slug: Learn/CSS/Building_blocks/Organizing
 l10n:
-  sourceCommit: bed92df387c4a8d94ee1e682cd33dab06cb30f4c
+  sourceCommit: 85fccefc8066bd49af4ddafc12c77f35265c7e2d
 ---
-
-{{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/Building_blocks/Debugging_CSS", "Learn/CSS/Building_blocks/Fundamental_CSS_comprehension", "Learn/CSS/Building_blocks")}}
 
 大きなスタイルシートや巨大なプロジェクトで作業をはじめると、巨大な CSS ファイルを維持するのが難しいことがわかります。この記事では、CSS を書いていくのと保守していくのをやりやすくするためのベストプラクティスと、保守性を向上させるための解決策の一部を紹介します。
 
@@ -16,18 +13,18 @@ l10n:
       <th scope="row">前提条件:</th>
       <td>
         <a
-          href="/ja/docs/Learn/Getting_started_with_the_web/Installing_basic_software"
+          href="/ja/docs/Learn_web_development/Getting_started/Environment_setup/Installing_software"
           >基本的なソフトウェアがインストールされている</a
         >こと、
         <a
-          href="/ja/docs/Learn/Getting_started_with_the_web/Dealing_with_files"
+          href="/ja/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
           >ファイルの扱い</a
         >、 HTML の基本（<a
-          href="/ja/docs/Learn/HTML/Introduction_to_HTML"
+          href="/ja/docs/Learn_web_development/Core/Structuring_content"
           >HTML 入門</a
         >）および CSS に関するアイデア（<a
-          href="/ja/docs/Learn/CSS/First_steps"
-          >CSS の第一歩</a>）に関する基本的な知識を得ていること。
+          href="/ja/docs/Learn_web_development/Core/Styling_basics"
+          >CSS 入門</a>）に関する基本的な知識を得ていること。
       </td>
     </tr>
     <tr>
@@ -47,7 +44,7 @@ l10n:
 
 既存のプロジェクトでチームと作業している場合、最初に確認することは、プロジェクトに CSS の既存のコーディング規約があるかどうかです。チームコーディング規約は常に自分の個人的な好みより優先する必要があります。多くの場合、何かを行うのに何が正しくて何が間違っているということはありませんが、一貫性が重要です。
 
-例えば、[MDN コードの例の CSS ガイドライン](/ja/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/CSS)を見てみましょう。
+例えば、[MDN コードの例の CSS ガイドライン](/ja/docs/MDN/Writing_guidelines/Code_style_guide/CSS)を見てみましょう。
 
 ### 一貫性を保つ
 
@@ -111,7 +108,7 @@ CSS に書かれていることの多くは自明なことなので、いちい�
 ```css
 .box {
   background-color: red; /* グラデーションに対応していない古いブラウザーでの代替手段 */
-  background-image: linear-gradient(to right, #ff0000, #aa0000);
+  background-image: linear-gradient(to right, red, #aa0000);
 }
 ```
 
@@ -158,7 +155,7 @@ blockquote {
 ```css
 /* || ユーティリティ */
 
-.nobullets {
+.no-bullets {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -203,7 +200,7 @@ blockquote {
 
 ```css
 article.main p.box {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
 }
 ```
 
@@ -211,7 +208,7 @@ article.main p.box {
 
 ```css
 .box {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
 }
 ```
 
@@ -237,7 +234,7 @@ CSS を記述するための独自のルールを考え出す代わりに、コ�
 
 #### OOCSS
 
-あなたが遭遇するであろうアプローチのほとんどは、 [Nicole Sullivan の業績](https://github.com/stubbornella/oocss/wiki)によって人気を博した Object Oriented CSS (OOCSS) の概念に起因しています。 OOCSS の基本的な考え方は、 CSS を再利用可能なオブジェクトに分割し、サイト上の必要な場所で使用できるようにすることです。 OOCSS の例として代表的なものに、[メディアオブジェクト](/ja/docs/Web/CSS/Layout_cookbook/Media_objects)として記述されているパターンがあります。これは、片面に固定サイズの画像や動画などの要素を配置し、もう片面には柔軟なコンテンツを配置したパターンです。コメントやリスティングなどのウェブサイトでよく見かけるパターンです。
+あなたが遭遇するであろうアプローチのほとんどは、[Nicole Sullivan の業績](https://github.com/stubbornella/oocss/wiki)によって人気を博した Object Oriented CSS (OOCSS) の概念に起因しています。 OOCSS の基本的な考え方は、 CSS を再利用可能なオブジェクトに分割し、サイト上の必要な場所で使用できるようにすることです。 OOCSS の例として代表的なものに、[メディアオブジェクト](/ja/docs/Web/CSS/How_to/Layout_cookbook/Media_objects)として記述されているパターンがあります。これは、片面に固定サイズの画像や動画などの要素を配置し、もう片面には柔軟なコンテンツを配置したパターンです。コメントやリスティングなどのウェブサイトでよく見かけるパターンです。
 
 もし、 OOCSS のアプローチを取らないのであれば、このパターンが使用される様々な場所に対してカスタム CSS を作成することになります。例えば、 2 つのクラスを作成し、 1 つは `comment` という名前で構成要素に対して多くのルールを設定し、もう 1 つは `list-item` という名前でいくつかの小さな違いを除いて `comment` クラスとほとんど同じルールを設定します。この 2 つのコンポーネントの違いは、 list-item には下の境界線があることと、 comment 内の画像に境界線があるのに対し、 list-item の画像にはないことです。
 
@@ -347,7 +344,7 @@ CSS を整理するもう 1 つの方法は、フロントエンド開発者が�
 
 #### 変数の定義
 
-CSS にネイティブ[カスタムプロパティが追加された](/ja/docs/Web/CSS/Using_CSS_custom_properties)ため、この機能の重要性は低下していますが、 Sass を使用する理由の 1 つは、プロジェクトで使用されるすべての色とフォントを設定として定義し、その変数をプロジェクトで使用できるようにすることです。これは、間違った青の色合いを使用したことがわかった場合、 1 つの場所で変更するだけでよいということです。
+CSS にネイティブ[カスタムプロパティ](/ja/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)が追加されたため、この機能の重要性は低下していますが、 Sass を使用する理由の 1 つは、プロジェクトで使用されるすべての色とフォントを設定として定義し、その変数をプロジェクトで使用できるようにすることです。これは、間違った青の色合いを使用したことがわかった場合、 1 つの場所で変更するだけでよいということです。
 
 `$base-color` 以下の最初の行のように呼び出される変数を作成した場合、その色が必要な場所であればどこでも、スタイルシートを介してその変数を使用できます。
 
@@ -394,13 +391,3 @@ CSS を整理する 1 つの方法は、スタイルシートを小さなスタ�
 #### ポストプロセッサー
 
 もし、コメントや空白を大量に追加することでスタイルシートのサイズが大きくなることを気にしているのであれば、本番バージョンでは不要なものを取り除くことで CSS を最適化することが後処理のステップになります。これを実現するポストプロセッサーの例としては、[cssnano](https://cssnano.co/) があります。
-
-## まとめ
-
-これは CSS 学習ガイドの最後の部分で、ここから CSS の探求を続けるための様々な方法があることがお分かりいただけると思います。
-
-CSS のレイアウトの詳細については、「[CSS レイアウトの学習](/ja/docs/Learn/CSS/CSS_layout)」部分を参照してください。
-
-また、これで [MDN の CSS の資料](/ja/docs/Web/CSS)の残りの部分を探索するためのスキルを身につけることができます。プロパティや値を調べたり、[CSS 料理帳](/ja/docs/Web/CSS/Layout_cookbook)で使用するパターンを調べたり、[CSS グリッドレイアウト](/ja/docs/Web/CSS/CSS_grid_layout)などの特定のガイドを読んだりすることができます。
-
-{{PreviousMenuNext("Learn/CSS/Building_blocks/Debugging_CSS", "Learn/CSS/Building_blocks/Fundamental_CSS_comprehension", "Learn/CSS/Building_blocks")}}

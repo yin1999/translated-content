@@ -1,12 +1,11 @@
 ---
 title: 跨浏览器测试介绍
 slug: Learn_web_development/Extensions/Testing/Introduction
-original_slug: Learn/Tools_and_testing/Cross_browser_testing/Introduction
 l10n:
   sourceCommit: f7856d2fbfadb97180aa651ba6a03820643ea6ec
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn_web_development/Extensions/Testing/Testing_strategies", "Learn_web_development/Extensions/Testing")}}
+{{NextMenu("Learn_web_development/Extensions/Testing/Testing_strategies", "Learn_web_development/Extensions/Testing")}}
 
 本文是对跨浏览器测试的概述，帮助了解什么是跨浏览器测试、常见的问题都有哪些以及应该怎么调试和修复问题。
 
@@ -37,7 +36,8 @@ l10n:
 
 请记住，你不能代表产品的用户——你的网站能适配 Macbook Pro 或高端 Galaxy Nexus，并不意味它适用于所有用户！
 
-> **备注：** [让 web 为每个人服务](https://hacks.mozilla.org/2016/07/make-the-web-work-for-everyone/)文章讨论了不同的浏览器、它们的市场份额以及相关的跨浏览器兼容性问题。
+> [!NOTE]
+> [让 web 为每个人服务](https://hacks.mozilla.org/2016/07/make-the-web-work-for-everyone/)文章讨论了不同的浏览器、它们的市场份额以及相关的跨浏览器兼容性问题。
 
 网站应该在不同的浏览器和设备上都能够进行访问，并且对残疾人士友好，比如对使用屏幕阅读器的人。网站不必在所有浏览器和设备上提供完全一致的体验，只要核心功能可以通过某种方式访问即可。例如，现代浏览器可能会展示动画、3D 效果和光彩夺目的元素，而老旧的浏览器可能仅展示同一信息的基本图形。
 
@@ -108,7 +108,7 @@ l10n:
 
 此时，你要修复一切发现的问题。
 
-接下来，你应该将测试拓展到所有浏览器，并集中精力排除跨浏览器问题（关于[确定你的目标浏览器](/zh-CN/docs/Learn/Tools_and_testing/Cross_browser_testing/Testing_strategies#是否需要测试？)，请查阅下一篇文章获取更多信息）。例如：
+接下来，你应该将测试拓展到所有浏览器，并集中精力排除跨浏览器问题（关于[确定你的目标浏览器](/zh-CN/docs/Learn_web_development/Extensions/Testing/Testing_strategies#是否需要测试？)，请查阅下一篇文章获取更多信息）。例如：
 
 - 尽量在所有现代桌面浏览器上测试最新的修改——包括桌面版的 Firefox、Chrome、Opera、Edge 和 Safari（最好 Mac、Windows 和 Linux 版本都试一遍）。
 - 在常用的手机和平板浏览器中测试（例如 iPhone/iPad 上的 iOS Safari、iPhone/iPad/Android 的 Chrome 和 Firefox）。

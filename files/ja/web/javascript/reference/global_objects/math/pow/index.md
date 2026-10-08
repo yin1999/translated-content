@@ -1,11 +1,10 @@
 ---
 title: Math.pow()
+short-title: pow()
 slug: Web/JavaScript/Reference/Global_Objects/Math/pow
 l10n:
   sourceCommit: 761b9047d78876cbd153be811efb1aa77b419877
 ---
-
-{{JSRef}}
 
 **`Math.pow()`** は静的メソッドで、基数をべき乗した値を返します。
 
@@ -15,7 +14,22 @@ l10n:
 </math>
 <!-- prettier-ignore-end -->
 
-{{EmbedInteractiveExample("pages/js/math-pow.html")}}
+{{InteractiveExample("JavaScript デモ: Math.pow()")}}
+
+```js interactive-example
+console.log(Math.pow(7, 3));
+// 予想される結果: 343
+
+console.log(Math.pow(4, 0.5));
+// 予想される結果: 2
+
+console.log(Math.pow(7, -2));
+// 予想される結果: 0.02040816326530612
+//                  (1/49)
+
+console.log(Math.pow(-7, 0.5));
+// 予想される結果: NaN
+```
 
 ## 構文
 
@@ -52,7 +66,7 @@ Math.pow(base, exponent)
 ### Math.pow() の使用
 
 ```js
-// 単純
+// 基本的な例
 Math.pow(7, 2); // 49
 Math.pow(7, 3); // 343
 Math.pow(2, 10); // 1024

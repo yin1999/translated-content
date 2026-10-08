@@ -2,10 +2,8 @@
 title: Math.atanh()
 slug: Web/JavaScript/Reference/Global_Objects/Math/atanh
 l10n:
-  sourceCommit: 761b9047d78876cbd153be811efb1aa77b419877
+  sourceCommit: 544b843570cb08d1474cfc5ec03ffb9f4edc0166
 ---
-
-{{JSRef}}
 
 **`Math.atanh()`** 靜態方法回傳一個數字的反雙曲正切值，也就是說，
 
@@ -15,7 +13,21 @@ l10n:
 </math>
 <!-- prettier-ignore-end -->
 
-{{EmbedInteractiveExample("pages/js/math-atanh.html")}}
+{{InteractiveExample("JavaScript Demo: Math.atanh()")}}
+
+```js interactive-example
+console.log(Math.atanh(-1));
+// 預期輸出：-Infinity
+
+console.log(Math.atanh(0));
+// 預期輸出：0
+
+console.log(Math.atanh(0.5));
+// 預期輸出：0.549306144334055 (approximately)
+
+console.log(Math.atanh(1));
+// 預期輸出：Infinity
+```
 
 ## 語法
 
@@ -61,6 +73,7 @@ Math.atanh(2); // NaN
 ## 參見
 
 - [`core-js` 中 `Math.atanh` 的 polyfill](https://github.com/zloirock/core-js#ecmascript-math)
+- [`Math.atanh` 的 es-shims polyfill](https://www.npmjs.com/package/math.atanh)
 - {{jsxref("Math.acosh()")}}
 - {{jsxref("Math.asinh()")}}
 - {{jsxref("Math.cosh()")}}

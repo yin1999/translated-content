@@ -1,12 +1,13 @@
 ---
 title: ワーカー入門
 slug: Learn_web_development/Extensions/Async_JS/Introducing_workers
-original_slug: Learn/JavaScript/Asynchronous/Introducing_workers
 l10n:
-  sourceCommit: 4bddde3e2b86234eb4594809082873fc5bf00ee3
+  sourceCommit: a92e10b293358bc796c43d5872a8981fd988a005
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Asynchronous/Implementing_a_promise-based_API", "Learn/JavaScript/Asynchronous/Sequencing_animations", "Learn/JavaScript/Asynchronous")}}
+{{LearnSidebar}}
+
+{{PreviousMenuNext("Learn_web_development/Extensions/Async_JS/Implementing_a_promise-based_API", "Learn_web_development/Extensions/Async_JS/Sequencing_animations", "Learn_web_development/Extensions/Async_JS")}}
 
 この「非同期 JavaScript」モジュールの最後の記事では、あるタスクを実行する際に別個の{{Glossary("Thread", "スレッド")}}で実行できるようにする _ワーカー_ を紹介します。
 
@@ -15,12 +16,17 @@ l10n:
     <tr>
       <th scope="row">前提条件:</th>
       <td>
-        イベント処理を含む JavaScript の基本をそれなりに理解していること。
+        <a href="/ja/docs/Learn_web_development/Core/Scripting">JavaScript の基本</a>と、このモジュールの前のレッスンで扱った非同期の概念をしっかりと理解していること。
       </td>
     </tr>
     <tr>
-      <th scope="row">目標:</th>
-      <td>ウェブワーカーの使用方法を理解すること。</td>
+      <th scope="row">学習成果:</th>
+      <td>
+        <ul>
+          <li>専用ウェブワーカーの使い方とその理由。</li>
+          <li>共有ワーカーやサービスワーカーなど、他のタイプのウェブワーカーの目的を理解する。</li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -172,10 +178,9 @@ document.querySelector("#reload").addEventListener("click", () => {
 });
 ```
 
-- 最初に、{{domxref("Worker/Worker", "Worker()")}} コンストラクターを使ってワーカーを作成しています。このコンストラクターに、ワーカー スクリプトを指す URL を渡します。ワーカーが作成されると同時に、ワーカースクリプトが実行されます。
+- 最初に、 {{domxref("Worker/Worker", "Worker()")}} コンストラクターを使ってワーカーを作成しています。このコンストラクターに、ワーカー スクリプトを指す URL を渡します。ワーカーが作成されると同時に、ワーカースクリプトが実行されます。
 
 - 次に、同期バージョンと同様に、［素数の生成］ボタンに `click` イベントハンドラーを追加します。しかし、ここでは `generatePrimes()` 関数を呼び出すのではなく、 {{domxref("Worker/postMessage", "worker.postMessage()")}} を使用してワーカーにメッセージを送信しています。このメッセージは引数を受け取ることができ、今回は 2 つのプロパティを含む JSON オブジェクトを渡しています。
-
   - `command`: ワーカーにやってもらいたいことを示す文字列（ワーカーが複数のことをする可能性がある場合）。
   - `quota`: 生成する素数の数。
 
@@ -228,7 +233,7 @@ function generatePrimes(quota) {
 `generatePrimes()` 関数は同期関数と同じですが、値を返す代わりに、終了したらメインスクリプトにメッセージを送ります。このために {{domxref("DedicatedWorkerGlobalScope/postMessage", "postMessage()")}} 関数を使用します。これは `addEventListener()` と同様にワーカーのグローバル関数です。すでに見たように、メイン スクリプトはこのメッセージを待ち受けしており、メッセージを受信すると DOM を更新します。
 
 > [!NOTE]
-> このサイトを実行するには、ローカルのウェブサーバーを実行する必要があります。file:// URL はワーカーを読み込むことができないからです。[ローカルテストサーバーの設定] (/ja/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server) のガイドを参照してください。これで、［素数の生成］をクリックすると、メインページが応答し続けるようになるはずです。
+> このサイトを実行するには、ローカルのウェブサーバーを実行する必要があります。 file:// URL はワーカーを読み込むことができないからです。[ローカルテストサーバーの設定](/ja/docs/Learn_web_development/Howto/Tools_and_setup/set_up_a_local_testing_server)のガイドを参照してください。これで、［素数の生成］をクリックすると、メインページが応答し続けるようになるはずです。
 >
 > 例の作成や実行に問題がある場合は、[完成版](https://github.com/mdn/learning-area/blob/main/javascript/asynchronous/workers/finished) を確認し、[ライブ](https://mdn.github.io/learning-area/javascript/asynchronous/workers/finished)で試してみることができます。
 
@@ -239,7 +244,7 @@ function generatePrimes(quota) {
 しかし、ワーカーには他にも種類があります。
 
 - [_共有ワーカー_](/ja/docs/Web/API/SharedWorker)は、異なるウィンドウで動作する複数の異なるスクリプトで共有することができます。
-- [_サービスワーカー_](/ja/docs/Web/API/Service_Worker_API)は、プロキシサーバーのような役割を果たし、リソースをキャッシュすることで、ユーザーがオフラインのときでもウェブアプリケーションを動作させることができます。[プログレッシブウェブアプリ](/ja/docs/Web/Progressive_web_apps)の重要な構成要素である。
+- [_サービスワーカー_](/ja/docs/Web/API/Service_Worker_API)は、プロキシーサーバーのような役割を果たし、リソースをキャッシュすることで、ユーザーがオフラインのときでもウェブアプリケーションを動作させることができます。[プログレッシブウェブアプリ](/ja/docs/Web/Progressive_web_apps)の重要な構成要素である。
 
 ## まとめ
 
@@ -253,4 +258,4 @@ function generatePrimes(quota) {
 - [サービスワーカーの使用](/ja/docs/Web/API/Service_Worker_API/Using_Service_Workers)
 - [ウェブワーカー API](/ja/docs/Web/API/Web_Workers_API)
 
-{{PreviousMenuNext("Learn/JavaScript/Asynchronous/Implementing_a_promise-based_API", "Learn/JavaScript/Asynchronous/Sequencing_animations", "Learn/JavaScript/Asynchronous")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Async_JS/Implementing_a_promise-based_API", "Learn_web_development/Extensions/Async_JS/Sequencing_animations", "Learn_web_development/Extensions/Async_JS")}}

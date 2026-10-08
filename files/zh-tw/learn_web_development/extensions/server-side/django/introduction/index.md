@@ -1,23 +1,22 @@
 ---
 title: Django 介紹
 slug: Learn_web_development/Extensions/Server-side/Django/Introduction
-original_slug: Learn/Server-side/Django/Introduction
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn/Server-side/Django/development_environment", "Learn/Server-side/Django")}}
+{{NextMenu("Learn_web_development/Extensions/Server-side/Django/development_environment", "Learn_web_development/Extensions/Server-side/Django")}}
 
 在這第一篇 Django 文章中，我們將回答「什麼是 Django」這個問題，並概述這個網絡框架有什麼特性。我們將描述主要功能，包括一些高級功能，但我們並不會在本單元中詳細介紹。我們還會展示一些 Django 應用程序的主要構建模塊（儘管此時你還沒有要測試的開發環境）。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">先備知識:</th>
       <td>
-        基本的電腦知識.對<a href="/zh-TW/docs/Learn/Server-side/First_steps"
+        基本的電腦知識.對<a href="/zh-TW/docs/Learn_web_development/Extensions/Server-side/First_steps"
           >服務器端網站編程的一般了解</a
         >
         ,特別是<a
-          href="/zh-TW/docs/Learn/Server-side/First_steps/Client-Server_overview"
+          href="/zh-TW/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview"
           >網站中客戶端-服務器交互的機制</a
         >
         .
@@ -43,13 +42,11 @@ Django 可以使你的應用具有以下優點:
 - 完備
   - : Django 遵循「功能完備」的理念，提供開發人員可能想要「開箱即用」的幾乎所有功能。因為你需要的一切，都是一個「產品」的一部分，它們都可以無縫結合在一起，遵循一致性設計原則，並且具有廣泛、和[最新的文檔](https://docs.djangoproject.com/en/2.0/)。
 - 通用
-
   - : Django 可以（並已經）用於構建幾乎任何類型的網站—從內容管理系統和維基，到社交網絡和新聞網站。它可以與任何客戶端框架一起工作，並且可以提供幾乎任何格式（包括 HTML、RSS、JSON、XML 等）的內容。你正在閱讀的網站就是基於 Django。
 
     在內部，儘管它為幾乎所有可能需要的功能（例如幾個流行的資料庫，模版引擎等）提供了選擇，但是如果需要，它也可以擴展到使用其他組件。
 
 - 安全
-
   - : Django 幫助開發人員，通過提供一個被設計為 「做正確的事情」 來自動保護網站的框架，來避免許多常見的安全錯誤。例如，Django 提供了一種安全的方式，來管理用戶帳號和密碼，避免了常見的錯誤，比如將 session 放在 cookie 中這種易受攻擊的做法（取而代之的是，cookies 只包含一個密鑰，實際數據存儲在數據庫中），或直接存儲密碼，而不是密碼的 hash 值。
 
     密碼 hash ，是讓密碼通過加密 hash 函數，而創建的固定長度值。 Django 能通過運行 hash 函數，來檢查輸入的密碼 - 就是將輸出的 hash 值，與存儲的 hash 值進行比較是否正確。然而由於功能的 「單向」 性質，假使存儲的 hash 值受到威脅，攻擊者也難以解出原始密碼。 （但其實有彩虹表-譯者觀點）
@@ -252,4 +249,4 @@ def index(request):
 
 你已經看到上面的一些真正的 Django 代碼，但與客戶端代碼不同，你需要設置一個開發環境來運行它。這是我們的下一步。
 
-{{NextMenu("Learn/Server-side/Django/development_environment", "Learn/Server-side/Django")}}
+{{NextMenu("Learn_web_development/Extensions/Server-side/Django/development_environment", "Learn_web_development/Extensions/Server-side/Django")}}

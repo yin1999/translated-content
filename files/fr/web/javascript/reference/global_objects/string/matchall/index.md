@@ -3,11 +3,22 @@ title: String.prototype.matchAll()
 slug: Web/JavaScript/Reference/Global_Objects/String/matchAll
 ---
 
-{{JSRef}}
-
 La méthode **`matchAll()`** renvoie un itérateur contenant l'ensemble des correspondances entre une chaîne de caractères d'une part et une expression rationnelle d'autre part (y compris les groupes capturants).
 
-{{EmbedInteractiveExample("pages/js/string-matchall.html")}}
+{{InteractiveExample("JavaScript Demo: String.matchAll()")}}
+
+```js interactive-example
+const regexp = /t(e)(st(\d?))/g;
+const str = "test1test2";
+
+const array = [...str.matchAll(regexp)];
+
+console.log(array[0]);
+// Expected output: Array ["test1", "e", "st1", "1"]
+
+console.log(array[1]);
+// Expected output: Array ["test2", "e", "st2", "2"]
+```
 
 ## Syntaxe
 

@@ -7,7 +7,22 @@ slug: Web/JavaScript/Reference/Global_Objects/encodeURI
 
 **`encodeURI()`** 함수는 {{glossary("URI")}}의 특정한 문자를 UTF-8로 인코딩해 하나, 둘, 셋, 혹은 네 개의 연속된 이스케이프 문자로 나타냅니다. (두 개의 대리 문자로 이루어진 문자만 이스케이프 문자 네 개로 변환됩니다.)
 
-{{EmbedInteractiveExample("pages/js/globalprops-encodeuri.html")}}
+{{InteractiveExample("JavaScript Demo: Standard built-in objects - encodeURI()")}}
+
+```js interactive-example
+const uri = "https://mozilla.org/?x=шеллы";
+const encoded = encodeURI(uri);
+console.log(encoded);
+// Expected output: "https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B"
+
+try {
+  console.log(decodeURI(encoded));
+  // Expected output: "https://mozilla.org/?x=шеллы"
+} catch (e) {
+  // Catches a malformed URI
+  console.error(e);
+}
+```
 
 ## 구문
 
@@ -42,7 +57,7 @@ http://username:password@www.example.com:80/path/to/file.php?foo=316&bar=this+ha
     A-Z a-z 0-9 ; , / ? : @ & = + $ - _ . ! ~ * ' ( ) #
 ```
 
-`encodeURI()`와 {{jsxref("encodeURIComponent", "encodeURIComponent()")}}의 차이는 다음과 같습니다.
+`encodeURI()`와 {{jsxref("encodeURIComponent()")}}의 차이는 다음과 같습니다.
 
 ```js
 var set1 = ";,/?:@&=+$#"; // 예약 문자

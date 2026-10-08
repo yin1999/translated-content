@@ -3,7 +3,7 @@ title: 運算式與運算子
 slug: Web/JavaScript/Guide/Expressions_and_operators
 ---
 
-{{jsSidebar("JavaScript Guide")}} {{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_dates")}}
+{{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_strings")}}
 
 這個章節將講述 JavaScript 的運算式與運算子，包括賦值運算子，比較運算子，算術運算子，位元運算子， 邏輯運算子, 字串運算子, 條件(三元)運算子 以及更多運算子.
 
@@ -70,7 +70,7 @@ JavaScript 同時具有二元運算子及一元運算子， 以及一種特殊�
 
 #### 解構
 
-為了進行更複雜的賦值，[解構賦值](/zh-TW/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)是 JavaScript 用來從陣列或物件中提取資料的語法。
+為了進行更複雜的賦值，[解構](/zh-TW/docs/Web/JavaScript/Reference/Operators/Destructuring)是 JavaScript 用來從陣列或物件中提取資料的語法。
 
 ```js
 var foo = ["one", "two", "three"];
@@ -93,18 +93,19 @@ var var1 = 3;
 var var2 = 4;
 ```
 
-| 運算子                                                                                             | 描述                                                                                                                                                     | 會回傳 True 的例子                   |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| [等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#equality) (`==`)                             | 假如運算元等價就回傳 True。                                                                                                                              | `3 == var1` `"3" == var1` `3 == '3'` |
-| [不等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#inequality) (`!=`)                         | 假如運算元等價就回傳 True。                                                                                                                              | `var1 != 4 var2 != "3"`              |
-| [嚴格等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#identity) (`===`)                        | 假如運算元具有相同型態且等價則回傳 True。參考 {{jsxref("Object.is")}} 及 [JS 中的等價性](/zh-TW/docs/Web/JavaScript/Equality_comparisons_and_sameness)。 | `3 === var1`                         |
-| [嚴格不等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#nonidentity) (`!==`)                   | 假如運算元具有相同型態但不等價，或是具有不同型態，回傳 True。                                                                                            | `var1 !== "3" 3 !== '3'`             |
-| [大於](/zh-TW/docs/Web/JavaScript/Reference/Operators#greater_than_operator) (`>`)                 | 假如左方運算元大於右方運算元，回傳 True。                                                                                                                | `var2 > var1 "12" > 2`               |
-| [大於或等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#greater_than_or_equal_operator) (`>=`) | 假如左方運算元大於或等於右方運算元，回傳 True。                                                                                                          | `var2 >= var1 var1 >= 3`             |
-| [小於](/zh-TW/docs/Web/JavaScript/Reference/Operators#less_than_operator) (`<`)                    | 假如左方運算元小於右方運算元，回傳 True。                                                                                                                | `var1 < var2 "2" < 12`               |
-| [小於或等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#less_than_or_equal_operator) (`<=`)    | 假如左方運算元小於或等於右方運算元，回傳 True。                                                                                                          | `var1 <= var2 var2 <= 5`             |
+| 運算子                                                                                             | 描述                                                                                                                                                           | 會回傳 True 的例子                   |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| [等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#equality) (`==`)                             | 假如運算元等價就回傳 True。                                                                                                                                    | `3 == var1` `"3" == var1` `3 == '3'` |
+| [不等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#inequality) (`!=`)                         | 假如運算元等價就回傳 True。                                                                                                                                    | `var1 != 4 var2 != "3"`              |
+| [嚴格等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#identity) (`===`)                        | 假如運算元具有相同型態且等價則回傳 True。參考 {{jsxref("Object.is")}} 及 [JS 中的等價性](/zh-TW/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness)。 | `3 === var1`                         |
+| [嚴格不等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#nonidentity) (`!==`)                   | 假如運算元具有相同型態但不等價，或是具有不同型態，回傳 True。                                                                                                  | `var1 !== "3" 3 !== '3'`             |
+| [大於](/zh-TW/docs/Web/JavaScript/Reference/Operators#greater_than_operator) (`>`)                 | 假如左方運算元大於右方運算元，回傳 True。                                                                                                                      | `var2 > var1 "12" > 2`               |
+| [大於或等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#greater_than_or_equal_operator) (`>=`) | 假如左方運算元大於或等於右方運算元，回傳 True。                                                                                                                | `var2 >= var1 var1 >= 3`             |
+| [小於](/zh-TW/docs/Web/JavaScript/Reference/Operators#less_than_operator) (`<`)                    | 假如左方運算元小於右方運算元，回傳 True。                                                                                                                      | `var1 < var2 "2" < 12`               |
+| [小於或等於](/zh-TW/docs/Web/JavaScript/Reference/Operators#less_than_or_equal_operator) (`<=`)    | 假如左方運算元小於或等於右方運算元，回傳 True。                                                                                                                | `var1 <= var2 var2 <= 5`             |
 
-> **備註：** `=>` 不是運算子，是 [箭頭函式](/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions)。
+> [!NOTE]
+> `=>` 不是運算子，是[箭頭函式](/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions)。
 
 ### 算術運算子
 
@@ -599,9 +600,9 @@ a * c + b * c; // 9
 
 解析是 JavaScript 中的一個實驗性功能， 在未來版本的 ECMAScript 計畫被導入。有兩種不同類型的解析:
 
-- {{experimental_inline}} {{jsxref("Operators/Array_comprehensions", "[for (x of y) x]")}}
+- {{experimental_inline}} {{jsxref("Deprecated_and_obsolete_features", "[for (x of y) x]")}}
   - : 陣列解析。
-- {{experimental_inline}} {{jsxref("Operators/Generator_comprehensions", "(for (x of y) y)")}}
+- {{experimental_inline}} {{jsxref("Deprecated_and_obsolete_features", "(for (x of y) y)")}}
   - : 產生器解析。
 
 解析在許多程式語言中都存在，允許你快速地基於現存陣列產生新的陣列，例如:
@@ -655,4 +656,4 @@ var args = [0, 1, 2];
 f(...參數);
 ```
 
-{{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_dates")}}
+{{PreviousNext("Web/JavaScript/Guide/Functions", "Web/JavaScript/Guide/Numbers_and_strings")}}

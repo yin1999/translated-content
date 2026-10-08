@@ -1,12 +1,11 @@
 ---
 title: 初めてのフォーム
 slug: Learn_web_development/Extensions/Forms/Your_first_form
-original_slug: Learn/Forms/Your_first_form
 l10n:
-  sourceCommit: 27bc03cfbc87309f091567a50b484eb1f9355b03
+  sourceCommit: f33de00c56ac53878eb2cb7cb5849df1f9ab8db7
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn/Forms/How_to_structure_a_web_form", "Learn/Forms")}}
+{{NextMenu("Learn_web_development/Extensions/Forms/How_to_structure_a_web_form", "Learn_web_development/Extensions/Forms")}}
 
 このシリーズの最初の記事では、簡単なフォームの設計、HTML フォームコントロールとその他の HTML 要素を使用した正しい実装、 CSS によるとても簡単なスタイル付け、データをサーバーに送る方法を含めた、ウェブフォームを作成する本当に初歩的な経験をします。
 サブトピックは、モジュールの後で詳しく展開していきます。
@@ -16,7 +15,7 @@ l10n:
     <tr>
       <th scope="row">前提条件:</th>
       <td>
-        <a href="/ja/docs/Learn/HTML/Introduction_to_HTML">HTML を理解する</a>を理解していること。
+        <a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML を理解する</a>を理解していること。
       </td>
     </tr>
     <tr>
@@ -30,9 +29,11 @@ l10n:
 
 ## ウェブフォームとは何か?
 
-**ウェブフォーム**とは、ユーザーと ウェブサイトやアプリケーションとの対話の要となるもののひとつです。ユーザーはフォームによって、ウェブサイトへデータを送ることができます。それらのデータはたいてい ウェブサーバーに送られて処理、保存されたり（このモジュール後半の[サーバーにデータを送る](/ja/docs/Learn/Forms/Sending_and_retrieving_form_data)を見てください）、クライアント側ですぐにインターフェイスを更新する（例えば、リストに他の項目を追加したり、UI の機能を表示/非表示にしたりする）こともあります。
+**ウェブフォーム**とは、ユーザーと ウェブサイトやアプリケーションとの対話の要となるもののひとつです。
+ユーザーはフォームによって、ウェブサイトへデータを送ることができます。それらのデータはたいてい ウェブサーバーに送られて処理、保存されたり（このモジュール後半の[サーバーにデータを送る](/ja/docs/Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data)を見てください）、クライアント側ですぐにインターフェイスを更新する（例えば、リストに他の項目を追加したり、UI の機能を表示/非表示にしたりする）こともあります。
 
-ウェブフォームは 1 つ以上の**フォームコントロール**（**ウィジェット**ともいいます）と、フォーム全体を構成するのに役立つ追加要素 — よく **HTML フォーム**と呼ばれます — とで作られます。それらのコントロールは単一行または複数行のテキストフィールド、ドロップダウンボックス、ボタン、チェックボックス、ラジオボタンがあります。たいていは {{htmlelement("input")}} 要素を使って作成されますが、その他の要素もあります。
+ウェブフォームは 1 つ以上の**フォームコントロール**（**ウィジェット**ともいいます）と、フォーム全体を構成するのに役立つ追加要素 — よく **HTML フォーム**と呼ばれます — とで作られます。
+それらのコントロールは単一行または複数行のテキストフィールド、ドロップダウンボックス、ボタン、チェックボックス、ラジオボタンがあります。たいていは {{htmlelement("input")}} 要素を使って作成されますが、その他の要素もあります。
 
 フォームコントロールは、特定フォームの値が入力されるのを強制するためにもプログラミングされ（**フォーム検証**）、目の見えるユーザーと目の不自由なユーザーの両方に対して用途を説明するテキストのラベルと対になります。
 
@@ -40,18 +41,19 @@ l10n:
 
 コードを書き始める前に、そこから離れてフォームについて考える時間をとるとよいでしょう。簡単なモデルを作ると、ユーザーに入力を依頼したいデータの適切なセットを定義することの助けになります。ユーザー体験 (UX) の観点では、フォームが大規模になるとユーザーが不満を持って離れるリスクが高まると覚えておくことが重要です。簡単に、かつ集中するようにしてください。本当に必要なことだけを尋ねてください。
 
-フォームの設計は、サイトやアプリケーションを構築する際の大切なステップです。フォームのユーザー体験まで扱うと本記事の対象を超えてしまいますが、そこまで踏み込みたい場合は以下の記事をご覧ください。
+フォームの設計は、サイトやアプリケーションを構築する際の大切なステップです。
+フォームのユーザー体験まで扱うと本記事の対象を超えてしまいますが、そこまで踏み込みたい場合は以下の記事をご覧ください。
 
 - Smashing Magazine に[フォームの UX に関するよい記事](https://www.smashingmagazine.com/2018/08/ux-html5-mobile-form-part-1/)がありますが、もっとも重要な記事は [Extensive Guide To Web Form Usability](https://www.smashingmagazine.com/2011/11/extensive-guide-web-form-usability/) でしょう。
 - UXMatters もまた、[基本的なベストプラクティス](https://www.uxmatters.com/mt/archives/2012/05/7-basic-best-practices-for-buttons.php)から[複数ページのフォーム](https://www.uxmatters.com/mt/archives/2010/03/pagination-in-web-forms-evaluating-the-effectiveness-of-web-forms.php)といった複雑なことに至るまで、良いアドバイスを得られる、思慮深いリソースです。
 
 本記事では、シンプルな問い合わせフォームを作成します。簡単に図を描いてみましょう。
 
-![The form to build, roughly sketch](form-sketch-low.jpg)
+![作成するフォームのラフスケッチ](form-sketch-low.jpg)
 
 このフォームには、3 つのテキストフィールドと 1 つのボタンがあります。要するに、ユーザーへ名前 (Name)、メールアドレス (E-mail)、送信したいメッセージ (Message) を尋ねます。ボタンを押すと、データをウェブサーバーへ送信します。
 
-## アクティブラーニング: フォームの HTML の実装
+## フォームの HTML の実装
 
 これで、HTML に移ってフォームのコードを書く準備ができました。問い合わせフォームを作るために、以下の HTML 要素、 {{HTMLelement("form")}}、{{HTMLelement("label")}}、{{HTMLelement("input")}}、{{HTMLelement("textarea")}}、{{HTMLelement("button")}} を使用します。
 
@@ -65,13 +67,13 @@ l10n:
 <form action="/my-handling-form-page" method="post">…</form>
 ```
 
-これは、フォームを正式に定義します。これは {{HTMLelement("section")}} や {{HTMLelement("footer")}} 要素と同様にコンテナー要素ですが、フォームを含めるのに特化しています。フォームの動作方法を設定するための特有の属性にも対応しています。すべての属性は省略可能ですが、少なくとも [`action`](/ja/docs/Web/HTML/Element/form#action) 属性と [`method`](/ja/docs/Web/HTML/Element/form#method) 属性は常に設定するのがふつうです。
+これは、フォームを正式に定義します。これは {{HTMLelement("section")}} や {{HTMLelement("footer")}} 要素と同様にコンテナー要素ですが、フォームを含めるのに特化しています。フォームの動作方法を設定するための特有の属性にも対応しています。すべての属性は省略可能ですが、少なくとも [`action`](/ja/docs/Web/HTML/Reference/Elements/form#action) 属性と [`method`](/ja/docs/Web/HTML/Reference/Elements/form#method) 属性は常に設定するのがふつうです。
 
 - `action` 属性は、フォームで収集したデータを送信すべき場所 (URL) を定義します。
 - `method` 属性は、データを送信するために使用する HTTP メソッド（`get` または `post`）を定義します。
 
 > [!NOTE]
-> これらの属性がどのように働くかについて、詳しくは[フォームデータの送信](/ja/docs/Learn/Forms/Sending_and_retrieving_form_data)で説明しています。
+> これらの属性がどのように働くかについて、詳しくは[フォームデータの送信](/ja/docs/Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data)で説明しています。
 
 今のところは、上の {{htmlelement("form")}} 要素を HTML の {{htmlelement("body")}} に追加します。
 
@@ -87,58 +89,56 @@ l10n:
 
 ```html
 <form action="/my-handling-form-page" method="post">
-  <ul>
-    <li>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="user_name" />
-    </li>
-    <li>
-      <label for="mail">Email:</label>
-      <input type="email" id="mail" name="user_email" />
-    </li>
-    <li>
-      <label for="msg">Message:</label>
-      <textarea id="msg" name="user_message"></textarea>
-    </li>
-  </ul>
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="user_name" />
+  </p>
+  <p>
+    <label for="mail">Email:</label>
+    <input type="email" id="mail" name="user_email" />
+  </p>
+  <p>
+    <label for="msg">Message:</label>
+    <textarea id="msg" name="user_message"></textarea>
+  </p>
 </form>
 ```
 
 フォームのコードを上記のようなものに更新してください。
 
-{{HTMLelement("li")}} 要素はコードを扱いやすく構造化するとともに、スタイル設定を容易にするため (後述) に置いています。
+{{HTMLelement("p")}} 要素はコードを扱いやすく構造化するとともに、スタイル設定を容易にするため (後述) に置いています。
 ユーザビリティとアクセシビリティのため、それぞれのフォームコントロールに明示的にラベルをつけます。
-[`for`](/ja/docs/Web/HTML/Attributes/for) 属性をすべての {{HTMLelement("label")}} 要素に使用し、その値として関連付けるフォームコントロールの [`id`](/ja/docs/Web/HTML/Global_attributes/id) を取ります。これで、フォームコントロールをラベルと関連付けることができます。
+[`for`](/ja/docs/Web/HTML/Reference/Attributes/for) 属性をすべての {{HTMLelement("label")}} 要素に使用し、その値として関連付けるフォームコントロールの [`id`](/ja/docs/Web/HTML/Reference/Global_attributes/id) を取ります。これで、フォームコントロールをラベルと関連付けることができます。
 
 これには利点があります。フォームコントロールにラベルを関連付けて、ユーザーがマウス、トラックパッド、タッチ端末でラベルをクリックすると、対応するウィジェットがアクティブになり、スクリーンリーダーのユーザーに読み上げられるアクセシブルな名前が提供されます。
-この属性の利点をさらに知りたいのであれば、[ウェブフォームの構築方法](/ja/docs/Learn/Forms/How_to_structure_a_web_form) の記事ですべてを詳しく説明しています。
+この属性の利点をさらに知りたいのであれば、[ウェブフォームの構築方法](/ja/docs/Learn_web_development/Extensions/Forms/How_to_structure_a_web_form) の記事ですべてを詳しく説明しています。
 
 {{HTMLelement("input")}} 要素において、もっとも重要な属性は、`type` 属性です。
 この属性は {{HTMLelement("input")}} 要素の見た目や動作を定義するため、とても重要です。
-これについてもっと詳しいことは、[基本的なネイティブフォームコントロール](/ja/docs/Learn/Forms/Basic_native_form_controls)の記事にあります。
+これについてもっと詳しいことは、[基本的なネイティブフォームコントロール](/ja/docs/Learn_web_development/Extensions/Forms/Basic_native_form_controls)の記事にあります。
 
-- このシンプルな例では、最初の input に {{HTMLelement("input/text", "text")}} という値を使用しています。これはこの属性の既定値です。
+- このシンプルな例では、最初の input に {{HTMLelement("input/text", "text")}} という値を使用しています。これはこの属性のデフォルト値です。
   これはあらゆるテキストを受け入れる、単一行のテキストフィールドを表します。
 - 2 番目の input では、 {{HTMLelement("input/email", "email")}} という値を使用しています。これは正しい形式のメールアドレスのみを受け付ける単一行のテキストフィールドを定義します。
   この値は基本的なテキストフィールドを、ユーザーによって入力されたデータをチェックするようにする「賢い」フィールドへと変化させます。
-  また、スマートフォンのように動的なキーボードのある端末で、メールアドレスを入力するのにふさわしいキーボードレイアウト（例えば既定で @ 記号があるもの）が表示されるようにします。
-  フォームの検証について詳しく知りたい場合は、[データフォームの検証](/ja/docs/Learn/Forms/Form_validation)の記事をご覧ください。
+  また、スマートフォンのように動的なキーボードのある端末で、メールアドレスを入力するのにふさわしいキーボードレイアウト（例えばデフォルトで @ 記号があるもの）が表示されるようにします。
+  フォームの検証について詳しく知りたい場合は、[データフォームの検証](/ja/docs/Learn_web_development/Extensions/Forms/Form_validation)の記事をご覧ください。
 
 大事なことを言い忘れましたが、`<input>` と `<textarea></textarea>` の構文に注意してください。
 これは HTML の奇妙な点の 1 つです。
 `<input>` タグは{{glossary("void element", "空要素")}}です。つまり、終了タグは不要です。
-一方 {{HTMLelement("textarea")}} は空要素ではないので、適切な終了タグで閉じる必要があります。これは HTML フォームの特定の機能、つまり既定値の定義方法に影響があります。
-{{HTMLelement("input")}} 要素の既定値を定義するには、次のように [`value`](/ja/docs/Web/HTML/Element/input#値) 属性を使う必要があります。
+一方 {{HTMLelement("textarea")}} は空要素ではないので、適切な終了タグで閉じる必要があります。これは HTML フォームの特定の機能、つまりデフォルト値の定義方法に影響があります。
+{{HTMLelement("input")}} 要素のデフォルト値を定義するには、次のように [`value`](/ja/docs/Web/HTML/Reference/Elements/input#値) 属性を使う必要があります。
 
 ```html
-<input type="text" value="既定でこの要素にはこの文章が挿入されます" />
+<input type="text" value="デフォルトでこの要素にはこのテキストが挿入されます" />
 ```
 
-一方、 {{HTMLelement("textarea")}} の既定値を定義したい場合は、次のように既定値を {{HTMLelement("textarea")}} の開始タグと終了タグの間に書いてください。
+一方、 {{HTMLelement("textarea")}} のデフォルト値を定義したい場合は、次のようにデフォルト値を {{HTMLelement("textarea")}} の開始タグと終了タグの間に書いてください。
 
 ```html
 <textarea>
-既定でこの要素にはこの文章が挿入されます
+デフォルトでこの要素にはこのテキストが挿入されます
 </textarea>
 ```
 
@@ -148,18 +148,19 @@ l10n:
 これは、{{HTMLelement("button")}} 要素を使用して簡単にできます。終了タグ `</ul>` の直前に次の行を追加してください。
 
 ```html
-<li class="button">
+<p class="button">
   <button type="submit">メッセージを送信</button>
-</li>
+</p>
 ```
 
 {{htmlelement("button")}} 要素は `type` 属性を受け入れます。これは `submit`、`reset`、`button` の 3 種類の値のうち 1 つを受け入れます。
 
-- `submit` ボタン（既定値）をクリックすると、フォームのデータを {{HTMLelement("form")}} 要素の `action` 属性で定義したウェブページへ送信します。
-- `reset` ボタンをクリックすると、直ちにすべてのフォームウィジェットを既定値にリセットします。 UX の観点では、このボタンは悪い行為であると考えられており、必要な理由がない限りこのボタンは使用しないようにしてください。
+- `submit` ボタン（デフォルト値）をクリックすると、フォームのデータを {{HTMLelement("form")}} 要素の `action` 属性で定義したウェブページへ送信します。
+- `reset` ボタンをクリックすると、直ちにすべてのフォームウィジェットをデフォルト値にリセットします。 UX の観点では、このボタンは悪い行為であると考えられており、必要な理由がない限りこのボタンは使用しないようにしてください。
 - `button` ボタンをクリックすると*何もしません*! おかしなことのように見えますが、独自のボタンを作成するのに驚くほど役立ちます。 JavaScript でその機能を定義することができます。
 
-> **メモ:** {{HTMLelement("input")}} 要素を使用して、対応する `type` を指定してボタンを作成することもできます。例えば `<input type="submit">` のように。{{HTMLelement("button")}} 要素との大きな違いは、{{HTMLelement("input")}} 要素ではラベルとしてプレーンテキストしか許容しませんが、{{HTMLelement("button")}} 要素ではすべての HTML コンテンツを使用して、もっと複雑でクリエイティブなボタンの内容を作成することができます。
+> [!NOTE]
+> {{HTMLelement("input")}} 要素を使用して、対応する `type` を指定してボタンを作成することもできます。例えば `<input type="submit">` のように。{{HTMLelement("button")}} 要素との大きな違いは、{{HTMLelement("input")}} 要素ではラベルとしてプレーンテキストしか許容しませんが、{{HTMLelement("button")}} 要素ではすべての HTML コンテンツを使用して、もっと複雑でクリエイティブなボタンの内容を作成することができます。
 
 ## 基本的なフォームの整形
 
@@ -174,7 +175,7 @@ l10n:
 
 ```html
 <style>
-  …
+  /* CSS をここに配置 */
 </style>
 ```
 
@@ -190,17 +191,11 @@ form {
   display: inline-block;
   /* フォームの外枠 */
   padding: 1em;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 1em;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-form li + li {
+p + p {
   margin-top: 1em;
 }
 
@@ -214,19 +209,21 @@ label {
 input,
 textarea {
   /* すべてのテキストフィールドのフォント設定を一致させる
-     既定で、 textarea には等幅フォントが設定されている */
+     デフォルトで、 textarea には等幅フォントが設定されている */
   font: 1em sans-serif;
   /* テキストフィールドの大きさを統一 */
   width: 300px;
   box-sizing: border-box;
   /* フォームフィールド境界に合わせる */
-  border: 1px solid #999;
+  border: 1px solid #999999;
 }
 
 input:focus,
 textarea:focus {
-  /* フォーカスのある要素を強調する */
-  border-color: #000;
+  /* 概要の幅とスタイルを設定 */
+  outline-style: solid;
+  /* アクティブな要素に少しハイライトを設定 */
+  outline-color: black;
 }
 
 textarea {
@@ -256,7 +253,7 @@ button {
 ## ウェブサーバーへのデータの送信
 
 最後の、またもっともややこしいであろう部分が、サーバー側でのフォームデータの扱いです。
-{{HTMLelement("form")}} 要素は [`action`](/ja/docs/Web/HTML/Element/form#action) 属性と [`method`](/ja/docs/Web/HTML/Element/form#method) 属性により、どこへどのようにデータを送信するかを定義できます。
+{{HTMLelement("form")}} 要素は [`action`](/ja/docs/Web/HTML/Reference/Elements/form#action) 属性と [`method`](/ja/docs/Web/HTML/Reference/Elements/form#method) 属性により、どこへどのようにデータを送信するかを定義できます。
 
 フォームコントロールには `name` をつけます。これらの名前はクライアント側とサーバー側の両側で重要です。ブラウザー側ではそれぞれのデータにどのような名前をつけるかを示すものであり、サーバー側では名前によってそれぞれのデータを扱うことができます。フォームデータは名前/値のペアとしてサーバーに送信されます。
 
@@ -264,32 +261,30 @@ button {
 
 ```html
 <form action="/my-handling-form-page" method="post">
-  <ul>
-    <li>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="user_name" />
-    </li>
-    <li>
-      <label for="mail">Email:</label>
-      <input type="email" id="mail" name="user_email" />
-    </li>
-    <li>
-      <label for="msg">Message:</label>
-      <textarea id="msg" name="user_message"></textarea>
-    </li>
+  <p>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="user_name" />
+  </p>
+  <p>
+    <label for="mail">Email:</label>
+    <input type="email" id="mail" name="user_email" />
+  </p>
+  <p>
+    <label for="msg">Message:</label>
+    <textarea id="msg" name="user_message"></textarea>
+  </p>
 
-    …
-  </ul>
+  …
 </form>
 ```
 
 この例では、フォームから "`user_name`", "`user_email`", "`user_message`" という 3 つのデータが送信されます。
-このデータは、 [HTTP の `POST`](/ja/docs/Web/HTTP/Methods/POST) メソッドを用いて "`/my-handling-form-page`" という URL に送信されます。
+このデータは、 [HTTP の `POST`](/ja/docs/Web/HTTP/Reference/Methods/POST) メソッドを用いて `/my-handling-form-page` という URL に送信されます。
 
 サーバー側では、 URL "`/my-handling-form-page`" にあるスクリプトが、 HTTP リクエストに含まれる 3 つのキー/値の項目のリストとしてデータを受け取ることになります。
 このスクリプトがどのようにデータを処理するかは、あなた次第です。
 各サーバーサイド言語 (PHP, Python, Ruby, Java, C# など) は、フォームデータを処理する独自のメカニズムを持っています。
-そのことについて深く掘り下げることはこのガイドの範囲外ですが、もっと知りたい場合は、この後の [フォームデータの送信](/ja/docs/Learn/Forms/Sending_and_retrieving_form_data) の記事でいくつかの例を示しています。
+そのことについて深く掘り下げることはこのガイドの範囲外ですが、もっと知りたい場合は、この後の [フォームデータの送信](/ja/docs/Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data) の記事でいくつかの例を示しています。
 
 ## まとめ
 
@@ -320,13 +315,13 @@ button {
 
 ```css hidden
 form {
-  /* Just to center the form on the page */
+  /* フォームをページの中央に配置するだけのため */
   margin: 0 auto;
   width: 400px;
 
-  /* To see the limits of the form */
+  /* フォームの境界が見えるようにする */
   padding: 1em;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 1em;
 }
 
@@ -335,7 +330,7 @@ div + div {
 }
 
 label {
-  /* To make sure that all label have the same size and are properly align */
+  /* すべてのラベルが同じサイズを持ち、正しく配置されるようにするため */
   display: inline-block;
   width: 90px;
   text-align: right;
@@ -343,58 +338,52 @@ label {
 
 input,
 textarea {
-  /* To make sure that all text field have the same font settings
-     By default, textarea are set with a monospace font */
+  /* すべてのテキストフィールドに同じフォント設定が適用する
+     デフォルトでは textarea には等幅フォントが設定されている */
   font: 1em sans-serif;
 
-  /* To give the same size to all text field */
+  /* すべてのテキストフィールドを同じサイズにする */
   width: 300px;
 
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 
-  /* To harmonize the look & feel of text field border */
-  border: 1px solid #999;
+  /* テキストフィールドの境界線の外観と雰囲気を統一する */
+  border: 1px solid #999999;
 }
 
 input:focus,
 textarea:focus {
-  /* To give a little highlight on active elements */
-  border-color: #000;
+  /* アクティブな要素を少し目立たせる */
+  border-color: black;
 }
 
 textarea {
-  /* To properly align multiline text field with their label */
+  /* 複数行のテキストフィールドとそのラベルを正しく配置する */
   vertical-align: top;
 
-  /* To give enough room to type some text */
+  /* テキストを入力するための十分な余地を確保する */
   height: 5em;
 
-  /* To allow users to resize any textarea vertically
-     It works only on Chrome, Firefox and Safari */
+  /* ユーザーがテキストエリアの垂直サイズを変更できるようにする
+     Chrome、Firefox、Safari でのみ動作する */
   resize: vertical;
 }
 
 .button {
-  /* To position the buttons to the same position of the text fields */
+  /* ボタンをテキストフィールドと同じ位置に位置指定する */
   padding-left: 90px; /* same size as the label elements */
 }
 
 button {
-  /* This extra margin represent the same space as the space between
-     the labels and their text fields */
+  /* この追加のマージンは、ラベルとそれぞれのテキストフィールド間の
+     空間を表します。 */
   margin-left: 0.5em;
 }
 ```
 
 {{ EmbedLiveSample('Summary', '', '300') }}
 
-これはほんの開始点です、しかし — さて、より深く見ていくときが来ました。ウェブフォームはここで見てきたものよりさらに強力であり、ガイドの他の記事で残りの部分を習得できます。
+これはほんの開始点です、しかし — より深く見ていくときが来ました。ウェブフォームはここで見てきたものよりさらに強力であり、このガイドの他の記事で残りの部分を習得できます。
 
-{{NextMenu("Learn/Forms/How_to_structure_a_web_form", "Learn/Forms")}}
-
-### 高度なトピック
-
-- [カスタムフォームコントロールの作成方法](/ja/docs/Learn/Forms/How_to_build_custom_form_controls)
-- [JavaScript によるフォームの送信](/ja/docs/Learn/Forms/Sending_forms_through_JavaScript)
-- [フォームウィジェット向けのプロパティの互換性一覧表](/ja/docs/Learn/Forms/Property_compatibility_table_for_form_controls)
+{{NextMenu("Learn_web_development/Extensions/Forms/How_to_structure_a_web_form", "Learn_web_development/Extensions/Forms")}}

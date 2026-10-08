@@ -1,29 +1,34 @@
 ---
 title: コードでの意思決定 — 条件文
+short-title: 条件文
 slug: Learn_web_development/Core/Scripting/Conditionals
-original_slug: Learn/JavaScript/Building_blocks/conditionals
 l10n:
-  sourceCommit: 4bddde3e2b86234eb4594809082873fc5bf00ee3
+  sourceCommit: 9d3d642daf9df9ece138fa39972edc5f7d6dcd6b
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn/JavaScript/Building_blocks/Looping_code", "Learn/JavaScript/Building_blocks")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Silly_story_generator", "Learn_web_development/Core/Scripting/Test_your_skills/Conditionals", "Learn_web_development/Core/Scripting")}}
 
 どのプログラミング言語でも、コードは様々な入力に応じた決定を迫られ、その結果として動作を起こします。例えば、ゲームではプレイヤーの残機が 0 になった場合、ゲームオーバーとなります。天気アプリは朝に起動された場合は日の出の画像を表示し、夜に起動された場合は星や月の画像を表示します。この記事では、JavaScript において、条件文と呼ばれるものがどのように動作するかを説明します。
 
 <table>
   <tbody>
     <tr>
-      <th scope="row">前提条件:</th>
-      <td>
-        HTML、CSS、
-        <a href="/ja/docs/Learn/JavaScript/First_steps"
-          >JavaScript の第一歩</a
-        >への基本的な理解。
+      <th scope="row">前提知識:</th>
+      <td><a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a>および<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS の基礎</a>を理解していること。
       </td>
     </tr>
     <tr>
-      <th scope="row">目標:</th>
-      <td>JavaScript における条件分岐構造をどのように使用するかを理解する。</td>
+      <th scope="row">学習成果:</th>
+      <td>
+        <ul>
+          <li>条件分岐とは何かを理解すること。条件に応じて異なるコードパスを実行するためのコード構造。</li>
+          <li><code>if</code>/<code>else</code>/<code>else if</code> を使用した条件の実装。</li>
+          <li>比較演算子を使用して条件を作成すること。</li>
+          <li>条件に AND、OR、NOT 論理を実装すること。</li>
+          <li>switch 文。</li>
+          <li>三項演算子。</li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -38,7 +43,7 @@ JavaScript では、条件文を使ってそのような決定を下すことが
 
 ## if...else 文
 
-それでは、JavaScript で最もよく使われる条件文から始めましょう。それは [`if ... else` 文](/ja/docs/Web/JavaScript/Reference/Statements/if...else)です。
+それでは、JavaScript で最もよく使われる条件文から始めましょう。それは [`if...else` 文](/ja/docs/Web/JavaScript/Reference/Statements/if...else)です。
 
 ### if...else の基本的な構文
 
@@ -55,12 +60,12 @@ if (条件式) {
 ここでは...
 
 1. `if` キーワードの後ろに括弧が並んでいます。
-2. 判断に用いる条件式はその括弧の中にあります（たいていの場合は「この値はもう一方より大きい」や、「この値は存在する」などです）。この条件には、前回のモジュールで習った[比較演算子](/ja/docs/Learn/JavaScript/First_steps/Math#比較演算子)を使用し、 `true` または `false` を返します。
+2. 判断に用いる条件式はその括弧の中にあります（たいていの場合は「この値はもう一方より大きい」や、「この値は存在する」などです）。この条件には、前回のモジュールで習った[比較演算子](/ja/docs/Learn_web_development/Core/Scripting/Math#比較演算子)を使用し、 `true` または `false` を返します。
 3. 中にコードが書いてある（実際のコードはどんなものでも構いません）中括弧のペアは、条件式が `true` の場合に実行されます。
 4. 続いて `else` キーワードがあります。
 5. さらに他のコードが書いてある（こちらもどんなコードでも構いません）中括弧のペアは条件式が `true` ではない場合に実行されます。
 
-このコードは（英語を使う人には）とても読みやすいものになっています。このコードは「もし ( **if** ) 条件式 ( **condition** ) が `true` を返したら A のコードを実行し、それ以外ならば ( **else** ) B のコードを実行する」と読めます。
+このコードは（英語を使う人には）とても読みやすいものになっています。このコードは「もし ( **if** ) **条件式** が `true` を返したら A のコードを実行し、それ以外ならば ( **else** ) B のコードを実行する」と読めます。
 
 `else` とそれに続く中括弧は必ずしも書く必要がないことを覚えておきましょう。次のコードも全く問題のないコードです。
 
@@ -77,36 +82,37 @@ if (条件式) {
 最後の確認点として、`if...else` 文が中括弧なしで書かれているのを見ることがあります。以下のような省略した書き方です。
 
 ```js example-bad
-if (条件式) /* 条件式が true の場合に実行されるコード */
-else /* それ以外の場合に実行されるコード */
+if (条件式) doSomething();
+else doSomethingElse();
 ```
 
 この構文は完全に有効ですが、中括弧を使用してコードのブロックを区切り、複数行とインデントを使用した方がコードを理解しやすくなります。
 
 ### 実際の例
 
-この構文をよりよく理解するために、実際の例を考えてみましょう。子どもが母親か父親に雑用を頼まれたとします。親は「買い物に行って手伝ってくれたら、お小遣いをあげるから、欲しかったおもちゃを買いなさい」と言うかもしれません。JavaScriptではこのように表します。
+この構文をよりよく理解するために、実際の例を考えてみましょう。子どもが母親か父親に雑用を頼まれたとします。親は「買い物に行って手伝ってくれたら、お小遣いをあげるから、欲しかったおもちゃを買いなさい」と言うかもしれません。JavaScript ではこのように表します。
 
 ```js
 let shoppingDone = false;
-let childsAllowance;
+let childAllowance;
 
 if (shoppingDone === true) {
-  childsAllowance = 10;
+  childAllowance = 10;
 } else {
-  childsAllowance = 5;
+  childAllowance = 5;
 }
 ```
 
 このコードは常に `shoppingDone` 変数が `false` なので、かわいそうな子供は追加のお小遣いを受け取れません。両親が子供がお使いを完了した場合に `shoppingDone` 変数を `true` にセットしてあげるかどうかはプログラム次第です（つまり私たち次第です。）
 
-> **メモ:** [GitHub で上記のコードの完全なバージョン](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/allowance-updater.html)が公開されています。（[ライブ実行](https://mdn.github.io/learning-area/javascript/building-blocks/allowance-updater.html)でも確認できます。）
+> [!NOTE]
+> [GitHub で上記のコードの完全なバージョン](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/allowance-updater.html)が公開されています。（[ライブ実行](https://mdn.github.io/learning-area/javascript/building-blocks/allowance-updater.html)でも確認できます。）
 
 ### else if
 
 先ほどの例では実行結果は 2 つだけでしたが、もっと選択肢がある場合はどうでしょうか？
 
-`else if` を使って、追加の選択肢を `if...else` に繋ぐ方法があります。追加の選択肢は `if() { }` と `else { }` の間に、コードブロックを続けて追加する必要があります。具体的な例として、天気予報のアプリケーションの一部を見てみましょう。
+`else if` を使って、追加の選択肢を `if...else` に繋ぐ方法があります。追加の選択肢は `if () { }` と `else { }` の間に、コードブロックを続けて追加する必要があります。具体的な例として、天気予報のアプリケーションの一部を見てみましょう。
 
 ```html
 <label for="weather">今日の天気を選択してください: </label>
@@ -152,14 +158,15 @@ function setWeather() {
 
 1. HTML に、天気を選ぶことが可能な {{htmlelement("select")}} 要素があり、1 つの段落がありますね。
 2. JavaScript では、{{htmlelement("select")}} と {{htmlelement("p")}} の各要素について、参照を取得して保持し、`<select>` 要素にはイベントリスナーを設定しています。もし、要素の値が変わったら `setWeather()` 関数が動きます。
-3. この関数が実行されると、まずは `choice` という変数に、`<select>` 要素の現在選択されている値を入れます。そして、条件文を使い、`choice` の値に応じた文字列が段落に設定されます。最初の `if() { }` のブロックを除いて、どのように `else if() { }` のブロックで判定しているか注目してください。
+3. この関数が実行されると、まずは `choice` という変数に、`<select>` 要素の現在選択されている値を入れます。そして、条件文を使い、 `choice` の値に応じた文字列が段落に設定されます。最初の `if () { }` のブロックを除いて、どのように `else if () { }` のブロックで判定しているか注目してください。
 4. 一番下の `else { }` 選択肢は、「最後の手段」となるオプションで、この中のコードは、どの条件にも一致しなかった場合（`true` とならなかった場合）に実行されます。今回の場合選択されていない場合に、段落を空にしています。何も選択されていない場合というのは、ユーザーが再度最初に表示されていた「--選択してください--」というオプションを選んだ場合です。
 
-> **メモ:** [GitHub で上記のコードの完全なバージョン](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-else-if.html)が公開されています。（[ライブ実行](https://mdn.github.io/learning-area/javascript/building-blocks/simple-else-if.html)でも確認できます。）
+> [!NOTE]
+> [GitHub で上記のコードの完全なバージョン](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-else-if.html)が公開されています。（[ライブ実行](https://mdn.github.io/learning-area/javascript/building-blocks/simple-else-if.html)でも確認できます。）
 
 ### 比較演算子に関するメモ
 
-比較演算子は条件文の中で使われます。[JavaScript での基本演算 — 数値と演算子](/ja/docs/Learn/JavaScript/First_steps/Math#比較演算子)で初めて出てきましたね。演算子には以下のようなものがありました。
+比較演算子は条件文の中で使われます。[JavaScript での基本演算 — 数値と演算子](/ja/docs/Learn_web_development/Core/Scripting/Math#比較演算子)で初めて出てきましたね。演算子には以下のようなものがありました。
 
 - `===` と `!==` は、ある値がもう一方の値と等しいか、もしくは等しくないかを判定します。
 - `<` と `>` は、ある値がもう一方の値より大きいか、より小さいかを判定します。
@@ -181,13 +188,13 @@ if (cheese) {
 
 ```js
 let shoppingDone = false;
-let childsAllowance;
+let childAllowance;
 
 // 'shoppingDone === true' と明示的に指定する必要はありません
 if (shoppingDone) {
-  childsAllowance = 10;
+  childAllowance = 10;
 } else {
-  childsAllowance = 5;
+  childAllowance = 5;
 }
 ```
 
@@ -248,7 +255,7 @@ if (!(iceCreamVanOutside || houseStatus === "火事")) {
 
 このコード例では、OR 文が `true` となれば、 NOT 演算子がそれを否定します。そのため、式全体は `false` となります。
 
-論理文は思うがままに、いくつでも繋げることが可能です。次の例では両方の OR 文が真を返した場合に AND 文が真となり、`if` の中のコードが実行されます。
+論理文は、どんな構造でも好きなだけ結合することができます。例えば、次の例では、両方の OR 文が真を返した場合にのみ、内部のコードが実行されます。つまり、 AND 文全体が真を返すということです。
 
 ```js
 if ((x === 5 || y > 3 || z <= 10) && (loggedIn || userName === "スティーブ")) {
@@ -360,7 +367,8 @@ function setWeather() {
 
 {{ EmbedLiveSample('A_switch_example', '100%', 100, "", "") }}
 
-> **メモ:** [このサンプルを GitHub で見る](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-switch.html)ことができます。（[実行可能なデモ](https://mdn.github.io/learning-area/javascript/building-blocks/simple-switch.html)もあります。）
+> [!NOTE]
+> [このサンプルを GitHub で見る](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-switch.html)ことができます。（[実行可能なデモ](https://mdn.github.io/learning-area/javascript/building-blocks/simple-switch.html)もあります。）
 
 ## 三項演算子
 
@@ -420,68 +428,51 @@ select.addEventListener("change", () =>
 > [!NOTE]
 > この例は [GitHub でも公開しています](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/simple-ternary.html)。（[ライブ実行](https://mdn.github.io/learning-area/javascript/building-blocks/simple-ternary.html)でも確認できます。）
 
-## アクティブラーニング: 単純なカレンダー
+## 基本的なカレンダーの実装
 
-この例では、単純なカレンダーアプリケーションの作成を手伝ってもらいます。現在、以下の内容がコードに書かれています。
+この例では、基本的なカレンダーアプリケーションの作成を手伝ってもらいます。現在、以下の内容がコードに書かれています。
 
 - ユーザーが月を選択できるように {{htmlelement("select")}} 要素があります。
-- `<select>` メニューの選択内容が変更された場合に、イベントを捕捉できるように `onchange` イベントハンドラーが設定されています。
-- カレンダーを描画し、 {{htmlelement("Heading_Elements", "h1")}} 要素に適切な月を設定する `createCalendar()` と呼ばれる関数があります。
+- `change` イベントハンドラー。これで `<select>` メニューの選択内容が変更された場合に、イベントを捕捉できるようにします。
+- `createCalendar()` という関数。カレンダーを描画し、 {{htmlelement("Heading_Elements", "h1")}} 要素に適切な月を設定します。
 
-あなたには、`onchange` ハンドラーの内部に条件式を書いてもらいます。`// 条件式をここに書く` というコメントのすぐ下に...
+完成するには次のようにします。
 
-1. 選択されている月を取得します。（これは `choice` 変数に格納されています。この値は `<select>` 要素で選択された後の値で、例えば 1 月なら、"1" といった値です。）
-2. `days` という変数に、選択された月の日数を設定します。そのためには、1 年の各月の日数を調べる必要があるでしょう。うるう年はこの例題の目的から外れるため、無視してください。
+1. 以下のコードブロックにある **"Play"** ボタンをクリックし、MDN Playground でこの例を編集します。
+2. `createCalendar()` 関数内の `// ここに条件文を追加` というコメントの下記に、条件分岐文を記述してください。その内容は以下の通りです。
+   1. 選択されている月を取得します。（これは `choice` 変数に格納されています。この値は `<select>` 要素で選択された後の値で、例えば 1 月なら、"1" といった値です。）
+   2. `days` という変数に、選択された月の日数を設定します。そのためには、1 年の各月の日数を調べる必要があるでしょう。うるう年はこの例題の目的から外れるため、無視してください。
 
 ヒント:
 
 - ほとんどの月は日数が同じなので、複数の月を OR 演算子を用いて一つの条件式にまとめるのが良いでしょう。
 - どの月が最も多い日数なのか考えてください。そして、その日数を既定値として使用しましょう。
 
-もし間違ってしまっても、「リセット」ボタンを押すことでいつでも元に戻せます。詰まってしまったら、「答えを見る」ボタンで答えが見られます。
+間違えてしまった場合は、MDN Playground の _Reset_ ボタンを使って作業内容を消去できます。どうしても解決できない場合は、ライブ出力の下にある解答を確認してください。
 
-```html-nolint hidden
-<h2>ライブ出力</h2>
-<iframe id="output" width="100%" height="600px"></iframe>
+```html hidden live-sample___conditionals-1
+<label for="month">月を選択: </label>
+<select id="month">
+  <option value="January">1 月</option>
+  <option value="February">2 月</option>
+  <option value="March">3 月</option>
+  <option value="April">4 月</option>
+  <option value="May">5 月</option>
+  <option value="June">6 月</option>
+  <option value="July">7 月</option>
+  <option value="August">8 月</option>
+  <option value="September">9 月</option>
+  <option value="October">10 月</option>
+  <option value="November">11 月</option>
+  <option value="December">12 月</option>
+</select>
 
-<h2>コードエディター</h2>
-<p class="a11y-label">
-  コードエディターから抜けるには Esc キーを押して下さい（Tab はタブ文字を挿入します）。
-</p>
+<h1></h1>
 
-<textarea id="code" class="playable-code" style="height: 400px;width: 95%">
-const select = document.querySelector('select');
-const list = document.querySelector('ul');
-const h1 = document.querySelector('h1');
-
-select.addEventListener('change', () => {
-  const choice = select.value;
-
-  // 条件式をここに書く
-
-  createCalendar(days, choice);
-});
-
-function createCalendar(days, choice) {
-  list.innerHTML = '';
-  h1.textContent = choice;
-  for (let i = 1; i <= days; i++) {
-    const listItem = document.createElement('li');
-    listItem.textContent = i;
-    list.appendChild(listItem);
-  }
-}
-
-createCalendar(31, '1 月');
-</textarea>
-
-<div class="playable-buttons">
-  <input id="reset" type="button" value="リセット" />
-  <input id="solution" type="button" value="答えを見る" />
-</div>
+<ul></ul>
 ```
 
-```css hidden
+```css hidden live-sample___conditionals-1
 html {
   font-family: sans-serif;
 }
@@ -501,84 +492,16 @@ body {
   margin: 10px;
   background: #f5f9fa;
 }
-```
 
-```js hidden
-const reset = document.getElementById("reset");
-const solution = document.getElementById("solution");
-const outputIFrame = document.querySelector("#output");
-const textarea = document.getElementById("code");
-const initialCode = textarea.value;
-let userCode = textarea.value;
-
-const solutionCode = `const select = document.querySelector("select");
-const list = document.querySelector("ul");
-const h1 = document.querySelector("h1");
-
-select.addEventListener("change", () => {
-  const choice = select.value;
-
-  let days = 31;
-  if (choice === "2 月") {
-    days = 28;
-  } else if (
-    choice === "4 月" ||
-    choice === "6 月" ||
-    choice === "9 月" ||
-    choice === "11 月"
-  ) {
-    days = 30;
-  }
-
-  createCalendar(days, choice);
-});
-
-function createCalendar(days, choice) {
-  list.innerHTML = "";
-  h1.textContent = choice;
-  for (let i = 1; i <= days; i++) {
-    const listItem = document.createElement("li");
-    listItem.textContent = i;
-    list.appendChild(listItem);
-  }
-}
-
-createCalendar(31, "1 月");`;
-
-function outputDocument(code) {
-  const outputBody = `
-<div class="output" style="height: 500px; overflow: auto">
-  <label for="month">月を選択: </label>
-  <select id="month">
-    <option value="1 月">1 月</option>
-    <option value="2 月">2 月</option>
-    <option value="3 月">3 月</option>
-    <option value="4 月">4 月</option>
-    <option value="5 月">5 月</option>
-    <option value="6 月">6 月</option>
-    <option value="7 月">7 月</option>
-    <option value="8 月">8 月</option>
-    <option value="9 月">9 月</option>
-    <option value="10 月">10 月</option>
-    <option value="11 月">11 月</option>
-    <option value="12 月">12 月</option>
-  </select>
-
-  <h1></h1>
-
-  <ul></ul>
-</div>`;
-
-  const outputStyle = `
-.output * {
+* {
   box-sizing: border-box;
 }
 
-.output ul {
+ul {
   padding-left: 0;
 }
 
-.output li {
+li {
   display: block;
   float: left;
   width: 25%;
@@ -588,143 +511,113 @@ function outputDocument(code) {
   background-color: #4a2db6;
   color: white;
 }
-html {
-  font-family: sans-serif;
-}
-
-h2 {
-  font-size: 16px;
-}`;
-  return `
-<!doctype html>
-<html>
-  <head>
-    <style>${outputStyle}</style>
-  </head>
-  <body>
-    ${outputBody}
-    <script>${code}</script>
-  </body>
-</html>`;
-}
-
-function update() {
-  output.setAttribute("srcdoc", outputDocument(textarea.value));
-}
-
-update();
-
-textarea.addEventListener("input", update);
-
-reset.addEventListener("click", () => {
-  textarea.value = initialCode;
-  userEntry = textarea.value;
-  solution.value = "答えを見る";
-  update();
-});
-
-solution.addEventListener("click", () => {
-  if (solution.value === "答えを見る") {
-    // 戻せるように、ユーザーのコードを
-    // 記憶しておく
-    userCode = textarea.value;
-    textarea.value = solutionCode;
-    solution.value = "答えを隠す";
-  } else {
-    textarea.value = userCode;
-    solution.value = "答えを見る";
-  }
-  update();
-});
-
-// タブキーでテキストエリアから抜けてしまうのを防ぎ、
-// 代わりにカーソル位置にタブ文字を挿入する
-textarea.onkeydown = (e) => {
-  if (e.keyCode === 9) {
-    e.preventDefault();
-    insertAtCaret("\t");
-  }
-
-  if (e.keyCode === 27) {
-    textarea.blur();
-  }
-};
-
-function insertAtCaret(text) {
-  const scrollPos = textarea.scrollTop;
-  let caretPos = textarea.selectionStart;
-  const front = textarea.value.substring(0, caretPos);
-  const back = textarea.value.substring(
-    textarea.selectionEnd,
-    textarea.value.length,
-  );
-
-  textarea.value = front + text + back;
-  caretPos += text.length;
-  textarea.selectionStart = caretPos;
-  textarea.selectionEnd = caretPos;
-  textarea.focus();
-  textarea.scrollTop = scrollPos;
-}
 ```
 
-{{ EmbedLiveSample('Active_learning_A_simple_calendar', '100%', 1210) }}
+```js live-sample___conditionals-1
+const select = document.querySelector("select");
+const list = document.querySelector("ul");
+const h1 = document.querySelector("h1");
 
-## アクティブラーニング: もっとたくさんの色から選ぶ
-
-この例では、先ほどの三項演算子の例を switch 文に変換し、単純なウェブサイトに、より多くの選択肢を与えます。{{htmlelement("select")}} 要素を見てください。今回は先ほどの 2 つではなく、5 つの選択肢があります。`// ここに SWITCH 文を書く` というコメントの真下に switch 文を追加してください。
-
-- `choice` 変数を判定する式として使用します。
-- 各ケース (case) で、`choice` 変数は選択可能な値（'white'、'black'、'purple'、'yellow'、'psychedelic'）のうちのどれかです。
-- 各ケース (case) で、`update()` 関数が実行されるようにしてください。関数には 2 つの引数を指定します。1 つ目の引数は背景色、2 つ目の色は前景色です。色は文字列なので、忘れずに引用符で囲みましょう。
-
-もし間違ってしまっても、「リセット」ボタンを押すことでいつでも元に戻せます。詰まってしまったら、「答えを見る」ボタンで答えが見られます。
-
-```html-nolint hidden
-<h2>ライブ出力</h2>
-<div class="output" style="height: 300px;">
-  <label for="theme">テーマを選んでください: </label>
-  <select id="theme">
-    <option value="white">白</option>
-    <option value="black">黒</option>
-    <option value="purple">紫</option>
-    <option value="yellow">黄</option>
-    <option value="psychedelic">サイケ</option>
-  </select>
-
-  <h1>私のウェブサイト</h1>
-</div>
-
-<h2>コードエディター</h2>
-<p class="a11y-label">
-  コードエディターから抜けるには Esc キーを押して下さい（Tab はタブ文字を挿入します）。
-</p>
-
-<textarea id="code" class="playable-code" style="height: 450px;width: 95%">
-const select = document.querySelector('select');
-const html = document.querySelector('.output');
-
-select.addEventListener('change', () => {
+select.addEventListener("change", () => {
   const choice = select.value;
-
-  // ここに SWITCH 文を書く
+  createCalendar(choice);
 });
 
-function update(bgColor, textColor) {
-  html.style.backgroundColor = bgColor;
-  html.style.color = textColor;
-}
-</textarea>
+function createCalendar(month) {
+  let days = 31;
 
-<div class="playable-buttons">
-  <input id="reset" type="button" value="リセット" />
-  <input id="solution" type="button" value="答えを見る" />
-</div>
+  // ここに条件文を追加
+
+  list.textContent = "";
+  h1.textContent = month;
+  for (let i = 1; i <= days; i++) {
+    const listItem = document.createElement("li");
+    listItem.textContent = i;
+    list.appendChild(listItem);
+  }
+}
+
+select.value = "January";
+createCalendar("January");
 ```
 
-```css hidden
+{{ EmbedLiveSample("conditionals-1", "100%", 550) }}
+
+<details>
+<summary>ここをクリックすると、模範解答を表示します。</summary>
+
+最終的な JavaScript は次のようになります。
+
+```js
+const select = document.querySelector("select");
+const list = document.querySelector("ul");
+const h1 = document.querySelector("h1");
+
+select.addEventListener("change", () => {
+  const choice = select.value;
+  createCalendar(choice);
+});
+
+function createCalendar(month) {
+  let days = 31;
+
+  if (month === "February") {
+    days = 28;
+  } else if (
+    month === "April" ||
+    month === "June" ||
+    month === "September" ||
+    month === "November"
+  ) {
+    days = 30;
+  }
+
+  list.textContent = "";
+  h1.textContent = month;
+  for (let i = 1; i <= days; i++) {
+    const listItem = document.createElement("li");
+    listItem.textContent = i;
+    list.appendChild(listItem);
+  }
+}
+
+select.value = "January";
+createCalendar("January");
+```
+
+</details>
+
+## 色を選択を追加
+
+この例では、先ほど見た三項演算子の例を元に、三項演算子を switch 文に変換し、単純なウェブサイトにさらに多くの選択肢を適用できるようにします。 {{htmlelement("select")}} 要素を見てください。今回は先ほどの 2 つではなく、5 つの選択肢があります。
+
+この例を完成させるには、次のようにします。
+
+1. 以下のコードブロックにある **"Play"** ボタンをクリックし、MDN Playground でこの例を編集します。
+2. `// ここに SWITCH 文を追加` というコメントの真下に switch 文を追加してください。
+   1. `choice` 変数を判定する式として使用します。
+   2. 各ケース (case) で、`choice` 変数は選択可能な値（`white`、`black`、`purple`、`yellow`、`psychedelic`）のうちのどれかです。オプション値は英小文字ですが、ライブ出力に表示されるオプションラベルは日本語であることに注意してください。コードでは英小文字の値を使用しましょう。
+   3. 各ケース (case) で、`update()` 関数が実行されるようにしてください。関数には 2 つの引数を指定します。1 つ目の引数は背景色、2 つ目の色は前景色です。色は文字列なので、忘れずに引用符で囲みましょう。
+
+間違えてしまった場合は、MDN Playground の _Reset_ ボタンを使って作業内容を消去できます。どうしても解決できない場合は、ライブ出力の下にある解答を確認してください。
+
+```html hidden live-sample___conditionals-2
+<label for="theme">テーマを選択: </label>
+<select id="theme">
+  <option value="white">白</option>
+  <option value="black">黒</option>
+  <option value="purple">紫</option>
+  <option value="yellow">黄色</option>
+  <option value="psychedelic">サイケデリック</option>
+</select>
+
+<h1>これは私のウェブサイトです</h1>
+```
+
+```css hidden live-sample___conditionals-2
 html {
   font-family: sans-serif;
+  height: 95%;
 }
 
 h2 {
@@ -740,61 +633,55 @@ h2 {
 
 body {
   margin: 10px;
-  background: #f5f9fa;
+  height: inherit;
 }
 ```
 
-```js hidden
-const textarea = document.getElementById("code");
-const reset = document.getElementById("reset");
-const solution = document.getElementById("solution");
-let code = textarea.value;
-let userEntry = textarea.value;
+```js live-sample___conditionals-2
+const select = document.querySelector("select");
+const html = document.querySelector("html");
 
-function updateCode() {
-  eval(textarea.value);
-}
-
-reset.addEventListener("click", function () {
-  textarea.value = code;
-  userEntry = textarea.value;
-  solutionEntry = jsSolution;
-  solution.value = "答えを見る";
-  updateCode();
-});
-
-solution.addEventListener("click", function () {
-  if (solution.value === "答えを見る") {
-    textarea.value = solutionEntry;
-    solution.value = "答えを隠す";
-  } else {
-    textarea.value = userEntry;
-    solution.value = "答えを見る";
-  }
-  updateCode();
-});
-
-const jsSolution = `const select = document.querySelector('select');
-const html = document.querySelector('.output');
-
-select.addEventListener('change', () => {
+select.addEventListener("change", () => {
   const choice = select.value;
 
-  switch(choice) {
-    case 'black':
-      update('black','white');
+  // ここに SWITCH 文を追加
+});
+
+function update(bgColor, textColor) {
+  html.style.backgroundColor = bgColor;
+  html.style.color = textColor;
+}
+```
+
+{{ EmbedLiveSample("conditionals-2", "100%", 200) }}
+
+<details>
+<summary>ここをクリックすると、模範解答を表示します。</summary>
+
+最終的な JavaScript は次のようになります。
+
+```js
+const select = document.querySelector("select");
+const html = document.querySelector("html");
+
+select.addEventListener("change", () => {
+  const choice = select.value;
+
+  switch (choice) {
+    case "black":
+      update("black", "white");
       break;
-    case 'white':
-      update('white','black');
+    case "white":
+      update("white", "black");
       break;
-    case 'purple':
-      update('purple','white');
+    case "purple":
+      update("purple", "white");
       break;
-    case 'yellow':
-      update('yellow','purple');
+    case "yellow":
+      update("yellow", "purple");
       break;
-    case 'psychedelic':
-      update('lime','purple');
+    case "psychedelic":
+      update("lime", "purple");
       break;
   }
 });
@@ -802,74 +689,20 @@ select.addEventListener('change', () => {
 function update(bgColor, textColor) {
   html.style.backgroundColor = bgColor;
   html.style.color = textColor;
-}`;
-
-let solutionEntry = jsSolution;
-
-textarea.addEventListener("input", updateCode);
-window.addEventListener("load", updateCode);
-
-// タブキーでテキストエリアから抜けてしまうのを防ぎ、
-// 代わりにカーソル位置にタブ文字を挿入する
-
-textarea.onkeydown = function (e) {
-  if (e.keyCode === 9) {
-    e.preventDefault();
-    insertAtCaret("\t");
-  }
-
-  if (e.keyCode === 27) {
-    textarea.blur();
-  }
-};
-
-function insertAtCaret(text) {
-  const scrollPos = textarea.scrollTop;
-  let caretPos = textarea.selectionStart;
-  const front = textarea.value.substring(0, caretPos);
-  const back = textarea.value.substring(
-    textarea.selectionEnd,
-    textarea.value.length,
-  );
-
-  textarea.value = front + text + back;
-  caretPos += text.length;
-  textarea.selectionStart = caretPos;
-  textarea.selectionEnd = caretPos;
-  textarea.focus();
-  textarea.scrollTop = scrollPos;
 }
-
-// ユーザーがテキストエリアのコードを書き換える度に userCode を毎回更新する
-
-textarea.onkeyup = function () {
-  // ユーザーのコードが表示されているときのみ状態を保存し、
-  // 答えのコードでユーザーコードが上書きされないようにする
-  if (solution.value === "答えを見る") {
-    userEntry = textarea.value;
-  } else {
-    solutionEntry = textarea.value;
-  }
-
-  updateCode();
-};
 ```
 
-{{ EmbedLiveSample('Active_learning_More_color_choices', '100%', 950) }}
-
-## スキルテスト
-
-この記事の最後まで来ましたが、最も大事な情報を覚えていますか？先に進む前に、この情報を保持しているか検証するテストがあります — [スキルテスト: 条件文](/ja/docs/Learn/JavaScript/Building_blocks/Test_your_skills:_Conditionals) を見てください。
+</details>
 
 ## まとめ
 
-これで JavaScript での条件構造について今知っておくべきことはすべてです。簡単な例を通してそのコンセプトが理解できたと思います。もし理解できないことがあれば、何度も記事を読み返しましょう。[私たちに連絡を](/ja/docs/Learn#contact_us)しても構いません。
+JavaScript で条件分岐について、現時点で知っておくべきことはこれだけです！次の記事では、この情報をどれだけ理解し、定着させられたかを調べるためのテストをいくつか用意します。
 
 ## 関連情報
 
-- [比較演算子](/ja/docs/Learn/JavaScript/First_steps/Math#比較演算子)
-- [条件式についての詳細](/ja/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#conditional_statements)
+- [比較演算子](/ja/docs/Learn_web_development/Core/Scripting/Math#比較演算子)
+- [条件文についての詳細](/ja/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#条件文)
 - [if...else リファレンス](/ja/docs/Web/JavaScript/Reference/Statements/if...else)
 - [条件（三項）演算子リファレンス](/ja/docs/Web/JavaScript/Reference/Operators/Conditional_operator)
 
-{{NextMenu("Learn/JavaScript/Building_blocks/Looping_code", "Learn/JavaScript/Building_blocks")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Silly_story_generator", "Learn_web_development/Core/Scripting/Test_your_skills/Conditionals", "Learn_web_development/Core/Scripting")}}

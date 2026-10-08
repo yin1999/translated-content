@@ -1,14 +1,13 @@
 ---
 title: 响应式设计
 slug: Learn_web_development/Core/CSS_layout/Responsive_Design
-original_slug: Learn/CSS/CSS_layout/Responsive_Design
 ---
 
-{{learnsidebar}}{{PreviousMenuNext("Learn_web_development/Core/CSS_layout/Grids", "Learn_web_development/Core/CSS_layout/Media_queries", "Learn_web_development/Core/CSS_layout")}}
+{{PreviousMenuNext("Learn_web_development/Core/CSS_layout/Grids", "Learn_web_development/Core/CSS_layout/Media_queries", "Learn_web_development/Core/CSS_layout")}}
 
 早年设计 Web 时，页面是以适配特定的屏幕大小为考量创建的。如果用户正在使用比设计者考虑到的更小或者更大的屏幕，那么结果从多余的滚动条，到过长的行和没有被合理利用的空间，不一而足。随着人们使用的屏幕尺寸的种类越来越多，出现了响应式网页设计的概念（_responsive web design，RWD_），RWD 指的是允许 Web 页面适应不同屏幕宽度因素等，进行布局和外观的调整的一系列实践。这是改变我们设计多设备网页的方式的思想，在这篇文章里，我们将会帮你理解掌握它时所需知道的主要技能。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">学习前提：</th>
@@ -70,7 +69,7 @@ Zoe Mickley Gillenwater 深刻影响了[她的著作](http://zomigi.com/blog/voi
 
 1. 第一个是液态网格，这早先已由 Gillenwater 进行探讨，可以在 Marcotte 的文章《[Fluid Grids](https://alistapart.com/article/fluidgrids/)》（出版于 2009 年的《A List Apart》上）中读到。
 2. 第二个是[液态图像](https://unstoppablerobotninja.com/entry/fluid-images)的理念。通过使用相当简单的将设置`max-width`属性设置为`100%`的技术，图像可以在包含它们的列变得比图像原始尺寸窄的时候，缩放得更小，但总不会变得更大。这使得图像可以被缩放，以被放到一个灵活尺寸的列，而不是溢出出去，同时也不会在列宽于图像的时候，使图像变得太大以至于画质变得粗糙。
-3. 第三个关键的组件是[媒体查询](/zh-CN/docs/Web/CSS/CSS_media_queries)。媒体查询使以往 Cameron Adams 探讨过的、由 JavaScript 实现的布局类型切换，可以只使用 CSS 实现。和所有尺寸的屏幕都使用一种布局不同的是，布局是可以改变的：侧栏可以在小屏幕上重新布局，而替代用的导航栏也可以显示出来。
+3. 第三个关键的组件是[媒体查询](/zh-CN/docs/Web/CSS/Guides/Media_queries)。媒体查询使以往 Cameron Adams 探讨过的、由 JavaScript 实现的布局类型切换，可以只使用 CSS 实现。和所有尺寸的屏幕都使用一种布局不同的是，布局是可以改变的：侧栏可以在小屏幕上重新布局，而替代用的导航栏也可以显示出来。
 
 需要你理解的很重要的一点是**响应式 Web 设计不是单独的技术**，它是描述 Web 设计的一种方式、或者是一组最佳实践的一个词，它是用来建立可以**响应**查看内容的设备的样式的一个词。在 Marcotte's 原来的探索中，这意味着灵活网格（使用 float）和媒体查询，但是在这篇文章写就的几乎十年以后，Web 的响应式工作已经成为了默认做法。现代的 CSS 布局方式基本上就是响应式的，而且我们在 Web 平台上内置了新的东西，使得设计响应式站点变得容易。
 
@@ -94,7 +93,7 @@ Zoe Mickley Gillenwater 深刻影响了[她的著作](http://zomigi.com/blog/voi
 
 使用媒体查询时的一种通用方式是，为窄屏设备（例如移动设备）创建一个简单的单栏布局，然后检查是否是大些的屏幕，在你知道你有足够容纳的屏幕宽度的时候，开始采用一种多栏的布局。这经常被描述为**移动优先**设计。
 
-在 MDN 文档中的[媒体查询](/zh-CN/docs/Web/CSS/CSS_media_queries)中了解更多
+在 MDN 文档中的[媒体查询](/zh-CN/docs/Web/CSS/Guides/Media_queries)中了解更多
 
 ## 灵活网格
 
@@ -155,7 +154,7 @@ target / context = result
 
 在伸缩盒中，初始的行为是，弹性的物件将参照容器里面的空间的大小，缩小和分布物件之间的空间。通过更改`flex-grow`和 `flex-shrink`的值，你可以指示在物件遇到周围有更多或者更少的空间的情况下，你所期望的物件表现。
 
-在下面的示例中，和布局专题的[Flexbox: Flexible sizing of flex items](/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox#flexible_sizing_of_flex_items)中所描述的那样，使用了`flex: 1`的简写，可伸缩物件每个将会占据一份可伸缩容器中相等大小的空间。
+在下面的示例中，和布局专题的[弹性盒子：弹性元素的动态尺寸](/zh-CN/docs/Learn_web_development/Core/CSS_layout/Flexbox#flex_项的动态尺寸)中所描述的那样，使用了`flex: 1`的简写，可伸缩物件每个将会占据一份可伸缩容器中相等大小的空间。
 
 ```css
 .container {
@@ -172,7 +171,7 @@ target / context = result
 
 ### CSS 网格
 
-在 CSS 网格布局中，`fr`单位许可了跨网格轨道可用空间的分布。下面的示例创建了一个有着 3 个大小为`1fr`的轨道的网格容器。这会创建三个列轨道，每个占据了容器中可用空间的一部分。你可以在[Flexible grids with the fr unit](/zh-CN/docs/Learn/CSS/CSS_layout/Grids#flexible_grids_with_the_fr_unit)下的学习布局网格专题了解更多和这一方式相关的信息。
+在 CSS 网格布局中，`fr`单位许可了跨网格轨道可用空间的分布。下面的示例创建了一个有着 3 个大小为`1fr`的轨道的网格容器。这会创建三个列轨道，每个占据了容器中可用空间的一部分。你可以在[使用 fr 单位的灵活网格](/zh-CN/docs/Learn_web_development/Core/CSS_layout/Grids#使用_fr_单位的灵活网格)下的学习布局网格专题了解更多和这一方式相关的信息。
 
 ```css
 .container {
@@ -200,7 +199,7 @@ img {
 
 你也可以给用于不同尺寸的图像做“艺术指导”，为不同的屏幕尺寸提供不同的图像裁切或者完全不同的图像。
 
-你可以在 MDN 这里的学习 HTML 一节中找到详细的[响应式图像指南](/zh-CN/docs/Web/HTML/Responsive_images)。
+你可以在 MDN 这里的学习 HTML 一节中找到详细的[响应式图像指南](/zh-CN/docs/Web/HTML/Guides/Responsive_images)。
 
 ## 响应式排版
 
@@ -251,7 +250,7 @@ h1 {
 
 问题在于，当做上面的事情的时候，因为文本总是随着视口的大小改变大小，用户失去了放缩任何使用`vw`单位的文本的能力。**所以你永远都不要只用 viewport 单位设定文本。**
 
-这里有一个解决方法，它使用了[`calc()`](/zh-CN/docs/Web/CSS/calc)，如果你将`vw`单位加到了使用固定大小（例如`em`或者`rem`）的值组，那么文本仍然是可放缩的。基本来说，是`vw`加在了放缩后的值上。
+这里有一个解决方法，它使用了[`calc()`](/zh-CN/docs/Web/CSS/Reference/Values/calc)，如果你将`vw`单位加到了使用固定大小（例如`em`或者`rem`）的值组，那么文本仍然是可放缩的。基本来说，是`vw`加在了放缩后的值上。
 
 ```css
 h1 {

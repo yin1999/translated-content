@@ -1,23 +1,23 @@
 ---
 title: 自動化テストの紹介
+short-title: 自動化テスト
 slug: Learn_web_development/Extensions/Testing/Automated_testing
-original_slug: Learn/Tools_and_testing/Cross_browser_testing/Automated_testing
 l10n:
-  sourceCommit: 8ac5062e5ea3d3de01558977fcfa2ed5a8b152be
+  sourceCommit: e3a2272d272f21ea38e5fff9bd6ccec2d0dfb1a8
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Tools_and_testing/Cross_browser_testing/Feature_detection", "Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Feature_detection", "Learn_web_development/Extensions/Testing/Your_own_automation_environment", "Learn_web_development/Extensions/Testing")}}
 
-複数のブラウザーや端末で、 1 日に何度もテストを手動で実行するのは、面倒で時間のかかる作業です。これを効率的に処理するためには、自動化ツールに慣れることです。この記事では、利用できるもの、タスクランナーの使用方法、 LambdaTest、Sauce Labs、BrowserStack、TestingBot などの商用ブラウザーテスト自動化アプリの基本的な使用方法を見ていきます。
+複数のブラウザーや端末で、 1 日に何度もテストを手動で実行するのは、面倒で時間のかかる作業です。これを効率的に処理するためには、自動化ツールに慣れることです。この記事では、利用できるもの、タスクランナーの使用方法、 Sauce Labs、BrowserStack、TestingBot などの商用ブラウザーテスト自動化アプリの基本的な使用方法を見ていきます。
 
 <table>
   <tbody>
     <tr>
       <th scope="row">前提条件:</th>
       <td>
-        <a href="/ja/docs/Learn/HTML">HTML</a>、<a href="/ja/docs/Learn/CSS">CSS</a>、<a href="/ja/docs/Learn/JavaScript">JavaScript</a> 言語の主要部に通じていること。
+        <a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a>、<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS</a>、<a href="/ja/docs/Learn_web_development/Core/Scripting">JavaScript</a> 言語の主要部に通じていること。
         <a
-          href="/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction"
+          href="/ja/docs/Learn_web_development/Extensions/Testing/Introduction"
           >ブラウザー横断テストの基本</a
         >について高水準の考えを持っていること。
       </td>
@@ -43,7 +43,7 @@ l10n:
 次の記事では、自分自身で Selenium ベースのテストシステムを設定する方法を見ていきます。この記事では、タスクランナーを設定し、上記のような商用システムの基本的な機能を使用する方法を見ていきます。
 
 > [!NOTE]
-> 上記の 2 つのカテゴリーは相互に排他的ではありません。 Sauce Labs や LambdaTest のようなサービスに API 経由でアクセスし、ブラウザー横断テストを実行し、結果を返すタスクランナーを設定することは可能です。下記でも見ていきます。
+> 上記の 2 つのカテゴリーは相互に排他的ではありません。 Sauce Labs のようなサービスに API 経由でアクセスし、ブラウザー横断テストを実行し、結果を返すタスクランナーを設定することは可能です。下記でも見ていきます。
 
 ## タスクランナーを使用してテストツールを自動化
 
@@ -51,25 +51,11 @@ l10n:
 
 ### Node と npm の設定
 
-最近のほとんどのツールは {{Glossary("Node.js")}} をベースにしているので、 [nodejs.org](https://nodejs.org/) からインストールする必要があります：
+最近のほとんどのツールは {{Glossary("Node.js")}} をベースにしているので、対応するパッケージマネージャーである [`npm`](https://www.npmjs.com/) からインストールする必要があります。
 
-1. 上記のサイトから、あなたのシステムに合ったインストーラーをダウンロードしてください。（すでに Node と npm がある場合は、4 へ移動してください。）
-2. 他のプログラムと同じようにインストールします。 Node には [Node Package Manager](https://www.npmjs.com/) (npm) が付属しており、パッケージを簡単にインストールしたり、自分自身で作成したパッケージを他の人と共有したり、自分のプロジェクトで有益なスクリプトを実行したりすることができます。
-3. インストールが完全に完了したら、端末に次のように入力してノードがインストールされていることを確認します。 Node と npm インストールされているバージョンが返されます。
-
-   ```bash
-   node -v
-   npm -v
-   ```
-
-4. すでに Node/npm を取得している場合は、最新版にアップデートしてください。 Node をアップデートするには、ウェブサイトからアップデートされたインストーラーパッケージをダウンロードしてインストールするのが最も確実な方法です（上記のリンクを参照）。 npm をアップデートするには、ターミナルで以下のコマンドを使用します。
-
-   ```bash
-   npm install npm@latest -g
-   ```
-
-> [!NOTE]
-> 上記のコマンドが権限エラーで失敗する場合は、 [npm のパーミッションを修正](https://docs.npmjs.com/getting-started/fixing-npm-permissions/)することで解決します。
+1. Node.js と `npm` をインストールおよび更新する最も簡単な方法は、 Node バージョンマネージャーを使用することです。 [Node のインストール](/ja/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/development_environment#node_のインストール)の手順に従ってください。
+2. 続ける前に、[インストールが成功したことを確認](/ja/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/development_environment#nodejs_および_npm_インストールのテスト)してください。
+3. Node.js/`npm`をすでにインストールしている場合は、それらを最新バージョンに更新する必要があります。これは、 Node バージョンマネージャーを使用して最新の LTS バージョンをインストールすることで実行できます（上記のリンク先の説明を参照してください）。
 
 自分のプロジェクトで Node/npm ベースのパッケージを使用し始めるには、プロジェクトディレクトリーを npm プロジェクトとして設定する必要があります。これは簡単にできます。
 
@@ -132,8 +118,8 @@ Gulp を設定して、いくつかのテストツールを自動化するため
    ```
 
 2. 次に、システムをテストするためのサンプル HTML、CSS と JavaScript コンテンツが必要です。サンプル [index.html](https://github.com/mdn/learning-area/blob/main/tools-testing/cross-browser-testing/automation/index.html)、[main.js](https://github.com/mdn/learning-area/blob/main/tools-testing/cross-browser-testing/automation/main.js)、[style.css](https://github.com/mdn/learning-area/blob/main/tools-testing/cross-browser-testing/automation/style.css) ファイルをプロジェクトフォルダー内の `src` という名前のサブフォルダーにコピーしてください。
-   お望みであれば、自分自身でテストコンテンツを試すこともできますが、このようなツールは内部 JS/CSS では動作しないことを覚えておいてください。外部ファイルにする必要があります。
-3. まず、以下のコマンドを使用して、 gulp をグローバルにインストールします（つまり、すべてのプロジェクトで利用できるようになります）。
+   お好みで独自のテストコンテンツを試してみることもできますが、こうしたツールは HTML ファイル内に JS/CSS がインラインで記述されている場合、うまく動作しないことにご注意ください。別個のファイルを用意する必要があります。
+3. 以下のコマンドを使用して、 gulp をグローバルにインストールします（つまり、すべてのプロジェクトで利用できるようになります）。
 
    ```bash
    npm install --global gulp-cli
@@ -156,7 +142,9 @@ Gulp を設定して、いくつかのテストツールを自動化するため
    }
    ```
 
-   これは先ほどインストールした `gulp` モジュールを要求され、端末にメッセージを出力する以外は何もしない既定タスクをエクスポートします - これは Gulp が動作していることを知らせるのに有益です。各 gulp タスクは同じ基本書式、 `exports.taskName = taskFunction` でエクスポートされます。各関数は 1 つの引数、課題が完全に完了したときに実行するコールバックを取ります。
+   これは先ほどインストールした `gulp` モジュールを要求され、端末にメッセージを出力する以外は何もしない既定タスクをエクスポートします - これは Gulp が動作していることを知らせるのに有益です。次のいくつかの節で、この `export default` 文をより有益なものに書き換えていきます。
+
+   各 gulp タスクは同じ基本書式、`exports function taskName(cb) {...}` でエクスポートされます。各関数は 1 つの引数、課題が完全に完了したときに実行するコールバックを取ります。
 
 6. 以下のコマンドで gulp の既定タスクを実行することができます。これで試してみてください。
 
@@ -166,6 +154,26 @@ Gulp を設定して、いくつかのテストツールを自動化するため
 
 ### Gulp に実際のタスクを追加
 
+これで、Gulp ファイルにタスクを追加する準備が整いました。それぞれのタスクを追加する際は、必要に応じて `gulpfile.mjs` ファイルを次のように変更してください。
+
+- `import` 文を追加するよう依頼された場合は、既存の `import` 文の下記に追加してください。
+- 新しい `export function ...` 文を追加するよう依頼された場合は、ファイルの末尾に追加してください。
+- デフォルトのエクスポートを変更するよう依頼された場合は、指定した方法で `export default` 文を変更してください。
+
+これにより、`gulpfile.mjs` ファイルは同様に変更されます。
+
+```js
+import gulp from "gulp";
+// ここに新しいインポートを追加
+
+// 最新のデフォルトエクスポート
+// export default ...
+
+// 新しいタスクのエクスポートをここに追加
+// export function ...
+// export function ...
+```
+
 Gulp に実際のタスクを追加するには、何をしたいかを考える必要があります。自分のプロジェクトで実行する合理的な基本機能セットは以下です。
 
 - html-tidy、css-lint、js-hint は、一般的な HTML/CSS/JS のエラーを検査し、報告/修正します（[gulp-htmltidy](https://www.npmjs.com/package/gulp-htmltidy)、[gulp-csslint](https://www.npmjs.com/package/gulp-csslint)、[gulp-jshint](https://www.npmjs.com/package/gulp-jshint) を参照）。
@@ -174,7 +182,7 @@ Gulp に実際のタスクを追加するには、何をしたいかを考える
 
 私たちが使用しているさまざまな gulp パッケージの完全な説明については、上記のリンクを参照してください。
 
-各プラグインを使用するには、まず npm 経由でプラグインをインストールし、次に `gulpfile.js` ファイルの先頭に依存関係を要求され、その下にテストを追加し、最後に gulp のコマンドから使用できるように課題の名前をエクスポートする必要があります。
+各プラグインを使用するには、まず npm 経由でプラグインをインストールし、次に `gulpfile.mjs` ファイルの先頭に依存関係を要求され、その下にテストを追加し、最後に gulp のコマンドから使用できるように課題の名前をエクスポートする必要があります。
 
 #### html-tidy
 
@@ -184,15 +192,16 @@ Gulp に実際のタスクを追加するには、何をしたいかを考える
    npm install --save-dev gulp-htmltidy
    ```
 
-   > **メモ:** `--save-dev` は、パッケージを自分のプロジェクトに依存関係として追加します。自分のプロジェクトの `package.json` ファイルを見ていくと、`devDependencies` プロパティにその項目があります。
+   > [!NOTE]
+   > `--save-dev` は、パッケージを自分のプロジェクトに依存関係として追加します。自分のプロジェクトの `package.json` ファイルを見ていくと、`devDependencies` プロパティにその項目があります。
 
-2. 以下の依存関係を `gulpfile.js` に追加します。
+2. 以下の依存関係を `gulpfile.mjs` に追加します。
 
    ```js
    import htmltidy from "gulp-htmltidy";
    ```
 
-3. 以下のテストを `gulpfile.js` の一番下に追加します。
+3. 以下のテストを `gulpfile.mjs` の一番下に追加します。
 
    ```js
    export function html() {
@@ -224,14 +233,14 @@ Gulp に実際のタスクを追加するには、何をしたいかを考える
    npm install --save-dev gulp-csslint
    ```
 
-2. 以下の依存関係を `gulpfile.js` に追加します。
+2. 以下の依存関係を `gulpfile.mjs` に追加します。
 
    ```js
    import autoprefixer from "gulp-autoprefixer";
    import csslint from "gulp-csslint";
    ```
 
-3. 以下のテストを `gulpfile.js` の一番下に追加します。
+3. 以下のテストを `gulpfile.mjs` の一番下に追加します。
 
    ```js
    export function css() {
@@ -251,9 +260,9 @@ Gulp に実際のタスクを追加するには、何をしたいかを考える
 4. 以下のプロパティを `package.json` に追加します。
 
    ```json
-   "browserslist": [
-     "last 5 versions"
-   ]
+   {
+     "browserslist": ["last 5 versions"]
+   }
    ```
 
 5. 既定でタスクを変更します。
@@ -274,14 +283,14 @@ Gulp に実際のタスクを追加するには、何をしたいかを考える
    npm install jshint gulp-jshint --save-dev
    ```
 
-2. 以下の依存関係を `gulpfile.js` に追加します。
+2. 以下の依存関係を `gulpfile.mjs` に追加します。
 
    ```js
    import babel from "gulp-babel";
    import jshint from "gulp-jshint";
    ```
 
-3. 以下のテストを `gulpfile.js` の一番下に追加します。
+3. 以下のテストを `gulpfile.mjs` の一番下に追加します。
 
    ```js
    export function js() {
@@ -316,7 +325,7 @@ Gulp に実際のタスクを追加するには、何をしたいかを考える
 
 エラーが発生した場合は、上記のように依存関係とテストがすべて追加されているか調べてください。また、 HTML/CSS/JavaScript コードをコメントアウトしてから gulp を再実行してみて、問題が何であるかを切り分けられるかどうか確認してください。
 
-Gulp には `watch()` 関数が用意されており、ファイルを保存するたびにファイルを監視してテストを実行するために使用することができます。例えば、次の例を `gulpfile.js` の一番下に追加してみてください：
+Gulp には `watch()` 関数が用意されており、ファイルを保存するたびにファイルを監視してテストを実行するために使用することができます。例えば、次の例を `gulpfile.mjs` の一番下に追加してみてください。
 
 ```js
 export function watch() {
@@ -328,7 +337,8 @@ export function watch() {
 
 これで `gulp watch` コマンドを端末に入力してみてください。これで Gulp はあなたのディレクトリーを監視し、HTML、CSS、JavaScript ファイルに変更を保存するたびに適切な課題を実行します。
 
-> **メモ:** `*` 記号はワイルドカードで、「これらの型のファイルが保存されたら、これらのタスクを実行する」と言います。メインタスクでワイルドカードを使用することもできます。例えば `gulp.src('src/*.css')` はすべての CSS ファイルを取得し、それに対してパイプタスクを実行します。
+> [!NOTE]
+> `*` 記号はワイルドカードで、「これらの型のファイルが保存されたら、これらのタスクを実行する」と言います。メインタスクでワイルドカードを使用することもできます。例えば `gulp.src('src/*.css')` はすべての CSS ファイルを取得し、それに対してパイプタスクを実行します。
 
 Gulp でできることはまだあります。 [Gulp プラグインディレクトリー](https://gulpjs.com/plugins/)には、文字通り何千ものプラグインが検索できるようになっています。
 
@@ -348,34 +358,221 @@ Gulp でできることはまだあります。 [Gulp プラグインディレ�
 その後、段階的に API を使用してプログラム的に機能にアクセスすることができます。このようなアプリは、自動テストを作成するために、自分自身でローカルの Selenium 環境などのタスクランナーと組み合わせることができることを意味しています。
 
 > [!NOTE]
-> 他にも利用できる商用ブラウザーテストシステムはありますが、この記事では LambdaTest、Sauce Labs、BrowserStack に焦点を当てます。これらが必ずしも利用できる最高のツールだとは言いませんが、初心者でも単純に取得し実行することができる良いツールです。
+> 他にも利用できる商用ブラウザーテストシステムはありますが、この記事では BrowserStack、Sauce Labs に焦点を当てます。これらが必ずしも利用できる最高のツールだとは言いませんが、初心者でも単純に取得し実行することができる良いツールです。
 
-### LambdaTest
+### BrowserStack
 
-#### LambdaTest を始める
+#### BrowserStack を始める
 
-1. 始めるには [LambdaTest](https://accounts.lambdatest.com/register) に無料登録しましょう。
-2. ログインしてください。メールアドレスを確認した後、自動的にログインされます。
+始めるには次のようにします。
 
-> [!NOTE]
-> 他のクラウドベースのブラウザー横断テストサービスプロバイダーとは異なり、LambdaTestは、あなたが彼らのプラットフォームに生涯アクセスするフリーミアムアカウントを提供しています。プレミアムプランとフリーミアムプランの唯一の違いは、使用量にあります。 Selenium Grid を利用した自動化テストの場合、 LambdaTest は月 60 分の無料テストを提供しています。
+1. [BrowserStack トライアルアカウント](https://www.browserstack.com/users/sign_up)を作成します。
+2. ログインしてください。メールアドレスの確認後、自動的にログインされるはずです。
+3. そうでない場合は、トップナビゲーションメニューの _Live_ リンクをクリックしてください。
 
 #### 基本的な機能: 手動テスト
 
-LambdaTest にサインインすると、 LambdaTest ダッシュボードに移動します。ダッシュボードでは、何分の値を保有したか、同時実行セッション数、これまでの総テスト数など、関連の詳細が提供されます。
+BrowserStack Live のダッシュボードでは、テスト対象のプラットフォーム、端末、ブラウザーを選択することができます。
+デスクトップのテストでは、OS とブラウザーを直接選択します。
+モバイル端末の場合は、モバイル OS と端末を選択し、その後、その端末とブラウザーの組み合わせに適したブラウザーを選択することができます。
 
-1. 手動テストを始めるには、左のナビゲーションメニューから **"Real Time Testing"** タブを選択する必要があります。
-   ![LambdaTest ダッシュボード](lambdatest-dashboard.png)
-2. **Real Time Testing** をクリックすると、ブラウザー設定、ブラウザーバージョン、OS、ウェブサイトをテストする画面解像度を選ぶ画面になります。
-   ![Real Time Testing](mark-as-bug-1.png)
-3. Start ボタンをクリックすると、読み込む画面が現れ、設定に基づいた VM （仮想マシン）が提供されます。読み込むと、ウェブサイトを使ってライブでインタラクティブなブラウザー横断テストを行うことができます。
-   [![バグとしてマーク](mark-as-bug-2.png)](https://web.archive.org/web/20210608014707if_/https://www.lambdatest.com/support/docs/wp-content/uploads/2019/03/mark-as-bug-2.png)
-   UI の課題に気づいたら、スクリーンショットボタンで VM のスクリーンショットをキャプチャすることで、同僚と共有することができます。また、テストセッションのレコーダーボタンを押すことで、テストセッションの動画を録画することもできます。
-4. 内蔵の画像エディターで、同僚にプッシュする前にスクリーンショットにハイライトをつけましょう。![バグをハイライト](mark-as-bug-3.png)
-5. バグとしてマークボタンを使用することで、 Jira、Asana、Trello などの多くのサードパーティツールにバグをプッシュすることができます。これにより、 LambdaTest のテストセッションから自分のプロジェクト管理インスタンスに直接バグをログ出力することができます。 [LambdaTest のサードパーティー統合](https://www.lambdatest.com/integrations)をすべて調べてください。
+![テストの選択](browserstack-test-choices-sized.png)
 
-> [!NOTE]
-> テストセッションで撮影された動画や画像は、すべて LambdaTest のギャラリー、テストログ、課題トラッカーに記録されます。
+ブラウザーのアイコンをクリックすると、お好みのプラットフォーム/端末/ブラウザーが読み込まれます。これで選んで、試してみてください。
+
+![テスト端末](browserstack-test-device-sized.png)
+
+アドレスバーに URL を入力したり、マウスドラッグによる上下のスクロール、適切なジェスチャー（ピンチ／ズーム、 2 本指でのスクロールなど）を使用することもできます。
+
+利用可能な機能は、読み込まれているブラウザーによって異なり、以下のようなコントロールが含まれます。
+
+- 現在のブラウザーの情報を表示
+- 他のブラウザーへの切り替え
+- localhost URL のテスト
+- ズームレベルの設定と方向の切り替え
+- ブックマークの保存と読み込み
+- スクリーンショットのキャプチャ／注釈、バグレポートの提出
+- ブラウザーの開発者ツールへのアクセス
+- 報告された場所の変更
+- ネットワークのスロットリング
+- スクリーンリーダーへのアクセス
+
+![テストメニュー](browserstack-test-menu-sized.png)
+
+情報については、[BrowserStack Live](https://www.browserstack.com/docs/live) のドキュメントをご覧ください。
+
+#### 高度な機能: BrowserStack API
+
+BrowserStack も [restful API](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction) を保有しており、アカウントプラン、セッション、ビルドなどの詳細をプログラムで参照することができます。
+
+Node.js を使用して API にアクセスする方法を簡単に見ていきましょう。
+
+1. まず、[Node と npm の設定](#node_と_npm_の設定)で詳しく説明しているように、これをテストするために新しい npm プロジェクトを設定します。例えば `bstack-test` のように、以前とは異なるディレクトリー名を使用してください。
+2. 自分のプロジェクトのルート内に、 `call_bstack.js` という新しいファイルを作成し、以下のコンテンツを与えます。
+
+   ```js
+   const axios = require("axios");
+
+   const bsUser = "BROWSERSTACK_USERNAME";
+   const bsKey = "BROWSERSTACK_ACCESS_KEY";
+   const baseUrl = `https://${bsUser}:${bsKey}@www.browserstack.com/automate/`;
+
+   function getPlanDetails() {
+     axios.get(`${baseUrl}plan.json`).then((response) => {
+       console.log(response.data);
+     });
+     /* Response:
+       {
+         automate_plan: <string>,
+         terminal_access: <string>.
+         parallel_sessions_running: <int>,
+         team_parallel_sessions_max_allowed: <int>,
+         parallel_sessions_max_allowed: <int>,
+         queued_sessions: <int>,
+         queued_sessions_max_allowed: <int>
+       }
+       */
+   }
+
+   getPlanDetails();
+   ```
+
+3. BrowserStack のユーザー名と API キーを、所有する配置する必要があります。このキーは、 [BrowserStack Account & Profile Details](https://www.browserstack.com/accounts/profile/details) の _Authentication & Security_ 節から取得できます。これを入力してください。
+4. 端末で次のコマンドを実行して、 HTTP リクエストの送信を処理するためにコードで使用している [axios](https://www.npmjs.com/package/axios) モジュールをインストールします（axios を選んだのは、シンプルで人気があり、よくサポートが優れているからです）。
+
+   ```bash
+   npm install axios
+   ```
+
+5. JavaScript ファイルが保存されていることを確認し、端末で以下のコマンドを実行してください。 BrowserStack プランの詳細を含むオブジェクトが端末に出力されるはずです。
+
+   ```bash
+   node call_bstack
+   ```
+
+下記では、 BrowserStack restful API で作業する際に有益と思われる、他にもいくつかの既製の関数を提供しています。
+
+この関数は、以前に作成されたすべての自動ビルドの概要詳細を返します（[BrowserStack 自動テストの詳細](/ja/docs/Learn_web_development/Extensions/Testing/Your_own_automation_environment#browserstack)については、次の記事を参照してください）。
+
+```js
+function getBuilds() {
+  axios.get(`${baseUrl}builds.json`).then((response) => {
+    console.log(response.data);
+  });
+
+  /* レスポンス:
+  [
+    {
+      automation_build: {
+        name: <string>,
+        hashed_id: <string>,
+        duration: <int>,
+        status: <string>,
+        build_tag: <string>,
+        public_url: <string>
+      }
+    },
+    {
+      automation_build: {
+        name: <string>,
+        hashed_id: <string>,
+        duration: <int>,
+        status: <string>,
+        build_tag: <string>,
+        public_url: <string>
+      }
+    },
+    // …
+  ]
+  */
+}
+```
+
+この関数は、特定のビルドに関する特定のセッションの詳細を返します。
+
+```js
+function getSessionsInBuild(build) {
+  const buildId = build.automation_build.hashed_id;
+  axios.get(`${baseUrl}builds/${buildId}/sessions.json`).then((response) => {
+    console.log(response.data);
+  });
+  /* Response:
+  [
+    {
+      automation_session: {
+        name: <string>,
+        duration: <int>,
+        os: <string>,
+        os_version: <string>,
+        browser_version: <string>,
+        browser: <string>,
+        device: <string>,
+        status: <string>,
+        hashed_id: <string>,
+        reason: <string>,
+        build_name: <string>,
+        project_name: <string>,
+        logs: <string>,
+        browser_url: <string>,
+        public_url: <string>,
+        appium_logs_url: <string>,
+        video_url: <string>,
+        browser_console_logs_url: <string>,
+        har_logs_url: <string>,
+        selenium_logs_url: <string>
+      }
+    },
+    {
+      automation_session: {
+        // …
+      }
+    },
+    // …
+  ]
+  */
+}
+```
+
+次の関数は、特定の 1 つのセッションの詳細を返します。
+
+```js
+function getSessionDetails(session) {
+  const sessionId = session.automation_session.hashed_id;
+  axios.get(`${baseUrl}sessions/${sessionId}.json`).then((response) => {
+    console.log(response.data);
+  });
+  /* Response:
+  {
+    automation_session: {
+      name: <string>,
+      duration: <int>,
+      os: <string>,
+      os_version: <string>,
+      browser_version: <string>,
+      browser: <string>,
+      device: <string>,
+      status: <string>,
+      hashed_id: <string>,
+      reason: <string>,
+      build_name: <string>,
+      project_name: <string>,
+      logs: <string>,
+      browser_url: <string>,
+      public_url: <string>,
+      appium_logs_url: <string>,
+      video_url: <string>,
+      browser_console_logs_url: <string>,
+      har_logs_url: <string>,
+      selenium_logs_url: <string>
+    }
+  }
+  */
+}
+```
+
+#### 高度な機能: 自動化テスト
+
+この次の記事では、[自動化した BrowserStack テスト](/ja/docs/Learn_web_development/Extensions/Testing/Your_own_automation_environment#browserstack)を扱います。
 
 ### Sauce Labs
 
@@ -388,26 +585,26 @@ Sauce Labs トライアルを始めましょう。
 
 #### 基本的な機能: 手動テスト
 
-[Sauce Labs dashboard](https://app.saucelabs.com/dashboard/manual) には、利用できるオプションがたくさんあります。これで、 _Manual Tests_ タブにいることを確認してください。
+[Sauce Labs dashboard](https://app.saucelabs.com/dashboard/manual) には、利用できるオプションがたくさんあります。
+ログインしたら、ページの左上にある「はじめに」ガイドに従ってください。
 
-1. _Start a new manual session_ をクリックします。
-2. 2.次の画面で、テストしたいページのURLを入力し（例えば<https://mdn.github.io/learning-area/javascript/building-blocks/events/show-video-box-fixed.html>を使います）、さまざまなボタンやリストを使ってテストしたいブラウザーとOSの組み合わせを選びます。ご覧のように、選択肢はたくさんあります。 !![sauce manual session](sauce-manual-session.png)
-3. Start session をクリックすると、ローディング画面が現れ、選んだ組み合わせを実行する仮想マシンが起動します。
-4. 読み込みが完了したら、選んだブラウザーで実行するウェブサイトのリモートテストを始めることができます。
-5. ここから、テストしているブラウザーで見ていくレイアウトを見たり、マウスを動かしてボタンをクリックしてみたりすることができます。トップメニューでは次のことができます。
+1. "Run your first test" で、_Desktop browser_ をクリックします。
+2. 次の画面で、テストしたいページ（例えば、このページなど）の URL を入力し、さまざまなボタンやリストを使ってテストしたいブラウザーと OS の組み合わせを選びます。
+   ご覧のように、選択肢はたくさんあります。
+   ![ソース選択の手動セッション](sauce-manual-session.png)
+3. テストを開始すると、読み込み画面が現れ、選択した端末とブラウザーの組み合わせで実行される環境が起動します。
+   選んだブラウザーで実行するウェブサイトのリモートテストを始めることができます。
 
-   - セッションの停止
-   - 他の人に URL を教えて、リモートでテストを監視できるようにする。
-   - テキスト/メモをリモートのクリップボードにコピーする。
-   - スクリーンショットを撮る。
-   - 全画面モードでテストする。
+この段階では、テスト URL を共有して他の人にリモートでテストの様子を見てもらったり、テキストやメモをリモートクリップボードにコピーしたり、画面ショットを撮ったり、全画面モードでテストを行ったりするなど、さまざまな操作が可能です。
 
-セッションを停止すると、 Manual Tests タブを返し、始めるには前回のマニュアルセッションの各項目が表示されます。これらの項目をクリックすると、そのセッションの詳細なデータが表示されます。ここでは、スクリーンショットをダウンロードしたり、セッションの動画を見たり、データログを出力したりすることができます。
+セッションを終了すると、_Live_ タブに戻り、前回手動で始まったそれぞれのセッションの項目が表示されます。
+これらの項目をクリックすると、そのセッションの詳細なデータが表示されます。
+ここでは、スクリーンショットをダウンロードしたり、セッションの動画を見たり、データログを出力したりすることができます。
+これはすでにとても有益なことで、複数のエミュレーターや仮想マシンをすべて自分で設定するよりもはるかに便利です。
 
-> [!NOTE]
-> これはすでにとても有益なことで、これらのエミュレーターや仮想マシンをすべて自分で設定するよりもはるかに便利です。
+詳しくは、[Sauce Labs のドキュメント](https://docs.saucelabs.com/)をご覧ください。
 
-#### 高度な方法: Sauce Labs API
+#### 高度な機能: Sauce Labs API
 
 Sauce Labs には [restful API](https://docs.saucelabs.com/dev/api/) があり、アカウントや既存のテストの詳細をプログラムで取得したり、手動テストだけでは記録できない合格/不合格状態などの詳細情報をテストに付与したりすることができます。例えば、あるブラウザーと OS の組み合わせをテストするために、 Sauce Labs を使用して自分自身で Selenium テストの 1 つをリモートで実行し、テスト結果を Sauce Labs に渡すとします。
 
@@ -433,10 +630,10 @@ Node.js と [node-saucelabs](https://github.com/saucelabs/node-saucelabs) を使
        password: "your-sauce-api-key",
      });
 
-     // Get full WebDriver URL from the client depending on region:
+     // 領域に応じて、クライアントから完全な WebDriver URL を取得する
      console.log(myAccount.webdriverEndpoint);
 
-     // Get job details of last run job
+     // 最後に実行したジョブの詳細を取得
      const jobs = await myAccount.listJobs("your-sauce-username", {
        limit: 1,
        full: true,
@@ -455,230 +652,7 @@ Node.js と [node-saucelabs](https://github.com/saucelabs/node-saucelabs) を使
 
 #### 高度な方法: テストの自動化
 
-実際に Sauce Lab の自動テストを実行する方法については、次の記事で述べます。
-
-### BrowserStack
-
-#### BrowserStack を始める
-
-BrowserStack Trial を始めましょう。
-
-1. [BrowserStack トライアルアカウント](https://www.browserstack.com/users/sign_up)を作成します。
-2. ログインしてください。メールアドレスの確認後、自動的にログインされるはずです。
-3. そうでない場合は、トップナビゲーションメニューの _Live_ リンクをクリックしてください。
-4. Firefox または Chrome の場合、「Enable Local Testing」というタイトルのダイアログでブラウザー拡張機能のインストールを促されます。他のブラウザーでも一部の機能を使用することはできますが（一般的には Flash を使用します）、完全な体験は得られないかもしれません。
-
-#### 基本的な機能: 手動テスト
-
-BrowserStack Live ダッシュボードでは、テストしたい端末とブラウザーを選べます。左列にプラットフォーム、右列に端末が表示されます。。各端末をマウスオーバーまたはクリックすると、その端末で利用できるブラウザーが取得されます。
-
-![テストの選択](browserstack-test-choices-sized.png)
-
-ブラウザーのアイコンをクリックすると、お好みのプラットフォーム/端末/ブラウザーが読み込まれます。これで選んで、試してみてください。
-
-![テスト端末](browserstack-test-device-sized.png)
-
-> [!NOTE]
-> モバイル端末の選択肢の横にある青い端末アイコンは、実際の端末でテストすることを指示するもので、このアイコンのない選択肢はエミュレーターで実行します。
-
-アドレスバーに URL を入力したり、他のコントロールを実際の端末と同じように使用することができます。対応している端末（MacBook など）のタッチパッドで、端末からクリップボードへのコピー＆ペースト、マウスドラッグによる上下のスクロール、適切なジェスチャー（ピンチ／ズーム、 2 本指でのスクロールなど）を使用することもできます。すべての機能がすべての端末で利用できるわけではないことに注意してください。
-
-セッションを制御するメニューも表示されます。
-
-![テストメニュー](browserstack-test-menu-sized.png)
-
-ここでの機能は以下の通りです。
-
-- _Switch_ - 別のプラットフォーム/端末/ブラウザーに変更します。
-- 方向（再読み込みアイコンのような外見） - 縦向きと横向きを切り替えます。
-- Fit to screen （全画面アイコンのような外見） - テストエリアを端末で可能な限り埋めます。
-- バグをキャプチャ（カメラのような外見） - スクリーンショットを導き、注釈を付けて保存できます。
-- 課題トラッカー（トランプのような外見） - 前回キャプチャしたバグやスクリーンショットを見ることができます。
-- 設定（歯車のアイコン） - セッションの一般的な設定を変更することができます。
-- ヘルプ（クエスチョンマーク） - ヘルプ/サポート機能にアクセスします。
-- _Devtools_ - ブラウザーの開発ツールを使用して、テストブラウザーに表示させるページを直接デバッグしたり操作したりすることができます。これは現在、 iOS 端末の Safari ブラウザーをテストする場合にのみ動作します。
-- _Device info_ - テスト端末の情報を表示します。
-- _Features_ - 現在の設定が対応している機能（クリップボードへのコピー、ジェスチャー対応など）を表示させます。
-- _Stop_ - セッションを終了します。
-
-> [!NOTE]
-> これはすでにとても有益なことで、これらのエミュレータや仮想マシンをすべて自分で設定するよりもはるかに便利です。
-
-#### その他の基本機能
-
-BrowserStack のメインページに戻ると、 _More_ メニューオプションの下に、他にも有益な基本機能がいくつかあります：
-
-- _Responsive_: URLを入力して _Generate_ を押すと、 BrowserStack はビューポートサイズの異なる複数の端末でその URL を読み込んでくれます。各端末で、さらにモニターサイズなどの設定を調整し、異なる形成要素でサイトのレイアウトがどのように動作するのか、よいアイディアを得ることができます。
-- スクリーンショット URLを入力し、間委sンのあるブラウザー/端末/プラットフォームを選択し、 _Generate screenshots_ を押してください。 BrowserStack は、さまざまなブラウザーでのサイトのスクリーンショットを導き、それらを表示およびダウンロードできるようにします。
-
-#### 高度な機能: BrowserStack API
-
-BrowserStack も [restful API](https://www.browserstack.com/docs/automate/api-reference/selenium/introduction) を保有しており、アカウントプラン、セッション、ビルドなどの詳細をプログラムで参照することができます。
-
-PHP、Java、Node.js など、お好きな環境を使用して API が利用可能なクライアントがいくつかあります。
-
-Node.js を使用して API にアクセスする方法を簡単に見ていきましょう。
-
-1. まず、[Node と npm の設定](#node_と_npm_の設定)で詳しく説明しているように、これをテストするために新しい npm プロジェクトを設定します。例えば `bstack-test` のように、以前とは異なるディレクトリー名を使用してください。
-2. 自分のプロジェクトのルート内に、 `call_bstack.js` という新しいファイルを作成し、以下のコンテンツを与えます。
-
-   ```js
-   const request = require("request");
-
-   const bsUser = "BROWSERSTACK_USERNAME";
-   const bsKey = "BROWSERSTACK_ACCESS_KEY";
-   const baseUrl = `https://${bsUser}:${bsKey}@www.browserstack.com/automate/`;
-
-   function getPlanDetails() {
-     request({ uri: `${baseUrl}plan.json` }, (err, res, body) => {
-       console.log(JSON.parse(body));
-     });
-     /* Response:
-       {
-         automate_plan: <string>,
-         parallel_sessions_running: <int>,
-         team_parallel_sessions_max_allowed: <int>,
-         parallel_sessions_max_allowed: <int>,
-         queued_sessions: <int>,
-         queued_sessions_max_allowed: <int>
-       }
-     */
-   }
-
-   getPlanDetails();
-   ```
-
-3. BrowserStack のユーザー名と API キーを、所有する配置する必要があります。このキーは、 [BrowserStack Account & Profile Details](https://www.browserstack.com/accounts/profile/details) の Authentication & Security 節から取得できます。これを入力してください。
-4. すべてが保存されていることを確認し、次のようにファイルを実行してください。
-
-   ```bash
-   node call_bstack
-   ```
-
-下記では、 BrowserStack restful API で作業する際に有益と思われる、他にもいくつかの既製の関数を提供しています。
-
-```js
-function getBuilds() {
-  request({ uri: `${baseUrl}builds.json` }, (err, res, body) => {
-    console.log(JSON.parse(body));
-  });
-  /* Response:
-  [
-    {
-      automation_build: {
-        name: <string>,
-        duration: <int>,
-        status: <string>,
-        hashed_id: <string>
-      }
-    },
-    {
-      automation_build: {
-        name: <string>,
-        duration: <int>,
-        status: <string>,
-        hashed_id: <string>
-      }
-    },
-    // …
-  ]
-  */
-}
-
-function getSessionsInBuild(build) {
-  const buildId = build.automation_build.hashed_id;
-  request(
-    { uri: `${baseUrl}builds/${buildId}/sessions.json` },
-    (err, res, body) => {
-      console.log(JSON.parse(body));
-    },
-  );
-  /* Response:
-  [
-    {
-      automation_session: {
-        name: <string>,
-        duration: <int>,
-        os: <string>,
-        os_version: <string>,
-        browser_version: <string>,
-        browser: <string>,
-        device: <string>,
-        status: <string>,
-        hashed_id: <string>,
-        reason: <string>,
-        build_name: <string>,
-        project_name: <string>,
-        logs: <string>,
-        browser_url: <string>,
-        public_url: <string>,
-        video_url: <string>,
-        browser_console_logs_url: <string>,
-        har_logs_url: <string>
-      }
-    },
-    {
-      automation_session: {
-        name: <string>,
-        duration: <int>,
-        os: <string>,
-        os_version: <string>,
-        browser_version: <string>,
-        browser: <string>,
-        device: <string>,
-        status: <string>,
-        hashed_id: <string>,
-        reason: <string>,
-        build_name: <string>,
-        project_name: <string>,
-        logs: <string>,
-        browser_url: <string>,
-        public_url: <string>,
-        video_url: <string>,
-        browser_console_logs_url: <string>,
-        har_logs_url: <string>
-      }
-    },
-    // …
-  ]
-  */
-}
-
-function getSessionDetails(session) {
-  const sessionId = session.automation_session.hashed_id;
-  request({ uri: `${baseUrl}sessions/${sessionId}.json` }, (err, res, body) => {
-    console.log(JSON.parse(body));
-  });
-  /* Response:
-  {
-    automation_session: {
-      name: <string>,
-      duration: <int>,
-      os: <string>,
-      os_version: <string>,
-      browser_version: <string>,
-      browser: <string>,
-      device: <string>,
-      status: <string>,
-      hashed_id: <string>,
-      reason: <string>,
-      build_name: <string>,
-      project_name: <string>,
-      logs: <string>,
-      browser_url: <string>,
-      public_url: <string>,
-      video_url: <string>,
-      browser_console_logs_url: <string>,
-      har_logs_url: <string>
-    }
-  }
-  */
-}
-```
-
-#### 高度な機能: 自動化テスト
-
-実際に BrowserStack の自動テストを実行する方法については、次の記事で述べます。
+実際に Sauce Lab の自動テストを実行する方法については、この次の記事で扱います。
 
 ### TestingBot
 
@@ -694,12 +668,11 @@ function getSessionDetails(session) {
 [TestingBot ダッシュボード](https://testingbot.com/members)には、選べる様々なオプションが掲載されています。これで、 _Live Web Testing_ タブにいることを確認してください。
 
 1. テストしたいページの URL を入力します。
-2. テストしたいブラウザーとOSの組み合わせをグリッドで選択します。
+2. テストしたいブラウザーと OS の組み合わせをグリッドで選択します。
    ![テストの選択](screen_shot_2019-04-19_at_14.55.33.png)
-3. _Start Browser_ をクリックすると、ローディング画面が現れ、選んだ組み合わせを実行する仮想マシンが起動します。
+3. _Start Browser_ をクリックすると、読み込み中画面が現れ、選んだ組み合わせを実行する仮想マシンが起動します。
 4. 読み込みが完了したら、選んだブラウザーで実行するウェブサイトのリモートテストを始めることができます。
 5. ここから、テストしているブラウザーで見ているレイアウトを見たり、マウスを動かしてボタンをクリックしてみたりすることができます。サイドメニューでは、以下のことができます。
-
    - セッションの停止
    - 画面の内側へ解像度変更
    - テキスト/メモをリモートクリップボードへコピー
@@ -712,9 +685,9 @@ function getSessionDetails(session) {
 
 TestingBot には [restful API](https://testingbot.com/support/api) があり、アカウントや既存のテストの詳細をプログラムで取得したり、手動テストだけでは記録できない合格/不合格状態などの詳細情報をテストに注釈を付けたりすることができます。
 
-TestingBot には、NodeJS、Python、Ruby、Java、PHP などの API クライアントを使用することができます。
+TestingBot には、Node.js、Python、Ruby、Java、PHP などの API クライアントを使用することができます。
 
-下記は、 NodeJS クライアント [testingbot-api](https://www.npmjs.com/package/testingbot-api) を使用して TestingBot API と対話する方法の例です。
+下記は、 Node.js クライアント [testingbot-api](https://www.npmjs.com/package/testingbot-api) を使用して TestingBot API と対話する方法の例です。
 
 1. まず、[Node と npm の設定](#node_と_npm_の設定)で詳しく説明しているように、これをテストするために新しい npm プロジェクトを設定します。例えば`tb-test`のように、以前とは異なるディレクトリー名を使用してください。
 2. 以下のコマンドを使用して Node TestingBot ラッパーをインストールします。
@@ -733,12 +706,12 @@ TestingBot には、NodeJS、Python、Ruby、Java、PHP などの API クライ�
      api_secret: "your-tb-secret",
    });
 
-   tb.getTests(function (err, tests) {
+   tb.getTests((err, tests) => {
      console.log(tests);
    });
    ```
 
-4. TestingBot Key と Secret を示されている場所に記入する必要があります。これらは[TestingBot dashboard](https://testingbot.com/members/user/edit)で探すことができます。
+4. TestingBot Key と Secret を示されている場所に記入する必要があります。これらは [TestingBot dashboard](https://testingbot.com/members/user/edit) で探すことができます。
 5. すべてが保存されていることを確認し、ファイルを実行してください。
 
    ```bash
@@ -755,4 +728,4 @@ TestingBot には、NodeJS、Python、Ruby、Java、PHP などの API クライ�
 
 次の記事では、 Selenium を使用して自分自身でローカルの自動化システムを設定し、 Sauce Labs、BrowserStack、TestingBot などのサービスと組み合わせる方法を見ていきます。
 
-{{PreviousMenuNext("Learn/Tools_and_testing/Cross_browser_testing/Feature_detection", "Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Feature_detection", "Learn_web_development/Extensions/Testing/Your_own_automation_environment", "Learn_web_development/Extensions/Testing")}}

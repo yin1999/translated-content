@@ -1,10 +1,9 @@
 ---
 title: HTML 性能优化
 slug: Learn_web_development/Extensions/Performance/HTML
-original_slug: Learn/Performance/HTML
 ---
 
-{{LearnSidebar}} {{PreviousMenuNext("Learn_web_development/Extensions/Performance/Javascript", "Learn_web_development/Extensions/Performance/CSS", "Learn_web_development/Extensions/Performance")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Performance/JavaScript", "Learn_web_development/Extensions/Performance/CSS", "Learn_web_development/Extensions/Performance")}}
 
 HTML 默认情况下快速且易于访问。作为开发者，我们的工作是在创建或编辑 HTML 代码时确保保持这两个特性。例如当嵌入的 {{htmlelement("video")}} 文件大小过大，或者 JavaScript 解析阻塞了关键页面元素的渲染时，情况可能会比较复杂。本文将引导你了解关键的 HTML 性能特性，以大幅提高网页质量。
 
@@ -36,7 +35,7 @@ HTML 默认情况下快速且易于访问。作为开发者，我们的工作是
 
 在开始优化 HTML 之前，你应该首先回答的问题是“我需要优化什么？”。下面讨论的一些技巧和技术是适用于几乎任何 Web 项目的良好实践，而其他一些技巧只在特定情况下才需要使用。试图在任何地方应用这些技术可能是不必要的，而且可能是浪费时间的。你应该确定在每个项目中实际需要哪些性能优化。
 
-为此，你需要[测量性能](/zh-CN/docs/Learn_web_development/Extensions/Performance/Measuring_performance)。正如此链接所示，有几种不同的方式可以测量性能，其中一些涉及复杂的[性能 API](/zh-CN/docs/Web/API/Performance_API)。然而，最好的入门方法是学习如何使用内置浏览器的[网络](/zh-CN/docs/Learn/Performance/Measuring_performance#网络监控工具)和[性能](/zh-CN/docs/Learn/Performance/Measuring_performance#性能监控工具)工具，以检查加载时间较长且需要优化的页面部分。
+为此，你需要[测量性能](/zh-CN/docs/Learn_web_development/Extensions/Performance/Measuring_performance)。正如此链接所示，有几种不同的方式可以测量性能，其中一些涉及复杂的[性能 API](/zh-CN/docs/Web/API/Performance_API)。然而，最好的入门方法是学习如何使用内置浏览器的[网络](/zh-CN/docs/Learn_web_development/Extensions/Performance/Measuring_performance#网络监控工具)和[性能](/zh-CN/docs/Learn_web_development/Extensions/Performance/Measuring_performance#性能监控工具)工具，以检查加载时间较长且需要优化的页面部分。
 
 ## HTML 性能关键问题
 
@@ -53,13 +52,13 @@ HTML 默认情况下快速且易于访问。作为开发者，我们的工作是
 
 [响应式设计](/zh-CN/docs/Learn_web_development/Core/CSS_layout/Responsive_Design)彻底改变了在不同设备上处理网页内容布局的方式。它的一个关键优势是可以动态切换根据不同的屏幕尺寸优化后的布局，例如宽屏布局与窄屏（移动设备）布局之间的切换。它还可以根据其他设备属性，如分辨率或亮色或暗色配色方案的偏好，来处理内容的动态切换。
 
-所谓的“移动优先”技术可以确保默认布局适用于小屏幕设备，因此移动设备只需下载适合其屏幕的图像，无需下载更大的桌面图像，以此提高性能。然而，由于这是通过 CSS 中的[媒体查询](/zh-CN/docs/Web/CSS/CSS_media_queries/Using_media_queries)来控制的，因此它只能对在 CSS 中加载的图像的性能产生积极影响。
+所谓的“移动优先”技术可以确保默认布局适用于小屏幕设备，因此移动设备只需下载适合其屏幕的图像，无需下载更大的桌面图像，以此提高性能。然而，由于这是通过 CSS 中的[媒体查询](/zh-CN/docs/Web/CSS/Guides/Media_queries/Using)来控制的，因此它只能对在 CSS 中加载的图像的性能产生积极影响。
 
-在下面的小节中，我们将总结如何实现响应式的替代元素。你可以在[视频和音频内容](/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_video_and_audio)和[响应式图像](/zh-CN/docs/Web/HTML/Responsive_images)指南中找到更多关于这些实现的详细信息。
+在下面的小节中，我们将总结如何实现响应式的替代元素。你可以在[视频和音频内容](/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_video_and_audio)和[响应式图像](/zh-CN/docs/Web/HTML/Guides/Responsive_images)指南中找到更多关于这些实现的详细信息。
 
 ### 通过 srcset 提供不同的图像分辨率
 
-要根据设备的分辨率和视口大小提供相同图像的不同分辨率版本，你可以利用 [`srcset`](/zh-CN/docs/Web/HTML/Element/img#srcset) 和 [`sizes`](/zh-CN/docs/Web/HTML/Element/img#sizes) 这两个属性。
+要根据设备的分辨率和视口大小提供相同图像的不同分辨率版本，你可以利用 [`srcset`](/zh-CN/docs/Web/HTML/Reference/Elements/img#srcset) 和 [`sizes`](/zh-CN/docs/Web/HTML/Reference/Elements/img#sizes) 这两个属性。
 
 以下示例为不同屏幕宽度提供了不同尺寸的图像：
 
@@ -260,18 +259,18 @@ pElem.addEventListener("click", () => {
 
 有关使用 `rel="preload"` 的详细信息，请参阅以下文章：
 
-- [`rel="preload"`](/zh-CN/docs/Web/HTML/Attributes/rel/preload)
+- [`rel="preload"`](/zh-CN/docs/Web/HTML/Reference/Attributes/rel/preload)
 - [预加载关键资源以提高加载速度](https://web.developers.google.cn/articles/preload-critical-assets) web.developers.google.cn（2020）
 
 > [!NOTE]
 > 你还可以使用 `rel="preload"` 预加载 CSS 和 JavaScript 文件。
 
 > [!NOTE]
-> 还有其他 [`rel`](/zh-CN/docs/Web/HTML/Attributes/rel) 值，也旨在加速页面加载的各个方面：`dns-prefetch`、`preconnect`、`modulepreload`、`prefetch` 和 `prerender`。请访问链接页面，了解它们的作用。
+> 还有其他 [`rel`](/zh-CN/docs/Web/HTML/Reference/Attributes/rel) 值，也旨在加速页面加载的各个方面：`dns-prefetch`、`preconnect`、`modulepreload`、`prefetch` 和 `prerender`。请访问链接页面，了解它们的作用。
 
 ## 参见
 
 - [从服务器获取数据](/zh-CN/docs/Learn_web_development/Core/Scripting/Network_requests)
 - [操作文档](/zh-CN/docs/Learn_web_development/Core/Scripting/DOM_scripting)
 
-{{PreviousMenuNext("Learn_web_development/Extensions/Performance/Javascript", "Learn_web_development/Extensions/Performance/CSS", "Learn_web_development/Extensions/Performance")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Performance/JavaScript", "Learn_web_development/Extensions/Performance/CSS", "Learn_web_development/Extensions/Performance")}}

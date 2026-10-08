@@ -1,12 +1,9 @@
 ---
 title: 段組みレイアウト
 slug: Learn_web_development/Core/CSS_layout/Multiple-column_Layout
-original_slug: Learn/CSS/CSS_layout/Multiple-column_Layout
 l10n:
-  sourceCommit: 289d6314f3368aa3e28524e7d090f6e9c704e3b1
+  sourceCommit: 85fccefc8066bd49af4ddafc12c77f35265c7e2d
 ---
-
-{{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/CSS_layout/Positioning", "Learn/CSS/CSS_layout/Responsive_Design", "Learn/CSS/CSS_layout")}}
 
 段組みレイアウトの仕様では、新聞に見られるような、コンテンツを段にレイアウトする方法が提供されています。 この記事では、この機能の使い方について説明します。
 
@@ -15,9 +12,9 @@ l10n:
     <tr>
       <th scope="row">前提知識:</th>
       <td>
-        HTML の基本（<a href="/ja/docs/Learn/HTML/Introduction_to_HTML"
-          >HTML 入門</a
-        >で学ぶ）、および CSS の機能の考え方（<a href="/ja/docs/Learn/CSS/First_steps">CSS 入門</a>で学ぶ）。
+        HTML の基本（<a href="/ja/docs/Learn_web_development/Core/Structuring_content"
+          >HTML によるコンテンツの構造化</a
+        >で学ぶ）、および CSS の機能の考え方（<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS によるスタイル設定の基本</a>で学ぶ）。
       </td>
     </tr>
     <tr>
@@ -29,7 +26,7 @@ l10n:
 
 ## 基本的な例
 
-ここでは、しばしば _multicol_ と呼ばれる、段組みレイアウトの使用方法を探ります。[段組みの出発点ファイルをダウンロード](https://github.com/mdn/learning-area/blob/main/css/css-layout/multicol/0-starting-point.html)して、適切な場所に CSS を追加していくと、追いかけることができます。この章の一番下には、最終的なコードがどのようになるのかの例があります。
+ここでは、段組みレイアウト（_multicol_ とも呼ばれる）の使用方法を探ります。[段組みの出発点ファイルをダウンロード](https://github.com/mdn/learning-area/blob/main/css/css-layout/multicol/0-starting-point.html)して、適切な場所に CSS を追加していくと、追いかけることができます。この章の一番下には、最終的なコードがどのようになるのかの例があります。
 
 ### 3 段組みレイアウト
 
@@ -37,7 +34,7 @@ l10n:
 
 `container` のクラスを持つ {{htmlelement("div")}} を、段組みコンテナーとします。 2 つのプロパティ {{cssxref("column-count")}} または {{cssxref("column-width")}} のいずれかを使用して、段組みをオンにします。 `column-count` プロパティは与えた値と同じ数の段 (column) を作成するので、スタイルシートに次の CSS を加えて、ページを再読み込みすれば、 3 段組みが実現できるでしょう。
 
-```css
+```css live-sample___a_three-column_layout
 .container {
   column-count: 3;
 }
@@ -45,21 +42,21 @@ l10n:
 
 作成した各段の幅は柔軟に設定できます。ブラウザーは各段に割り当てる空間をどれだけ確保するかを計算します。
 
-```css hidden
+```css hidden live-sample___a_three-column_layout
 body {
   width: 90%;
   max-width: 900px;
   margin: 2em auto;
   font:
-    0.9em/1.2 Arial,
-    Helvetica,
+    0.9em/1.2 "Helvetica",
+    "Arial",
     sans-serif;
 }
 ```
 
-```html hidden
+```html hidden live-sample___a_three-column_layout
 <div class="container">
-  <h1>Simple multicol example</h1>
+  <h1>シンプルな段組みの例</h1>
 
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
@@ -92,7 +89,7 @@ body {
 
 次のように CSS を変更して `column-width` を使用します。
 
-```css
+```css live-sample___setting_column-width
 .container {
   column-width: 200px;
 }
@@ -100,21 +97,21 @@ body {
 
 これでブラウザーは、できるだけ多くの、指定したサイズの段組みができるようになります。残りの空間は、既存の段の間で共有されます。つまり、コンテナーがその幅で正確に分割できない限り、指定した幅を正確に取得することはできません。
 
-```css hidden
+```css hidden live-sample___setting_column-width
 body {
   width: 90%;
   max-width: 900px;
   margin: 2em auto;
   font:
-    0.9em/1.2 Arial,
-    Helvetica,
+    0.9em/1.2 "Helvetica",
+    "Arial",
     sans-serif;
 }
 ```
 
-```html hidden
+```html hidden live-sample___setting_column-width
 <div class="container">
-  <h1>Simple multicol example</h1>
+  <h1>シンプルな段組みの例</h1>
 
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
@@ -154,7 +151,7 @@ body {
 
 今度は `column-rule` で、段の間に線（rule、罫線）を追加します。 前のレッスンで遭遇した {{cssxref("border")}} プロパティと同様に、`column-rule` は {{cssxref("column-rule-color")}}、{{cssxref("column-rule-style")}}、{{cssxref("column-rule-width")}} の一括指定で、`border` と同じ値を受け入れます。
 
-```css
+```css live-sample___styling_the_columns
 .container {
   column-count: 3;
   column-gap: 20px;
@@ -164,21 +161,21 @@ body {
 
 さまざまなスタイルや色の線を追加してみてください。
 
-```css hidden
+```css hidden live-sample___styling_the_columns
 body {
   width: 90%;
   max-width: 900px;
   margin: 2em auto;
   font:
-    0.9em/1.2 Arial,
-    Helvetica,
+    0.9em/1.2 "Helvetica",
+    "Arial",
     sans-serif;
 }
 ```
 
-```html hidden
+```html hidden live-sample___styling_the_columns
 <div class="container">
-  <h1>Simple multicol example</h1>
+  <h1>シンプルな段組みの例</h1>
 
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
@@ -216,14 +213,14 @@ body {
 > [!NOTE]
 > 要素を一部の列にのみまたがるようにすることはできません。プロパティは `none`（これが既定値です）か `all` の値しか示すことができません。
 
-```css hidden
+```css hidden live-sample___spanning_columns
 body {
   width: 90%;
   max-width: 900px;
   margin: 2em auto;
   font:
-    0.9em/1.2 Arial,
-    Helvetica,
+    0.9em/1.2 "Helvetica",
+    "Arial",
     sans-serif;
 }
 .container {
@@ -239,22 +236,36 @@ h2 {
 }
 ```
 
-```html hidden
+```html hidden live-sample___spanning_columns
 <div class="container">
-  <h1>Simple multicol example</h1>
+  <h1>シンプルな段組みの例</h1>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate.
-  Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at
+    ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer
+    ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+  </p>
 
-  <h2>Spanning subhead</h2>
-  Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse
-  ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit
-  quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+  <h2>またがる副見出し</h2>
+  <p>
+    Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae
+    convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis.
+    Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue
+    ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id
+    ornare felis, eget fermentum sapien.
+  </p>
 
-  <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus tristique
-  elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget velit
-  cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque penatibus et magnis
-  dis parturient montes, nascetur ridiculus mus.</p>
+  <p>
+    Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada
+    ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed
+    est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus
+    tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies
+    lectus sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis
+    vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque
+    penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  </p>
 </div>
 ```
 
@@ -268,22 +279,22 @@ h2 {
 
 時には、このような分割が配置されることで、読みやすさが損なわれることがあります。下記の例では、一連のボックスをレイアウトするために段組みを使用しており、それぞれのボックスには見出しとテキストがあります。見出しと本文の間で段が分割されると、見出しと本文が分離してしまいます。
 
-```css hidden
+```css hidden live-sample___fragmented_boxes
 body {
   width: 90%;
   max-width: 900px;
   margin: 2em auto;
   font:
-    0.9em/1.2 Arial,
-    Helvetica,
+    0.9em/1.2 "Helvetica",
+    "Arial",
     sans-serif;
 }
 ```
 
-```html
+```html live-sample___fragmented_boxes
 <div class="container">
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -294,7 +305,7 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -305,7 +316,7 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -315,18 +326,7 @@ body {
     </p>
   </div>
   <div class="card">
-    <h2>I am the heading</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
-      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
-      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
-      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
-      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -337,7 +337,7 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -348,7 +348,18 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -360,7 +371,7 @@ body {
 </div>
 ```
 
-```css
+```css live-sample___fragmented_boxes
 .container {
   column-width: 250px;
   column-gap: 20px;
@@ -370,44 +381,44 @@ body {
   background-color: rgb(207 232 220);
   border: 2px solid rgb(79 185 227);
   padding: 10px;
-  margin: 0 0 1em 0;
+  margin-bottom: 1em;
 }
 ```
 
-{{ EmbedLiveSample('断片化されたボックス', '100%', 1000) }}
+{{ EmbedLiveSample('Fragmented_boxes', '100%', 1000) }}
 
 ### break-inside の設定
 
-このふるまいを制御するために、[CSS 断片化](/ja/docs/Web/CSS/CSS_fragmentation)の仕様のプロパティを使用できます。 この仕様は、段組みとページ付きメディアでのコンテンツの分割を制御するためのプロパティを提供します。 例えば、 {{cssxref("break-inside")}} を `avoid` の値で `.card` のルールに追加することができます。これは見出しとテキストの断片化したくないコンテナーとなります。
+このふるまいを制御するために、[CSS 断片化](/ja/docs/Web/CSS/Guides/Fragmentation)の仕様のプロパティを使用できます。 この仕様は、段組みとページ付きメディアでのコンテンツの分割を制御するためのプロパティを提供します。 例えば、 {{cssxref("break-inside")}} を `avoid` の値で `.card` のルールに追加することができます。これは見出しとテキストの断片化したくないコンテナーとなります。
 
-```css
+```css live-sample___setting_break-inside
 .card {
   break-inside: avoid;
   background-color: rgb(207 232 220);
   border: 2px solid rgb(79 185 227);
   padding: 10px;
-  margin: 0 0 1em 0;
+  margin-bottom: 1em;
 }
 ```
 
 このプロパティを追加することで、ボックスは 1 つにまとまるようになり、これで段をまたがって分割されることはなくなります。
 
-```css hidden
+```css hidden live-sample___setting_break-inside
 body {
   width: 90%;
   max-width: 900px;
   margin: 2em auto;
   font:
-    0.9em/1.2 Arial,
-    Helvetica,
+    0.9em/1.2 "Helvetica",
+    "Arial",
     sans-serif;
 }
 ```
 
-```html hidden
+```html hidden live-sample___setting_break-inside
 <div class="container">
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -418,7 +429,7 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -429,7 +440,7 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -439,18 +450,7 @@ body {
     </p>
   </div>
   <div class="card">
-    <h2>I am the heading</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
-      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
-      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
-      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
-      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -461,7 +461,7 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -472,7 +472,18 @@ body {
   </div>
 
   <div class="card">
-    <h2>I am the heading</h2>
+    <h2>これは見出し</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>これは見出し</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
       aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
@@ -484,18 +495,14 @@ body {
 </div>
 ```
 
-```css hidden
+```css hidden live-sample___setting_break-inside
 .container {
   column-width: 250px;
   column-gap: 20px;
 }
 ```
 
-{{ EmbedLiveSample('break-inside_の設定', '100%', 1100) }}
-
-## スキルテスト
-
-この記事の最後に達しましたが、最も大切な情報を覚えていますか？次に進む前に、この情報が身に付いたかどうかを確認するテストがあります。[スキルテスト: 段組み](/ja/docs/Learn/CSS/CSS_layout/Multicol_skills) を参照してください。
+{{ EmbedLiveSample('Setting_break-inside', '100%', 1100) }}
 
 ## まとめ
 
@@ -503,7 +510,5 @@ body {
 
 ## 関連情報
 
-- [CSS 断片化](/ja/docs/Web/CSS/CSS_fragmentation)
-- [段組みレイアウトの使用](/ja/docs/Web/CSS/CSS_multicol_layout/Using_multicol_layouts)
-
-{{PreviousMenuNext("Learn/CSS/CSS_layout/Positioning", "Learn/CSS/CSS_layout/Responsive_Design", "Learn/CSS/CSS_layout")}}
+- [CSS 断片化](/ja/docs/Web/CSS/Guides/Fragmentation)
+- [段組みレイアウトの使用](/ja/docs/Web/CSS/Guides/Multicol_layout/Using)

@@ -3,11 +3,26 @@ title: RegExp.prototype.toString()
 slug: Web/JavaScript/Reference/Global_Objects/RegExp/toString
 ---
 
-{{JSRef}}
-
 La méthode **`toString()`** renvoie une chaîne de caractères représentant l'expression rationnelle.
 
-{{EmbedInteractiveExample("pages/js/regexp-prototype-tostring.html", "taller")}}
+{{InteractiveExample("JavaScript Demo: RegExp.prototype.toString()", "taller")}}
+
+```js interactive-example
+console.log(new RegExp("a+b+c"));
+// Expected output: /a+b+c/
+
+console.log(new RegExp("a+b+c").toString());
+// Expected output: "/a+b+c/"
+
+console.log(new RegExp("bar", "g").toString());
+// Expected output: "/bar/g"
+
+console.log(new RegExp("\n", "g").toString());
+// Expected output (if your browser supports escaping): "/\n/g"
+
+console.log(new RegExp("\\n", "g").toString());
+// Expected output: "/\n/g"
+```
 
 ## Syntaxe
 
@@ -27,7 +42,7 @@ L'objet {{jsxref("RegExp")}} surcharge la méthode `toString` de l'objet {{jsxre
 
 ### Utiliser `toString()`
 
-L'exemple qui suit affiche la chaîne correspondant à la valeur de l'objet {{jsxref("Global_Objects/RegExp", "RegExp")}} :
+L'exemple qui suit affiche la chaîne correspondant à la valeur de l'objet {{jsxref("RegExp")}} :
 
 ```js
 var maRegExp = new RegExp("a+b+c");

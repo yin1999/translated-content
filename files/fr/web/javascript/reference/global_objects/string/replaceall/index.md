@@ -3,13 +3,23 @@ title: String.prototype.replaceAll()
 slug: Web/JavaScript/Reference/Global_Objects/String/replaceAll
 ---
 
-{{JSRef}}
-
 La méthode **`replaceAll()`** retourne une nouvelle chaîne de caractères dans laquelle toutes les occurrences d'un motif donné ont été remplacées par une chaîne de remplacement. L'argument `pattern` fournit pour décrire le motif peut être une chaîne de caractères ou une expression rationnelle ([`RegExp`](/fr/docs/Web/JavaScript/Reference/Global_Objects/RegExp)), l'argument `replacement` peut être une chaîne de caractères ou une fonction qui sera appelée pour chaque correspondance.
 
 La chaîne de caractères initiale restera inchangée.
 
-{{EmbedInteractiveExample("pages/js/string-replaceall.html")}}
+{{InteractiveExample("JavaScript Demo: String.replaceAll()")}}
+
+```js interactive-example
+const paragraph = "I think Ruth's dog is cuter than your dog!";
+
+console.log(paragraph.replaceAll("dog", "monkey"));
+// Expected output: "I think Ruth's monkey is cuter than your monkey!"
+
+// Global flag required when calling replaceAll with regex
+const regex = /Dog/gi;
+console.log(paragraph.replaceAll(regex, "ferret"));
+// Expected output: "I think Ruth's ferret is cuter than your ferret!"
+```
 
 ## Syntaxe
 

@@ -5,9 +5,24 @@ slug: Web/JavaScript/Reference/Statements/function*
 
 {{jsSidebar("Statements")}}
 
-A declaração **`function*`** (palavra chave `function` seguida de um asterisco) define uma _função geradora_ (_generator function_), que retorna um objeto {{jsxref("Global_Objects/Generator","Generator")}}.
+A declaração **`function*`** (palavra chave `function` seguida de um asterisco) define uma _função geradora_ (_generator function_), que retorna um objeto {{jsxref("Generator")}}.
 
-{{EmbedInteractiveExample("pages/js/statement-functionasterisk.html")}}
+{{InteractiveExample("JavaScript Demo: Statement - Function*")}}
+
+```js interactive-example
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+const gen = generator(10);
+
+console.log(gen.next().value);
+// Expected output: 10
+
+console.log(gen.next().value);
+// Expected output: 20
+```
 
 Você também pode definir funções geradoras usando o construtor {{jsxref("GeneratorFunction")}} ou a sintaxe da expressão de uma função.
 
@@ -161,9 +176,8 @@ Iniciando com Gecko 29, o _generator_ finalizado não lança mais um {{jsxref("T
 - {{jsxref("Function")}} object
 - {{jsxref("Statements/function", "function declaration")}}
 - {{jsxref("Operators/function", "function expression")}}
-- {{jsxref("Functions_and_function_scope", "Functions and function scope")}}
+- {{jsxref("Functions", "Functions and function scope")}}
 - Outras fontes na web:
-
   - [Regenerator](http://facebook.github.io/regenerator/) um ES6 generator que compila para ES5
   - [Forbes Lindesay: Promises and Generators: control flow utopia — JSConf EU 2013](https://www.youtube.com/watch?v=qbKWsbJ76-s)
   - [Hemanth.HM: The New gen of \*gen(){}](https://www.youtube.com/watch?v=ZrgEZykBHVo&list=PLuoyIZT5fPlG44bPq50Wgh0INxykdrYX7&index=1)

@@ -1,12 +1,11 @@
 ---
 title: アクセシビリティとは
 slug: Learn_web_development/Core/Accessibility/What_is_accessibility
-original_slug: Learn/Accessibility/What_is_accessibility
 l10n:
-  sourceCommit: 4bddde3e2b86234eb4594809082873fc5bf00ee3
+  sourceCommit: 8a6ebefa23ff414c256ee69d08fc20bd5ebe540b
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn/Accessibility/HTML", "Learn/Accessibility")}}
+{{NextMenu("Learn_web_development/Core/Accessibility/Tooling", "Learn_web_development/Core/Accessibility")}}
 
 この記事では実際アクセシビリティとは何かについてよく観察するモジュールから開始します — これには考慮が必要な人のグループや、いろいろな人がウェブとやり取りするのになぜ、どんなツールを使うのかや、アクセシビリティをウェブ開発のワークフローに取り組む方法が含まれます。
 
@@ -14,12 +13,18 @@ l10n:
   <tbody>
     <tr>
       <th scope="row">前提知識:</th>
-      <td>HTML と CSS に関する基本的な理解</td>
+      <td><a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a> と <a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS</a> の知識。</td>
     </tr>
     <tr>
-      <th scope="row">目的:</th>
+      <th scope="row">学習成果:</th>
       <td>
-        アクセシビリティとは何か、そしてそれがウェブ開発者としてのあなたにどう関わってくるかを含め、アクセシビリティに詳しくなる
+        <ul>
+          <li>アクセシビリティのこの点において、追加の必要がある人々にとってのデジタルサービスへのアクセスが増加し、すべての人にとってのユーザビリティが改善され、 SEO が向上し、より幅広い対象とするユーザー層が生まれること。</li>
+          <li>アクセシビリティに関する法的要件の認識。</li>
+          <li>アクセシビリティは、自分のプロジェクトの初めに考慮すべきであり、最後に付け足すべきものではないこと。</li>
+          <li>ウェブコンテンツアクセシビリティガイドライン (WCAG) 適合性基準に慣れること。</li>
+          <li>アクセシビリティ API とその目的についての認識。</li>
+        </ul>
       </td>
     </tr>
   </tbody>
@@ -27,9 +32,9 @@ l10n:
 
 ## それで、アクセシビリティとは
 
-アクセシビリティというのはあなたのウェブサイトを可能な限り多くの人に利用してもらうようにすることです。かつては我々はアクセシビリティのことをハンディキャップを持つ人々のためのものだと考えていましたが、現在はモバイルデバイスや遅いネットワークを利用している人々のためのものでもあると考えられています。
+アクセシビリティというのはあなたのウェブサイトを可能な限り多くの人に利用してもらうようにすることです。かつては我々はアクセシビリティのことをハンディキャップを持つ人々のためのものだと考えていましたが、現在はモバイル端末や遅いネットワークを利用している人々のためのものでもあると考えられています。
 
-アクセシビリティを、能力や環境にかかわらず全員を同一に扱い、同じ機会を与えることと考えることもあります。車椅子に乗っているために物理的な建物から誰かを除外するのは正しくないのと同様に(昨今一般的に公的な建物では、車椅子のスロープやエレベーターを備えています)、視覚障碍があるためにウェブサイトから特定のユーザーを除外するのも正しくありません。我々はみんな異なっていて、しかしみんな人間であり、ゆえに同じ人権を持っています。
+アクセシビリティを、能力や環境にかかわらず全員を同一に扱い、同じ機会を与えることと考えることもあります。車椅子に乗っているために物理的な建物から誰かを除外するのは正しくないのと同様に（昨今一般的に公的な建物では、車椅子のスロープやエレベーターを備えています）、視覚障碍があるためにウェブサイトから特定のユーザーを除外するのも正しくありません。我々はみんな異なっていて、しかしみんな人間であり、ゆえに同じ人権を持っています。
 
 アクセシビリティは正しい行為です。アクセシブルなサイトを提供することは、いくつかの国では法律の一部でもあり、そうしなければサービスを利用したり、製品を買ったりすることなどができなかったであろう、いくつかの重要な市場を開拓することができます。
 
@@ -38,50 +43,50 @@ l10n:
 - 意味論的 HTML （これはアクセシビリティを改良します）は SEO の改善にもなり、サイトがもっと発見しやすいものになります。
 - アクセシビリティへの留意は倫理とモラルを誇示することになり、公的イメージが良くなります。
 - その他のアクセシビリティ改良の事例は、例えば携帯電話のユーザーや、ネットワーク速度が遅い人といったその他のグループにとってより使いやすくなります。実際にすべての人がこうした改良で利益を得ます。
-- ある場所では法律となっているって言いましたっけ？
+- 場所によっては法律となっているって言いましたっけ？
 
-## 私たちが考える"不利な条件"とは？
+## 私たちが考える「不利な条件」とは？
 
 障碍のある人は障碍のない人と同じくらい多様であり、よってその障碍も同じくらい多様です。ここでの重要な教訓は、あなたがコンピューターの向こうでウェブをどのように使うかを考え、他の人がどのように使っているかを学習し始めることです — あなたはユーザーとは違います。考慮すべき障碍の主な種類を、ウェブコンテンツにアクセスするために使う特別なツール（**支援技術**、**assistive technology** や **AT** として知られるもの）とともに以下に説明します。
 
 > [!NOTE]
-> 世界保健機構 (WHO) の[障碍と健康](https://www.who.int/en/news-room/fact-sheets/detail/disability-and-health)（英語）の報告によると、「10 億人以上の人（世界人口の約 15%）が何らかの障碍を持っています」し、「1 億～ 1 億 9000 万人の大人に目立った機能障碍があります」
+> 世界保健機構 (WHO) の[障碍と健康](https://www.who.int/en/news-room/fact-sheets/detail/disability-and-health)<sup>(英語)</sup>の報告によると、「10 億人以上の人（世界人口の約 15%）が何らかの障碍を持っています」し、「1 億～ 1 億 9000 万人の大人に目立った機能障碍があります」
 
 ### 視覚障碍者
 
-視覚障碍者には全盲の人や、視覚が低レベルな人、色盲の人などが含まれます。これらの多くはスクリーン拡大鏡 (物理的な拡大鏡とソフトウェアズーム機能のいずれか — 大半のブラウザーと OS には今日ズーム機能があります) を使い、スクリーンリーダー、つまりデジタルテキストを読み上げるソフトウェアを使う人もいます。スクリーンリーダーの例はこれらです:
+視覚障碍者には全盲の人や、視覚が低レベルな人、色盲の人などが含まれます。これらの多くはスクリーン拡大鏡 (物理的な拡大鏡とソフトウェアズーム機能のいずれか — 大半のブラウザーと OS には今日ズーム機能があります) を使い、スクリーンリーダー、つまりデジタルテキストを読み上げるソフトウェアを使う人もいます。スクリーンリーダーの例としては次のようなものがあります。
 
-- 有償の商用製品、例えば [JAWS](https://www.freedomscientific.com/Products/software/JAWS/) (Windows) や [Dolphin Screen Reader](https://yourdolphin.com/en-gb/products/individuals/screen-reader) (Windows).
-- 無償の製品、例えば [NVDA](https://www.nvaccess.org/) (Windows), [ChromeVox](https://support.google.com/chromebook/answer/7031755) (Chrome, Windows Mac OS X), や [Orca](https://wiki.gnome.org/Projects/Orca) (Linux).
-- OS に組み込まれたもの、例えば [VoiceOver](https://www.apple.com/accessibility/vision/) (Mac OS X と iPadOS と iOS), [Narrator](https://support.microsoft.com/en-us/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1) (Windows), [ChromeVox](https://support.google.com/chromebook/answer/7031755) (ChromeOS), や [TalkBack](https://play.google.com/store/apps/details?id=com.google.android.marvin.talkback) (Android).
+- 有償の商用製品、例えば [JAWS](https://vispero.com/jaws-screen-reader-software/) (Windows) や [Dolphin Screen Reader](https://yourdolphin.com/ScreenReader) (Windows).
+- 無償の製品、例えば [NVDA](https://www.nvaccess.org/) (Windows), [ChromeVox](https://support.google.com/chromebook/answer/7031755) (Chrome, Windows Mac OS X), や [Orca](https://help.gnome.org/orca/introduction.html) (Linux - 一部のディストロではデフォルトでインストールされる)。
+- OS に組み込まれたソフトウェア、例えば [VoiceOver](https://www.apple.com/accessibility/features/?vision) (Mac OS X と iPadOS と iOS), [Narrator](https://support.microsoft.com/ja/accessibility/windows/narrator/complete-guide-to-narrator) (Windows), [ChromeVox](https://support.google.com/chromebook/answer/7031755) (ChromeOS), や [TalkBack](https://play.google.com/store/apps/details?id=com.google.android.marvin.talkback) (Android).
 
-スクリーンリーダーに精通するのは良い考えです; スクリーンリーダーをセットアップして試してみて、その動作方法を理解するべきです。 [ブラウザー横断テストのスクリーンリーダーのガイド](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility#screen_readers) を見ると詳しい使い方がわかります。下記の動画も、その体験がどのようなものかの簡単な例です。
+スクリーンリーダーを実際に使ってみるのは良い考えです。スクリーンリーダーをセットアップして試してみて、その動作方法を理解するべきです。 [スクリーンリーダーのチュートリアル](/ja/docs/Learn_web_development/Core/Accessibility/Tooling#スクリーンリーダー)を見ると詳しい使い方がわかります。下記の動画も、その体験がどのようなものかの簡単な例です。
 
 {{EmbedYouTube("IK97XMibEws")}}
 
-統計では、WHO は「世界中で 2 億 8500 万人が視覚障碍者で、うち 3900 万人が全盲で 2 億 4600 万人がロービジョンです」と見積もっています([視覚障碍と盲目](https://www.who.int/en/news-room/fact-sheets/detail/blindness-and-visual-impairment)（英語）を参照)。これは単にサイトが適切にコーディングされていないために逃すユーザーとしては多くて重要です — 米国の人口とほぼ同じ大きさです。
+統計では、WHO は「世界中で 2 億 8500 万人が視覚障碍者で、うち 3900 万人が全盲で 2 億 4600 万人がロービジョンです」と見積もっています（[視覚障碍と盲目](https://www.who.int/en/news-room/fact-sheets/detail/blindness-and-visual-impairment)<sup>(英語)</sup>を参照）。これは単にサイトが適切にコーディングされていないために逃すユーザーとしては多くて重要です — 米国の人口とほぼ同じ大きさです。
 
 ### 聴覚障碍者
 
-耳の障碍者や、ろう者とも知られて、このグループの人には聞こえにくい人と全く聞こえない人の両方がいます。聴覚障碍者は AT（[聴覚、発声能力、発話能力、言語に障碍のある人のための補助装置](https://www.nidcd.nih.gov/health/assistive-devices-people-hearing-voice-speech-or-language-disorders)（英語）を参照）を使いますが、コンピューターやウェブに特化した特別な AT はありません。
+[ろう者や聴覚障碍者 (DHH)](https://www.nad.org/resources/american-sign-language/community-and-culture-frequently-asked-questions/)<sup>(英語)</sup>という、さまざまなレベルで聞こえにくい人と全く聞こえない人の両方がいます。聴覚障碍者は AT（[聴覚、発声能力、発話能力、言語に障碍のある人のための補助装置](https://www.nidcd.nih.gov/health/assistive-devices-people-hearing-voice-speech-or-language-disorders)<sup>(英語)</sup>を参照）を使いますが、コンピューターやウェブに特化した特別な AT はありません。
 
-アクセシビリティを提供するためには、テキストによる代替手段を提供しなければなりません。動画には手動でキャプションをつけ、音声コンテンツには文字起こしを提供する必要があります。さらに、DHHの人々は[言語剥奪](https://www.therapytravelers.com/language-deprivation/#:~:text=Language%20deprivation%20is%20, therefore%20not%20exposed%20to%20language.)が高いため、[テキストの簡略化を検討すべき](https://circlcenter.org/collaborative-research-automatic-text-simplification-and-reading-assistance-to-support-self-directed-learning-by-deaf-and-hard-of-hearing-computing-workers/)とされています。
+アクセシビリティを提供するためには、テキストによる代替手段を提供しなければなりません。動画には手動でキャプションをつけ、音声コンテンツには文字起こしを提供する必要があります。さらに、 DHH の人々は[言語剥奪](https://epicspecialeducationstaffing.com/language-deprivation/#:~:text=Language%20deprivation%20is%20the%20term,therefore%20not%20exposed%20to%20language.)<sup>(英語)</sup>が高いため、[テキストの簡略化を検討すべき](https://circlcenter.org/collaborative-research-automatic-text-simplification-and-reading-assistance-to-support-self-directed-learning-by-deaf-and-hard-of-hearing-computing-workers/)<sup>(英語)</sup>とされています。
 
-聴覚障碍者もまた重要なユーザー基盤を代表しています — 「世界中で 4 億 6,600 万人が日常生活に支障を来すほどの聴覚障碍を持っています」と WHO は[ろうと聴覚障碍](https://www.who.int/en/news-room/fact-sheets/detail/deafness-and-hearing-loss)（英語）で報告しています。
+聴覚障碍者もまた重要なユーザー基盤を代表しています — 「世界中で 4 億 6,600 万人が日常生活に支障を来すほどの聴覚障碍を持っています」と WHO は[ろうと聴覚障碍](https://www.who.int/en/news-room/fact-sheets/detail/deafness-and-hearing-loss)<sup>(英語)</sup>で報告しています。
 
 ### 運動障碍のある人
 
-これらの人々は、（四肢の喪失や麻痺のような）純粋に肉体的な問題や、四肢の衰弱や制御不能につながる神経学的障碍や遺伝子疾患を伴う可能性がある、運動に関する障碍を持っています。マウスを使うのに必要な正確な手の動きが難しい人もいれば、もっと深刻な影響を受けて、コンピューターと対話するために[ヘッドポインター](https://www.performancehealth.com/adjustable-headpointer)（英語）を使う必要があるところまで著しく麻痺している人もいます。
+これらの人々は、（四肢の喪失や麻痺のような）純粋に肉体的な問題や、四肢の衰弱や制御不能につながる神経学的障碍や遺伝子疾患を伴う可能性がある、運動に関する障碍を持っています。マウスを使うのに必要な正確な手の動きが難しい人もいれば、もっと深刻な影響を受けて、コンピューターと対話するために[ヘッドポインター](https://www.performancehealth.com/adjustable-headpointer)<sup>(英語)</sup>を使う必要があるところまで著しく麻痺している人もいます。
 
 この種の障碍は、特定のトラウマや状態ではなく、老年期の結果であることもあります。それに、ハードウェアの制限から生じることもあります — 一部のユーザーはマウスを持っていないかもしれません。
 
-これが通常ウェブ開発作業に影響するのは、コントロールがキーボードからアクセス可能であることという要件です — このモジュールの後の記事でキーボード・アクセシビリティを扱いますが、どのようにやるかを見るためにキーボードだけを使っていくつかのウェブサイトを試してみることは良い考えです。例えば、<kbd>Tab</kbd> キーを使ってウェブフォームのさまざまなコントロール間を移動できますか？ キーボードコントロールの詳細については、[ブラウザー横断テストのネイティブなキーボードアクセシビリティを使う](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility#using_native_keyboard_accessibility)のセクションを参照してください。
+これが通常ウェブ開発作業に影響するのは、コントロールがキーボードからアクセス可能であることという要件です — このモジュールの後の記事でキーボード・アクセシビリティを扱いますが、どのようにやるかを見るためにキーボードだけを使っていくつかのウェブサイトを試してみることは良い考えです。例えば、<kbd>Tab</kbd> キーを使ってウェブフォームのさまざまなコントロール間を移動できますか？ キーボードコントロールの詳細については、[可能であれば意味的な UI コントロールを使う](/ja/docs/Learn_web_development/Core/Accessibility/HTML#可能であれば意味のある_ui_コントロールを使う)の節を参照してください。
 
-統計では、有意な数の人が運動障碍を持っています。米国疾病管理予防センターの[障碍と機能 (施設に入らない 18 歳以上の大人)](https://www.cdc.gov/nchs/fastats/disability.htm)（英語）の報告によると、米国では "肉体的な機能障碍のある大人の割合は、16.1%" です。
+統計では、有意な数の人が運動障碍を持っています。米国疾病管理予防センターの[障碍と機能（施設に入らない 18 歳以上の大人）](https://www.cdc.gov/nchs/fastats/disability.htm)<sup>(英語)</sup>の報告によると、米国では "肉体的な機能障碍のある大人の割合は、16.1%" です。
 
 ### 認知障碍者
 
-認知障碍者とは最も広い範囲の障碍をいい、最も限定された能力をもつ知的障碍者からわれわれがみな加齢とともに考えたり記憶したりが困難になることまでがあります。この範囲には [鬱病](https://www.nimh.nih.gov/health/topics/depression)（英語）や [統合失調症](https://www.nimh.nih.gov/health/topics/schizophrenia)（英語）といった精神疾患のほか、[ディスクレシア](https://www.ninds.nih.gov/health-information/disorders/learning-disabilities)（英語）や[ADHD（注意欠陥多動性障碍）](https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd)（英語）のような学習障碍も含みます。重要なこととして、認知障碍の臨床的な定義が広がっていても、そうした障碍をもつ人には共通の機能不全があります。それにはコンテンツを理解し難いこと、タスクを完了する方法を記憶すること、一貫性のないウェブページレイアウトによって混乱することがあります。
+認知障碍者とは最も広い範囲の障碍をいい、最も限定された能力をもつ知的障碍者からわれわれがみな加齢とともに考えたり記憶したりが困難になることまでがあります。この範囲には [鬱病](https://www.nimh.nih.gov/health/topics/depression)<sup>(英語)</sup>や [統合失調症](https://www.nimh.nih.gov/health/topics/schizophrenia)<sup>(英語)</sup>といった精神疾患のほか、[ディスクレシア](https://www.nichd.nih.gov/health/topics/learningdisabilities)<sup>(英語)</sup>や[ADHD（注意欠陥多動性障碍）](https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd)<sup>(英語)</sup>のような学習障碍も含みます。重要なこととして、認知障碍の臨床的な定義が広がっていても、そうした障碍をもつ人には共通の機能不全があります。それにはコンテンツを理解し難いこと、タスクを完了する方法を記憶すること、一貫性のないウェブページレイアウトによって混乱することがあります。
 
 認知障碍者へのアクセシビリティの良い基本事項は、次のものです。
 
@@ -97,8 +102,8 @@ l10n:
 
 ### 注記
 
-- [認知的なアクセシビリティ](/ja/docs/Web/Accessibility/Cognitive_accessibility)をもってデザインするのは良い習慣になります。どんな人にも利益になるでしょう。
-- 知的障碍者の多くは身体的な障碍も持っています。ウェブサイトは W3C の[ウェブコンテンツアクセシビリティガイドライン](https://www.w3.org/WAI/standards-guidelines/wcag/)と、その中の[認知的アクセシビリティガイドライン](/ja/docs/Web/Accessibility/Cognitive_accessibility#wcag_guidelines)に従う必要があります。
+- [認知的なアクセシビリティ](/ja/docs/Web/Accessibility/Guides/Cognitive_accessibility)をもってデザインするのは良い習慣になります。どんな人にも利益になるでしょう。
+- 知的障碍者の多くは身体的な障碍も持っています。ウェブサイトは W3C の[ウェブコンテンツアクセシビリティガイドライン](https://www.w3.org/WAI/standards-guidelines/wcag/)と、その中の[認知的アクセシビリティガイドライン](/ja/docs/Web/Accessibility/Guides/Cognitive_accessibility#wcag_guidelines)に従う必要があります。
 - W3C の [認知と学習障碍者のアクセシビリティタスクフォース](https://www.w3.org/WAI/GL/task-forces/coga/)では認知障碍者のためのウェブアクセシビリティガイドラインを制作しています。
 - WebAIM の[認知のページ](https://webaim.org/articles/cognitive/)には関連する情報やリソースがあります
 - アメリカ疾病予防管理センターの見積もりでは、2018 年以降、4 人に 1 人の米国市民には障碍があり、その中で、[若い人には認知障碍が最もよく見られます](https://archive.cdc.gov/www_cdc_gov/media/releases/2018/p0816-disability.html)。
@@ -114,7 +119,7 @@ l10n:
 
 ただし、プロジェクトの開始時からアクセシビリティを検討している場合は、ほとんどのコンテンツをアクセス可能にするためのコストはごくわずかなはずです。
 
-プロジェクトを計画するときは、他の重要な対象観客セグメント（対象とするデスクトップやモバイルのブラウザーなど）のテストと同様に、アクセシビリティのテストをテスト体制に組み入れます。早期に頻繁にテストし、理想的にはプログラムで検出可能な欠けている機能（画像の[代替テキスト](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility#text_alternatives)の欠落、リンクテキストの不良のような — [要素の関係とコンテキスト](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility#element_relationships_and_context)を参照）を検出するための自動テストの実行し、より複雑なサイト機能が障碍のあるユーザーのグループに対してどの程度うまく機能するかを確認するために、それらのグループでいくつかのテストを行います。例えば、
+プロジェクトを計画するときは、他の重要な対象観客セグメント（対象とするデスクトップやモバイルのブラウザーなど）のテストと同様に、アクセシビリティのテストをテスト体制に組み入れます。早期に頻繁にテストし、理想的にはプログラムで検出可能な欠けている機能（画像の[代替テキスト](/ja/docs/Learn_web_development/Core/Accessibility/HTML#代替テキスト)の欠落、リンクテキストの不良のような — [意味のあるテキストラベルを使う](/ja/docs/Learn_web_development/Core/Accessibility/HTML#意味の通るテキストラベルを使う)を参照）を検出するための自動テストの実行し、より複雑なサイト機能が障碍のあるユーザーのグループに対してどの程度うまく機能するかを確認するために、それらのグループでいくつかのテストを行います。例えば、
 
 - 私の日付選択ウィジェットをスクリーンリーダーを使う人が使用できますか？
 - コンテンツが動的に更新される場合、視覚障碍者はそれについて知っていますか？
@@ -128,20 +133,18 @@ l10n:
 
 あなたがアクセシビリティに関心があり、考えていることを示すために、あなたのサイトに、アクセシビリティに向けた方針と、サイトをアクセス可能にするためにどのようなステップを踏んだかを詳しく記載した、アクセシビリティに関する声明を発表してください。あなたのサイトにアクセシビリティの問題があると誰かが文句を言ってきたら、彼らと対話を始め、共感し、そして問題を解決するために合理的なステップを踏みます。
 
-> **メモ:** [よくあるアクセシビリティの問題を扱う](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility)の記事では、より詳細にテストするべきであるアクセシビリティの詳細について説明しています。
-
 要約すると、
 
 - プロジェクトの最初からアクセシビリティを考慮し、早期に頻繁にテストしてください。他のバグと同じように、アクセシビリティの問題は、後で発見されたものほど修正が高くつきます。
-- アクセシビリティに関するベストプラクティスの多くは、障碍のあるユーザーだけではなく、すべてのユーザーに役立つことを念頭に置いてください。例えば、意味論に頼ったマークアップは、スクリーンリーダーに適しているだけでなく、読み込みや実行が高速であるため、すべての人、特にモバイルデバイスを使用している人、および/または遅い接続に適しています。
+- アクセシビリティに関するベストプラクティスの多くは、障碍のあるユーザーだけではなく、すべてのユーザーに役立つことを念頭に置いてください。例えば、意味論に頼ったマークアップは、スクリーンリーダーに適しているだけでなく、読み込みや実行が高速であるため、すべての人、特にモバイル端末を使用している人、および/または遅い接続に適しています。
 - あなたのサイトにアクセシビリティの声明を発表し、問題を抱えている人々と関わり合いましょう。
 
 ## アクセシビリティのガイドラインと法律
 
 アクセシビリティテストの基礎となる多数のチェックリストと一連のガイドラインがあります。これは、一見すると圧倒的に思われるかもしれません。アドバイスとしては、あなたが注意を払う必要がある基本的な分野に精通すること、そしてあなたにとって最も関連性のあるガイドラインの高いレベルの構造を理解することです。
 
-- はじめに、W3C は、アクセシビリティ適合のための非常に正確な、技術に依存しない基準を含む、大きくて非常に詳細なドキュメントを公開しました。これらは [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/) (WCAG) と呼ばれていますが、決して短く読むことはできません。基準は 4 つの主なカテゴリーに分けられます。これらは、実装を認識可能、操作可能、理解可能、そして堅牢にする方法を指定します。簡単に紹介して学習を開始するのに最適な場所は、[WCAG の概要](https://www.w3.org/WAI/standards-guidelines/wcag/glance/)（英語）です。WCAG の全てを学ぶ必要はありません — 主な関心分野に注意し、WCAG の基準に適合していない分野をハイライトするために、さまざまなテクニックやツールを使用します（詳細は下記を参照）。
-- あなたの国はまた、彼らの人口に役立つウェブサイトがアクセス可能であることを規定する特定の法律を持つかもしれません — 例えば、EU の [EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf)（PDF、英語）、米国の[リハビリテーション法のセクション 508](https://www.section508.gov/training/)（英語）、ドイツの[バリアフリー情報技術に関する連邦条例](https://www.einfach-fuer-alle.de/artikel/bitv_english/)（英語）、英国の[アクセシビリティ規則 2018](https://www.legislation.gov.uk/uksi/2018/952/introduction/made)（英語）、イタリアの[アクセシビリティ](https://www.agid.gov.it/it/design-servizi/accessibilita)（イタリア語) 、オーストラリアの[障碍者差別禁止法](https://www.humanrights.gov.au/world-wide-web-access-disability-discrimination-act-advisory-notes-ver)（英語）など。W3C は、国ごとの[ウェブアクセシビリティの法および政策](https://www.w3.org/WAI/policies/)（英語）のリストを保持しています。
+- はじめに、W3C は、アクセシビリティ適合のための非常に正確な、技術に依存しない基準を含む、大きくて非常に詳細なドキュメントを公開しました。これらは[ウェブコンテンツアクセシビリティガイドライン](https://www.w3.org/WAI/standards-guidelines/wcag/) (WCAG) と呼ばれていますが、簡単に読めるものではありません。基準は 4 つの主なカテゴリーに分けられます。これらは、実装を認識可能、操作可能、理解可能、そして堅牢にする方法を指定します。簡単に紹介して学習を開始するのに最適な場所は、[WCAG の概要](https://www.w3.org/WAI/standards-guidelines/wcag/glance/)<sup>(英語)</sup>です。WCAG の全てを学ぶ必要はありません — 主な関心分野に注意し、WCAG の基準に適合していない分野をハイライトするために、さまざまなテクニックやツールを使用します（詳細は下記を参照）。
+- あなたの国はまた、彼らの人口に役立つウェブサイトがアクセス可能であることを規定する特定の法律を持つかもしれません — 例えば、EU の [EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf)（PDF、英語）、米国の[リハビリテーション法のセクション 508](https://www.section508.gov/training/)<sup>(英語)</sup>、ドイツの[バリアフリー情報技術に関する連邦条例](https://www.aktion-mensch.de/inklusion/barrierefreiheit/barrierefreie-website)<sup>(英語)</sup>、英国の[アクセシビリティ規則 2018](https://www.legislation.gov.uk/uksi/2018/952/introduction/made)<sup>(英語)</sup>、イタリアの[アクセシビリティ](https://www.agid.gov.it/it/ambiti-intervento/accessibilita)（イタリア語）、オーストラリアの[障碍者差別禁止法](https://humanrights.gov.au/resource-hub/by-resource-type/guidelines-and-standards/guides-and-standards-disability-rights/guidelines-equal-access-digital-goods-and-services)<sup>(英語)</sup>など。W3C は、国ごとの[ウェブアクセシビリティの法および政策](https://www.w3.org/WAI/policies/)<sup>(英語)</sup>のリストを保持しています。
 
 そのため、WCAG は一連のガイドラインですが、あなたの国ではおそらくウェブアクセシビリティ、または少なくとも公的に利用可能なサービスのアクセシビリティ（ウェブサイト、テレビ、物理的な空間などを含む）を規制する法律があるでしょう。あなたの法律が何であるかを調べることは良い考えです。あなたのコンテンツがアクセス可能であることを確認しようと努力せずに、障碍を持つ人々が訴えた場合、法律な責任を負うこともあります。
 
@@ -159,21 +162,20 @@ l10n:
 - Android: Accessibility framework
 - iOS: UIAccessibility
 
-ウェブアプリにおいて HTML 要素によって提供されるネイティブな意味論的情報が足りない場合は、あなたは [WAI-ARIA の仕様](https://www.w3.org/TR/wai-aria/)（英語）の機能でそれを補うことができます。これにより、アクセシビリティツリーに意味論的情報が追加され、アクセシビリティが向上します。[WAI-ARIA の基本](/ja/docs/Learn/Accessibility/WAI-ARIA_basics)の記事で WAI-ARIA についてもっと多くを学ぶことができます。
+ウェブアプリにおいて HTML 要素によって提供されるネイティブな意味論的情報が足りない場合は、[WAI-ARIA 仕様書](https://w3c.github.io/aria/)<sup>(英語)</sup>の機能でそれを補うことができます。これにより、アクセシビリティツリーに意味論的情報が追加され、アクセシビリティが向上します。[WAI-ARIA の基本](/ja/docs/Learn_web_development/Core/Accessibility/WAI-ARIA_basics)の記事で WAI-ARIA についてもっと多くを学ぶことができます。
 
 ## まとめ
 
 この記事では高いレベルでアクセシビリティの概要を説明し、それが重要である理由と、ワークフローに取り込む方法を見てきました。サイトをアクセシブルにするための実装の詳細について学ぶことを渇望する人もいるでしょう。それでは次の記事では、HTML がアクセシビリティの良い基礎である理由を見ていきます。
 
-{{NextMenu("Learn/Accessibility/HTML", "Learn/Accessibility")}}
-
 ## 関連情報
 
-- [WCAG](/ja/docs/Web/Accessibility/Understanding_WCAG)
+- [WCAG](/ja/docs/Web/Accessibility/Guides/Understanding_WCAG)
+  - [知覚可能](/ja/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable)
+  - [操作可能](/ja/docs/Web/Accessibility/Guides/Understanding_WCAG/Operable)
+  - [理解可能](/ja/docs/Web/Accessibility/Guides/Understanding_WCAG/Understandable)
+  - [堅牢](/ja/docs/Web/Accessibility/Guides/Understanding_WCAG/Robust)
 
-  - [知覚可能](/ja/docs/Web/Accessibility/Understanding_WCAG/Perceivable)
-  - [操作可能](/ja/docs/Web/Accessibility/Understanding_WCAG/Operable)
-  - [理解可能](/ja/docs/Web/Accessibility/Understanding_WCAG/Understandable)
-  - [堅牢](/ja/docs/Web/Accessibility/Understanding_WCAG/Robust)
+- [Google Chrome released an auto-captioning extension](https://blog.google/products-and-platforms/products/chrome/live-caption-chrome/)<sup>(英語)</sup>
 
-- [Google Chrome released an auto-captioning extension](https://blog.google/products/chrome/live-caption-chrome/)
+{{NextMenu("Learn_web_development/Core/Accessibility/Tooling", "Learn_web_development/Core/Accessibility")}}

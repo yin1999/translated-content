@@ -1,7 +1,6 @@
 ---
 title: 主页
 slug: Learn_web_development/Extensions/Server-side/Express_Nodejs/Displaying_data/Home_page
-original_slug: Learn/Server-side/Express_Nodejs/Displaying_data/Home_page
 ---
 
 我们创建的第一个页面，是网站的主页面，可以从网站的根目录 (`'/'`) ，或者 catalog 的根目录 (`catalog/`) 访问。这将呈现一些网站的静态文字描述，以及动态计算数据库中不同记录类型的“计数”。
@@ -9,7 +8,7 @@ original_slug: Learn/Server-side/Express_Nodejs/Displaying_data/Home_page
 我们已经为主页创建了一个路由。为了完成页面，我们需要更新控制器函数，以从数据库中提取记录的“计数”，并创建一个可用于呈现页面的视图（模板）。
 
 > [!NOTE]
-> 我们将会使用 Mongoose 来获取数据库的信息。在继续学习之前，你可能希望重新阅读 [Mongoose 入门](/zh-CN/docs/Learn/Server-side/Express_Nodejs/mongoose#mongoose_入门)中有关[搜索记录](/zh-CN/docs/Learn/Server-side/Express_Nodejs/mongoose#搜索记录)的部分。
+> 我们将会使用 Mongoose 来获取数据库的信息。在继续学习之前，你可能希望重新阅读 [Mongoose 入门](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/mongoose#mongoose_入门)中有关[搜索记录](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/mongoose#搜索记录)的部分。
 
 ## 路由
 
@@ -45,7 +44,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 ```
 
-用以下代码片段替换上面的所有代码。这要做的第一件事，是导入（`require()`）所有模型。我们需要这样做，因为我们将使用它们来获取记录的计数。这部分代码也同样需要“express-async-handler”，它可以[捕获路由处理器函数抛出的异常](/zh-CN/docs/Learn/Server-side/Express_Nodejs/routes#处理路由函数中的异常)。
+用以下代码片段替换上面的所有代码。这要做的第一件事，是导入（`require()`）所有模型。我们需要这样做，因为我们将使用它们来获取记录的计数。这部分代码也同样需要“express-async-handler”，它可以[捕获路由处理器函数抛出的异常](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/routes#处理路由函数中的异常)。
 
 ```js
 const Book = require("../models/book");

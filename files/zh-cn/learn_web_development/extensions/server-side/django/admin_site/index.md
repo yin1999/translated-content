@@ -1,14 +1,13 @@
 ---
 title: "Django Tutorial Part 4: Django 管理员站点"
 slug: Learn_web_development/Extensions/Server-side/Django/Admin_site
-original_slug: Learn/Server-side/Django/Admin_site
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Models", "Learn_web_development/Extensions/Server-side/Django/Home_page", "Learn_web_development/Extensions/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Models", "Learn_web_development/Extensions/Server-side/Django/Home_page", "Learn_web_development/Extensions/Server-side/Django")}}
 
 好了，我们已经为本地图书馆网站 [LocalLibrary](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django/Tutorial_local_library_website) 创建了模型，我们接下来使用 Django 管理站点去添加 一些“真“书数据。首先我们展示如何用管理站点注册模型，然后展示如何登录和创建一些数据。本文最后，我们介绍你可以进一步改进管理站点的建议。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">前提：</th>
@@ -129,13 +128,11 @@ Django 使用注册模型的信息为创建基本管理站点做了非常好的�
 你可以进一步自定义界面，使它更容易使用，你可以改进的一些想法：
 
 - 视图列表：
-
   - 添加每个记录显示的其他字段/信息
   - 添加过滤器以根据日期或某些其他选择值（例如图书货款状态）选择列出哪些记录。
   - 在列表视图中的操作菜单中添加其他选项，并选择此菜单在表单上显示的位置。
 
 - 详细视图
-
   - 选择要显示（或排除）的字段，以及其顺序，分组，是否可编辑，使用的小部件，方向等。
   - 将相关字段添加到记录以允许内联编辑（例如：添加在创建作者记录时添加和编辑图书记录的功能）。
 

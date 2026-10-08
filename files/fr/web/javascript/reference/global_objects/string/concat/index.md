@@ -3,11 +3,20 @@ title: String.prototype.concat()
 slug: Web/JavaScript/Reference/Global_Objects/String/concat
 ---
 
-{{JSRef}}
-
 La méthode **`concat()`** combine le texte de plusieurs chaînes avec la chaîne appelante et renvoie la nouvelle chaîne ainsi formée.
 
-{{EmbedInteractiveExample("pages/js/string-concat.html")}}
+{{InteractiveExample("JavaScript Demo: String.concat()")}}
+
+```js interactive-example
+const str1 = "Hello";
+const str2 = "World";
+
+console.log(str1.concat(" ", str2));
+// Expected output: "Hello World"
+
+console.log(str2.concat(", ", str1));
+// Expected output: "World, Hello"
+```
 
 ## Syntaxe
 
@@ -50,7 +59,7 @@ var salutation = ["Bonjour", " ", "Alfred", " ", "!"];
 
 ## Performance
 
-Il est fortement recommandé d'utiliser les {{jsxref("Opérateurs/Opérateurs_d_affectation", "opérateurs d'affectation", "", 1)}} (+, +=) plutôt que la méthode `concat()` pour des raisons de performance.
+Il est fortement recommandé d'utiliser les {{jsxref("Operators", "opérateurs d'affectation", "opérateurs_daffectation", 1)}} (+, +=) plutôt que la méthode `concat()` pour des raisons de performance.
 
 ## Spécifications
 
@@ -63,4 +72,4 @@ Il est fortement recommandé d'utiliser les {{jsxref("Opérateurs/Opérateurs_d_
 ## Voir aussi
 
 - {{jsxref("Array.prototype.concat()")}}
-- {{jsxref("Opérateurs/Opérateurs_d_affectation", "Les opérateurs d'affectation", "", 1)}}
+- {{jsxref("Operators", "Les opérateurs d'affectation", "opérateurs_daffectation", 1)}}

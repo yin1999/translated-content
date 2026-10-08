@@ -3,11 +3,14 @@ title: String.fromCharCode()
 slug: Web/JavaScript/Reference/Global_Objects/String/fromCharCode
 ---
 
-{{JSRef}}
-
 La méthode statique **`String.fromCharCode()`** renvoie une chaîne de caractères créée à partir de points de code UTF-16.
 
-{{EmbedInteractiveExample("pages/js/string-fromcharcode.html")}}
+{{InteractiveExample("JavaScript Demo: String.fromCharCode()")}}
+
+```js interactive-example
+console.log(String.fromCharCode(189, 43, 190, 61));
+// Expected output: "½+¾="
+```
 
 ## Syntaxe
 

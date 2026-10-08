@@ -1,12 +1,12 @@
 ---
 title: テスト実行のための戦略
+short-title: テスト戦略
 slug: Learn_web_development/Extensions/Testing/Testing_strategies
-original_slug: Learn/Tools_and_testing/Cross_browser_testing/Testing_strategies
 l10n:
-  sourceCommit: bb026bcb88b7f45374d602301b7b0db5a49ff303
+  sourceCommit: c53bfa01f3bf436d486f4032c16f592855a2af2c
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Tools_and_testing/Cross_browser_testing/Introduction","Learn/Tools_and_testing/Cross_browser_testing/HTML_and_CSS", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Introduction","Learn_web_development/Extensions/Testing/HTML_and_CSS", "Learn_web_development/Extensions/Testing")}}
 
 この記事では、ブラウザー間のテストの方法として、テストするブラウザーや機器を選ぶ方法、それらのブラウザーや機器を実際にテストする方法、ユーザーグループに分かれてテストする方法について説明します。
 
@@ -15,9 +15,9 @@ l10n:
     <tr>
       <th scope="row">前提条件:</th>
       <td>
-        <a href="/ja/docs/Learn/HTML">HTML</a>、<a href="/ja/docs/Learn/CSS">CSS</a>、<a href="/ja/docs/Learn/JavaScript">JavaScript</a> 言語の主要部に通じていること。
+        <a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a>、<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS</a>、<a href="/ja/docs/Learn_web_development/Core/Scripting">JavaScript</a> 言語の主要部に通じていること。
         <a
-          href="/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction"
+          href="/ja/docs/Learn_web_development/Extensions/Testing/Introduction"
           >ブラウザー横断テストの基本</a
         >について高水準の考えを持っていること。
       </td>
@@ -54,13 +54,13 @@ l10n:
 
 この層のほとんどの人は、iOS または Android の携帯電話も使用しているので、iOS の Safari の最新バージョン、Android の古い純正ブラウザーの最後の数バージョン、iOS と Android 用の Chrome と Firefox をテストするのがよいでしょう。また、レスポンシブデザインが確実に動作するように、携帯電話とタブレットの両方でテストすることが理想的です。
 
-Opera Mini は[複雑な JavaScript を実行する能力がとても低い](https://dev.opera.com/articles/opera-mini-and-javascript/)ので、これも B ランクにしましょう。
+Opera Mini は複雑な JavaScript を実行する能力がとても低いので、これも B ランクにしましょう。
 
 このように、どのブラウザーでテストを行うかは、ユーザーが使用すると予想されるブラウザーに基づいて決定します。
 その結果、対応表は以下のようになります。
 
 1. A グレード: Windows/Mac 用の Chrome と Firefox、Mac 用の Safari、Windows 用の Edge、iPhone/iPad 用の iOS Safari、スマートフォン/タブレット用の Android 内蔵ブラウザー（最新 2 バージョン）、スマートフォン/タブレット用の Chrome と Firefox（最新 2 バージョン）。
-2. B グレード: Windows 用 IE、Opera Mini
+2. B グレード: Opera Mini
 3. C グレード: なし
 
 もし、対象となるユーザーがほとんど別の場所にいる場合は、一般的なブラウザーや OS が上記とは異なる形になる可能性があります。
@@ -98,7 +98,7 @@ Opera Mini は[複雑な JavaScript を実行する能力がとても低い](htt
 ![Google アナリティクスがメインレポートダッシュボードでデータを収集する方法](analytics-reporting.png)
 
 様々なカテゴリーでカスタマイズされたレポートなど、Google アナリティクスを使用して見ることができるデータは膨大で、そのすべてについて説明する時間はありません。
-[アナリティクスをはじめよう](https://support.google.com/analytics/answer/9306384?visit_id=637855964517698041-2103767437&rd=1)では、初心者に有益なレポート（など）についてのガイダンスを提供しています。
+[アナリティクスをはじめよう](https://support.google.com/analytics/answer/9304153)では、初心者に有益なレポート（など）についてのガイダンスを提供しています。
 
 左側のメニューから _ユーザー > テクノロジー > ブラウザーと OS_ を選択すると、ユーザーが使用するブラウザーや演算子を確認することができます。
 
@@ -107,7 +107,7 @@ Opera Mini は[複雑な JavaScript を実行する能力がとても低い](htt
 
 ### その他の考慮事項
 
-アクセシビリティをグレード A のテスト要件に含める必要があります（何をテストすべきかは、「よくあるアクセシビリティの問題の対処」の記事で詳しく説明します）。
+アクセシビリティをグレード A のテスト要件に含める必要があります。
 
 また、状況固有のニーズも認識しておく必要があります。例えば、売上数値を管理職に配信するための社内イントラネットを作成していて、管理職全員に Windows Phone が指定されている場合、モバイルIEのサポートを優先させた方が良いでしょう。
 
@@ -141,15 +141,13 @@ A グレード:
 - 情報ボックスは、現れたり消えたりするときにスムーズにアニメーションする必要があります。
 - グラデーションとテキストの影が現れて、ボックスの見栄えがよくなるようにします。
 
-例のテキストから、IE8 では動作しないことに気づいたかもしれません。これは私たちの対応表による問題で、おそらくブラウザーが CSS のトランジションに対応していない場合は、機能検出ライブラリーを使用して、異なる形で機能を実装する必要があります（このコースの後半の機能検出を実装するを参照してください）。
-
-また、ボタンがキーボードだけで使用できないことにもお気づきでしょう。これも改善する必要があります。JavaScript でトグルのキーボード制御を実装するか、他にも全く別のメソッドを使用することができるかもしれません。
+ボタンがキーボードだけで使用できないことにもお気づきでしょう。これも改善する必要があります。 JavaScript でトグルのキーボード制御を実装するか、他にも全く別のメソッドを使用することができるかもしれません。
 
 これらのテスト基準は、以下の理由で有益なものです。
 
 - テストを実施する際に、以下に従うべき手順の集合を与えます。
 - これらは、ユーザーグループがテストを行う際に従うべき指示の集合に簡単に変えることができます（例えば、「マウスを使ってボタンを有効化してみて、次にキーボードを使って...」など） - 下記の [ユーザーテスト](#ユーザーテスト) を参照ください。
-- これらはまた、自動化されたテストを書くための基礎となります。何をテストしたいのか、そして成功条件は何なのかを正確に知っていれば、そのようなテストを書くのはより簡単です（このシリーズの後の [Selenium](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment#selenium) を見てください）。
+- これらはまた、自動化されたテストを書くための基礎となります。何をテストしたいのか、そして成功条件は何なのかを正確に知っていれば、そのようなテストを書くのはより簡単です（このシリーズの後の [Selenium](/ja/docs/Learn_web_development/Extensions/Testing/Your_own_automation_environment#selenium) を見てください）。
 
 ## テストラボを用意する
 
@@ -166,7 +164,7 @@ A グレード:
 
 以下のようなものも、入手できれば良いオプションです。
 
-- Linux 版のブラウザーに固有のバグをテストする必要がある場合に備えて、利用できる Linux PC。Linux ユーザーは、一般的に Firefox、Opera、Chrome を使用します。もし利用できるマシンが 1 台しかない場合は、Linux と Windows を別々のパーティションで動作させるデュアルブートマシンを作成することを考えることができます。Ubuntu のインストーラーを使えば、かなり簡単に設定できます。これを支援するために、[WindowsDualBoot](https://help.ubuntu.com/community/WindowsDualBoot) を参照してください。
+- Linux 版のブラウザーに固有のバグをテストする必要がある場合に備えて、利用できる Linux PC。Linux ユーザーは、一般的に Firefox、Opera、Chrome を使用します。利用できるマシンが 1 台しかない場合は、別個のパーティションに Linux と Windows をインストールして、デュアルブート環境を作成することを考えてみることができるでしょう。
 - 低スペックのモバイル端末をいくつか用意すると、性能の低いプロセッサーでトランジションなどの機能をテストすることができます。
 
 あなたのメインの著作物は、アクセシビリティ監査ツール、スクリーンリーダー、エミュレーター/仮想マシンなど、特定の目的のために他のツールをインストールする場所にもなりえます。
@@ -176,7 +174,7 @@ A グレード:
 下記では、他にも様々なオプションがあることを説明します。
 
 > [!NOTE]
-> 一般に公開された端末ラボを作成する取り組みもあります。[Open Device Labs](https://www.smashingmagazine.com/2016/11/worlds-best-open-device-labs/) を参照してください。
+> 一般に公開された端末ラボを作成する取り組みもあります。 [Open Device Labs](https://www.smashingmagazine.com/2016/11/worlds-best-open-device-labs/) を参照してください。
 
 > [!NOTE]
 > アクセシビリティについても考慮する必要があります。アクセシビリティのテストを容易にするために、マシンにインストールできる有益なツールがいくつかありますが、このコースの後半にある「よくあるアクセシビリティの問題の処理」の記事で、それらのツールを取り扱います。
@@ -189,13 +187,12 @@ A グレード:
 
 しかし、多くの場合、何らかのエミュレーターを保有しなければならないでしょう。最も一般的にテストしたい端末/ブラウザーは以下の通りです。
 
-- Android アプリを開発するための公式の [Android Studio IDE](https://developer.android.com/studio/) は、Google Chrome や古い純正 Android ブラウザーでウェブサイトをテストするには少し重いですが、しっかりとした[エミュレーター](https://developer.android.com/studio/run/emulator.html)が実行されています。もう少し軽量なものをお望みなら、Windows と Mac の両方で動作する [Andy](https://www.andyroid.net/) が合理的なオプションとなります。
+- Android アプリを開発するための公式の [Android Studio IDE](https://developer.android.com/studio/) は、Google Chrome や古い純正 Android ブラウザーでウェブサイトをテストするには少し重いですが、しっかりとした[エミュレーター](https://developer.android.com/studio/run/emulator.html)が実行されています。
 - Apple は、[XCode](https://developer.apple.com/xcode/) 開発環境の上で動作し、iPad/iPhone/Apple Watch/Apple TV をエミュレートする [Simulator](https://help.apple.com/simulator/mac/current/) というアプリを提供されています。これには iOS ネイティブのブラウザー Safari が搭載されています。これは残念ながら Mac 上でしか動作しません。
 
 他にもモバイル端末環境用のシミュレーターなどもよく見つかります。
 
-- [Opera Mini](https://dev.opera.com/articles/installing-opera-mini-on-your-computer/) をテストしたい場合は、自分自身でエミュレートすることができます。
-- Windows Mobile OS 用のエミュレーターも利用できます。[Windows Phone Emulator for Windows Phone 8](<https://msdn.microsoft.com/library/windows/apps/ff402563(v=vs.105).aspx>) や [Microsoft Emulator for Windows 10 Mobile を使ったテスト](https://docs.microsoft.com/windows/uwp/debug-test-perf/test-with-the-emulator) （これらはWindows 上でのみ動作する）を参照してください。
+- Opera Mini をテストしたい場合は、自分自身でエミュレートすることができます。
 
 > [!NOTE]
 > 多くのエミュレーターは、実際には仮想マシンを使用する必要があります（下記参照）。このような場合、指定された手順が提供されたり、仮想マシンの使用がエミュレーターのインストーラーに組み込まれたりすることがよくあります。
@@ -214,7 +211,6 @@ Virtual Box を使用するには、次のことを行う必要があります�
 3. アプリを開いてください。次のような画面が表示されます。 ![アプリケーションウィンドウの左パネルには、WindowsのOSとOpera TVのエミュレーターが掲載されています。右側のパネルには、一般、システム、ディスプレイ、設定、音声、ネットワーク、プレビューを含むいくつかのサブパネルが記載されています。](virtualbox.png)
 4. 新しい仮想マシンを作成するには、左上にある _New_ ボタンを押します。
 5. 指示に従い、以下のダイアログボックスを適宜埋めてください。
-
    1. 新しい仮想マシンに名前を付けます
    2. どの OS とバージョンをインストールするかを選びます。
    3. RAM の割り当て量を設定してください（2048MB、または 2GB 程度を推奨）。
@@ -246,9 +242,9 @@ Virtual Box を使用するには、次のことを行う必要があります�
 
 前の章で述べたように、ある種の自動化システムを使用することで、ブラウザーテストの苦労を軽減することができます。自分自身でテスト自動化システム（[Selenium](https://www.selenium.dev/)はよく選ばれるアプリです）を設定することができます。多少のセットアップが必要ですが、うまく作業を進めるととてもやりがいのあるものになるでしょう。
 
-[Sauce Labs](https://saucelabs.com/)、[Browser Stack](https://www.browserstack.com/)、[LambdaTest](https://www.lambdatest.com/) のような商用ツールもあり、テストにお金をかけたい場合は、設定を気にせずにこのようなことを行うことも可能です。
+[Sauce Labs](https://saucelabs.com/) や [Browser Stack](https://www.browserstack.com/) のような商用ツールもあり、テストにお金をかけたい場合は、設定を気にせずにこのようなことを行うことも可能です。
 
-もう一つの選択肢は、[Endtest](https://endtest.io) のようなノーコードのテスト自動化ツールを使用することです。
+もう一つの選択肢は、[Endtest](https://endtest.io/) のようなノーコードのテスト自動化ツールを使用することです。
 
 このモジュールの後のほうで、そのようなツールを使用する方法を見ていきます。
 
@@ -284,4 +280,4 @@ Virtual Box を使用するには、次のことを行う必要があります�
 
 次には HTML と CSS から始めて、テストで見つけにくいコードの問題に注目していきましょう。
 
-{{PreviousMenuNext("Learn/Tools_and_testing/Cross_browser_testing/Introduction","Learn/Tools_and_testing/Cross_browser_testing/HTML_and_CSS", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Introduction","Learn_web_development/Extensions/Testing/HTML_and_CSS", "Learn_web_development/Extensions/Testing")}}

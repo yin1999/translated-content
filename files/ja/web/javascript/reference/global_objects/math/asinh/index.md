@@ -1,11 +1,10 @@
 ---
 title: Math.asinh()
+short-title: asinh()
 slug: Web/JavaScript/Reference/Global_Objects/Math/asinh
 l10n:
-  sourceCommit: 761b9047d78876cbd153be811efb1aa77b419877
+  sourceCommit: 544b843570cb08d1474cfc5ec03ffb9f4edc0166
 ---
-
-{{JSRef}}
 
 **`Math.asinh()`** は静的メソッドで、数値の双曲線逆正弦（ハイパーボリックアークサイン）を返します。
 
@@ -15,7 +14,21 @@ l10n:
 </math>
 <!-- prettier-ignore-end -->
 
-{{EmbedInteractiveExample("pages/js/math-asinh.html")}}
+{{InteractiveExample("JavaScript デモ: Math.asinh()")}}
+
+```js interactive-example
+console.log(Math.asinh(1));
+// 予想される結果: 0.881373587019543
+
+console.log(Math.asinh(0));
+// 予想される結果: 0
+
+console.log(Math.asinh(-1));
+// 予想される結果: -0.881373587019543
+
+console.log(Math.asinh(2));
+// 予想される結果: 1.4436354751788103
+```
 
 ## 構文
 
@@ -60,6 +73,7 @@ Math.asinh(Infinity); // Infinity
 ## 関連情報
 
 - [`Math.asinh` のポリフィル (`core-js`)](https://github.com/zloirock/core-js#ecmascript-math)
+- [es-shims による `Math.asinh` のポリフィル](https://www.npmjs.com/package/math.asinh)
 - {{jsxref("Math.acosh()")}}
 - {{jsxref("Math.atanh()")}}
 - {{jsxref("Math.cosh()")}}

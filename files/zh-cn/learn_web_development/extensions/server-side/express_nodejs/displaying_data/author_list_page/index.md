@@ -1,7 +1,6 @@
 ---
 title: 作者清单面页、分类清单页面挑战
 slug: Learn_web_development/Extensions/Server-side/Express_Nodejs/Displaying_data/Author_list_page
-original_slug: Learn/Server-side/Express_Nodejs/Displaying_data/Author_list_page
 ---
 
 作者列表页面，需要呈现数据库中所有作者的列表，有每位作者的名字，并连结到作者详细内容页面。出生与死亡日期应该在名字后面，并且在同一列。
@@ -61,7 +60,7 @@ block content
 ![Author List Page - Express Local Library site](locallibary_express_author_list.png)
 
 > [!NOTE]
-> 作者生命日期的外观是丑陋的！你可以使用我们用于`BookInstance` 列表的[相同方法](/zh-CN/docs/Learn/Server-side/Express_Nodejs/Displaying_data#date_formatting)（将生命周期的虚拟属性，添加到 `Author` 模型），来改进此方法。
+> 作者生命日期的外观是丑陋的！你可以使用我们用于`BookInstance` 列表的[相同方法](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/Displaying_data#date_formatting)（将生命周期的虚拟属性，添加到 `Author` 模型），来改进此方法。
 >
 > 但是，这次缺少日期，除非严格模式生效，否则将忽略对不存在的属性的引用。`moment()`返回当前时间，并且你不希望将缺少的日期格式化为就像今天一样。
 >
@@ -79,7 +78,6 @@ block content
 
 1. 你需要在 **/controllers/genreController.js** 中编辑`genre_list()`。
 2. 实现方式几乎与`author_list()`控制器完全相同。
-
    - 按名称以上升顺序，对结果进行排序。
 
 3. 要呈现的模板，应命名为 **genre_list.pug**。

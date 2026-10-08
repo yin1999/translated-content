@@ -1,10 +1,7 @@
 ---
 title: 定位
 slug: Learn_web_development/Core/CSS_layout/Positioning
-original_slug: Learn/CSS/CSS_layout/Positioning
 ---
-
-{{LearnSidebar}}
 
 {{PreviousMenuNext("Learn_web_development/Core/CSS_layout/Floats", "Learn_web_development/Core/CSS_layout/Flexbox", "Learn_web_development/Core/CSS_layout")}}
 
@@ -16,7 +13,7 @@ original_slug: Learn/CSS/CSS_layout/Positioning
       <th>前提：</th>
       <td>
         HTML 基础 (学习
-        <a href="/zh-CN/docs/learn/HTML/Introduction_to_HTML">HTML 导学</a>) 和
+        <a href="/zh-CN/docs/Learn_web_development/Core/Structuring_content">HTML 导学</a>) 和
         CSS 怎样工作的 (学习<a href="/zh-CN/docs/Learn_web_development/Core/Styling_basics">
           CSS 导学</a
         >)
@@ -39,7 +36,7 @@ original_slug: Learn/CSS/CSS_layout/Positioning
 
 内联元素表现不一样——它们不会出现在新行上；相反，它们互相之间以及任何相邻（或被包裹）的文本内容位于同一行上，只要在父块级元素的宽度内有空间可以这样做。如果没有空间，那么溢流的文本或元素将向下移动到新行。
 
-如果两个相邻元素都在其上设置外边距，并且两个外边距接触，则两个外边距中的较大者保留，较小的一个消失——这叫[外边距折叠](/zh-CN/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing), 我们之前也遇到过。
+如果两个相邻元素都在其上设置外边距，并且两个外边距接触，则两个外边距中的较大者保留，较小的一个消失——这叫[外边距折叠](/zh-CN/docs/Web/CSS/Guides/Box_model/Margin_collapsing), 我们之前也遇到过。
 
 让我们来看一个简单的例子来解析这一切：
 
@@ -68,7 +65,9 @@ original_slug: Learn/CSS/CSS_layout/Positioning
   the same line. Overflowing inline elements will
   <span>wrap onto a new line if possible (like this one containing text)</span>,
   or just go on to a new line if not, much like this image will do:
-  <img src="long.jpg" />
+  <img
+    src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+    alt="snippet of cloth" />
 </p>
 ```
 
@@ -176,7 +175,9 @@ left: 30px;
   the same line. Overflowing inline elements
   <span>wrap onto a new line if possible — like this one containing text</span>,
   or just go on to a new line if not, much like this image will do:
-  <img src="long.jpg" />
+  <img
+    src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+    alt="snippet of cloth" />
 </p>
 ```
 
@@ -248,7 +249,9 @@ position: absolute;
   the same line. Overflowing inline elements
   <span>wrap onto a new line if possible — like this one containing text</span>,
   or just go on to a new line if not, much like this image will do:
-  <img src="long.jpg" />
+  <img
+    src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+    alt="snippet of cloth" />
 </p>
 ```
 
@@ -295,7 +298,7 @@ span {
 
 ### 定位上下文
 
-哪个元素是绝对定位元素的“包含元素“？这取决于绝对定位元素的父元素的 position 属性。(参见 [Identifying the containing block](/zh-CN/docs/Web/CSS/Containing_block#identifying_the_containing_block)).
+哪个元素是绝对定位元素的“包含元素“？这取决于绝对定位元素的父元素的 `position` 属性。
 
 如果所有的父元素都没有显式地定义 position 属性，那么所有的父元素默认情况下 position 属性都是 static。结果，绝对定位元素会被包含在**初始块容器**中。这个初始块容器有着和浏览器视口一样的尺寸，并且\<html>元素也被包含在这个容器里面。简单来说，绝对定位元素会被放在\<html>元素的外面，并且根据浏览器视口来定位。
 
@@ -331,7 +334,9 @@ position: relative;
   the same line. Overflowing inline elements
   <span>wrap onto a new line if possible — like this one containing text</span>,
   or just go on to a new line if not, much like this image will do:
-  <img src="long.jpg" />
+  <img
+    src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+    alt="snippet of cloth" />
 </p>
 ```
 
@@ -422,7 +427,9 @@ z-index: 1;
   the same line. Overflowing inline elements
   <span>wrap onto a new line if possible — like this one containing text</span>,
   or just go on to a new line if not, much like this image will do:
-  <img src="long.jpg" />
+  <img
+    src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+    alt="snippet of cloth" />
 </p>
 ```
 
@@ -530,7 +537,9 @@ p:nth-of-type(1) {
   the same line. Overflowing inline elements
   <span>wrap onto a new line if possible — like this one containing text</span>,
   or just go on to a new line if not, much like this image will do:
-  <img src="long.jpg" />
+  <img
+    src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+    alt="snippet of cloth" />
 </p>
 ```
 
@@ -740,7 +749,7 @@ body {
 
 ## 技能测试！
 
-这篇文章到此为止了，但你们能记住最重要的信息吗？在继续之前，你可以找到一些进一步的测试来验证是否完全掌握了这个知识：[技能测试：定位](/zh-CN/docs/Learn_web_development/Core/CSS_layout/Position_skills)。
+这篇文章到此为止了，但你们能记住最重要的信息吗？在继续之前，你可以找到一些进一步的测试来验证是否完全掌握了这个知识：[技能测试：定位](/zh-CN/docs/Learn_web_development/Core/CSS_layout/Test_your_skills/Position)。
 
 ## 总结
 

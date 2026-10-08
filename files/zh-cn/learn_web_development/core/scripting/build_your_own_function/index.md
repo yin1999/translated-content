@@ -1,14 +1,13 @@
 ---
 title: 创建你自己的函数
 slug: Learn_web_development/Core/Scripting/Build_your_own_function
-original_slug: Learn/JavaScript/Building_blocks/Build_your_own_function
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Core/Scripting/Functions","Learn_web_development/Core/Scripting/Return_values", "Learn_web_development/Core/Scripting")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Functions","Learn_web_development/Core/Scripting/Return_values", "Learn_web_development/Core/Scripting")}}
 
 我们在之前的文章里大多学的是理论，这篇文章将提供一个练习的机会——你将练习构建一些你自己风格的函数。在练习过程中，我们也会解释一些针对函数的更深层的实用细节。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">先修知识：</th>
@@ -48,7 +47,7 @@ alert("This is a message");
 首先，让我们来组织一个基本的函数。
 
 > [!NOTE]
-> 对于函数命名约定，应遵循与[变量命名约定](/zh-CN/docs/Learn/JavaScript/First_steps/Variables#an_aside_on_variable_naming_rules)相同的规则。这很好，尽你所能理解它们之间的区别 - 函数名称后带有括号，而变量则没有。
+> 对于函数命名约定，应遵循与[变量命名约定](/zh-CN/docs/Learn_web_development/Core/Scripting/Variables#关于变量命名的规则)相同的规则。这很好，尽你所能理解它们之间的区别 - 函数名称后带有括号，而变量则没有。
 
 1. 我们希望你首先访问[function-start.html](https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/functions/function-start.html)文件并创建一个本地拷贝。你将会看到这个 HTML 很简单 — 我们的 body 块仅包含一个按钮。我们还提供了一些基本的 CSS 来装饰自定义消息框，以及一个用于放置 JavaScript 代码的{{htmlelement("script")}}元素。
 2. 接下来，将下面的代码添加至 `<script>` 元素中：
@@ -292,7 +291,7 @@ btn.onclick = displayMessage();
 
 ## 技能测试！
 
-你已经来到了本文章的结尾，但是你还能记得最重要的知识吗？你可以在离开这里找到一些更深度的测试来证实你已经记住了这些知识——查看[技能测试：函数](/zh-CN/docs/Learn_web_development/Core/Scripting/Test_your_skills:_Functions)（英文）。后两章文本包含了这个测试需要的技能，所以你可能先需要阅读再尝试该测试。
+你已经来到了本文章的结尾，但是你还能记得最重要的知识吗？你可以在离开这里找到一些更深度的测试来证实你已经记住了这些知识——查看[技能测试：函数](/zh-CN/docs/Learn_web_development/Core/Scripting/Test_your_skills/Functions)。后两章文本包含了这个测试需要的技能，所以你可能先需要阅读再尝试该测试。
 
 ## 结论
 

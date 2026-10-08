@@ -1,14 +1,13 @@
 ---
 title: Web 字体
 slug: Learn_web_development/Core/Text_styling/Web_fonts
-original_slug: Learn/CSS/Styling_text/Web_fonts
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Core/Text_styling/Styling_links", "Learn_web_development/Core/Text_styling/Typesetting_a_homepage", "Learn_web_development/Core/Text_styling")}}
+{{PreviousMenuNext("Learn_web_development/Core/Text_styling/Styling_links", "Learn_web_development/Core/Text_styling/Typesetting_a_homepage", "Learn_web_development/Core/Text_styling")}}
 
 在模块的第一篇文章中，我们探讨了用于样式化字体和文本的基本 CSS 特性。在这篇文章中，我们将更进一步，详细地探索 web 字体——它们允许你下载自定义字体和你的 web 页面，以允许更多不同的、自定义的文本样式。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">前提：</th>
@@ -43,7 +42,7 @@ p {
 }
 ```
 
-这个系统运行良好，但是对于传统的 web 开发人员来说，字体选择是有限的。只有少数几种字体可以保证兼容所有流行的操作系统——这就是所谓的 [Web-safe 字体](/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals#web_safe_fonts)。你可以使用字体堆栈来指定可选择的字体，后面是 Web-safe 的替代选项，然后是默认的系统字体，但是为了确保你的设计在每种字体中都显示正常，这样增加了测试的开销。
+这个系统运行良好，但是对于传统的 web 开发人员来说，字体选择是有限的。只有少数几种字体可以保证兼容所有流行的操作系统——这就是所谓的 [Web 安全字体](/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#网页安全字体)。你可以使用字体堆栈来指定可选择的字体，后面是 Web 安全的替代选项，然后是默认的系统字体，但是为了确保你的设计在每种字体中都显示正常，这样增加了测试的开销。
 
 ## Web 字体
 
@@ -139,11 +138,11 @@ html {
 
 ## 使用在线字体服务
 
-在线字体服务通常会为你存储和服务字体，这样你就不用担心写`@font-face`代码了，通常只需要在你的网站上插入一两行代码就可以让一切都运行。例子包括[Typekit](https://typekit.com/) 和[Cloud.typography](http://www.typography.com/cloud/welcome/)。大多数这些服务都是基于订阅的，除了[Google Fonts](https://www.google.com/fonts)，这是一个有用的免费服务，特别是对于快速的测试工作和编写演示。
+在线字体服务通常会为你存储和服务字体，这样你就不用担心写`@font-face`代码了，通常只需要在你的网站上插入一两行代码就可以让一切都运行。例子包括[Typekit](https://typekit.com/) 和[Cloud.typography](http://www.typography.com/cloud/welcome/)。大多数这些服务都是基于订阅的，除了[Google Fonts](https://fonts.google.com)，这是一个有用的免费服务，特别是对于快速的测试工作和编写演示。
 
 大多数这些服务都很容易使用，所以我们不会详细地介绍它们。让我们快速浏览一下 Google Fonts，这样你就能明白它的意思了。再次的，使用`web-font-start.html` 和 `web-font-start.css` a 的副本作为你的开始。
 
-1. 前往 [Google Fonts](https://www.google.com/fonts).
+1. 前往 [Google Fonts](https://fonts.google.com).
 2. 使用左边的过滤器来显示你想要选择的字体类型，并选择一些你喜欢的字体。
 3. 要选择字体种类，按下按钮旁边的 ⊕ 按钮。
 4. 当你选择好字体种类时，按下页面底部的*\[Number]* 种类选择。

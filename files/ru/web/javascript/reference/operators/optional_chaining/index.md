@@ -9,7 +9,23 @@ slug: Web/JavaScript/Reference/Operators/Optional_chaining
 
 Таким образом, мы получаем более короткий и понятный код при обращении к вложенным по цепочке свойствам объекта, когда есть вероятность, что какое-то из них отсутствует.
 
-{{EmbedInteractiveExample("pages/js/expressions-optionalchainingoperator.html", "taller")}}
+{{InteractiveExample("JavaScript Demo: Expressions - Optional chaining operator", "taller")}}
+
+```js interactive-example
+const adventurer = {
+  name: "Alice",
+  cat: {
+    name: "Dinah",
+  },
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName);
+// Expected output: undefined
+
+console.log(adventurer.someNonExistentMethod?.());
+// Expected output: undefined
+```
 
 ## Синтаксис
 
@@ -62,7 +78,7 @@ let result = someInterface.customMethod?.();
 
 ### Работа с колбэк-функциями и обработчиками событий
 
-Если вы используете колбэк-функции или извлекаете методы объекта [деструктурирующим присваиванием](/ru/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#разбор_объектов), Вы можете получить несуществующие значения, которые нельзя вызывать как функции до проверки на их существование. Используя оператор `?.`, вы можете избежать лишних проверок:
+Если вы используете колбэк-функции или извлекаете методы объекта [деструктурирующим присваиванием](/ru/docs/Web/JavaScript/Reference/Operators/Destructuring#разбор_объектов), Вы можете получить несуществующие значения, которые нельзя вызывать как функции до проверки на их существование. Используя оператор `?.`, вы можете избежать лишних проверок:
 
 ```js
 // С использованием ES2019
@@ -142,7 +158,7 @@ let duration = vacations.trip?.getTime?.();
 
 ### Использование с оператором ??
 
-Оператор {{JSxRef("Operators/Nullish_Coalescing_Operator", "??", '', 1)}} может использоваться после опциональной последовательности для установления значения по умолчанию:
+Оператор {{JSxRef("Operators/Nullish_coalescing", "??", '', 1)}} может использоваться после опциональной последовательности для установления значения по умолчанию:
 
 ```js
 let customer = {
@@ -165,4 +181,4 @@ console.log(customerCity); // Unknown city
 
 - [Github - Proposal-pipeline-operator](https://github.com/tc39/proposal-pipeline-operator)
 - [TC39 proposals](https://github.com/tc39/proposals)
-- {{JSxRef("Operators/Nullish_Coalescing_Operator", "Nullish Coalescing Operator", '', 1)}}
+- {{JSxRef("Operators/Nullish_coalescing", "Nullish Coalescing Operator", '', 1)}}

@@ -1,83 +1,82 @@
 ---
-title: CSS の構成要素
+title: CSS によるスタイル設定の基本
 slug: Learn_web_development/Core/Styling_basics
-original_slug: Learn/CSS/Building_blocks
 l10n:
-  sourceCommit: 26e2f9883e0e73def04c0e86fec6da3ec42e66b3
+  sourceCommit: cdf7db9ffe08cb952243d7e20b9beee4e9c9451b
 ---
 
-{{LearnSidebar}}
+{{NextMenu("Learn_web_development/Core/Styling_basics/What_is_CSS", "Learn_web_development/Core")}}
 
-このモジュールは [CSS の第一歩](/ja/docs/Learn/CSS/First_steps)からの続きです。CSS の言語や文法に慣れてきて、それを使う上での基本的な経験を得てきたという前提で、もう少し掘り下げてみましょう。カスケードと継承・セレクターの全種類・単位・サイズ設定・背景と枠線・デバッグなどを見ていきます。
-
-ここでの目的は、[テキストの装飾](/ja/docs/Learn/CSS/Styling_text)や [CSS レイアウト](/ja/docs/Learn/CSS/CSS_layout)などのより具体的な分野に進む前に、適切な CSS を書くための手法を知り、すべての重要な理論を理解できるようになることです。
+CSS （カスケーディングスタイルシート）は、ウェブページのスタイルやレイアウトに使用されます。例えば、コンテンツのフォント、色、サイズ、文字間隔を変更したり、コンテンツを複数の段に分割したり、アニメーションや装飾機能を追加したりすることができます。このモジュールでは、構文、機能、テクニックなど、これで必要な CSS の基本すべてを提供します。
 
 ## 前提知識
 
-このモジュールを始める前に、次のものを身につけておいてください。
-
-1. コンピューターの使い方と（ウェブを見たりコンテンツを消費したりといった）ウェブの受動的な使い方に関する基本的な知識に慣れ親しんでいること。
-2. [基本的なソフトウェアのインストール](/ja/docs/Learn/Getting_started_with_the_web/Installing_basic_software)で説明されている基本的な作業環境と、[ファイルの扱い](/ja/docs/Learn/Getting_started_with_the_web/Dealing_with_files)で説明されているファイルの作り方や管理の仕方について理解していること。
-3. [HTML 入門](/ja/docs/Learn/HTML/Introduction_to_HTML)で説明されている HTML についての基礎知識に慣れ親しんでいること。
-4. [CSS の第一歩](/ja/docs/Learn/CSS/First_steps)で説明されている CSS の基本について理解していること。
+このモジュールを始める前に、[基本的なソフトウェアのインストール](/ja/docs/Learn_web_development/Getting_started/Environment_setup/Installing_software)で説明されている基本的な作業環境と、[ファイルの扱い](/ja/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files)で説明されているファイルの作り方や管理の仕方について理解しておいてください。また、 HTML に親しんでおいてください（まだの場合は [HTML によるコンテンツの構造化](/ja/docs/Learn_web_development/Core/Structuring_content)を一通りやっておいてください）。
 
 > [!NOTE]
-> 自分自身でファイルを作れない環境 (タブレットやその他の端末) で作業する場合、(ほとんどの) コードサンプルは [JSBin](https://jsbin.com/) や [Glitch](https://glitch.com/) といったオンラインコーディングプログラムで試すことが可能です
+> ファイルが作成できないコンピューター、タブレット、その他の端末で作業している場合は、[CodePen](https://codepen.io/) や [JSFiddle](https://jsfiddle.net/) などのオンラインエディターでコードを実行してみてください。
 
 ## ガイド
 
-このモジュールは、 CSS 言語のもっとも重要な部分をカバーする以下の記事で構成されています。各記事には理解度を試す練習問題も含まれています。
-
-- [CSS セレクター](/ja/docs/Learn/CSS/Building_blocks/Selectors)
-
-  - : CSS セレクターにはさまざまな種類があり、スタイルを設定する要素を厳密に指定することができます。この記事と以下のサブ記事では、それらがどのように機能するかを詳しく見ていきます。サブ記事は以下の通りです。
-
-    - [要素、クラス、ID によるセレクター](/ja/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)
-    - [属性によるセレクター](/ja/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
-    - [擬似クラスおよび擬似要素](/ja/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements)
-    - [結合子](/ja/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
-
-- [カスケード、詳細度、継承](/ja/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
-
-  - : このレッスンの目的は、CSS の最も基本的な概念であるカスケード、詳細度、継承の理解を開発することです。カスケードは、CSS を HTML に適用する方法や競合を解決する方法を制御します。
-
-- [カスケードレイヤー](/ja/docs/Learn/CSS/Building_blocks/Cascade_layers)
-
-  - : このレッスンでは、 [CSS カスケード](/ja/docs/Web/CSS/Cascade)と [CSS 詳細度](/ja/docs/Web/CSS/Specificity)という基本的な概念の上に構築された、より高度な機能である[カスケードレイヤー](/ja/docs/Web/CSS/@layer)を紹介することを目的としています。
-
-- [ボックスモデル](/ja/docs/Learn/CSS/Building_blocks/The_box_model)
-  - : CSS のすべてにはボックスの概念があり、これを理解することは CSS でレイアウトを作成したりアイテム同士を揃えたりするためのコツとなります。このレッスンでは CSS ボックスモデルを詳しく解説し、その仕組みと関連する用語を理解することで、より複雑なレイアウトに進んでいけるようにします。
-- [背景と境界](/ja/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)
+- [CSS とは何か](/ja/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)
+  - : CSS を使用すると、見栄えの良いウェブページを作成することができますが、その裏側ではどのように動作しているのでしょうか？この記事では、 CSS とは何か、基本的な構文はどのようなものか、そして、ブラウザーが CSS を HTML に適用してスタイル設定を行う方法について説明します。
+- [CSS を始める](/ja/docs/Learn_web_development/Core/Styling_basics/Getting_started)
+  - : この記事では、シンプルな HTML 文書に CSS を適用し、その過程で CSS 言語の実践的な詳細を学んでいきます。また、まだ見ていないの CSS 構文機能についても確認します。
+- [経歴ページのスタイル設定](/ja/docs/Learn_web_development/Core/Styling_basics/Styling_a_bio_page) <sup>課題</sup>
+  - : この課題では、単純な経歴ページのスタイル設定を行います。ここ数回のレッスンで学んだスキル、具体的にはセレクターの作成、背景色の設定、テキストのスタイル設定などを試す内容です。また、まだ扱っていない基本的な CSS 機能について調べるようにし、調査スキルも試します。
+- [CSS セレクターの基本](/ja/docs/Learn_web_development/Core/Styling_basics/Basic_selectors)
+  - : この記事では、基本的な型、クラス、IDセレクターを含め、セレクターの基本事項をいくつかおさらいします。
+- [属性セレクター](/ja/docs/Learn_web_development/Core/Styling_basics/Attribute_selectors)
+  - : HTML の学習で既にご存知のように、要素は、マークアップされた要素についての詳細情報を提供する属性を持つすることができます。 CSS では、特定の属性を持つ要素を対象とするために、属性セレクターを使用することができます。 このレッスンでは、これらの非常に便利なセレクターの使用方法を表示します。
+- [擬似クラスと擬似要素](/ja/docs/Learn_web_development/Core/Styling_basics/Pseudo_classes_and_elements)
+  - : 次に紹介するセレクターは、**擬似クラス**と**擬似要素**と呼ばれるものです。これらは数多くあり、特定の目的で使用されることが多いです。使用方法を理解したら、さまざまな種類に目を通し、達成しようとしている作業に適したものがあるかどうかを確認することができます。
+- [結合子](/ja/docs/Learn_web_development/Core/Styling_basics/Combinators)
+  - : 最後に取り上げるセレクターは、結合子と呼ばれます。結合子は、他のセレクターと組み合わせて使用することで、他の要素（例えば、子要素や兄弟要素）との相対的な DOM 内の位置に基づいて要素を選択することができます。
+- [ボックスモデル](/ja/docs/Learn_web_development/Core/Styling_basics/Box_model)
+  - : CSS で作成されたものにはすべてボックスが含まれており、これらのボックスを理解することが、 CSS でより複雑なレイアウトを作成したり、アイテムを他にもアイテムを配置したりする上で重要となります。このレッスンでは、 CSS の「ボックスモデル」について見ていきます。これらがどのように動作するのか、また、それらに関連する用語について理解を深めることができます。
+- [競合の処理](/ja/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
+  - : このレッスンの目的は、CSS の最も基本的な概念であるカスケード、特定の仕様、継承について理解を深めることです。これらは、CSS が HTML に適用される方法と、スタイル宣言間の競合がどのように解決されるかをコントロールします。
+- [ブログページのスタイルの修正](/ja/docs/Learn_web_development/Core/Styling_basics/Fixing_blog_styles) <sup>課題</sup>
+  - : この課題では、部分的にスタイルが適用された基本的なブログページの例を提供します。既存の CSS の問題点を修正し、完成させるためのスタイルを追加してください。その過程で、セレクター、ボックスモデル、競合/カスケードに関する知識をテストします。
+- [値と単位](/ja/docs/Learn_web_development/Core/Styling_basics/Values_and_units)
+  - : CSS ルールには[宣言](/ja/docs/Web/CSS/Guides/Syntax/Introduction#css_の宣言)が含まれており、宣言はプロパティと値で構成されています。 CSS で使用される各プロパティには、許容される値の種類を記述した**値型**があります。このレッスンでは、最も頻繁に使用される値型のいくつかを取り上げ、それらが何であるか、また、これらがどのように作用するのかを説明します。
+- [CSS におけるアイテムのサイズ設定](/ja/docs/Learn_web_development/Core/Styling_basics/Sizing)
+  - : デザイン上のさまざまな機能がどの程度の大きさになるかを理解することは重要です。このレッスンでは、要素が CSS 経由でサイズを取得するさまざまな方法をまとめ、将来的に役立つサイズ指定に関するいくつかの用語を定義します。
+- [背景と境界](/ja/docs/Learn_web_development/Core/Styling_basics/Backgrounds_and_borders)
   - : このレッスンでは、CSS の背景と境界を使ってできるクリエイティブなことをいくつか見ていきます。グラデーションや背景画像や角丸について、背景と境界は CSS のスタイル設定に関する多くの疑問の解決策です。
-- [テキスト方向の操作](/ja/docs/Learn/CSS/Building_blocks/Handling_different_text_directions)
-  - : 近年では、右から左へだけでなく上から下へのコンテンツ（日本語など）を含むコンテンツのさまざまな向きをより適切にサポートするために CSS サポートが進化しています。これらのさまざまな向きの考え方については**書字方向**と呼ばれます。レイアウトの学習を進めて進めていくと書字方向の理解がとても役に立っていきますので、この記事ではそれらを紹介していきます。
-- [コンテンツのはみ出し (オーバーフロー)](/ja/docs/Learn/CSS/Building_blocks/Overflowing_content)
-  - : このレッスンでは、CSS のもう 1 つの重要な概念である **オーバーフロー** (overflow) を見ていきます。オーバーフローは、ボックス内にコンテンツが収まりきらないときに発生します。このガイドでは、その詳細とそれらについてどのように対処するかを学びます。
-- [CSS の値と単位](/ja/docs/Learn/CSS/Building_blocks/Values_and_units)
-  - : CSS で使用されるすべてのプロパティには、特定の値または値の組み合わせのみが許可されます。このレッスンでは、もっともよく使用される値と単位について見ていきます。
-- [CSS におけるアイテムのサイズ設定](/ja/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS)
-  - : これまでのさまざまなレッスンで、CSS を使用してウェブページ上の項目のサイズを調整するいくつかの方法に出会いました。デザイン作業をしていくうえで、それぞれの手法がどれほど大きく異なっているのかを理解することが重要です。このレッスンでは、CSS によって要素のサイズを設定する方法をまとめ、サイジングに役立ついくつかの用語を定義します。
-- [画像、メディア、フォーム要素](/ja/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
+- [課題: コンテンツパネルのサイズ設定と装飾](/ja/docs/Learn_web_development/Core/Styling_basics/Size_decorate_content_panel) <sup>課題</sup>
+  - : この課題では、コンテンツパネルをレンダリングする簡易的にスタイル設定されたページ構造が指定されます。上部には見出し、下部にはボタンバーが配置されています。指示に従ってサイズ調整と装飾を行い、結果として興味深いレイアウトを作成してください。過程において、CSS の値と単位、サイズ設定、背景と境界線に関する知識が検査されます。
+- [コンテンツのオーバーフロー](/ja/docs/Learn_web_development/Core/Styling_basics/Overflow)
+  - : オーバーフローは、ボックス内にコンテンツが収まりきらないときに発生します。このガイドでは、その詳細とそれらについてどのように対処するかを学びます。
+- [画像、メディア、フォーム要素](/ja/docs/Learn_web_development/Core/Styling_basics/Images_media_forms)
   - : このレッスンでは、特定の要素が CSS でどのように扱われるかを見ていきます。画像・メディア・フォーム要素では、CSS でスタイルを設定するにあたって通常のボックスとは少し異なる動作をします。何が可能で何が不可能であるのかを理解することで、フラストレーションを軽減することができます。このレッスンでは、知っておくべきことをいくつか取り上げます。
-- [表のスタイル設定](/ja/docs/Learn/CSS/Building_blocks/Styling_tables)
+- [表のスタイル設定](/ja/docs/Learn_web_development/Core/Styling_basics/Tables)
   - : HTML 表を装飾することは、世界で最も魅力的な仕事ではありませんが、時にはそれをしなければならないこともあります。この記事では、表をスタイル設定するテクニックとともに、HTML 表を見栄え良くするためのガイドを提供します。
-- [CSS のデバッグ](/ja/docs/Learn/CSS/Building_blocks/Debugging_CSS)
-  - : CSS を書くとき、期待どおりに動作していないように見える問題が発生する場合があります。この記事では CSS の問題をデバッグする方法について案内し、何が起こっているかを調べるのに、すべてのモダンブラウザーに入っている開発者ツールがどう役立つかを示します。
-- [CSS の整理](/ja/docs/Learn/CSS/Building_blocks/Organizing)
+- [CSS のデバッグ](/ja/docs/Learn_web_development/Core/Styling_basics/Debugging_CSS)
+  - : この記事では CSS の問題をデバッグする方法について案内し、何が起こっているかを調べるのに、すべてのモダンブラウザーに入っている開発者ツールがどう役立つかを示します。
+
+## 確認テスト
+
+チュートリアル記事の間に「確認テスト」記事が配置されています。これらは、次に進む前に最も重要な情報を理解できているかを確認するためのものです。これらをすべて確認したい場合は、[確認テスト: CSS スタイル設定の基礎](/ja/docs/Learn_web_development/Core/Styling_basics/Test_your_skills)に一覧が掲載されています。
+
+## 追加のチュートリアル
+
+これらのチュートリアルは学習経路には属しませんが、それでも興味深いものです。メインのコア記事をすべて読み終えた後にオプションで学習する、さらに上のゴールとして考えてみてください。
+
+- [ボックスの高度な効果](/ja/docs/Learn_web_development/Core/Styling_basics/Advanced_styling_effects)
+  - : この記事は、ボックスシャドウ、混合モード、フィルターといった興味深い高度なスタイル設定機能の入門として、便利なテクニックを提供します。
+- [カスケードレイヤー](/ja/docs/Learn_web_development/Core/Styling_basics/Cascade_layers)
+  - : このレッスンでは、より高度な機能である[カスケードレイヤー](/ja/docs/Web/CSS/Reference/At-rules/@layer)を紹介するためのものです。これは、 [CSS カスケード](/ja/docs/Web/CSS/Guides/Cascade/Introduction)と [CSS 詳細度](/ja/docs/Web/CSS/Guides/Cascade/Specificity)という基本的な概念の上に構築されています。
+- [さまざまな方向のテキストの扱い](/ja/docs/Learn_web_development/Core/Styling_basics/Handling_different_text_directions)
+  - : 近年、 CSS は、コンテンツのさまざまな方向に対応するために進化してきました。右から左に記述するコンテンツだけなく、上から下に記述するコンテンツ（日本語など）にも対応しています。これらのさまざまな方向は、書字方向と呼ばれます。学習を進め、レイアウト作業を始めるにあたり、書字方向を理解することは非常に役立つでしょう。そのため、この記事では書字方向について紹介します。
+- [CSS の整理](/ja/docs/Learn_web_development/Core/Styling_basics/Organizing)
   - : スタイルシートやプロジェクトが大きい状態で作業しはじめると、巨大な CSS ファイルを維持するのが難しいことがわかります。この記事では、保守しやすい CSS を書くためのベストプラクティスと、他の人が保守性を向上させるための解決策の一部を紹介します。
-
-## 評価試験
-
-以下の各評価では上記のガイドで説明されている CSS の理解度をテストできます。
-
-- [基本的な CSS の理解](/ja/docs/Learn/CSS/Building_blocks/Fundamental_CSS_comprehension)
-  - : この評価では基本的な構文、セレクター、詳細度、ボックスモデル、その他の理解度をテストします。
-- [装飾的なレターヘッド付きの便箋の作成](/ja/docs/Learn/CSS/Building_blocks/Creating_fancy_letterheaded_paper)
-  - : 好印象を与えたいのなら、素敵なレターヘッドの便箋に手紙を書くのはとても良い考えです。この評価では、そのような見た目のオンラインテンプレートの作成に挑戦します。
-- [かっこいいボックス](/ja/docs/Learn/CSS/Building_blocks/A_cool_looking_box)
-  - : ここでは背景と枠線のスタイル設定を使った人目を引くボックスの作り方を実践します。
 
 ## 関連情報
 
-- [ボックスの高度な効果](/ja/docs/Learn/CSS/Building_blocks/Advanced_styling_effects)
-  - : この記事はトリックの箱として機能し、ボックスの影、ブレンドモード、フィルターのような、ボックスの装飾に使用できる高度な機能のいくつかを紹介します。
+- [Learn HTML and CSS](https://scrimba.com/learn-html-and-css-c0p?via=mdn), Scrimba <sup>[_MDN 学習パートナー_](/ja/docs/MDN/Writing_guidelines/Learning_content#パートナーリンクと埋め込み)</sup>
+  - : [Scrimba](https://scrimba.com/?via=mdn) の _Learn HTML and CSS_ コースでは、知識豊富な講師陣による楽しい対話形式のレッスンと課題を通じて、 5 つの素晴らしいプロジェクトを構築し展開しながら、HTML と CSS を学んでいきます。
+- [Write your first lines of CSS!](https://scrimba.com/the-frontend-developer-career-path-c0j/~015?via=mdn), Scrimba <sup>[_MDN 学習パートナー_](/ja/docs/MDN/Writing_guidelines/Learning_content#パートナーリンクと埋め込み)</sup>
+  - : この対話型のレッスンでは、 CSS 構文の有益な入門編を提供して指定されています。
+
+{{NextMenu("Learn_web_development/Core/Styling_basics/What_is_CSS", "Learn_web_development/Core")}}

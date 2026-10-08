@@ -4,11 +4,24 @@ slug: Web/JavaScript/Reference/Global_Objects/RegExp/Symbol.split
 original_slug: Web/JavaScript/Reference/Global_Objects/RegExp/@@split
 ---
 
-{{JSRef}}
-
 La méthode **`[@@split]()`** permet de découper une chaîne de caractères ({{jsxref("String")}}) en un tableau de sous-chaînes.
 
-{{EmbedInteractiveExample("pages/js/regexp-prototype-@@split.html")}}
+{{InteractiveExample("JavaScript Demo: RegExp.prototype[Symbol.split]()")}}
+
+```js interactive-example
+class RegExp1 extends RegExp {
+  [Symbol.split](str, limit) {
+    const result = RegExp.prototype[Symbol.split].call(this, str, limit);
+    return result.map((x) => `(${x})`);
+  }
+}
+
+console.log("2016-01-02".split(new RegExp1("-")));
+// Expected output: Array ["(2016)", "(01)", "(02)"]
+
+console.log("2016-01-02".split(new RegExp("-")));
+// Expected output: Array ["2016", "01", "02"]
+```
 
 ## Syntaxe
 
@@ -83,8 +96,8 @@ console.log(résultat); // ["(2016)", "(01)", "(02)"]
 ## Voir aussi
 
 - {{jsxref("String.prototype.split()")}}
-- {{jsxref("RegExp.prototype.@@match()", "RegExp.prototype[@@match]()")}}
-- {{jsxref("RegExp.prototype.@@replace()", "RegExp.prototype[@@replace]()")}}
-- {{jsxref("RegExp.prototype.@@search()", "RegExp.prototype[@@search]()")}}
+- {{jsxref("RegExp/Symbol.match", "RegExp.prototype[@@match]()")}}
+- {{jsxref("RegExp/Symbol.replace", "RegExp.prototype[@@replace]()")}}
+- {{jsxref("RegExp/Symbol.search", "RegExp.prototype[@@search]()")}}
 - {{jsxref("RegExp.prototype.exec()")}}
 - {{jsxref("RegExp.prototype.test()")}}

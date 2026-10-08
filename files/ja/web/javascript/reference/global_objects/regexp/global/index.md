@@ -1,15 +1,26 @@
 ---
 title: RegExp.prototype.global
+short-title: global
 slug: Web/JavaScript/Reference/Global_Objects/RegExp/global
 l10n:
-  sourceCommit: 6fbdb78c1362fae31fbd545f4b2d9c51987a6bca
+  sourceCommit: cd22b9f18cf2450c0cc488379b8b780f0f343397
 ---
-
-{{JSRef}}
 
 **`global`** は {{jsxref("RegExp")}} インスタンスのプロパティで、`g` フラグが正規表現で使われているかどうかを返します。
 
-{{EmbedInteractiveExample("pages/js/regexp-prototype-global.html")}}
+{{InteractiveExample("JavaScript デモ: RegExp.prototype.global")}}
+
+```js interactive-example
+const regex1 = /foo/g;
+
+console.log(regex1.global);
+// 予想される結果: true
+
+const regex2 = /bar/i;
+
+console.log(regex2.global);
+// 予想される結果: false
+```
 
 ## 解説
 
@@ -24,16 +35,13 @@ l10n:
 ### global の使用
 
 ```js
-const regex = /foo/g;
-console.log(regex.global); // true
+const globalRegex = /foo/g;
 
 const str = "fooexamplefoo";
-const str1 = str.replace(regex, "");
-console.log(str1); // example
+console.log(str.replace(globalRegex, "")); // example
 
-const regex1 = /foo/;
-const str2 = str.replace(regex1, "");
-console.log(str2); // examplefoo
+const nonGlobalRegex = /foo/;
+console.log(str.replace(nonGlobalRegex, "")); // examplefoo
 ```
 
 ## 仕様書

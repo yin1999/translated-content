@@ -7,7 +7,15 @@ slug: Web/JavaScript/Reference/Global_Objects/ArrayBuffer
 
 O objeto **`ArrayBuffer`** é um tipo de dado usado para representar um genérico, buffer de dados binários de tamanho fixo. Você não pode manipular diretamente os conteúdos de um `ArrayBuffer`; em vez disso, você cria um objeto [`ArrayBufferView`](/pt-BR/docs/JavaScript_typed_arrays/ArrayBufferView) que representa o buffer em um formato específico, e usa para ler e escrever os conteúdos do buffer.
 
-{{EmbedInteractiveExample("pages/js/arraybuffer-constructor.html")}}
+{{InteractiveExample("JavaScript Demo: ArrayBuffer Constructor")}}
+
+```js interactive-example
+// Create an ArrayBuffer with a size in bytes
+const buffer = new ArrayBuffer(8);
+
+console.log(buffer.byteLength);
+// Expected output: 8
+```
 
 ## Syntax
 
@@ -41,9 +49,9 @@ The `ArrayBuffer` constructor creates a new `ArrayBuffer` of the given length in
 
 - `ArrayBuffer.length`
   - : The `ArrayBuffer` constructor's length property whose value is 1.
-- {{jsxref("ArrayBuffer.@@species", "get ArrayBuffer[@@species]")}}
+- {{jsxref("ArrayBuffer/Symbol.species", "get ArrayBuffer[@@species]")}}
   - : The constructor function that is used to create derived objects.
-- {{jsxref("ArrayBuffer.prototype")}}
+- {{jsxref("ArrayBuffer")}}
   - : Allows the addition of properties to all `ArrayBuffer` objects.
 
 ## Methods
@@ -55,7 +63,7 @@ The `ArrayBuffer` constructor creates a new `ArrayBuffer` of the given length in
 
 ## Instances
 
-All `ArrayBuffer` instances inherit from {{jsxref("ArrayBuffer.prototype")}}.
+All `ArrayBuffer` instances inherit from {{jsxref("ArrayBuffer")}}.
 
 ### Properties
 
@@ -70,7 +78,7 @@ All `ArrayBuffer` instances inherit from {{jsxref("ArrayBuffer.prototype")}}.
 
 ## Exemplo
 
-In this example, we create a 8-byte buffer with a {{jsxref("Global_Objects/Int32Array", "Int32Array")}} view referring to the buffer:
+In this example, we create a 8-byte buffer with a {{jsxref("Int32Array")}} view referring to the buffer:
 
 ```
 var buffer = new ArrayBuffer(8);
@@ -87,7 +95,7 @@ var view   = new Int32Array(buffer);
 
 ## Compatibility notes
 
-Starting with ECMAScript 2015, `ArrayBuffer` constructors require to be constructed with a {{jsxref("Operators/new", "new")}} operator. Calling an `ArrayBuffer` constructor as a function without `new`, will throw a {{jsxref("TypeError")}} from now on.
+Starting with ECMAScript 2015, `ArrayBuffer` constructors require to be constructed with a {{jsxref("new")}} operator. Calling an `ArrayBuffer` constructor as a function without `new`, will throw a {{jsxref("TypeError")}} from now on.
 
 ```js example-bad
 var dv = ArrayBuffer(10);

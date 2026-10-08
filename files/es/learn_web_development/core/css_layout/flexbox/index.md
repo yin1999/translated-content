@@ -4,9 +4,9 @@ slug: Learn_web_development/Core/CSS_layout/Flexbox
 original_slug: Learn/CSS/CSS_layout/Flexbox
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/CSS/CSS_layout/Normal_Flow", "Learn/CSS/CSS_layout/Grids", "Learn/CSS/CSS_layout")}}
+{{LearnSidebar}}{{PreviousMenuNext("conflicting/Learn_web_development/Core/CSS_layout/Introduction", "Learn_web_development/Core/CSS_layout/Grids", "Learn_web_development/Core/CSS_layout")}}
 
-[Flexbox](/es/docs/Web/CSS/CSS_flexible_box_layout) es un método de diseño de página unidimensional para compaginar elementos en filas o columnas. Los elementos de contenido se ensanchan para rellenar el espacio adicional y se encogen para caber en espacios más pequeños. En este artículo expondremos todas sus características básicas.
+[Flexbox](/es/docs/Web/CSS/Guides/Flexible_box_layout) es un método de diseño de página unidimensional para compaginar elementos en filas o columnas. Los elementos de contenido se ensanchan para rellenar el espacio adicional y se encogen para caber en espacios más pequeños. En este artículo expondremos todas sus características básicas.
 
 <table>
   <tbody>
@@ -14,10 +14,10 @@ original_slug: Learn/CSS/CSS_layout/Flexbox
       <th scope="row">Prerrequisitos:</th>
       <td>
         Los conceptos básicos de HTML (véase
-        <a href="/es/docs/Learn/HTML/Introduccion_a_HTML"
+        <a href="/es/docs/Learn_web_development/Core/Structuring_content"
           >Introducción al HTML</a
         >) y nociones de cómo funciona el CSS (véase
-        <a href="/es/docs/Learn/CSS/First_steps">Introducción al CSS</a>).
+        <a href="/es/docs/conflicting/Learn_web_development/Core/Styling_basics">Introducción al CSS</a>).
       </td>
     </tr>
     <tr>
@@ -32,7 +32,7 @@ original_slug: Learn/CSS/CSS_layout/Flexbox
 
 ## ¿Por qué flexbox?
 
-Durante mucho tiempo, las únicas herramientas fiables con compatibilidad cruzada entre navegadores disponibles para crear diseños CSS fueron cosas como la [flotación](/es/docs/Learn/CSS/CSS_layout/Floats) y el [posicionamiento](/es/docs/Learn/CSS/CSS_layout/Positioning). Están bien y funcionan, pero de alguna manera también limitan bastante y frustran.
+Durante mucho tiempo, las únicas herramientas fiables con compatibilidad cruzada entre navegadores disponibles para crear diseños CSS fueron cosas como la [flotación](/es/docs/Learn_web_development/Core/CSS_layout/Floats) y el [posicionamiento](/es/docs/Learn/CSS/CSS_layout/Positioning). Están bien y funcionan, pero de alguna manera también limitan bastante y frustran.
 
 Con tales herramientas resulta difícil, si no imposible, lograr obtener en cualquier forma conveniente y flexible un diseño de página sencillo con unos requisitos como los siguientes:
 
@@ -333,7 +333,7 @@ Esto no importa demasiado mientras estás aprendiendo y experimentando; pero cua
 
 Las propiedades flexbox son un poco más complicadas que otras características de CSS. Por ejemplo, si un navegador no soporta sombras en CSS, es probable que el sitio todavía sea utilizable. Sin embargo, si no es compatible con las funciones flexbox, probablemente el diseño completo se romperá, y el sitio web se inutilizará.
 
-Expusimos estrategias para superar problemas de compatibilidad entre navegadores en nuestro módulo [Pruebas de compatibilidad del navegador](/es/docs/Learn/Tools_and_testing/Cross_browser_testing).
+Expusimos estrategias para superar problemas de compatibilidad entre navegadores en nuestro módulo [Pruebas de compatibilidad del navegador](/es/docs/Learn_web_development/Extensions/Testing).
 
 ## Pon a prueba tus habilidades
 
@@ -343,4 +343,4 @@ Hemos cubierto mucho terreno en este artículo. ¿Recuerdas la información más
 
 Con esto concluye nuestro recorrido por los conceptos básicos de las propiedades flexbox. Esperamos que te hayas divertido y que juegues con ello mientras avanzas en tu aprendizaje. A continuación, veremos otro aspecto importante de los diseños CSS: las rejillas CSS.
 
-{{PreviousMenuNext("Learn/CSS/CSS_layout/Normal_Flow", "Learn/CSS/CSS_layout/Grids", "Learn/CSS/CSS_layout")}}
+{{PreviousMenuNext("conflicting/Learn_web_development/Core/CSS_layout/Introduction", "Learn_web_development/Core/CSS_layout/Grids", "Learn_web_development/Core/CSS_layout")}}

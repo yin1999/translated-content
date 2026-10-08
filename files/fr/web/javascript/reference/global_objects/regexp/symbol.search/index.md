@@ -4,11 +4,24 @@ slug: Web/JavaScript/Reference/Global_Objects/RegExp/Symbol.search
 original_slug: Web/JavaScript/Reference/Global_Objects/RegExp/@@search
 ---
 
-{{JSRef}}
-
 La méthode **`[@@search]()`** recherche une correspondance entre une expression rationnelle décrite par `this` et une chaîne de caractères donnée.
 
-{{EmbedInteractiveExample("pages/js/regexp-prototype-@@search.html")}}
+{{InteractiveExample("JavaScript Demo: RegExp.prototype[Symbol.search]()")}}
+
+```js interactive-example
+class RegExp1 extends RegExp {
+  constructor(str) {
+    super(str);
+    this.pattern = str;
+  }
+  [Symbol.search](str) {
+    return str.indexOf(this.pattern);
+  }
+}
+
+console.log("table football".search(new RegExp1("foo")));
+// Expected output: 6
+```
 
 ## Syntaxe
 
@@ -83,8 +96,8 @@ console.log(résultat); // 3
 ## Voir aussi
 
 - {{jsxref("String.prototype.search()")}}
-- {{jsxref("RegExp.prototype.@@match()", "RegExp.prototype[@@match]()")}}
-- {{jsxref("RegExp.prototype.@@replace()", "RegExp.prototype[@@replace]()")}}
-- {{jsxref("RegExp.prototype.@@split()", "RegExp.prototype[@@split]()")}}
+- {{jsxref("RegExp/Symbol.match", "RegExp.prototype[@@match]()")}}
+- {{jsxref("RegExp/Symbol.replace", "RegExp.prototype[@@replace]()")}}
+- {{jsxref("RegExp/Symbol.split", "RegExp.prototype[@@split]()")}}
 - {{jsxref("RegExp.prototype.exec()")}}
 - {{jsxref("RegExp.prototype.test()")}}

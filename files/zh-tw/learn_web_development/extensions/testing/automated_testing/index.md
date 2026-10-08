@@ -1,24 +1,23 @@
 ---
 title: 自動化測試介紹
 slug: Learn_web_development/Extensions/Testing/Automated_testing
-original_slug: Learn/Tools_and_testing/Cross_browser_testing/Automated_testing
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Tools_and_testing/Cross_browser_testing/Feature_detection", "Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Feature_detection", "Learn_web_development/Extensions/Testing/Your_own_automation_environment", "Learn_web_development/Extensions/Testing")}}
 
 每天在好幾個瀏覽器與設備上，運行手動測試數次，既乏味又浪費時間。要有效率的處理這種事，就要開始熟悉自動化工具。我們會在這篇文章看看有哪些可用的工具、如何使用它們、以及如何使用如 Sauce Labs 與 Browser Stack 的商業化瀏覽器測試程式之基本講述。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">先決條件：</th>
       <td>
-        熟悉 <a href="/zh-TW/docs/Learn/HTML">HTML</a>、<a
-          href="/zh-TW/docs/Learn/CSS"
+        熟悉 <a href="/zh-TW/docs/Learn_web_development/Core/Structuring_content">HTML</a>、<a
+          href="/zh-TW/docs/Learn_web_development/Core/Styling_basics"
           >CSS</a
-        >、<a href="/zh-TW/docs/Learn/JavaScript">JavaScript</a>
+        >、<a href="/zh-TW/docs/Learn_web_development/Core/Scripting">JavaScript</a>
         核心語言的基本；<a
-          href="/zh-TW/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction"
+          href="/zh-TW/docs/Learn_web_development/Extensions/Testing/Introduction"
           >跨瀏覽器測試的重要原則</a
         >。
       </td>
@@ -174,7 +173,8 @@ gulp.task("default", []);
    npm install --save-dev gulp-htmltidy
    ```
 
-   > **備註：** `--save-dev` 會把此套件加到開發相依設定中。如果去看專案的 `package.json` 檔，你會在 `devDependencies` 屬性看到它被放在裡面。
+   > [!NOTE]
+   > `--save-dev` 會把此套件加到開發相依設定中。如果去看專案的 `package.json` 檔，你會在 `devDependencies` 屬性看到它被放在裡面。
 
 2. 在 `gulpfile.js` 增加這個相依：
 
@@ -298,7 +298,8 @@ gulp.task("watch", function () {
 
 現在來輸入 `gulp watch` 指令。Gulp 會開始監視目錄，並在儲存 HTML、CSS、JavaScript 檔的時候，運行適當的任務。
 
-> **備註：** `*` 是通配字符（wildcard character）－－這裡的意思是「當任何檔案被儲存的時候，執行這些任務」。你也可以在主要任務內使用通配，例如 `gulp.src('src/*.css')` 會抓取所有的 CSS 檔案並執行 piped task。
+> [!NOTE]
+> `*` 是通配字符（wildcard character）－－這裡的意思是「當任何檔案被儲存的時候，執行這些任務」。你也可以在主要任務內使用通配，例如 `gulp.src('src/*.css')` 會抓取所有的 CSS 檔案並執行 piped task。
 
 > [!NOTE]
 > 在我們的 watch 指令有個問題，那就是我們的 CSSLint/Autoprefixer combination throws full-blown errors when a CSS error is encountered, which stops the watch working. You'll have to restart the watch once a CSS error is encountered, or find another way to do this.
@@ -336,7 +337,6 @@ You can then step up a gear, using an API to access functionality programmatical
 3. When you click Start session, a loading screen will then appear, which spins up a virtual machine running the combination you chose.
 4. When loading has finished, you can then start to remotely test the web site running in the chosen browser. ![](sauce-test-running.png)
 5. From here you can see the layout as it would look in the browser you are testing, move the mouse around and try clicking buttons, etc. The top menu allows you to:
-
    - Stop the session
    - Give someone else a URL so they can observe the test remotely.
    - Copy text/notes to a remote clipboard.
@@ -413,4 +413,4 @@ Let's have a brief look at how we'd access the API using Node.js and [node-sauce
 
 下篇文章我們來關注怎麼用 Selenium 設定你自己的區域自動化系統，並與 Sauce Labs 做結合。
 
-{{PreviousMenuNext("Learn/Tools_and_testing/Cross_browser_testing/Feature_detection", "Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment", "Learn/Tools_and_testing/Cross_browser_testing")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Feature_detection", "Learn_web_development/Extensions/Testing/Your_own_automation_environment", "Learn_web_development/Extensions/Testing")}}

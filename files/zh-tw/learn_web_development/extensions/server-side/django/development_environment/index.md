@@ -1,14 +1,13 @@
 ---
 title: 架設 Django 開發環境
 slug: Learn_web_development/Extensions/Server-side/Django/development_environment
-original_slug: Learn/Server-side/Django/development_environment
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Server-side/Django/Introduction", "Learn/Server-side/Django/Tutorial_local_library_website", "Learn/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Introduction", "Learn_web_development/Extensions/Server-side/Django/Tutorial_local_library_website", "Learn_web_development/Extensions/Server-side/Django")}}
 
 現在，你知道什麼是 Django。那麼我們將向你展示如何在 Windows，Linux（Ubuntu）和 Mac OSX 上設置和測試 Django 開發環境—無論你常用哪種操作系統，本文應該都能讓你開始開發 Django 應用程序。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">先備知識:</th>
@@ -33,7 +32,7 @@ Django 使你輕鬆設置自己的電腦，以便開始開發網絡應用。這�
 
 Django 本身提供的主要工具，是一組用於創建和使用 Django 項目的 Python 腳本，以及可用於在你的計算機的瀏覽器上，測試本地（即，你的計算機，而不是外部 Web 服務器）Django 網絡應用程序的簡單開發網路服務器 。
 
-還有其他外部工具, 它們構成了開發環境的一部分, 我們將不再贅述。這些包括 文本編輯器 [text editor](/zh-TW/docs/Learn/Common_questions/Tools_and_setup/Available_text_editors) 或編輯代碼的 IDE，以及像 [Git](https://git-scm.com/) 這樣的源代碼控制管理工具，用於安全地管理不同版本的代碼。我們假設你已經安裝了一個文本編輯器。
+還有其他外部工具, 它們構成了開發環境的一部分, 我們將不再贅述。這些包括 文本編輯器 [text editor](/zh-TW/docs/Learn_web_development/Howto/Tools_and_setup/Available_text_editors) 或編輯代碼的 IDE，以及像 [Git](https://git-scm.com/) 這樣的源代碼控制管理工具，用於安全地管理不同版本的代碼。我們假設你已經安裝了一個文本編輯器。
 
 ### 什麼是 Django 設置選項?
 
@@ -133,7 +132,6 @@ python3 -V
 你可以輕鬆從[python.org](https://www.python.org/)安裝 Python 3（以及 pip3 工具）:
 
 1. 下載所需的安裝程序:
-
    1. 點擊<https://www.python.org/downloads/>
    2. 選擇**Download Python 3.7.0**按鈕(確切的版本號可能不同).
 
@@ -158,7 +156,6 @@ pip3 list
 windows 默認不安裝,但你可以從[python.org](https://www.python.org/)輕鬆安裝它（以及 pip3 工具）：
 
 1. 下載所需版本:
-
    1. 點擊 <https://www.python.org/downloads/>
    2. 選擇 **Download Python 3.7.0** 按鈕(確切的版本號可能不同).
    3. 通過雙擊下載的文件並按照提示安裝 Python
@@ -205,7 +202,8 @@ export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 ```
 
-> **備註：** `VIRTUALENVWRAPPER_PYTHON` 和 `VIRTUALENVWRAPPER_VIRTUALENV_ARGS` 變量指向 Python3 的正常安裝位置，`source /usr/local/bin/virtualenvwrapper.sh`指向`virtualenvwrapper.sh`腳本的正常位置。如果 virtualenv 在測試時不起作用，那麼要檢查的一件事是 Python 和腳本位於預期的位置（然後適當地更改啟動文件）。
+> [!NOTE]
+> `VIRTUALENVWRAPPER_PYTHON` 和 `VIRTUALENVWRAPPER_VIRTUALENV_ARGS` 變量指向 Python3 的正常安裝位置，`source /usr/local/bin/virtualenvwrapper.sh`指向`virtualenvwrapper.sh`腳本的正常位置。如果 virtualenv 在測試時不起作用，那麼要檢查的一件事是 Python 和腳本位於預期的位置（然後適當地更改啟動文件）。
 >
 > 你可以使用`which virtualenvwrapper.sh` 和 `which python3`.的命令找到系統的正確位置。
 
@@ -247,7 +245,8 @@ export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 ```
 
-> **備註：** `VIRTUALENVWRAPPER_PYTHON`變量指向 Python3 的正常安裝位置，`source /usr/local/bin/virtualenvwrapper.sh`指向`virtualenvwrapper.sh`腳本的正常位置。如果 virtualenv 在測試時不起作用，那麼要檢查的一件事，是 Python 和腳本位於預期的位置（然後適當地更改啟動文件）。
+> [!NOTE]
+> `VIRTUALENVWRAPPER_PYTHON`變量指向 Python3 的正常安裝位置，`source /usr/local/bin/virtualenvwrapper.sh`指向`virtualenvwrapper.sh`腳本的正常位置。如果 virtualenv 在測試時不起作用，那麼要檢查的一件事，是 Python 和腳本位於預期的位置（然後適當地更改啟動文件）。
 >
 > 例如，對 macOS 進行的一次安裝測試，最終在啟動文件中需要以下幾行：
 >
@@ -410,4 +409,4 @@ Quit the server with CONTROL-C.
 - [How to install Django — Complete guide](https://docs.djangoproject.com/en/2.0/topics/install/) (Django docs) - includes information on how to remove Django
 - [How to install Django on Windows](https://docs.djangoproject.com/en/2.0/howto/windows/) (Django docs)
 
-{{PreviousMenuNext("Learn/Server-side/Django/Introduction", "Learn/Server-side/Django/Tutorial_local_library_website", "Learn/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Introduction", "Learn_web_development/Extensions/Server-side/Django/Tutorial_local_library_website", "Learn_web_development/Extensions/Server-side/Django")}}

@@ -1,22 +1,21 @@
 ---
 title: 前端框架簡介
 slug: Learn_web_development/Core/Frameworks_libraries/Introduction
-original_slug: Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Introduction
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Main_features", "Learn/Tools_and_testing/Client-side_JavaScript_frameworks")}}
+{{NextMenu("Learn_web_development/Core/Frameworks_libraries/Main_features", "Learn_web_development/Core/Frameworks_libraries")}}
 
 我們從整體概述來探討框架、提供 JavaScript 與框架的簡要歷史、框架存在的理由、他們提供什麼東西、如何決定選擇哪個框架、以及前端框架的的替代方案。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">先決條件：</th>
       <td>
-        熟悉 <a href="/zh-TW/docs/Learn/HTML">HTML</a>、<a
-          href="/zh-TW/docs/Learn/CSS"
+        熟悉 <a href="/zh-TW/docs/Learn_web_development/Core/Structuring_content">HTML</a>、<a
+          href="/zh-TW/docs/Learn_web_development/Core/Styling_basics"
           >CSS</a
-        >、<a href="/zh-TW/docs/Learn/JavaScript">JavaScript</a> 這些核心技術。
+        >、<a href="/zh-TW/docs/Learn_web_development/Core/Scripting">JavaScript</a> 這些核心技術。
       </td>
     </tr>
     <tr>
@@ -90,7 +89,7 @@ const state = [
 ];
 ```
 
-我們如何對用戶顯示工作？我們想將每個工作，都表示為一個列表項目：結構為無序列表元素 [`<ul>`](/zh-TW/docs/Web/HTML/Element/ul) 內，含有一定數量的 [`<li>`](/zh-TW/docs/Web/HTML/Element/li) 元素。怎麼做呢？看起來就像這樣：
+我們如何對用戶顯示工作？我們想將每個工作，都表示為一個列表項目：結構為無序列表元素 [`<ul>`](/zh-TW/docs/Web/HTML/Reference/Elements/ul) 內，含有一定數量的 [`<li>`](/zh-TW/docs/Web/HTML/Reference/Elements/li) 元素。怎麼做呢？看起來就像這樣：
 
 ```js
 function buildTodoItemEl(id, name) {
@@ -188,7 +187,7 @@ JavaScript 框架都會提供一種能更加*宣告性*撰寫介面的方法。�
 本模塊提到的幾個框架，背後都有著龐大而活躍的社群；這些社群形成了各種生態圈、並提供能增進開發體驗的工具：像是確保功能正常的測試、或著維持程式一致性的 linting。
 
 > [!NOTE]
-> 如果對這方面的概念有興趣，請看看 [Client-side tooling overview](/zh-TW/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Overview)。
+> 如果對這方面的概念有興趣，請看看 [Client-side tooling overview](/zh-TW/docs/Learn_web_development/Extensions/Client-side_tools/Overview)。
 
 ### 切分
 
@@ -228,7 +227,7 @@ web 最重要的功能之一，就是頁面之間的導航：畢竟它就是相�
 
 ## 框架網站的無障礙議題
 
-讓我們以上一節的內容為基礎，並進一步討論無障礙問題。消除用戶界面的障礙總是需要點思考與努力，而框架會使該過程複雜化。你通常要用上進階的框架 API 來訪問本機瀏覽器功能，例如 ARIA [live region](/zh-TW/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) 或 focus 管理。
+讓我們以上一節的內容為基礎，並進一步討論無障礙問題。消除用戶界面的障礙總是需要點思考與努力，而框架會使該過程複雜化。你通常要用上進階的框架 API 來訪問本機瀏覽器功能，例如 ARIA [live region](/zh-TW/docs/Web/Accessibility/ARIA/Guides/Live_regions) 或 focus 管理。
 
 在某些情況下，框架應用程式會發生在傳統網站不存在的障礙。最明顯的例子，就是前述的客戶端路由。
 
@@ -319,4 +318,4 @@ Vue 的開發團隊也寫了[有關 Vue 與其他框架的詳盡比較](https://
 
 我們的下一篇文章，將探討更底層的東西，著眼於框架傾向於提供的特定種類的功能，以及它們為什麼能動。
 
-{{NextMenu("Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Main_features", "Learn/Tools_and_testing/Client-side_JavaScript_frameworks")}}
+{{NextMenu("Learn_web_development/Core/Frameworks_libraries/Main_features", "Learn_web_development/Core/Frameworks_libraries")}}

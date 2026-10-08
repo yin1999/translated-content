@@ -3,11 +3,23 @@ title: typeof
 slug: Web/JavaScript/Reference/Operators/typeof
 ---
 
-{{JSSidebar("Operators")}}
-
 **`typeof`** 运算符返回一个字符串，表示操作数的类型。
 
-{{EmbedInteractiveExample("pages/js/expressions-typeof.html")}}
+{{InteractiveExample("JavaScript Demo: Expressions - typeof")}}
+
+```js interactive-example
+console.log(typeof 42);
+// Expected output: "number"
+
+console.log(typeof "blubber");
+// Expected output: "string"
+
+console.log(typeof true);
+// Expected output: "boolean"
+
+console.log(typeof undeclaredVariable);
+// Expected output: "undefined"
+```
 
 ## 语法
 
@@ -22,7 +34,7 @@ typeof operand
 
 ## 描述
 
-下表总结了 `typeof` 可能的返回值。有关类型和基本类型的更多信息，可查看 [JavaScript 数据结构](/zh-CN/docs/Web/JavaScript/Data_structures) 页面。
+下表总结了 `typeof` 可能的返回值。有关类型和基本类型的更多信息，可查看 [JavaScript 数据结构](/zh-CN/docs/Web/JavaScript/Guide/Data_structures) 页面。
 
 | 类型                                                                                                                                              | 结果                               |
 | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -224,5 +236,5 @@ function type(value) {
 
 ## 参见
 
-- {{JSxRef("Operators/instanceof", "instanceof")}}
+- {{JSxRef("instanceof")}}
 - [`document.all` willful violation of the standard](https://github.com/tc39/ecma262/issues/668)

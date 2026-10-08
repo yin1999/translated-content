@@ -1,12 +1,9 @@
 ---
 title: JavaScript 基础
 slug: Learn_web_development/Getting_started/Your_first_website/Adding_interactivity
-original_slug: Learn/Getting_started_with_the_web/JavaScript_basics
 l10n:
   sourceCommit: 9e8b77593a626b1e0765494e4928b8f4a5c2d9bd
 ---
-
-{{LearnSidebar}}
 
 {{PreviousMenuNext("Learn_web_development/Getting_started/Your_first_website/Styling_the_content", "Learn_web_development/Getting_started/Your_first_website/Publishing_your_website", "Learn_web_development/Getting_started/Your_first_website")}}
 
@@ -59,7 +56,7 @@ JavaScript 是最流行的现代 Web 技术之一。随着 JavaScript 技能的�
 > [!NOTE]
 > 上面将 {{htmlelement("script")}} 元素放在 HTML 文件的底部附近的原因是**浏览器会按照代码在文件中的顺序进行读取**。
 >
-> 如果 JavaScript 先加载，并期望操纵还未加载的 HTML，可能会出现问题。将 JavaScript 放在 HTML 页面的底部附近是一种解决方案。想要了解更多的替代方案，参见[脚本加载策略](/zh-CN/docs/Learn/JavaScript/First_steps/What_is_JavaScript#脚本加载策略)。
+> 如果 JavaScript 先加载，并期望操纵还未加载的 HTML，可能会出现问题。将 JavaScript 放在 HTML 页面的底部附近是一种解决方案。想要了解更多的替代方案，参见[脚本加载策略](/zh-CN/docs/Learn_web_development/Core/Scripting/What_is_JavaScript#脚本加载策略)。
 
 ### 发生了什么？
 
@@ -116,7 +113,7 @@ let myVariable = "鲍勃";
 myVariable = "斯蒂夫";
 ```
 
-注意变量可以存储不同[数据类型](/zh-CN/docs/Web/JavaScript/Data_structures)的值：
+注意变量可以存储不同[数据类型](/zh-CN/docs/Web/JavaScript/Guide/Data_structures)的值：
 
 <table class="standard-table">
   <thead>
@@ -308,7 +305,8 @@ multiply(20, 20);
 multiply(0.5, 3);
 ```
 
-> **备注：** [`return`](/zh-CN/docs/Web/JavaScript/Reference/Statements/return) 语句告诉浏览器将 `result` 变量返回到函数外面。这一点很有必要，因为函数内定义的变量只能在函数内使用。这叫做变量的{{Glossary("Scope", "作用域")}}。（阅读更多有关[变量的作用域](/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types#变量作用域)的内容。）
+> [!NOTE]
+> [`return`](/zh-CN/docs/Web/JavaScript/Reference/Statements/return) 语句告诉浏览器将 `result` 变量返回到函数外面。这一点很有必要，因为函数内定义的变量只能在函数内使用。这叫做变量的{{Glossary("Scope", "作用域")}}。（阅读更多有关[变量的作用域](/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types#变量作用域)的内容。）
 
 ### 事件
 
@@ -364,7 +362,6 @@ document.querySelector("html").addEventListener("click", () => {
 
 1. 获取这张图片的 `src` 属性值。
 2. 用一个条件句来判断 `src` 的值是否等于原始图片的路径：
-
    1. 如果是，则将 `src` 的值改为第二张图片的路径，在 {{htmlelement("img")}} 内强制加载第二张图片。
    2. 如果不是（意味着它已经修改过）, 则把 `src` 的值重新设置为原始图片的路径，即原始状态。
 

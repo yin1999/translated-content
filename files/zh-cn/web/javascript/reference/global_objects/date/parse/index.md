@@ -3,13 +3,22 @@ title: Date.parse()
 slug: Web/JavaScript/Reference/Global_Objects/Date/parse
 ---
 
-{{JSRef}}
-
 **`Date.parse()`** 方法解析一个表示某个日期的字符串，并返回从 1970-1-1 00:00:00 UTC 到该日期对象（该日期对象的 UTC 时间）的毫秒数，如果该字符串无法识别，或者一些情况下，包含了不合法的日期数值（如：2015-02-31），则返回值为 NaN。
 
 不推荐在 ES5 之前使用 Date.parse 方法，因为字符串的解析完全取决于实现。直到至今，不同宿主在如何解析日期字符串上仍存在许多差异，因此最好还是手动解析日期字符串（在需要适应不同格式时库能起到很大帮助）。
 
-{{EmbedInteractiveExample("pages/js/date-parse.html")}}
+{{InteractiveExample("JavaScript Demo: Date.parse()")}}
+
+```js interactive-example
+const unixTimeZero = Date.parse("01 Jan 1970 00:00:00 GMT");
+const javaScriptRelease = Date.parse("04 Dec 1995 00:12:00 GMT");
+
+console.log(unixTimeZero);
+// Expected output: 0
+
+console.log(javaScriptRelease);
+// Expected output: 818035920000
+```
 
 ## 语法
 

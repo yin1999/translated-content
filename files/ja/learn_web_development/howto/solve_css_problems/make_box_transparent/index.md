@@ -1,12 +1,10 @@
 ---
 title: ボックスを半透明にするには
+short-title: ボックスを半透明にする
 slug: Learn_web_development/Howto/Solve_CSS_problems/Make_box_transparent
-original_slug: Learn/CSS/Howto/Make_box_transparent
 l10n:
-  sourceCommit: 289d6314f3368aa3e28524e7d090f6e9c704e3b1
+  sourceCommit: 2b4a2ad5d9ba084a9eaa2f9204102655e7b575c4
 ---
-
-{{LearnSidebar}}
 
 このガイドでは、CSS を使用してボックスを半透明にする方法についてお手伝いします。
 
@@ -18,15 +16,61 @@ l10n:
 
 ## 背景色の不透明度のみを変更する場合
 
-多くの場合、背景色を部分的に透過させるだけで、テキストや他の要素は完全に不透明なままにしておきたいでしょう。これを実現するには、 `rgb()` のようなアルファチャンネルを持つ [`<color>`](/ja/docs/Web/CSS/color_value) の値を使用してください。`opacity` と同様に、アルファチャンネルの値を `1` にすると、その色は完全に不透明になります。したがって、`background-color: rgb(0 0 0 / 50%);` は、背景色を 50% の不透明度に設定します。
+多くの場合、背景色を部分的に透過させるだけで、テキストや他の要素は完全に不透明なままにしておきたいでしょう。これを実現するには、 `rgb()` のようなアルファチャンネルを持つ {{cssxref("&lt;color&gt;")}} の値を使用してください。`opacity` と同様に、アルファチャンネルの値を `1` にすると、その色は完全に不透明になります。したがって、`background-color: rgb(0 0 0 / 50%);` は、背景色を 50% の不透明度に設定します。
 
 下記の例で、不透明度とアルファチャンネルの値を変えてみて、ボックスの後ろの背景画像が見える割合を上下させてみてください。
 
-{{EmbedGHLiveSample("css-examples/howto/opacity.html", '100%', 770)}}
+```html live-sample___opacity
+<div class="wrapper">
+  <div class="box box1">This box uses opacity</div>
+  <div class="box box2">
+    This box has a background color with an alpha channel
+  </div>
+</div>
+```
+
+```css hidden live-sample___opacity
+body {
+  font-family: sans-serif;
+}
+
+.wrapper {
+  height: 200px;
+  display: flex;
+  gap: 20px;
+  background-image: url("https://mdn.github.io/shared-assets/images/examples/balloon.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+}
+
+.box {
+  flex: 1;
+  border: 5px solid black;
+  border-radius: 0.5em;
+  font-size: 140%;
+  padding: 20px;
+}
+```
+
+```css live-sample___opacity
+.box1 {
+  background-color: black;
+  color: white;
+  opacity: 0.5;
+}
+
+.box2 {
+  background-color: rgb(0 0 0 / 0.5);
+  color: white;
+}
+```
+
+{{EmbedLiveSample("opacity", "", "280px")}}
 
 > [!NOTE]
 > 画像を重ねる場合は、テキストと背景のコントラストが十分に保たれるように注意してください。そうしないと、コンテンツが読みづらくなる可能性があります。
 
 ## 関連情報
 
-- [CSS を使った HTML の要素への色の適用](/ja/docs/Web/CSS/CSS_colors/Applying_color)
+- [CSS を使った HTML の要素への色の適用](/ja/docs/Web/CSS/Guides/Colors/Applying_color)

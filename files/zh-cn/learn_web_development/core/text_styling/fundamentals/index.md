@@ -1,14 +1,13 @@
 ---
 title: 基本文本和字体样式
 slug: Learn_web_development/Core/Text_styling/Fundamentals
-original_slug: Learn/CSS/Styling_text/Fundamentals
 ---
 
-{{LearnSidebar}}{{NextMenu("Learn_web_development/Core/Text_styling/Styling_lists", "Learn_web_development/Core/Text_styling")}}
+{{NextMenu("Learn_web_development/Core/Text_styling/Styling_lists", "Learn_web_development/Core/Text_styling")}}
 
 在这篇文章中，我们将带你开始掌握 {{glossary("CSS")}} 的文字样式的旅程。这里我们将详细介绍文本/字体样式的所有基本原理，包括设置文字的粗细，字体和样式，文字的属性简写，文字的对齐，和其他效果，以及行和字母间距。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">前提：</th>
@@ -42,7 +41,7 @@ original_slug: Learn/CSS/Styling_text/Fundamentals
 - **文本布局风格**: 作用于文本的间距以及其他布局功能的属性，比如，允许操纵行与字之间的空间，以及在内容框中，文本如何对齐。
 
 > [!NOTE]
-> 请记住，包含在元素中的文本是作为一个单一的实体。你不能将文字其中一部分选中或添加样式，如果你要这么做，那么你必须要用适合的元素来包装它们，比如 ( {{htmlelement("span")}} 或者 {{htmlelement("strong")}}), 或者使用伪元素，像[::first-letter](/zh-CN/docs/Web/CSS/::first-letter) (选中元素文本的第一个字母), [::first-line](/zh-CN/docs/Web/CSS/::first-line) (选中元素文本的第一行), 或者 [::selection](/zh-CN/docs/Web/CSS/::selection) (当前光标双击选中的文本)
+> 请记住，包含在元素中的文本是作为一个单一的实体。你不能将文字其中一部分选中或添加样式，如果你要这么做，那么你必须要用适合的元素来包装它们，比如 ( {{htmlelement("span")}} 或者 {{htmlelement("strong")}}), 或者使用伪元素，像[::first-letter](/zh-CN/docs/Web/CSS/Reference/Selectors/::first-letter) (选中元素文本的第一个字母), [::first-line](/zh-CN/docs/Web/CSS/Reference/Selectors/::first-line) (选中元素文本的第一行), 或者 [::selection](/zh-CN/docs/Web/CSS/Reference/Selectors/::selection) (当前光标双击选中的文本)
 
 ## 字体
 
@@ -68,7 +67,7 @@ original_slug: Learn/CSS/Styling_text/Fundamentals
 
 {{cssxref("color")}} 属性设置选中元素的前景内容的颜色 (通常指文本，不过也包含一些其他东西，或者是使用 {{cssxref("text-decoration")}} 属性放置在文本下方或上方的线 (underline overline)。
 
-`color` 也可以接受任何合法的 [CSS 颜色单位](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#colors), 比如：
+`color` 也可以接受任何合法的 [CSS 颜色单位](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#颜色)，比如：
 
 ```css
 p {
@@ -313,7 +312,7 @@ p {
 
 ### 字体大小
 
-在我们之前的模块中的[CSS values and units](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units) 文章，我们回顾了[length and size units](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size). 字体大小 (通过 {{cssxref("font-size")}} 属性设置) 可以取大多数这些单位的值 (以及其他，比如百分比 [percentages](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#percentages))，然而你在调整字体大小时，最常用的单位是：
+在我们之前的模块中的[CSS values and units](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units) 文章，我们回顾了[length and size units](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#length_and_size)。字体大小（通过 {{cssxref("font-size")}} 属性设置）可以取大多数这些单位的值 (以及其他，比如[百分比](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#百分比))，然而你在调整字体大小时，最常用的单位是：
 
 - `px` (像素): 将像素的值赋予给你的文本。这是一个绝对单位，它导致了在任何情况下，页面上的文本所计算出来的像素值都是一样的。
 - `em`: 1em 等于我们设计的当前元素的父元素上设置的字体大小 (更加具体的话，比如包含在父元素中的大写字母 M 的宽度) 如果你有大量设置了不同字体大小的嵌套元素，这可能会变得棘手，但它是可行的，如下图所示。为什么要使用这个麻烦的单位呢？当你习惯这样做时，那么就会变得很自然，你可以使用`em`调整任何东西的大小，不只是文本。你可以有一个单位全部都使用 em 的网站，这样维护起来会很简单。
@@ -375,18 +374,15 @@ p {
 CSS 提供了 4 种常用的属性来改变文本的样子：
 
 - {{cssxref("font-style")}}: 用来打开和关闭文本 italic (斜体)。可能的值如下 (你很少会用到这个属性，除非你因为一些理由想将斜体文字关闭斜体状态)：
-
   - `normal`: 将文本设置为普通字体 (将存在的斜体关闭)
   - `italic`: 如果当前字体的斜体版本可用，那么文本设置为斜体版本；如果不可用，那么会利用 oblique 状态来模拟 italics。
   - `oblique`: 将文本设置为斜体字体的模拟版本，也就是将普通文本倾斜的样式应用到文本中。
 
 - {{cssxref("font-weight")}}: 设置文字的粗体大小。这里有很多值可选 (比如 _-light_, _-normal_, _-bold_, _-extrabold_, _-black_, 等等), 不过事实上你很少会用到 `normal` 和 `bold`以外的值：
-
   - `normal`, `bold`: 普通或者**加粗**的字体粗细
   - `lighter`, `bolder`: 将当前元素的粗体设置为比其父元素粗体更细或更粗一步。`100`–`900`: 数值粗体值，如果需要，可提供比上述关键字更精细的粒度控制。
 
 - {{cssxref("text-transform")}}: 允许你设置要转换的字体。值包括：
-
   - `none`: 防止任何转型。
   - `uppercase`: 将所有文本转为大写。
   - `lowercase`: 将所有文本转为小写。
@@ -394,7 +390,6 @@ CSS 提供了 4 种常用的属性来改变文本的样子：
   - `full-width`: 将所有字形转换成全角，即固定宽度的正方形，类似于等宽字体，允许拉丁字符和亚洲语言字形（如中文，日文，韩文）对齐。
 
 - {{cssxref("text-decoration")}}: 设置/取消字体上的文本装饰 (你将主要使用此方法在设置链接时取消设置链接上的默认下划线。) 可用值为：
-
   - `none`: 取消已经存在的任何文本装饰。
   - `underline`: 文本下划线。
   - `overline`: 文本上划线
@@ -453,10 +448,10 @@ text-shadow: 4px 4px 5px red;
 
 4 个属性如下：
 
-1. 阴影与原始文本的水平偏移，可以使用大多数的 CSS 单位 [length and size units](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size), 但是 px 是比较合适的。这个值必须指定。
+1. 阴影与原始文本的水平偏移，可以使用大多数的 CSS 单位 [length and size units](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#length_and_size), 但是 px 是比较合适的。这个值必须指定。
 2. 阴影与原始文本的垂直偏移;效果基本上就像水平偏移，除了它向上/向下移动阴影，而不是左/右。这个值必须指定。
-3. 模糊半径 - 更高的值意味着阴影分散得更广泛。如果不包含此值，则默认为 0，这意味着没有模糊。可以使用大多数的 CSS 单位 [length and size units](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size).
-4. 阴影的基础颜色，可以使用大多数的 CSS 颜色单位 [CSS color unit](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#colors). 如果没有指定，默认为 `black`.
+3. 模糊半径 - 更高的值意味着阴影分散得更广泛。如果不包含此值，则默认为 0，这意味着没有模糊。可以使用大多数的 CSS 单位 [length and size units](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#length_and_size).
+4. 阴影的基础颜色，可以使用大多数的 CSS 颜色单位 [CSS color unit](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#colors). 如果没有指定，默认为 `black`.
 
 > [!NOTE]
 > 正偏移值可以向右移动阴影，但也可以使用负偏移值来左右移动阴影，例如 `-1px -1px`.
@@ -580,7 +575,7 @@ p {
 
 ### 行高
 
-{{cssxref("line-height")}} 属性设置文本每行之间的高，可以接受大多数单位 [length and size units](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size)，不过也可以设置一个无单位的值，作为乘数，通常这种是比较好的做法。无单位的值乘以 {{cssxref("font-size")}} 来获得 `line-height`。当行与行之间拉开空间，正文文本通常看起来更好更容易阅读。推荐的行高大约是 1.5–2 (双倍间距。) 所以要把我们的文本行高设置为字体高度的 1.5 倍，你可以使用这个：
+{{cssxref("line-height")}} 属性设置文本每行之间的高，可以接受大多数单位 [length and size units](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#length_and_size)，不过也可以设置一个无单位的值，作为乘数，通常这种是比较好的做法。无单位的值乘以 {{cssxref("font-size")}} 来获得 `line-height`。当行与行之间拉开空间，正文文本通常看起来更好更容易阅读。推荐的行高大约是 1.5–2 (双倍间距。) 所以要把我们的文本行高设置为字体高度的 1.5 倍，你可以使用这个：
 
 ```css
 line-height: 1.5;
@@ -634,7 +629,7 @@ p {
 
 ### 字母和单词间距
 
-{{cssxref("letter-spacing")}} 和 {{cssxref("word-spacing")}} 属性允许你设置你的文本中的字母与字母之间的间距、或是单词与单词之间的间距。你不会经常使用它们，但是可能可以通过它们，来获得一个特定的外观，或者让较为密集的文字更加可读。它们可以接受大多数单位 [length and size units](/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units#length_and_size).
+{{cssxref("letter-spacing")}} 和 {{cssxref("word-spacing")}} 属性允许你设置你的文本中的字母与字母之间的间距、或是单词与单词之间的间距。你不会经常使用它们，但是可能可以通过它们，来获得一个特定的外观，或者让较为密集的文字更加可读。它们可以接受大多数单位 [length and size units](/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#length_and_size).
 
 所以作为例子，如果我们把这个样式应用到我们的示例中的 {{htmlelement("p")}} 段落的第一行：
 
@@ -762,8 +757,7 @@ font:
     id="code"
     class="html-input"
     style="width: 90%;height: 10em;padding: 10px;border: 1px solid #0095dd;">
-  <p>Some sample text for your delight</p></textarea
-  >
+  <p>Some sample text for your delight</p></textarea>
 
   <h2>CSS Input</h2>
   <textarea
@@ -772,8 +766,7 @@ font:
     style="width: 90%;height: 10em;padding: 10px;border: 1px solid #0095dd;">
 p {
 
-  }</textarea
-  >
+  }</textarea>
 
   <h2>Output</h2>
   <div

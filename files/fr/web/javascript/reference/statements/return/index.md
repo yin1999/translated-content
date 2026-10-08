@@ -3,11 +3,24 @@ title: return
 slug: Web/JavaScript/Reference/Statements/return
 ---
 
-{{jsSidebar("Statements")}}
-
 L'instruction **`return`** met fin à l'exécution d'une fonction et définit une valeur à renvoyer à la fonction appelante.
 
-{{EmbedInteractiveExample("pages/js/statement-return.html")}}
+{{InteractiveExample("JavaScript Demo: Statement - Return")}}
+
+```js interactive-example
+function getRectArea(width, height) {
+  if (width > 0 && height > 0) {
+    return width * height;
+  }
+  return 0;
+}
+
+console.log(getRectArea(3, 4));
+// Expected output: 12
+
+console.log(getRectArea(-3, 4));
+// Expected output: 0
+```
 
 ## Syntaxe
 
@@ -114,7 +127,7 @@ compteur();
 
 ### Renvoyer une fonction
 
-Pour en savoir plus sur les fermetures (_closures_), voir [cet article sur les fermetures](/fr/docs/Web/JavaScript/Closures).
+Pour en savoir plus sur les fermetures (_closures_), voir [cet article sur les fermetures](/fr/docs/Web/JavaScript/Guide/Closures).
 
 ```js
 function magique() {
@@ -137,5 +150,5 @@ réponse(1337); // 56154
 
 ## Voir aussi
 
-- {{jsxref("Fonctions","Les fonctions","",1)}}
-- [Les fermetures (closures)](/fr/docs/Web/JavaScript/Closures)
+- {{jsxref("Functions","Les fonctions","",1)}}
+- [Les fermetures (closures)](/fr/docs/Web/JavaScript/Guide/Closures)

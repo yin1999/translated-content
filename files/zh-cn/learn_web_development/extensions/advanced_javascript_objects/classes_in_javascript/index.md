@@ -1,14 +1,13 @@
 ---
 title: JavaScript 中的类
 slug: Learn_web_development/Extensions/Advanced_JavaScript_objects/Classes_in_JavaScript
-original_slug: Learn/JavaScript/Objects/Classes_in_JavaScript
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Extensions/Advanced_JavaScript_objects/Object-oriented_programming", "Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_building_practice", "Learn_web_development/Extensions/Advanced_JavaScript_objects")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Advanced_JavaScript_objects/Object-oriented_programming", "Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_building_practice", "Learn_web_development/Extensions/Advanced_JavaScript_objects")}}
 
 在[上一篇文章](/zh-CN/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object-oriented_programming)中，我们介绍了面向对象编程（OOP）的基本概念，并介绍了一个使用 OOP 原则对学校的教授和学生进行建模的示例。
 
-我们还讨论了如何使用[原型](/zh-CN/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes)和[构造函数](/zh-CN/docs/Learn/JavaScript/Objects/Basics#introducing_constructors)来实现这样的模型，而 JavaScript 还提供了更接近经典 OOP 概念的特性。
+我们还讨论了如何使用[原型](/zh-CN/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Object_prototypes)和[构造函数](/zh-CN/docs/Learn_web_development/Core/Scripting/Object_basics#构造函数介绍)来实现这样的模型，而 JavaScript 还提供了更接近经典 OOP 概念的特性。
 
 在本文中，我们将介绍这些特性。注意，这里描述的特性并不是一种继承对象的新方式：在引擎的底层，这一特性使用的仍是原型。这只是一种更容易的创建原型链的方法。
 
@@ -168,7 +167,7 @@ class Student extends Person {
 }
 ```
 
-在这个类的声明中，`#year` 是一个[私有数据属性](/zh-CN/docs/Web/JavaScript/Reference/Classes/Private_properties)。我们可以构造一个 `Student` 对象，然后在内部使用 `#year`，但如果在类的外部尝试访问 `#year`，浏览器将会抛出错误：
+在这个类的声明中，`#year` 是一个[私有字段](/zh-CN/docs/Web/JavaScript/Reference/Classes/Private_elements)。我们可以构造一个 `Student` 对象，然后在内部使用 `#year`，但如果在类的外部尝试访问 `#year`，浏览器将会抛出错误：
 
 ```js
 const summers = new Student("Summers", 2);
@@ -179,11 +178,11 @@ summers.canStudyArchery(); // true
 summers.#year; // SyntaxError
 ```
 
-私有数据属性必须在类的声明中声明，而且其名称需以 `#` 开头。
+私有字段必须在类的声明中声明，而且其名称需以 `#` 开头。
 
 ### 私有方法
 
-与私有数据属性一样，你也可以声明私有方法。而且名称也是以 `#` 开头，只能在类自己的方法中调用：
+与私有字段一样，你也可以声明私有方法。而且名称也是以 `#` 开头，只能在类自己的方法中调用：
 
 ```js
 class Example {
@@ -205,7 +204,7 @@ myExample.#somePrivateMethod(); // SyntaxError
 
 ## 技能测试！
 
-你已经看到了本文的结尾，但你还记得本文的绝大多数重要的信息吗？在继续学习新的内容之前，你可以找一些进一步的测验来验证你已经掌握了这些信息——参见[技能测试：面向对象的 JavaScript](/zh-CN/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Test_your_skills:_Object-oriented_JavaScript)。
+你已经看到了本文的结尾，但你还记得本文的绝大多数重要的信息吗？在继续学习新的内容之前，你可以找一些进一步的测验来验证你已经掌握了这些信息——参见[技能测试：面向对象的 JavaScript](/zh-CN/docs/Learn_web_development/Extensions/Advanced_JavaScript_objects/Test_your_skills/Object-oriented_JavaScript)。
 
 ## 总结
 

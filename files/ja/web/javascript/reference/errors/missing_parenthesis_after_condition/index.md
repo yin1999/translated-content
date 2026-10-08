@@ -70,8 +70,8 @@ if (done === true) {
 }
 ```
 
-## 関連項目
+## 関連情報
 
 - [`if...else`](/ja/docs/Web/JavaScript/Reference/Statements/if...else)
 - [比較演算子](/ja/docs/Web/JavaScript/Reference/Operators)
-- [コードでの意思決定 — 条件文](/ja/docs/Learn/JavaScript/Building_blocks/conditionals)
+- [コードでの意思決定 — 条件文](/ja/docs/Learn_web_development/Core/Scripting/Conditionals)

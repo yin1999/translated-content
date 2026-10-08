@@ -4,11 +4,23 @@ slug: Web/JavaScript/Reference/Global_Objects/RegExp/Symbol.species
 original_slug: Web/JavaScript/Reference/Global_Objects/RegExp/@@species
 ---
 
-{{JSRef}}
-
 La propriété accesseur **`RegExp[@@species]`** renvoie le constructeur `RegExp`.
 
-{{EmbedInteractiveExample("pages/js/regexp-getregexp-@@species.html")}}
+{{InteractiveExample("JavaScript Demo: RegExp[Symbol.species]")}}
+
+```js interactive-example
+class MyRegExp extends RegExp {
+  // Overwrite MyRegExp species to the parent RegExp constructor
+  static get [Symbol.species]() {
+    return RegExp;
+  }
+}
+
+const regex1 = new MyRegExp("foo", "g");
+
+console.log(regex1.test("football"));
+// Expected output: true
+```
 
 ## Syntaxe
 

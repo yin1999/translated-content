@@ -3,8 +3,6 @@ title: Map
 slug: Web/JavaScript/Reference/Global_Objects/Map
 ---
 
-{{JSRef}}
-
 **`Map`** 是保存了鍵值對（key-value pairs）的物件。任何值（包括物件及{{Glossary("Primitive", "基本型別（primitive）值")}}）都可以作為鍵或值。
 
 ## 語法
@@ -24,7 +22,7 @@ new Map([iterable])
 
 ### 鍵的相等性
 
-鍵相等是基於 [SameValueZero](/zh-TW/docs/Web/JavaScript/Equality_comparisons_and_sameness#same-value-zero_equality) 的演算法：`NaN` 被認為與 `NaN` 相同（即使 `NaN !== NaN`）並且根據 `===` 運算符的語義，所有其他值都被認為相等。在目前的 ECMAScript 規範中，`-0` 和 `+0` 被認為是相等的，儘管在早期的草案中並非如此。詳細的內容請參閱 [瀏覽器相容性](#瀏覽器相容性) 表中的 "Value equality for -0 and 0"。
+鍵相等是基於 [SameValueZero](/zh-TW/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness#same-value-zero_equality) 的演算法：`NaN` 被認為與 `NaN` 相同（即使 `NaN !== NaN`）並且根據 `===` 運算符的語義，所有其他值都被認為相等。在目前的 ECMAScript 規範中，`-0` 和 `+0` 被認為是相等的，儘管在早期的草案中並非如此。詳細的內容請參閱 [瀏覽器相容性](#瀏覽器相容性) 表中的 "Value equality for -0 and 0"。
 
 ### Object 及 Map 的比較
 
@@ -43,12 +41,12 @@ new Map([iterable])
     要計算 `Map` 中有多少元素，可以使用 {{jsxref("Map.prototype.size")}}。
 - [`Map[Symbol.species]`](/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Map/Symbol.species)
   - : 用於創建派生物件的構造函數。
-- {{jsxref("Map.prototype")}}
+- {{jsxref("Map")}}
   - : 表示 `Map` 構造函數的原型，允許對所有的 `Map` 物件添加屬性
 
 ## `Map` 物件實體
 
-所有的 `Map` 實例都繼承自 {{jsxref("Map.prototype")}}.
+所有的 `Map` 實例都繼承自 {{jsxref("Map")}}.
 
 ### 屬性
 

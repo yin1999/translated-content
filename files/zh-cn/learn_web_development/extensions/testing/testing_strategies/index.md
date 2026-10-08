@@ -1,12 +1,11 @@
 ---
 title: 测试的策略
 slug: Learn_web_development/Extensions/Testing/Testing_strategies
-original_slug: Learn/Tools_and_testing/Cross_browser_testing/Testing_strategies
 l10n:
   sourceCommit: 54c4741354cf49b4dd62e1bb3d8ab13181b210f0
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Introduction","Learn_web_development/Extensions/Testing/HTML_and_CSS", "Learn_web_development/Extensions/Testing")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Testing/Introduction","Learn_web_development/Extensions/Testing/HTML_and_CSS", "Learn_web_development/Extensions/Testing")}}
 
 本文解释如何进行跨浏览器测试：如何选择要测试的浏览器和设备、如何实际测试这些浏览器和设备，以及如何借助用户群体进行测试。
 
@@ -146,7 +145,7 @@ A 级：
 
 - 它们在执行测试时为你提供了一组步骤。
 - 它们可以很容易地转化为用户组在进行测试时需要遵循的指示（例如，“尝试使用鼠标和键盘激活按钮…”）——请参见下面的[用户测试](#用户测试)部分。
-- 它们还可以为编写自动化测试提供基础。如果你知道要测试什么以及成功条件是什么，编写此类测试就会更容易（请参见本系列中的 [Selenium](/zh-CN/docs/Learn/Tools_and_testing/Cross_browser_testing/Your_own_automation_environment#selenium) 部分）。
+- 它们还可以为编写自动化测试提供基础。如果你知道要测试什么以及成功条件是什么，编写此类测试就会更容易（请参见本系列中的 [Selenium](/zh-CN/docs/Learn_web_development/Extensions/Testing/Your_own_automation_environment#selenium) 部分）。
 
 ## 建立测试实验环境
 
@@ -210,7 +209,6 @@ A 级：
 3. 打开应用程序；你将看到以下界面：![应用程序窗口的左侧面板列出了 Windows 操作系统和 Opera TV 模拟器。右侧面板包括几个子面板，包括常规信息、系统、显示、设置、音频、网络和预览](virtualbox.png)
 4. 要创建新的虚拟机，请点击左上角的“新建”按钮。
 5. 按照说明填写适当的对话框。你需要：
-
    1. 为新虚拟机提供名称
    2. 选择要安装在虚拟机里面的操作系统和版本
    3. 设置要分配的内存大小（我们建议设置为 2048MB 或 2GB）

@@ -1,15 +1,26 @@
 ---
 title: Math.PI
+short-title: PI
 slug: Web/JavaScript/Reference/Global_Objects/Math/PI
 l10n:
-  sourceCommit: 761b9047d78876cbd153be811efb1aa77b419877
+  sourceCommit: 544b843570cb08d1474cfc5ec03ffb9f4edc0166
 ---
 
-{{JSRef}}
+**`Math.PI`** は静的データプロパティで、円周と直径の比率、およそ 3.14159 を表します。
 
-**`Math.PI`** プロパティは、円周と直径の比率、およそ 3.14159 を表します。
+{{InteractiveExample("JavaScript デモ: Math.PI")}}
 
-{{EmbedInteractiveExample("pages/js/math-pi.html")}}
+```js interactive-example
+function calculateCircumference(radius) {
+  return 2 * Math.PI * radius;
+}
+
+console.log(Math.PI);
+// 予想される結果: 3.141592653589793
+
+console.log(calculateCircumference(10));
+// 予想される結果: 62.83185307179586
+```
 
 ## 値
 

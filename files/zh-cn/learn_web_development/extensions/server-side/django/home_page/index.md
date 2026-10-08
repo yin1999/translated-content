@@ -1,14 +1,13 @@
 ---
 title: Django 教程 5：主页构建
 slug: Learn_web_development/Extensions/Server-side/Django/Home_page
-original_slug: Learn/Server-side/Django/Home_page
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Admin_site", "Learn_web_development/Extensions/Server-side/Django/Generic_views", "Learn_web_development/Extensions/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Admin_site", "Learn_web_development/Extensions/Server-side/Django/Generic_views", "Learn_web_development/Extensions/Server-side/Django")}}
 
 我们现在可以添加代码来显示我们的第一个完整页面 - [LocalLibrary](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django/Tutorial_local_library_website) 网站的主页，显示每个模型类型有多少条记录，并提供我们其他页面的侧边栏导航链接。一路上，我们将获得编写基本 URL 地图和视图，从数据库获取记录以及使用模板的实践经验。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">前提：</th>
@@ -148,7 +147,7 @@ def index(request):
     )
 ```
 
-视图函数的第一部分使用`objects.all()`模型类的属性来获取记录计数。它还会获取一个`BookInstance`状态字段值为“a”（可用）的对象列表。你可以在前面的教程 ([Django Tutorial Part 3: Using models > Searching for records](/zh-CN/docs/Learn/Server-side/Django/Models#searching_for_records)) 中找到更多关于如何访问模型的信息。
+视图函数的第一部分使用`objects.all()`模型类的属性来获取记录计数。它还会获取一个`BookInstance`状态字段值为“a”（可用）的对象列表。你可以在前面的教程（[Django 教程 3：使用模型 > 搜寻纪录](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django/Models#搜寻纪录)）中找到更多关于如何访问模型的信息。
 
 在函数结束时，我们将该函数称为`render()`创建和返回 HTML 页面作为响应（此快捷方式函数包含许多其他函数，简化了这种非常常见的用例）。它将原始`request`对象（an HttpRequest）作为参数，具有数据占位符的 HTML 模板以及`context`变量（包含要插入到这些占位符中的数据的 Python 字典）。
 

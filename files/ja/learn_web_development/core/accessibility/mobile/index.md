@@ -1,12 +1,11 @@
 ---
 title: モバイルのアクセシビリティ
 slug: Learn_web_development/Core/Accessibility/Mobile
-original_slug: Learn/Accessibility/Mobile
 l10n:
-  sourceCommit: 4bddde3e2b86234eb4594809082873fc5bf00ee3
+  sourceCommit: f99d00a1c3697e26a679925954e26564e7e79b98
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Accessibility/Multimedia","Learn/Accessibility/Accessibility_troubleshooting", "Learn/Accessibility")}}
+{{PreviousMenuNext("Learn_web_development/Core/Accessibility/Multimedia","Learn_web_development/Core/Accessibility/Accessibility_troubleshooting", "Learn_web_development/Core/Accessibility")}}
 
 モバイル端末でのウェブアクセスは非常に人気があり、iOS や Android などの一般的なプラットフォームには本格的なアクセシビリティツールが備わっているため、これらのプラットフォームでのウェブコンテンツのアクセシビリティを考慮することが重要です。この記事では、モバイル固有のアクセシビリティについて検討します。
 
@@ -14,17 +13,17 @@ l10n:
   <tbody>
     <tr>
       <th scope="row">前提知識:</th>
-      <td>
-        HTML、CSS、JavaScript に対する基本的な理解、
-        <a href="/ja/docs/Learn/Accessibility"
-          >このコースの前回までの記事</a
-        >に対する理解。
-      </td>
+      <td><a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a>、<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS</a> の知識と、このモジュールのこれまでのレッスンで学んだようなアクセシビリティのベストプラクティス。</td>
     </tr>
     <tr>
-      <th scope="row">目的:</th>
+      <th scope="row">学習成果:</th>
       <td>
-        モバイル端末のアクセシビリティにどのような問題があるのか、またそれらを克服する方法を理解すること。
+        <ul>
+          <li>iOS と Android のスクリーンリーダーに慣れること。</li>
+          <li>特定のイベントの裏に潜むアクセシビリティの課題に慣れること。</li>
+          <li>モバイル端末でより使いやすいユーザー入力メカニズムを実現するための特定の技術。</li>
+          <li>モバイルブラウザーは仕様上、特定の <code>&lt;input&gt;</code> 型、例えば <code>number</code> や <code>tel</code> などに対して、特定のユーザビリティ上の利点を提供していること。</li>
+        </ul>
       </td>
     </tr>
   </tbody>
@@ -34,7 +33,7 @@ l10n:
 
 アクセシビリティの状態、そしてウェブ標準全般への対応は、現行のモバイル端末では良好です。モバイル端末がデスクトップのブラウザーとは完全に異なるウェブ技術を実行し、開発者がブラウザー検出を使用し、完全に別個のサイトを提供することを余儀なくされていた時代はとうの昔に過ぎ去りました（いくつかの企業はまだモバイル端末の使用を検出し、モバイルドメインを別個に提供していますが）。
 
-最近の一般的なモバイル端末は、「脂肪分たっぷり」のウェブサイトを扱うことができ、主なプラットフォームには視覚障害のあるユーザーがそれらをうまく使えるようにスクリーンリーダーが組み込まれています。最近のモバイルブラウザーは [WAI-ARIA](/ja/docs/Learn/Accessibility/WAI-ARIA_basics) もよくサポートしています。
+最近の一般的なモバイル端末は、「脂肪分たっぷり」のウェブサイトを扱うことができ、主なプラットフォームには視覚障害のあるユーザーがそれらをうまく使えるようにスクリーンリーダーが組み込まれています。最近のモバイルブラウザーは [WAI-ARIA](/ja/docs/Learn_web_development/Core/Accessibility/WAI-ARIA_basics) もよくサポートしています。
 
 ウェブサイトをモバイルでアクセス可能かつ使用可能にするには、一般的な優れたウェブデザインとアクセシビリティのベストプラクティスに従う必要があるだけです。
 
@@ -106,10 +105,9 @@ TalkBack を使用すると、端末上のどこに移動しても、グロー�
 1. ウェブブラウザーを開きます。
 2. URL バーをアクティブにします。
 3. Ebbc.co.uk のフロントページのように、見出しがたくさんあるウェブページを入力します。URL のテキストを入力するには、
-
    - URL バーが得られるまで左右にスワイプしてから、ダブルタップして URL バーを選択します。
    - 目的の文字が得られるまで仮想キーボードに指を置いたまま動かしてから、指を離して入力します。これを各文字について繰り返します。
-   - 終わったら、 <kbd>Enter</kbd> キーを見つけて押します。
+   - 終わったら、 Enter キーを見つけて押します。
 
 4. 左右にスワイプすると、ページ上のさまざまな項目間を移動できます。
 5. 連続した動きで上にスワイプしてから右にスワイプして、ローカルコンテキストメニューに入ります。
@@ -118,13 +116,13 @@ TalkBack を使用すると、端末上のどこに移動しても、グロー�
 8. デフォルトモードに戻るには、上にスワイプしてから右にスワイプしてローカルコンテキストメニューに再度入り、\[デフォルト] を選択してからダブルタップしてアクティブにします。
 
 > [!NOTE]
-> より完全なドキュメントは [Android で TalkBack を使ってみる](https://support.google.com/accessibility/android/answer/6283677)をご覧ください。
+> より完全なドキュメントは [Android で TalkBack を使ってみる](https://support.google.com/accessibility/android/answer/6283677?hl=en&ref_topic=3529932)をご覧ください。
 
 ### iOS VoiceOver
 
 VoiceOver のモバイル版は iOS オペレーティングシステムに組み込まれています。
 
-VoiceOver　を有効にするには、「設定」アプリで _アクセシビリティ > VoiceOver_ を選択します。　VoiceOver のスライダーを押して有効にします（このページには他にも　VoiceOver　関連のオプションがいくつかあります）。
+VoiceOver を有効にするには、「設定」アプリで _アクセシビリティ > VoiceOver_ を選択します。 VoiceOver のスライダーを押して有効にします（このページには他にも VoiceOver 関連のオプションがいくつかあります）。
 
 > [!NOTE]
 > 古い iOS 端末では VoiceOver メニューは _設定_ > _一般_ > _アクセシビリティ_ > *VoiceOver*にあります。
@@ -149,7 +147,6 @@ VoiceOver がオンになっているとき、ローターと呼ばれるナビ�
 
 1. ダイヤルを回すように、画面上で 2 本の指をひねります。あなたがさらにひねるにつれて、各オプションを読み上げるでしょう。あなたは行ったり来たりしてオプションを切り替えることができます。
 2. あなたが望むオプションを見つけたら、
-
    - 指を離して選択します。
    - それが（音量や話す速度のような）値を反復できるオプションである場合は、選択した項目の値を増減するために上下にスワイプすることができます。
 
@@ -162,15 +159,13 @@ VoiceOver を使ったウェブ閲覧を試してみましょう。
 1. ウェブブラウザーを開きます。
 2. URL バーをアクティブにします。
 3. bbc.co.uk のフロントページのように、見出しがたくさんあるウェブページを入力します。URL のテキストを入力するには、
-
    - URL バーが得られるまで左右にスワイプしてダブルタップし、URL バーを選択します。
    - 各文字について、目的の文字が得られるまで仮想キーボードに指を置いたまま動かしてから、指を離して選択します。ダブルタップして入力します。
-   - 終わったら、 <kbd>Enter</kbd> キーを見つけて押します。
+   - 終わったら、 Enter キーを見つけて押します。
 
 4. 左右にスワイプすると、ページ上の項目間を移動できます。項目をダブルタップして選択することができます（例えば、リンクをたどる）。
 5. デフォルトでは、選択されたローターオプションは話す速度です。現在は上下にスワイプして話す速度を上げ下げできます。
 6. 今、ダイヤルのように 2 本指で画面を回転させてローターを表示し、ローターのオプション間を移動します。利用可能なオプションの例をいくつか示します。
-
    - 話す速度: 話す速度を変更します。
    - コンテナー: ページ上のさまざまな意味論的コンテナー間を移動します。
    - 見出し: ページ上の見出し間を移動します。
@@ -180,54 +175,253 @@ VoiceOver を使ったウェブ閲覧を試してみましょう。
 
 7. 見出しを選択します。これで、上下にスワイプしてページ上の見出し間を移動できます。
 
-注: 利用可能な VoiceOver ジェスチャおよび iOS でのアクセシビリティテストに関するその他のヒントを網羅した詳細なリファレンスについては、[VoiceOver を使用して端末のアクセシビリティをテストする](https://developer.apple.com/library/archive/technotes/TestingAccessibilityOfiOSApps/TestAccessibilityonYourDevicewithVoiceOver/TestAccessibilityonYourDevicewithVoiceOver.html)（英語）を参照してください。
+注: 利用可能な VoiceOver ジェスチャおよび iOS でのアクセシビリティテストに関するその他のヒントを網羅した詳細なリファレンスについては、 [Apple の VoiceOver のドキュメント](https://developer.apple.com/documentation/accessibility/voiceover/)<sup>(英語)</sup>を参照してください。
 
 ## 制御機構
 
-CSS および JavaScript のアクセシビリティの記事では、特定の種類の制御機構に固有のイベントの概念を調べました（[マウスに特有のイベント](/ja/docs/Learn/Accessibility/CSS_and_JavaScript#mouse-specific_events)を参照）。要約すると、他の制御機構は関連する機能をアクティブにできないため、これらはアクセシビリティの問題を引き起こします。
+CSS および JavaScript のアクセシビリティの記事では、特定の種類の制御機構に固有のイベントの概念を調べました（[マウスに特有のイベント](/ja/docs/Learn_web_development/Core/Accessibility/CSS_and_JavaScript#mouse-specific_events)を参照）。要約すると、他の制御機構は関連する機能をアクティブにできないため、これらはアクセシビリティの問題を引き起こします。
 
-例えば、[click](/ja/docs/Web/API/Element/click_event) イベントはアクセシビリティの点で優れています — 関連付けられているイベントハンドラーは、ハンドラーが設定されている要素をクリックするか、タブ移動して <kbd>Enter</kbd> / <kbd>Return</kbd> キーを押すか、タッチスクリーン端末でタップすることで起動できます。[simple-button-example.html](https://github.com/mdn/learning-area/blob/main/accessibility/mobile/simple-button-example.html) の例を試してみてください（[ライブで動いているのを見る](https://mdn.github.io/learning-area/accessibility/mobile/simple-button-example.html)）。
+例えば、[click](/ja/docs/Web/API/Element/click_event) イベントはアクセシビリティの点で優れています — 関連付けられているイベントハンドラーは、ハンドラーが設定されている要素をクリックするか、タブ移動して Enter / Return キーを押すか、タッチスクリーン端末でタップすることで起動できます。以下の基本的なボタンの例を試して、その意味を確認してみてください。
 
-あるいは、[mousedown](/ja/docs/Web/API/Element/mousedown_event) や [mouseup](/ja/docs/Web/API/Element/mouseup_event) のようなマウス固有のイベントは問題を引き起こします — それらのイベントハンドラーはマウス以外の制御を使って呼び出すことはできません。
+```html hidden live-sample___basic-button
+<button>押してください</button>
+```
 
-キーボードまたはタッチで、[simple-box-drag.html](https://github.com/mdn/learning-area/blob/main/accessibility/mobile/simple-box-drag.html) の例を制御しようとすると、問題が発生します（[ライブで例を見る](https://mdn.github.io/learning-area/accessibility/mobile/simple-box-drag.html)）。これは、次のようなコードを使用しているために発生します。
+```css hidden live-sample___basic-button
+html {
+  height: 100%;
+}
+
+body {
+  height: inherit;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  width: 70%;
+  margin: 0 auto;
+  display: block;
+  font-size: 150%;
+  line-height: 1.5;
+}
+```
+
+```js hidden live-sample___basic-button
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", () => {
+  alert("うわっ、痛っ！");
+});
+```
+
+{{embedlivesample("basic-button", "100%", "100")}}
+
+しかし、[mousedown](/ja/docs/Web/API/Element/mousedown_event) や [mouseup](/ja/docs/Web/API/Element/mouseup_event) のようなマウス固有のイベントは問題を引き起こします — それらのイベントハンドラーはマウス以外の制御を使って呼び出すことはできません。
+
+次の例では、次のコードを使用して、マウスで画面上のボックスをドラッグすることができるようにしています。
 
 ```js
-div.onmousedown = () => {
+div.addEventListener("mousedown", () => {
   initialBoxX = div.offsetLeft;
   initialBoxY = div.offsetTop;
   movePanel();
-};
+});
 
-document.onmouseup = stopMove;
+document.addEventListener("mouseup", stopMove);
 ```
 
-他の形式の制御を有効にするには、異なるが同等のイベントを使用する必要があります — 例えば、タッチイベントはタッチ画面装置で機能します。
+```html hidden live-sample___mouse-drag live-sample___multi-drag
+<div></div>
+```
+
+```css hidden live-sample___mouse-drag live-sample___multi-drag
+html {
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+body {
+  background: #ffe;
+  margin: 0;
+}
+
+div {
+  background-color: #1fe200;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(0 0 0 / 0),
+    rgb(0 0 0 / 0.4)
+  );
+  width: 200px;
+  height: 150px;
+  border: 1px solid green;
+  position: absolute;
+}
+```
+
+```js hidden live-sample___mouse-drag
+document.body.width = window.innerWidth;
+document.body.height = window.innerHeight;
+
+let mouseX, mouseY;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+const div = document.querySelector("div");
+
+let initialMouseX = null;
+
+let initialMouseY = null;
+
+var initialBoxX, initialBoxY, rAF;
+
+div.addEventListener("mousedown", () => {
+  initialBoxX = div.offsetLeft;
+  initialBoxY = div.offsetTop;
+  movePanel();
+});
+
+document.addEventListener("mouseup", stopMove);
+
+function movePanel() {
+  if (initialMouseX === null) {
+    initialMouseX = mouseX;
+    initialMouseY = mouseY;
+  } else {
+    let mouseMoveX = mouseX - initialMouseX;
+    let mouseMoveY = mouseY - initialMouseY;
+
+    let offsetX = initialBoxX + mouseMoveX;
+    let offsetY = initialBoxY + mouseMoveY;
+    console.log(offsetX + " " + offsetY);
+
+    div.style.left = offsetX + "px";
+    div.style.top = offsetY + "px";
+  }
+
+  rAF = requestAnimationFrame(movePanel);
+}
+
+function stopMove() {
+  cancelAnimationFrame(rAF);
+
+  console.log("mousemove stopped");
+
+  initialMouseX = null;
+  initialMouseY = null;
+}
+```
+
+{{embedlivesample("mouse-drag", "100%", "400")}}
+
+ただし、タッチスクリーン端末で指を使ってドラッグしようとすると、うまくいきません。他の操作方法を有効にするには、異なるが同等のイベントを使用する必要があります。例えば、タッチスクリーン端末ではタッチイベントが機能します。
 
 ```js
-div.ontouchstart = (e) => {
+div.addEventListener("touchstart", (e) => {
   initialBoxX = div.offsetLeft;
   initialBoxY = div.offsetTop;
   positionHandler(e);
   movePanel();
-};
+});
 
-panel.ontouchend = stopMove;
+document.addEventListener("touchend", stopMove);
 ```
 
-マウスイベントとタッチイベントを一緒に使用する方法を示す簡単な例を示しました — [multi-control-box-drag.html](https://github.com/mdn/learning-area/blob/main/accessibility/mobile/multi-control-box-drag.html) を参照してください（[この例もライブで見てください](https://mdn.github.io/learning-area/accessibility/mobile/multi-control-box-drag.html)）。
+```js hidden live-sample___multi-drag
+document.body.width = window.innerWidth;
+document.body.height = window.innerHeight;
 
-> **メモ:** [ゲーム制御機構の実装](/ja/docs/Games/Techniques/Control_mechanisms)では、さまざまな制御機構を実装する方法を示す完全に機能する例も見ることができます。
+let posX, posY;
+
+document.addEventListener("mousemove", positionHandler);
+document.addEventListener("touchmove", positionHandler);
+
+function positionHandler(e) {
+  if (e.clientX && e.clientY) {
+    posX = e.clientX;
+    posY = e.clientY;
+  } else if (e.targetTouches) {
+    posX = e.targetTouches[0].clientX;
+    posY = e.targetTouches[0].clientY;
+    e.preventDefault();
+  }
+}
+
+const div = document.querySelector("div");
+
+let initialPosX = null;
+
+let initialPosY = null;
+
+let rAF;
+
+div.addEventListener("mousedown", () => {
+  initialBoxX = div.offsetLeft;
+  initialBoxY = div.offsetTop;
+  movePanel();
+});
+
+div.addEventListener("touchstart", (e) => {
+  initialBoxX = div.offsetLeft;
+  initialBoxY = div.offsetTop;
+  positionHandler(e);
+  movePanel();
+});
+
+document.addEventListener("mouseup", stopMove);
+document.addEventListener("touchend", stopMove);
+
+function movePanel() {
+  if (initialPosX === null) {
+    initialPosX = posX;
+    initialPosY = posY;
+  } else {
+    let posMoveX = posX - initialPosX;
+    let posMoveY = posY - initialPosY;
+
+    let offsetX = initialBoxX + posMoveX;
+    let offsetY = initialBoxY + posMoveY;
+
+    div.style.left = offsetX + "px";
+    div.style.top = offsetY + "px";
+  }
+
+  rAF = requestAnimationFrame(movePanel);
+}
+
+function stopMove() {
+  cancelAnimationFrame(rAF);
+
+  initialPosX = null;
+  initialPosY = null;
+}
+```
+
+更新版では、マウスによるドラッグとタッチ操作によるドラッグの両方に対応しています。
+
+{{embedlivesample("multi-drag", "100%", "400")}}
+
+> [!NOTE]
+> [ゲーム制御機構の実装](/ja/docs/Games/Techniques/Control_mechanisms)では、さまざまな制御機構を実装する方法を示す完全に機能する例も見ることができます。
 
 ## レスポンシブデザイン
 
-[レスポンシブデザイン](/ja/docs/Learn/CSS/CSS_layout/Responsive_Design)は、画面のサイズや解像度などの要因に応じて、レイアウトやその他のアプリの機能を動的に変更することです。だから、さまざまな種類の端末のユーザーにとって使用可能でアクセス可能です。
+[レスポンシブデザイン](/ja/docs/Learn_web_development/Core/CSS_layout/Responsive_Design)は、画面のサイズや解像度などの要因に応じて、レイアウトやその他のアプリの機能を動的に変更することです。だから、さまざまな種類の端末のユーザーにとって使用可能でアクセス可能です。
 
 特に、モバイルに関して対処する必要がある最も一般的な問題は次のとおりです。
 
-- モバイル端末用のレイアウトの適合性。例えば、複数列のレイアウトは狭い画面ではうまくいきませんし、見やすくするためにテキストサイズを大きくする必要があるかもしれません。このような問題は、[メディアクエリー](/ja/docs/Web/CSS/CSS_media_queries)、[ビューポート](/ja/docs/Web/HTML/Viewport_meta_tag)、[フレックスボックス](/ja/docs/Learn/CSS/CSS_layout/Flexbox)などの技術を使用してレスポンシブレイアウトを作成することで解決できます。
-- ダウンロードした画像サイズを節約する。一般的に、小型画面の端末は、デスクトップと同等の大きさの画像を必要としませんし、低速のネットワーク接続上にある可能性が高くなります。したがって、必要に応じて狭い画面の端末に小さい画像を提供することが賢明です。[レスポンシブ画像のテクニック](/ja/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)を使用してこれを扱えます。
-- 高解像度について考える。多くのモバイル端末は高解像度の画面を持っているため、ディスプレイがくっきりと鮮明に見えるようにするために、より高解像度の画像が必要です。ここでも、レスポンシブ画像テクニックを使用して、必要に応じて画像を提供できます。さらに、SVG ベクター画像フォーマットを使用して多くの画像要件を満たすことができます。これは今日のブラウザー間で十分にサポートされています。SVG はファイルサイズが小さく、表示されているサイズに関係なく鮮明に保たれます（詳細は[ウェブにベクターグラフィックスを追加する](/ja/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web)を参照）。
+- モバイル端末用のレイアウトの適合性。例えば、複数列のレイアウトは狭い画面ではうまくいきませんし、見やすくするためにテキストサイズを大きくする必要があるかもしれません。このような問題は、[メディアクエリー](/ja/docs/Web/CSS/Guides/Media_queries)、[ビューポート](/ja/docs/Web/HTML/Reference/Elements/meta/name/viewport)、[フレックスボックス](/ja/docs/Learn_web_development/Core/CSS_layout/Flexbox)などの技術を使用してレスポンシブレイアウトを作成することで解決できます。
+- ダウンロードした画像サイズを節約する。一般的に、小型画面の端末は、デスクトップと同等の大きさの画像を必要としませんし、低速のネットワーク接続上にある可能性が高くなります。したがって、必要に応じて狭い画面の端末に小さい画像を提供することが賢明です。[レスポンシブ画像のテクニック](/ja/docs/Web/HTML/Guides/Responsive_images)を使用してこれを扱えます。
+- 高解像度について考える。多くのモバイル端末は高解像度の画面を持っているため、ディスプレイがくっきりと鮮明に見えるようにするために、より高解像度の画像が必要です。ここでも、レスポンシブ画像テクニックを使用して、必要に応じて画像を提供できます。さらに、SVG ベクター画像フォーマットを使用して多くの画像要件を満たすことができます。これは今日のブラウザー間で十分にサポートされています。SVG はファイルサイズが小さく、表示されているサイズに関係なく鮮明に保たれます（詳細は[ウェブにベクターグラフィックスを追加する](/ja/docs/Learn_web_development/Core/Structuring_content/Including_vector_graphics_in_HTML)を参照）。
 
 > [!NOTE]
 > レスポンシブデザインのテクニックについては、MDN の他の場所で説明されているため、ここでは詳しく説明しません（上記のリンクを参照）。
@@ -238,7 +432,7 @@ panel.ontouchend = stopMove;
 
 #### ズームを無効にしない
 
-[ビューポート](/ja/docs/Web/HTML/Viewport_meta_tag)を使用すると、ズームを無効にすることができます。常にリサイズ可能にして、{{htmlelement("head")}} で端末の幅にあわせるにはこうします:
+[ビューポート](/ja/docs/Web/HTML/Reference/Elements/meta/name/viewport)を使用すると、ズームを無効にすることができます。常にリサイズ可能にして端末の幅に合わせるには、{{htmlelement("head")}} でこうします。
 
 ```html
 <meta name="viewport" content="width=device-width; user-scalable=yes" />
@@ -258,14 +452,64 @@ panel.ontouchend = stopMove;
 
 モバイル端末では、データを入力することは、デスクトップコンピューター上の同等の経験よりもユーザーにとってより面倒なことが多いです。タッチスクリーンの仮想キーボードや小型のモバイル物理キーボードよりも、デスクトップやラップトップのキーボードを使用してテキストをフォーム入力に入力する方が便利です。
 
-このため、必要なタイピングの量を最小限に抑えることを試みる価値があります。例として、通常のテキスト入力を使用して毎回ユーザーに役職を記入させるのではなく、最も一般的な選択肢を含む \<select> メニューを提供できます（データ入力の一貫性を保つのにも役立ちます）。そして、それ以外の値を入力するテキストフィールドを表示する「その他」選択肢を提供できます。[common-job-types.html](https://github.com/mdn/learning-area/blob/main/accessibility/mobile/common-job-types.html) で、このアイデアの簡単な例を実際に見ることができます（[一般的な仕事の例をライブで見る](https://mdn.github.io/learning-area/accessibility/mobile/common-job-types.html)）。
+このため、必要なタイピングの量を最小限に抑えることを試みる価値があります。例として、通常のテキスト入力を使用して毎回ユーザーに役職を記入させるのではなく、最も一般的な選択肢を含む \<select> メニューを提供できます（データ入力の一貫性を保つのにも役立ちます）。そして、それ以外の値を入力するテキストフィールドを表示する「その他」選択肢を提供できます。このアイデアの簡単な例は、次の例で見ることができます。
 
-モバイルプラットフォームでの日付などの HTML5 フォームの入力タイプを使用することも考慮する価値があります。例えば、Android と iOS の両方で、端末エクスペリエンスに適した使用可能なウィジェットが表示されます。いくつかの例については [html5-form-examples.html](https://github.com/mdn/learning-area/blob/main/accessibility/mobile/html5-form-examples.html) を参照してください（[HTML5 フォームの例をライブで見る](https://mdn.github.io/learning-area/accessibility/mobile/html5-form-examples.html)） - これらをモバイル端末でロードして操作してみてください。例えば、
+```html hidden live-sample___select-text-combo
+<form>
+  <div>
+    <label for="job">仕事の種類:</label>
+    <select id="job" name="job">
+      <option value="">-- 仕事を選択 --</option>
+      <option value="butcher">肉屋</option>
+      <option value="baker">パン屋</option>
+      <option value="candle">燭台職人</option>
+      <option value="other">その他</option>
+    </select>
+  </div>
+  <div>
+    <label for="other-job">その他の仕事:</label>
+    <input type="text" name="other-job" id="other-job" />
+  </div>
+</form>
+```
 
-- 番号 (`number`)、電話番号 (`tel`)、電子メール (`email`) の入力では、番号や電話番号を入力するための適切な仮想キーボードを表示します。
+```css hidden live-sample___select-text-combo
+html {
+  font-family: sans-serif;
+}
+
+div {
+  margin-bottom: 10px;
+}
+```
+
+```js hidden live-sample___select-text-combo
+const select = document.querySelector("select");
+const other = document.querySelector("input");
+
+other.parentElement.style.display = "none";
+
+select.onchange = function () {
+  if (select.value === "other") {
+    other.parentElement.style.display = "block";
+  } else {
+    other.parentElement.style.display = "none";
+  }
+};
+```
+
+{{embedlivesample("select-text-combo", "100%", "80")}}
+
+同時に、モバイルプラットフォームでは（Android でも iOS でも）HTML フォームの入力型が適切に処理されるため、その使用を考えてみる価値があります。
+
+例えば、
+
+- 数値 (`number`)、電話番号 (`tel`)、電子メール (`email`) の入力では、数字や電話番号を入力するための適切な仮想キーボードを表示します。
 - 日時 (`date`, `time`) の入力では、日時を選択するための適切なピッカーを表示します。
 
-デスクトップとは別の解決策を提供したい場合は、機能検出を使用して、モバイル端末に常に別のマークアップを提供できます。さまざまな入力タイプの検出に関する生の情報については[入力タイプ](http://diveinto.html5doctor.com/detect.html#input-types)（英語）を参照してください。また、より多くの情報については[機能検出の記事](/ja/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection)をチェックしてください。
+これらを試してみるには、[HTML5 の入力型](/ja/docs/Learn_web_development/Extensions/Forms/HTML5_input_types)で利用できるライブサンプルをご覧ください。
+
+デスクトップとは別の解決策を提供したい場合は、機能検出を使用して、モバイル端末に常に別のマークアップを提供できます。より詳しい情報については[機能検出の記事](/ja/docs/Learn_web_development/Extensions/Testing/Feature_detection)をチェックしてください。
 
 ## まとめ
 
@@ -273,7 +517,7 @@ panel.ontouchend = stopMove;
 
 ## 関連情報
 
-- [モバイルウェブ開発のためのガイドライン](https://www.smashingmagazine.com/2012/07/guidelines-for-mobile-web-development/)（英語） — モバイルウェブデザインのためのさまざまな技術を網羅した _Smashing Magazine_ の記事のリスト。
-- [サイトをタッチ端末で機能させる](https://www.creativebloq.com/javascript/make-your-site-work-touch-devices-51411644)（英語） — タッチイベントを使用してモバイル端末で対話を機能させるための便利な記事。
+- [モバイルウェブ開発のためのガイドライン](https://www.smashingmagazine.com/2012/07/guidelines-for-mobile-web-development/)<sup>(英語)</sup> — モバイルウェブデザインのためのさまざまな技術を網羅した _Smashing Magazine_ の記事のリスト。
+- [サイトをタッチ端末で機能させる](https://www.creativebloq.com/javascript/make-your-site-work-touch-devices-51411644)<sup>(英語)</sup> — タッチイベントを使用してモバイル端末で対話を機能させるための便利な記事。
 
-{{PreviousMenuNext("Learn/Accessibility/Multimedia","Learn/Accessibility/Accessibility_troubleshooting", "Learn/Accessibility")}}
+{{PreviousMenuNext("Learn_web_development/Core/Accessibility/Multimedia","Learn_web_development/Core/Accessibility/Accessibility_troubleshooting", "Learn_web_development/Core/Accessibility")}}

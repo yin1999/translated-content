@@ -1,14 +1,13 @@
 ---
 title: "Django 教程 9: 使用表单"
 slug: Learn_web_development/Extensions/Server-side/Django/Forms
-original_slug: Learn/Server-side/Django/Forms
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Sessions", "Learn_web_development/Extensions/Server-side/Django/Testing", "Learn_web_development/Extensions/Server-side/Django")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Django/Sessions", "Learn_web_development/Extensions/Server-side/Django/Testing", "Learn_web_development/Extensions/Server-side/Django")}}
 
 在本教程中，我们将向你展示如何在 Django 中使用 HTML 表单，特别是编写表单以创建，更新和删除模型实例的最简单方法。作为本演示的一部分，我们将扩展[LocalLibrary](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django/Tutorial_local_library_website)网站，以便图书馆员可以使用我们自己的表单（而不是使用管理员应用程序）更新图书，创建，更新和删除作者。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">前置条件：</th>
@@ -67,7 +66,6 @@ original_slug: Learn/Server-side/Django/Forms
 
 - `action`: 提交表单时，要发送数据以进行处理的资源 /URL。如果未设置（或设置为空字符串），则表单将提交回当前页面 URL。
 - `method`: 用于发送数据的 HTTP 方法：post 或 get。
-
   - 如果数据将导致服务器数据库的更改，则应始终使用`POST` 方法，因为这可以更加抵抗跨站点伪造请求攻击。
   - `GET` 方法，只应用于不更改用户数据的表单（例如搜索表单）。当你希望能够为 URL 添加书签、或共享时，建议使用此选项。
 
@@ -86,16 +84,13 @@ Django 的表单处理，使用了我们在之前的教程中，学到的所有�
 基于上图，Django 表单处理的主要内容是：
 
 1. 在用户第一次请求时，显示默认表单。
-
    - 表单可能包含空白字段（例如，如果你正在创建新记录），或者可能预先填充了初始值（例如，如果你要更改记录，或者具有有用的默认初始值）。
    - 此时表单被称为未绑定，因为它与任何用户输入的数据无关（尽管它可能具有初始值）。
 
 2. 从提交请求接收数据，并将其绑定到表单。
-
    - 将数据绑定到表单，意味着当我们需要重新显示表单时，用户输入的数据和任何错误都可取用。
 
 3. 清理并验证数据。
-
    - 清理数据会对输入执行清理（例如，删除可能用于向服务器发送恶意内容的无效字符）并将其转换为一致的 Python 类型。
    - 验证检查值是否适合该字段（例如，在正确的日期范围内，不是太短或太长等）
 
@@ -303,7 +298,7 @@ def renew_book_librarian(request, pk):
 > [!WARNING]
 > 虽然你也可以通过请求直接访问表单数据（例如`request.POST['renewal_date']` 或 `request.GET['renewal_date']`（如果使用 GET 请求），但不建议这样做。清理后的数据是无害的、验证过的、并转换为 Python 友好类型。
 
-视图的表单处理部分的最后一步，是重定向到另一个页面，通常是“成功”页面。在这种情况下，我们使用 `HttpResponseRedirect` 和 `reverse()` ，重定向到名为'`all-borrowed`'的视图（这是在 [Django 教程第 8 部分中创建的“挑战”：用户身份验证和权限](/zh-CN/docs/Learn/Server-side/Django/Authentication#challenge_yourself)）。如果你没有创建该页面，请考虑重定向到 URL'/'处的主页。
+视图的表单处理部分的最后一步，是重定向到另一个页面，通常是“成功”页面。在这种情况下，我们使用 `HttpResponseRedirect` 和 `reverse()` ，重定向到名为'`all-borrowed`'的视图（这是在 [Django 教程第 8 部分中创建的“挑战”：用户身份验证和权限](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django/Authentication#挑战自己)）。如果你没有创建该页面，请考虑重定向到 URL'/'处的主页。
 
 这就是表单处理本身所需的一切，但我们仍然需要将视图，限制为图书馆员可以访问。我们应该在 `BookInstance` （“`can_renew`”）中创建一个新的权限，但为了简单起见，我们只需使用`@permission_required`函数装饰器，和我们现有的 `can_mark_returned` 权限。
 
@@ -440,7 +435,7 @@ def renew_book_librarian(request, pk):
 
 ### 测试页面
 
-如果你接受了[Django 教程第 8 部分中的“挑战”：用户身份验证和权限](/zh-CN/docs/Learn/Server-side/Django/Authentication#challenge_yourself)，你将获得图书馆中借出的所有书本的列表，这只有图书馆工作人员才能看到。我们可以使用下面的模板代码，为每个项目旁边的续借页面，添加链接。
+如果你接受了[Django 教程第 8 部分中的“挑战”：用户身份验证和权限](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Django/Authentication#challenge_yourself)，你将获得图书馆中借出的所有书本的列表，这只有图书馆工作人员才能看到。我们可以使用下面的模板代码，为每个项目旁边的续借页面，添加链接。
 
 ```django
 {% if perms.catalog.can_mark_returned %}-

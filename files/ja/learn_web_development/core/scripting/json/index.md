@@ -1,12 +1,12 @@
 ---
 title: JSON の操作
+short-title: JSON
 slug: Learn_web_development/Core/Scripting/JSON
-original_slug: Learn/JavaScript/Objects/JSON
 l10n:
-  sourceCommit: 4def230f85756724b59660e3cd9de363db724ef8
+  sourceCommit: 9d3d642daf9df9ece138fa39972edc5f7d6dcd6b
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/JavaScript/Objects/Classes_in_JavaScript", "Learn/JavaScript/Objects/Object_building_practice", "Learn/JavaScript/Objects")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Network_requests","Learn_web_development/Core/Scripting/Test_your_skills/JSON", "Learn_web_development/Core/Scripting")}}
 
 JavaScript Object Notation (JSON) は、構造化データを表現するための標準のテキストベースの形式で、 JavaScript のオブジェクト構文に基づいています。ウェブアプリケーションでデータを転送する場合によく使われます（例えば、複数のデータをサーバーからクライアントへ送信して、ウェブページ上に表示する場合などで、その逆もあります）。頻繁に見かけるデータ形式ですので、この記事では JavaScript を使用して JSON を扱うのに必要なすべてのこと、例えば JSON を解釈してその中のデータにアクセスしたり、 JSON を作成したりする方法を説明します。
 
@@ -14,13 +14,18 @@ JavaScript Object Notation (JSON) は、構造化データを表現するため�
   <tbody>
     <tr>
       <th scope="row">前提知識:</th>
-      <td>
-        基礎的なコンピューターの知識、HTML と CSS への基本的な理解、基礎的な JavaScript の理解（<a href="/ja/docs/Learn/JavaScript/First_steps">JavaScript の第一歩</a>と <a href="/ja/docs/Learn/JavaScript/Building_blocks">JavaScript の構成要素</a>を参照）とオブジェクト指向 JavaScript の基本（<a href="/ja/docs/Learn/JavaScript/Objects/Basics">JavaScript オブジェクトの基本</a>を参照）。</td>
+      <td><a href="/ja/docs/Learn_web_development/Core/Structuring_content">HTML</a>および<a href="/ja/docs/Learn_web_development/Core/Styling_basics">CSS の基礎</a>を理解し、これまでのレッスンで説明した JavaScript を把握していること。</td>
     </tr>
     <tr>
-      <th scope="row">目標:</th>
+      <th scope="row">学習成果:</th>
       <td>
-        JSON に格納されたデータを扱う方法、JSON 文字列の生成方法について理解すること。
+        <ul>
+          <li>JSON とは、 JavaScript オブジェクト構文をベースにした、とても一般的に使用されているデータ形式であること。</li>
+          <li>JSON は配列を格納することもできること。</li>
+          <li>Web API が利用できるメカニズム（例えば、フェッチ API の <code>Response.json()</code>）を使用して、 JavaScript オブジェクトとして JSON を取得すること。</li>
+          <li>JSON データ内の値にアクセスするには、ブラケット構文やドット構文を使用すること。</li>
+          <li><code>JSON.parse()</code> および <code>JSON.stringify()</code> を使用してオブジェクトとテキストを変換する。</li>
+        </ul>
       </td>
     </tr>
   </tbody>
@@ -28,9 +33,11 @@ JavaScript Object Notation (JSON) は、構造化データを表現するため�
 
 ## JSON とは何か
 
-{{glossary("JSON")}} は JavaScript オブジェクトの構文に従ったテキストベースのデータ形式で、[Douglas Crockford](https://en.wikipedia.org/wiki/Douglas_Crockford) によって普及されました。JSON は JavaScript オブジェクトの構文に似ていますが、 JavaScript とは独立して扱われることがあり、多くのプログラミング言語環境には JSON を読み取ったり（解釈したり）生成したりする機能があります。
+{{glossary("JSON")}} は JavaScript オブジェクトの構文に従ったテキストベースのデータ形式です。
+構造化データを文字列として表現するため、ネットワーク経由でデータを送信する際に役立ちます。
+JSON は JavaScript オブジェクトの構文に似ていますが、 JavaScript とは独立して扱うことができます。多くのプログラミング言語環境には JSON を読み取ったり（解釈したり）生成したりする機能があります。
 
-JSON は文字列として存在します。ですので、ネットワークを通してデータを転送したい場合に便利です。 JSON データへアクセスしたい場合は、JavaScript オブジェクトへ変換する必要があります。 JavaScript にはこれらを相互に変換できるメソッドを持った [JSON](/ja/docs/Web/JavaScript/Reference/Global_Objects/JSON) というグローバルなオブジェクトがあるので、変換は難しくありません。
+JavaScript では、JSON の解釈と生成を行うメソッドが [`JSON`](/ja/docs/Web/JavaScript/Reference/Global_Objects/JSON) オブジェクトで提供されています。
 
 > [!NOTE]
 > 文字列をネイティブオブジェクトへ変換することは「デシリアライズ」 (_deserialization_) と呼ばれており、ネイティブオブジェクトをネットワークを通して転送できように文字列へ変換することは「シリアライズ」 (_serialization_) と呼ばれています。
@@ -39,7 +46,9 @@ JSON 文字列はそれ自身をファイルとして格納することもでき
 
 ### JSON の構造
 
-上で説明したように、JSON は JavaScript オブジェクトにとても似ている形式の文字列です。JSON では通常の JavaScript オブジェクトと同様な基本データ型（文字列、数値、配列、論理型やその他のリテラル型）を使うことができます。これにより、以下のように階層的にデータを構成することができます。
+上で説明したように、JSON は JavaScript オブジェクトにとても似ている形式の文字列です。
+次のものは、オブジェクトを表す有効な JSON 文字列です。
+なお、これは有効な JavaScript のオブジェクトリテラルでもあります。ただし、いくつかの[構文上の制限](#json_構文の制限)があります。
 
 ```json
 {
@@ -81,31 +90,30 @@ JSON 文字列はそれ自身をファイルとして格納することもでき
 }
 ```
 
-この文字列を JavaScript プログラムへ読み込むと（例えば、変数 `superHeroes` へ代入すると）と、 [JavaScript オブジェクトの基本](/ja/docs/Learn/JavaScript/Objects/Basics)の記事で見たのと同様に、ドットや角括弧を使ってデータへアクセスすることができます。例えば次のようになります。
+この JSON を JavaScript プログラムで文字列として読み込めば、通常のオブジェクトとして解釈し、[JavaScript オブジェクトの基本](/ja/docs/Learn_web_development/Core/Scripting/Object_basics)の記事で説明したのと同じドット記法やブラケット記法を使って、その中のデータにアクセスすることができます。
+例えば次のようになります。
 
 ```js
 superHeroes.homeTown;
-superHeroes["active"];
-```
-
-さらに深い階層のデータへアクセスする場合は、単純にプロパティ名や配列のインデックスを連結します。例えば、メンバーリスト中 2 番目のヒーローの 3 番目の能力を参照する場合は、以下のようにします。
-
-```js
-superHeroes["members"][1]["powers"][2];
+superHeroes.members[1].powers[2];
 ```
 
 1. まず、変数名 `superHeroes` を指定します。
-2. その中の `members` プロパティへアクセスしたいので、 `["members"]` と指定します。
+2. その中の `members` プロパティへアクセスしたいので、 `.members` を使用します。
 3. `members` にはオブジェクトの配列が格納されています. ここでは、配列内の 2 番目のオブジェクトへアクセスするので、 `[1]` を指定します。
-4. そのオブジェクト内で、 `powers` プロパティへアクセスするため, `["powers"]` と指定します。
-5. `powers` プロパティは選択したヒーローの能力を含んだ配列となっており、その中の 3 番目が欲しいので、 `[2]` と記述します。
+4. そのオブジェクト内で、 `powers` プロパティへアクセスするため, `.powers` を使用します。
+5. `powers` プロパティは選択したヒーローの能力を含んだ配列となっており、その中の 3 番目のものが欲しいので、 `[2]` と記述します。
+
+重要なポイントは、JSON を扱うこと自体に特別なことは何もないということです。JSON を JavaScript のオブジェクトとして解釈した後は、同じオブジェクトリテラル構文を使って宣言されたオブジェクトとまったく同じように扱うことができます。
 
 > [!NOTE]
-> 上記の JSON は [JSONTest.html](https://mdn.github.io/learning-area/javascript/oojs/json/JSONTest.html) で参照することができます（ページ内の[ソースコード](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/JSONTest.html)を参照してください）。ページを読み込んで見て、ブラウザーのコンソールで変数内のデータにアクセスしてみてください。
+> 上記の JSON は [JSONTest.html](https://mdn.github.io/learning-area/javascript/oojs/json/JSONTest.html) で参照することができます（ページ内の[ソースコード](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/JSONTest.html)を参照してください）。
+> ページを読み込んで見て、ブラウザーのコンソールで変数内のデータにアクセスしてみてください。
 
-## JSON の配列
+### JSON の配列
 
-上記で、 JSON テキストは基本的に文字列に入った JavaScript オブジェクトのように見えることを説明しました。配列を JSON との間で変換することもできます。例えば、次のものも有効な JSON です。
+上記で、 JSON テキストは基本的に文字列に入った JavaScript オブジェクトのように見えることを説明しました。
+配列を JSON との間で変換することもできます。例えば、次のものも有効な JSON です。
 
 ```json
 [
@@ -128,30 +136,51 @@ superHeroes["members"][1]["powers"][2];
 ]
 ```
 
-これも有効な JSON であり、解釈したデータには配列のインデックスを指定するだけです。例えば、`[0]["powers"][0]`のように表記できます。
+配列のアイテムにアクセスするには、（解釈済みのものの中で）配列のインデックスをまず指定します。例えば `superHeroes[0].powers[0]` のようにします。
 
-### その他の注意点
+JSON には単一のプリミティブ型を含めることもできます。たとえば、`29`、`「Dan Jukes」`、`true` はすべて有効な JSON です。
 
-- JSON は指定されたデータ形式の純粋な文字列です。プロパティのみを含むことができ、メソッドを含むことはできません。
-- JSON では文字列とプロパティ名を二重引用符で括る必要があります。単一引用符は、JSON 文字列全体を囲む以外では無効です。
-- カンマやコロンが 1 つ抜けるだけでも JSON ファイルは無効になり、動作しません。利用しようとしているデータを注意して確認してください（プログラムに問題がない限り、コンピューターが生成した JSON の方が、エラーが含まれる可能性が低くなります）。 [JSONLint](http://jsonlint.com/) のようなアプリケーションを使って妥当性を検証をすることもできます。
-- JSONは、配列やオブジェクトだけでなく、 JSON 内部に入れることができるあらゆるデータ型のデータだけでも有効なものになります。つまり、例えば、単一の文字列や数値も有効な JSON となります。
-- JavaScript コードではプロパティを引用符で括らなくても構いませんが、 JSON では、引用符でくくった文字列だけがプロパティとして扱われます。
+### JSON 構文の制限
 
-## アクティブラーニング: JSON の例を操作してみる
+前述の通り、あらゆる JSON は有効な JavaScript リテラル（オブジェクト、配列、数値など）です。しかし、その逆は成り立ちません。すべての JavaScript オブジェクトリテラルが有効な JSON であるとは限りません。
+
+- JSON にはシリアライズ可能なデータ型のみを含めることができます。つまり、
+  - プリミティブ型については、JSON には文字列リテラル、数値リテラル、`true`、`false`、`null` を含めることができます。なお、`undefined`、`NaN`、`Infinity`を含めることはできません。
+  - プリミティブ型以外のデータ型については、JSON にはオブジェクトリテラルや配列を含めることができますが、関数や、`Date`、`Set`、`Map` などのその他のオブジェクト型は含めることができません。JSON 内のオブジェクトや配列は、さらに有効なJSON データ型で構成されている必要があります。
+- 文字列は、単一引用符ではなく、二重引用符で囲む必要があります。
+- 数字は 10 進法で表記する必要があります。
+- オブジェクトの各プロパティは、`"キー": 値` の形式で記述する必要があります。プロパティ名は、二重引用符で囲まれた文字列リテラルでなければなりません。メソッドなどの JavaScript 独自の構文は使用できません。これは、メソッドが関数であり、関数は JSON の有効なデータ型ではないためです。
+- オブジェクトや配列には[末尾のカンマ](/ja/docs/Web/JavaScript/Reference/Trailing_commas)を付けることはできません。
+- コメントは JSON では許可されていません。
+
+カンマやコロンがたった一つでも間違った位置に置かれると、JSONファイルが無効になり、処理に失敗する原因となります。
+利用しようとしているデータを注意して確認してください（プログラムに問題がない限り、コンピューターが生成した JSON の方が、エラーが含まれる可能性が低くなります）。
+[JSONLint](https://jsonlint.com/) や [JSON-validate](https://www.json-validate.com/) のようなアプリケーションを使って妥当性を検証をすることもできます。
+
+> [!NOTE]
+> このセクションを読み終えたところで、Scrimba の [JSON review](https://scrimba.com/frontend-path-c0j/~0lt?via=mdn) <sup>[_MDN 学習パートナー_](/ja/docs/MDN/Writing_guidelines/Learning_content#パートナーリンクと埋め込み)</sup> によるインタラクティブなチュートリアルも併せて活用してみてはいかがでしょうか。このチュートリアルでは、基本的なJSON構文や、ブラウザの開発者ツール内でJSONリクエストデータを表示する方法について、役立つガイダンスが提供されています。
+
+## JSON の例を操作してみる
 
 それでは、ウェブサイト上でどのように JSON 形式のデータを使うことができるか例を通して見てみましょう。
 
 ### はじめに
 
-まず、 [heroes.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes.html) と [style.css](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/style.css) のコピーをローカルに作成してください。後者は例題ページをスタイリングするための CSS であり、前者は簡単な HTML です。加えて、{{HTMLElement("script")}} 要素で、この演習で書くJavaScriptコードを格納します。
+まず、 [heroes.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes.html) と [style.css](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/style.css) のコピーをローカルに作成してください。
+後者は例題ページをスタイリングするための CSS であり、前者は簡単な HTML です。加えて、{{HTMLElement("script")}} 要素で、この演習で書く JavaScript コードを格納します。
 
-```html
-<header></header>
+```html-nolint
+<header>
+...
+</header>
 
-<section></section>
+<section>
+...
+</section>
 
-<script></script>
+<script>
+// ここに JavaScript を書く
+</script>
 ```
 
 JSON データは GitHub の <https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json> で利用できます。
@@ -185,10 +214,11 @@ JSON を取得するには、[フェッチ](/ja/docs/Web/API/Fetch_API)という
 
 - GitHub の URL を格納するために、`requestURL` という変数を宣言します。
 - URL を使用して新しい {{domxref("Request")}} オブジェクトを初期化します。
-- {{domxref("fetch", "fetch()")}} 関数を使用してネットワーク要求を行い、{{domxref("Response")}} オブジェクトを返します。
+- {{domxref("Window/fetch", "fetch()")}} 関数を使用してネットワーク要求を行い、{{domxref("Response")}} オブジェクトを返します。
 - レスポンスオブジェクトの {{domxref("Response/json", "json()")}} 関数を使用して、レスポンスを JSON で取得します。
 
-> **メモ:** `fetch()` API は**非同期**です。非同期関数については[次のモジュール](/ja/docs/Learn/JavaScript/Asynchronous)でたくさん学びますが、今は、フェッチ API を使用する関数名の前にキーワード {{jsxref("Statements/async_function", "async")}}、あらゆる非同期関数への呼び出し前にキーワード {{jsxref("Operators/await", "await")}} が必要だということだけ言っておきます。
+> [!NOTE]
+> `fetch()` API は**非同期**です。非同期関数については[次のモジュール](/ja/docs/Learn_web_development/Extensions/Async_JS)でたくさん学びますが、今は、フェッチ API を使用する関数名の前にキーワード {{jsxref("Statements/async_function", "async")}}、あらゆる非同期関数への呼び出し前にキーワード {{jsxref("Operators/await", "await")}} が必要だということだけ言っておきます。
 
 すべて完了すると、`superHeroes` 変数に JSON を基にした JavaScript オブジェクトが格納されます。最初のオブジェクトは `<header>` を正しいデータで満たし、2 つ目はチームの各ヒーローの情報カードを作成し、それを `<section>` に挿入しています。
 
@@ -253,7 +283,7 @@ function populateHeroes(obj) {
 
 始めに、JavaScript オブジェクトの `members` プロパティを新しい変数に保存します。この配列には複数のオブジェクトがあり、それぞれにヒーローについての情報が入ります。
 
-次に、[for...of ループ](/ja/docs/Learn/JavaScript/Building_blocks/Looping_code#for...of_ループ)を使って配列のそれぞれのオブジェクトを反復処理します。それぞれの次のようなことを行います。
+次に、[for...of ループ](/ja/docs/Learn_web_development/Core/Scripting/Loops#for...of_ループ)を使って配列のそれぞれのオブジェクトを反復処理します。それぞれの次のようなことを行います。
 
 1. 新しい要素をいくつか作成します。`<article>` 1 つ、 `<h2>` 1 つ、 `<p>` 3 つ、`<ul>` 1 つです。
 2. `<h2>` の中身を現在のヒーローの名前 (`name`) にします。
@@ -266,7 +296,8 @@ function populateHeroes(obj) {
 > 試してみるための例が上手く取得できなかった場合は、 [heroes-finished.html](https://github.com/mdn/learning-area/blob/main/javascript/oojs/json/heroes-finished.html) ソースコードを参照してみてください（こちらで[ライブ実行](https://mdn.github.io/learning-area/javascript/oojs/json/heroes-finished.html)もできます）。
 
 > [!NOTE]
-> もし、 JavaScript オブジェクトへのアクセスに使用しているドット/ブラケット記法がよく分からない場合は、 [superheroes.json](https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json) を別のタブやテキストエディターで開き、それを参照しながら JavaScript を読んでみるとよいでしょう。また、ドットやブラケット記法の詳細については、 [JavaScript オブジェクトの基本](/ja/docs/Learn/JavaScript/Objects/Basics)の記事を見返してみてください。
+> もし、 JavaScript オブジェクトへのアクセスに使用しているドット/ブラケット記法がよく分からない場合は、 [superheroes.json](https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json) を別のタブやテキストエディターで開き、それを参照しながら JavaScript を読んでみるとよいでしょう。
+> また、ドット記法やブラケット記法の詳細については、 [JavaScript オブジェクトの基本](/ja/docs/Learn_web_development/Core/Scripting/Object_basics)の記事を見返してみてください。
 
 ### 最上位の関数の呼び出し
 
@@ -316,22 +347,17 @@ let myString = JSON.stringify(myObj);
 myString;
 ```
 
-ここでは、 JavaScript オブジェクトを作成してその中身を確認しています。次に `stringify()` を使って JSON 文字列に変換し、返値を新しい変数に保存し、その値も確認しています。
-
-## スキルをテストしてみましょう
-
-この記事はここまでですが、最重要事項を覚えていますか？先に進む前に、これが身に付いているかどうかを確認するためのテストがいくつかあります。[スキルテスト: JSON](/ja/docs/Learn/JavaScript/Objects/Test_your_skills:_JSON)を参照してください。
+ここでは、JavaScript オブジェクトを作成し、その内容を確認した後、`stringify()` を使用して JSON 文字列に変換し、その返値を新しい変数に格納し、さらに再度確認しています。
 
 ## まとめ
 
-この記事では、プログラム内で、JSON を生成する、JSON を解釈する、JSON データを参照するなど、JSON を扱う方法について簡単に説明しました。次の記事では、オブジェクト指向 JavaScript について見ていくことにします。
+この記事では、プログラム内で、JSON を生成する、JSON を解釈する、JSON データを参照するなど、JSON を扱う方法について簡単に説明しました。次の記事では、これらの情報をどれだけ理解し、身についたかを確認するためのテストをいくつかご紹介します。
 
 ## 関連情報
 
 - [JSON リファレンス](/ja/docs/Web/JavaScript/Reference/Global_Objects/JSON)
 - [フェッチ API の概要](/ja/docs/Web/API/Fetch_API)
 - [フェッチの使用](/ja/docs/Web/API/Fetch_API/Using_Fetch)
-- [HTTP リクエストメソッド](/ja/docs/Web/HTTP/Methods)
-- [ECMA のオフィシャル JSON ウェブサイト](https://json.org)
+- [HTTP リクエストメソッド](/ja/docs/Web/HTTP/Reference/Methods)
 
-{{PreviousMenuNext("Learn/JavaScript/Objects/Classes_in_JavaScript", "Learn/JavaScript/Objects/Object_building_practice", "Learn/JavaScript/Objects")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Network_requests","Learn_web_development/Core/Scripting/Test_your_skills/JSON", "Learn_web_development/Core/Scripting")}}

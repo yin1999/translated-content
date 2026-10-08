@@ -1,15 +1,38 @@
 ---
 title: handler.get()
+short-title: get()
 slug: Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/get
 l10n:
-  sourceCommit: 5c9b080f763346a4a18cc2c50fa4e21d2feec700
+  sourceCommit: cd22b9f18cf2450c0cc488379b8b780f0f343397
 ---
-
-{{JSRef}}
 
 **`handler.get()`** は、オブジェクトの `[[Get]]` [内部メソッド](/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy#オブジェクト内部メソッド)に対するトラップです。[プロパティアクセサー](/ja/docs/Web/JavaScript/Reference/Operators/Property_accessors)などの操作で使用されます。
 
-{{EmbedInteractiveExample("pages/js/proxyhandler-get.html", "taller")}}
+{{InteractiveExample("JavaScript デモ: handler.get()", "taller")}}
+
+```js interactive-example
+const monster = {
+  secret: "easily scared",
+  eyeCount: 4,
+};
+
+const handler = {
+  get(target, prop, receiver) {
+    if (prop === "secret") {
+      return `${target.secret.substring(0, 4)} ... shhhh!`;
+    }
+    return Reflect.get(...arguments);
+  },
+};
+
+const proxy = new Proxy(monster, handler);
+
+console.log(proxy.eyeCount);
+// 予想される結果: 4
+
+console.log(proxy.secret);
+// 予想される結果: "easi ... shhhh!"
+```
 
 ## 構文
 

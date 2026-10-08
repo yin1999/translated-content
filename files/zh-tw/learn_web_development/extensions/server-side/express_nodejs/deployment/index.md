@@ -1,20 +1,19 @@
 ---
 title: "Express 教學 7: 佈署到生產環境"
 slug: Learn_web_development/Extensions/Server-side/Express_Nodejs/deployment
-original_slug: Learn/Server-side/Express_Nodejs/deployment
 ---
 
-{{LearnSidebar}}{{PreviousMenu("Learn/Server-side/Express_Nodejs/forms", "Learn/Server-side/Express_Nodejs")}}
+{{PreviousMenu("Learn_web_development/Extensions/Server-side/Express_Nodejs/forms", "Learn_web_development/Extensions/Server-side/Express_Nodejs")}}
 
 現在你已經創建（並測試）了一個不錯的 本地圖書館 網站了，你打算把它發佈到一個公共網絡服務器，這樣圖書館管理員和網路上的其他成員就可以訪問它了。這篇文章總結了你可以怎樣找到一台主機部署你的網站，以及你需要為網站準備好佈署到生產環境該做什麼。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">預備知識:</th>
       <td>
         完成前面所有的指南主題，包括
-        <a href="/zh-TW/docs/Learn/Server-side/Express_Nodejs/forms"
+        <a href="/zh-TW/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/forms"
           >Express Tutorial Part 6: Working with forms</a
         >.
       </td>
@@ -220,7 +219,6 @@ Heroku 是運行時間最長，且最受歡迎的基於雲的 PaaS 服務之一�
 - Heroku 有一個免費套餐 [free tier](https://www.heroku.com/pricing)（儘管有一些限制）。
 - 作為 PaaS，Heroku 為我們提供了大量的 Web 基礎架構。這使得入門更加容易，因為你不必擔心服務器，負載平衡器，反向代理，崩潰時重新啟動網站，或者 Heroku 為我們提供的任何其他 Web 基礎結構。
 - 雖然它確實有一些限制，但這些不會影響這個特定的應用程序。例如：
-
   - Heroku 只提供短期存儲，因此用戶上傳的文件無法安全地存儲在 Heroku 本身。
   - 如果半小時內沒有請求，免費套餐將使不活動的網絡應用程序進入睡眠。然後，該網站可能需要幾秒鐘才能被喚醒。
   - 免費套餐將你網站運行的時間，限制為每月一定的小時數（不包括網站「睡著」的時間）。這對於低使用/演示站點來說很好，但如果需要 100％的正常運行時間，則不適用。
@@ -256,7 +254,6 @@ Heroku 與 **git** 源代碼版本控制系統緊密集成，使用它來上傳/
 1. 訪問 <https://github.com/> 並創建一個帳戶。
 2. 登錄後，單擊頂部工具欄中的 + 號鏈接，然後選擇新建儲存庫 **New repository**。
 3. 填寫此表單上的所有字段。雖然這些不是強制性的，但強烈建議使用它們。
-
    - 輸入新的存儲庫名稱（例如，express-locallibrary-tutorial）和描述（例如 「以 Express（node）編寫的本地圖書館網站」）。
    - 在 Add .gitignore 選擇列表中選擇 **Node**。
    - 在添加許可證 Add license 選擇列表中，選擇你偏好的許可證。
@@ -495,7 +492,6 @@ heroku ps   #Display dyno status
 - [Production best practices: performance and reliability](https://expressjs.com/en/advanced/best-practice-performance.html) (Express docs)
 - [Production Best Practices: Security](https://expressjs.com/en/advanced/best-practice-security.html) (Express docs)
 - Heroku
-
   - [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs) (Heroku docs)
   - [Deploying Node.js Applications on Heroku](https://devcenter.heroku.com/articles/deploying-nodejs) (Heroku docs)
   - [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support) (Heroku docs)
@@ -506,8 +502,7 @@ heroku ps   #Display dyno status
   - [Limits](https://devcenter.heroku.com/articles/limits) (Heroku docs)
 
 - Digital Ocean
-
   - [Express](https://www.digitalocean.com/community/tutorials?q=express) tutorials
   - [Node.js](https://www.digitalocean.com/community/tutorials?q=node.js) tutorials
 
-{{PreviousMenu("Learn/Server-side/Express_Nodejs/forms", "Learn/Server-side/Express_Nodejs")}}
+{{PreviousMenu("Learn_web_development/Extensions/Server-side/Express_Nodejs/forms", "Learn_web_development/Extensions/Server-side/Express_Nodejs")}}

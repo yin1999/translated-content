@@ -3,13 +3,22 @@ title: class
 slug: Web/JavaScript/Reference/Statements/class
 ---
 
-{{jsSidebar("Statements")}}
-
 La **déclaration class** crée une nouvelle classe avec le nom fourni en utilisant l'héritage à base de prototypes pour émuler le fonctionnement de classe.
 
-{{EmbedInteractiveExample("pages/js/statement-class.html")}}
+{{InteractiveExample("JavaScript Demo: Statement - Class")}}
 
-Il est aussi possible de définir une classe avec une {{jsxref("Opérateurs/class", "expression class","",1)}}.
+```js interactive-example
+class Polygon {
+  constructor(height, width) {
+    this.area = height * width;
+  }
+}
+
+console.log(new Polygon(4, 3).area);
+// Expected output: 12
+```
+
+Il est aussi possible de définir une classe avec une {{jsxref("Operators/class", "expression class","",1)}}.
 
 ## Syntaxe
 

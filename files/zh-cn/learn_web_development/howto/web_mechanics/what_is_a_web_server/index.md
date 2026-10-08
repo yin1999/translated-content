@@ -1,12 +1,9 @@
 ---
 title: 什么是 web 服务器？
 slug: Learn_web_development/Howto/Web_mechanics/What_is_a_web_server
-original_slug: Learn/Common_questions/Web_mechanics/What_is_a_web_server
 l10n:
   sourceCommit: b2af4eb16dd4c399ed81f67efd49777fa6ae9030
 ---
-
-{{QuicklinksWithSubPages("/zh-CN/docs/Learn/Common_questions")}}
 
 在这篇文章中我们会重温什么是 web 服务器，它们如何工作，以及为什么它们很重要。
 
@@ -36,7 +33,7 @@ l10n:
 1. 硬件部分，web 服务器是一台存储了 web 服务器软件以及网站的组成文件（比如，HTML 文档、图片、CSS 样式表和 JavaScript 文件）的计算机。它接入到互联网并且支持与其他连接到互联网的设备进行物理数据的交互。
 2. 软件部分，web 服务器包括控制网络用户如何访问托管文件的几个部分，至少是一台 _HTTP 服务器_。一台 HTTP 服务器是一种能够理解 {{Glossary("URL")}}（网络地址）和 {{Glossary("HTTP")}}（浏览器用来查看网页的协议）的软件。一个 HTTP 服务器可以通过它所存储的网站域名进行访问，并将这些托管网站的内容传递给最终用户的设备。
 
-基本上，当浏览器需要一个托管在网络服务器上的文件的时候，浏览器通过 HTTP 请求这个文件。当这个请求到达正确的 web 服务器（硬件）时，_HTTP 服务器_（软件）收到这个请求，找到这个被请求的文档（如果这个文档不存在，那么将返回一个 [404](/zh-CN/docs/Web/HTTP/Status/404) 响应），并把这个文档通过 HTTP 发送给浏览器。
+基本上，当浏览器需要一个托管在网络服务器上的文件的时候，浏览器通过 HTTP 请求这个文件。当这个请求到达正确的 web 服务器（硬件）时，_HTTP 服务器_（软件）收到这个请求，找到这个被请求的文档（如果这个文档不存在，那么将返回一个 [404](/zh-CN/docs/Web/HTTP/Reference/Status/404) 响应），并把这个文档通过 HTTP 发送给浏览器。
 
 ![通过 HTTP 的客户/服务器连接的基本表示方法](web-server.svg)
 
@@ -63,7 +60,7 @@ l10n:
 - 专用 web 服务器可以一直拥有一样的 IP 地址，这也称为*专有 IP 地址*（不是所有的 {{Glossary("ISP")}} 都会为家庭线提供一个固定的 IP 地址）
 - 专用 web 服务器往往由第三方提供者维护
 
-因为所有的这些原因，寻找一个优秀的托管提供者是建立你的网站的一个重要部分。比较不同公司提供的服务并选择一个适合你的需求和预算的服务（服务的价格从免费到每月上万美金不等）。你可以在[这篇文章](/zh-CN/docs/Learn/Common_questions/Tools_and_setup/How_much_does_it_cost#专业网站机构和托管)中找到更多的细节。
+因为所有的这些原因，寻找一个优秀的托管提供者是建立你的网站的一个重要部分。比较不同公司提供的服务并选择一个适合你的需求和预算的服务（服务的价格从免费到每月上万美金不等）。你可以在[这篇文章](/zh-CN/docs/Learn_web_development/Howto/Tools_and_setup/How_much_does_it_cost#专业网站机构和托管)中找到更多的细节。
 
 一旦你设置好一个网络托管解决方案，你必须[上传你的文件到你的 web 服务器](/zh-CN/docs/Learn_web_development/Howto/Tools_and_setup/Upload_files_to_a_web_server)。
 

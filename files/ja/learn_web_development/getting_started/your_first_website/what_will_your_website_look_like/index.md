@@ -1,14 +1,35 @@
 ---
 title: ウェブサイトをどんな外見にするか
+short-title: どんな外見にするか
 slug: Learn_web_development/Getting_started/Your_first_website/What_will_your_website_look_like
-original_slug: Learn/Getting_started_with_the_web/What_will_your_website_look_like
 l10n:
-  sourceCommit: 1724e23bc76b136266b75afa6b45bfd708ee69a5
+  sourceCommit: 85fccefc8066bd49af4ddafc12c77f35265c7e2d
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn/Getting_started_with_the_web/Installing_basic_software", "Learn/Getting_started_with_the_web/Dealing_with_files", "Learn/Getting_started_with_the_web")}}
+{{NextMenu("Learn_web_development/Getting_started/Your_first_website/Creating_the_content", "Learn_web_development/Getting_started/Your_first_website")}}
 
 「_ウェブサイトをどんな外見にするか_」では、コードを書き始める前に、このウェブサイトについて計画したりデザインしたりすべき事柄について説明します。例えば「どんな情報をウェブサイトで提供するのか」「どのフォントや色を使いたいのか」「このウェブサイトは何をするのか」などです。
+
+<table>
+  <tbody>
+    <tr>
+      <th scope="row">前提条件:</th>
+      <td>
+        コンピューターのオペレーティングシステム、ウェブサイトを構築する際に使用する基本ソフトウェア、およびファイルシステムに概ね慣れておくこと。
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">学習成果:</th>
+      <td>
+        <ul>
+          <li>基本的なウェブサイトを計画すること。</li>
+          <li>基本的なデザインプロセスを使うこと。</li>
+          <li>資産を集めること。</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## まず最初に: 計画を立てる
 
@@ -21,7 +42,7 @@ l10n:
 3. **ウェブサイトをどんな外見にしますか？** 簡単で大まかな言葉で言うと？背景色は？適切なフォントはフォーマル？漫画？太字で派手？繊細？
 
 > [!NOTE]
-> 複雑なプロジェクトでは、色、フォント、ページのアイテム間の余白、適切な文体など、詳細なガイドラインが必要です。これは、デザインガイド、デザインシステム、ブランドブックなどと呼ばれます。一例として、 [Firefox Photon Design System](https://design.firefox.com/photon/)があります。
+> 複雑なプロジェクトでは、色、フォント、ページのアイテム間の余白、適切な文体など、詳細なガイドラインが必要です。これは、デザインガイド、デザインシステム、ブランドブックなどと呼ばれます。一例として、 [Firefox Acorn Design System](https://acorn.firefox.com/latest)があります。
 
 ## デザインをスケッチする
 
@@ -30,49 +51,50 @@ l10n:
 ![紙に描いたウェブサイトのラフ画とスケッチ](website-drawing-scan.png)
 
 > [!NOTE]
-> 現実の複雑なウェブサイトの場合でも、デザインチームは普通、ラフスケッチを描くことから始めます。その後、グラフィックエディターや Web の技術を使って、デジタルのモックアップを作るのです。
+> 現実の複雑なウェブサイトの場合でも、デザインチームは普通、ラフスケッチを描くことから始めます。その後、グラフィックエディターやウェブの技術を使って、デジタルのモックアップを作るのです。
 >
-> 多くの場合、ウェブの開発チームには、グラフィックデザイナーと{{Glossary("UX", "ユーザーエクスペリエンス")}} (UX) デザイナーがいます。グラフィックデザイナーは、ウェブサイトの見た目を作り上げます。 UX デザイナーは、もう少し抽象的な役割を持っていて、サイトを訪れるユーザーがウェブサイトでどういう経験をし、どのように操作するかということを考えます。
+> 多くの場合、ウェブの開発チームには、[グラフィックデザイナー](/ja/docs/Learn_web_development/Getting_started/Soft_skills/Workflows_and_processes#graphic_designer)と[ユーザーエクスペリエンス (UX) デザイナー](/ja/docs/Learn_web_development/Getting_started/Soft_skills/Workflows_and_processes#user_experience_ux_designer)がいます。グラフィックデザイナーは、ウェブサイトの見た目を作り上げます。 UX デザイナーは、もう少し抽象的な役割を持っていて、サイトを訪れるユーザーがウェブサイトでどういう経験をし、どのように操作するかということを考えます。
 
-## 資産を選ぶ
+この時点で、最終的にウェブページに現れるコンテンツの用意を始めておくといいでしょう。早くから文章とタイトルを決めておいてください。これらを近くに置いておいてください。
 
-この時点で、ウェブページについて、将来どう表現したいかをまとめ始めるとよいでしょう。
+## テーマカラーの選択
 
-### テキスト
+ページの背景色を選びましょう。
 
-先ほど考えたちょっとした文章やタイトルは、まだそのまま残しておきます。手近なところに置いておきましょう。
+1. 色を選ぶときは、[色選択ツール](/ja/docs/Web/CSS/Guides/Colors/Color_format_converter)へ行き、好みの色を見つけましょう。色をクリックすると、 `#660066` のような 6 桁の奇妙なコードが出てきます。これは 16 進コードと呼ばれ、選んだ色を表します。今はどこか安全なところにコピーしておきましょう。
 
-### テーマカラー
+![MDN Docs ウェブサイトの色変換ツール](color_format_converter.jpg)
 
-色を選ぶときは、[色選択ツール](/ja/docs/Web/CSS/CSS_colors/Color_picker_tool)へ行き、好みの色を見つけましょう。色をクリックすると、 `#660066` のような 6 桁の奇妙なコードが出てきます。これは*ヘキサコード*（16 進コード）と呼ばれ、選んだ色を表します。今はどこか安全なところにコピーしておきましょう。
+## 画像の選択
 
-![MDN Docs ウェブサイトのカラーピッカーツールで、RGB、HSL、HEX の色を利用できます](color-picker.png)
+それでは、サイトに表示させる画像を探しましょう。
 
-### 画像
+1. [Google 画像検索](https://www.google.com/imghp)に行きます。
+2. なお、Google 画像検索を含め、ウェブ上のほとんどの画像には著作権があります。著作権侵害のリスクを減らすには、Google のライセンスフィルターを使用しましょう。「ツール」ボタンをクリックし、下記に現れる「ライセンス」オプションをクリックしてください。そこで「クリエイティブ・コモンズ ライセンス」を選択できます。
 
-画像を探すには、[Google 画像検索](https://www.google.com/imghp?gws_rd=ssl)にアクセスし、ぴったりなものを探しましょう。
+   ![Google 画像検索でクリエイティブ・コモンズ・ライセンスの画像を取得するように検索結果を絞り込みました](updated-google-images-licensing.png)
 
-1. 欲しい画像が見つかったら、クリックして拡大表示にします。
-2. 画像を右クリック（Mac では Ctrl +クリック）し、\[名前を付けて画像を保存...] を選択して、画像を安全に保存する場所を選択します。または、後で使用するためにブラウザーのアドレスバーから画像のウェブアドレスをコピーします。
+3. 合う画像を検索します。
+4. 探している画像が見つかったら、その画像をクリックして拡大表示にしてください。
+5. 画像を右クリック（Mac では <kbd>Ctrl</kbd> + クリック）し、「画像を名前を付けて保存...」を選択して、安全な場所を選んで画像を保存してください。
 
-![Google 画像検索での検索語句の検索結果](updated-google-images.png)
+   ![Google 画像検索での検索語句の検索結果](updated-google-images.png)
 
-なお、ウェブ上のほとんどの画像には、 Google 画像検索にあるものも含め、著作権があります。あなたが著作権を侵害してし舞うことを防ぐために、 Google のライセンスフィルターを使うと良いでしょう。 \[ツール] ボタンをクリックすると、 \[ライセンス] オプションが下に表示されます。「クリエイティブ・コモンズ ライセンス」などの選択肢を選択してください。
+## フォントの選択
 
-![Google 画像検索でクリエイティブ・コモンズ ライセンスの画像を取得するための検索結果のフィルタリング](updated-google-images-licensing.png)
+[ウェブセーフフォント](/ja/docs/Learn_web_development/Core/Text_styling/Fundamentals#ウェブセーフフォント)と呼ばれるフォント群（Arial、Times New Roman、Courier New　など）があり、これらは一般的にほとんどのコンピューターシステムで利用可能です。ウェブサイト上でこれらのフォントのいずれかを使用すると、ブラウザーはユーザーのコンピューターにあるフォントファイルを読み込みます。
 
-### フォント
+ただし、端末に通常は利用できない他のフォントを使用したい場合は、ウェブサイトのファイルにそれらを記載するか、サードパーティーのフォントサービスからフォントファイルを参照して、ブラウザーが必要に応じてダウンロードできるようにする必要があります。[Google Fonts](https://fonts.google.com/) は、数多くのフォントを利用できるそのようなサービスのひとつです。
 
-画像と同様に、多くのフォントはライセンスで保護されており、サイト内で自由に使用することはできません。[Google フォント](https://developers.google.com/fonts)は、Google が自分自身で所有するウェブサービスであり、たくさんのフォントにアクセスすることができます。
+Google Fonts を使用して、ウェブサイトのフォントを選びましょう。
 
-フォントが見つかったら、そのフォントを使用する方法は大きく分けて 2 つあります。
-
-1. Google のサーバーからフォントを読み込むために、コードに参照を追加する。
-2. 自分のシステムにフォントファイルをダウンロードし、フォントをホスティングし、ウェブサイトのコードでホスティングしたコピーを使用する。
+1. [Google Fonts](https://fonts.google.com/) へ移動します。
+2. フォントの一覧をスクロールして、気に入ったフォントが見つかるまで探してください。もし見つからない場合は、他の列にあるフィルターを使用して検索を絞り込むことができます。
+3. フォントのオプションをクリックし、次のページで "Get font" ボタンをクリックしてください。
+4. 次のページで、「埋め込みコードを取得」をクリックしてください。
+5. 指定された 2 つのコードブロックを両方ともコピーし、後で使えるように安全な場所に保存しておいてください。
 
 > [!NOTE]
-> Google フォントでホスティングされているフォントを提供すると、フォントサービスがユーザーの IP アドレスを公開するため、EU のデータプライバシー規則である [GDPR](https://gdpr.eu/what-is-gdpr) に抵触する可能性があります。これが問題になりそうな場合は、2 つ目の選択肢を選んでください。
+> 画像と同様に、多くのフォントはライセンスによって保護されているため、商用ウェブサイトで必ずしも自由に使用できるとは限りません。学習用のサンプルを作成している段階では問題ありませんが、実際のウェブサイト用にフォントを選ぶ際には、この点を念頭に置いておいてください。
 
-また、Arial、Times New Roman、Courier New などの[セーフウェブフォント](https://web.mit.edu/jmorzins/www/fonts.html)を使用することもできます。
-
-{{PreviousMenuNext("Learn/Getting_started_with_the_web/Installing_basic_software", "Learn/Getting_started_with_the_web/Dealing_with_files", "Learn/Getting_started_with_the_web")}}
+{{NextMenu("Learn_web_development/Getting_started/Your_first_website/Creating_the_content", "Learn_web_development/Getting_started/Your_first_website")}}

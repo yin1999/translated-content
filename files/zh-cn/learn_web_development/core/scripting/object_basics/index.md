@@ -1,10 +1,9 @@
 ---
 title: JavaScript 对象基础
 slug: Learn_web_development/Core/Scripting/Object_basics
-original_slug: Learn/JavaScript/Objects/Basics
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Core/Scripting/Image_gallery","Learn_web_development/Core/Scripting/DOM_scripting", "Learn_web_development/Core/Scripting")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Image_gallery","Learn_web_development/Core/Scripting/DOM_scripting", "Learn_web_development/Core/Scripting")}}
 
 在这学习 JavaScript 的对象的首篇文章中，我们将会学习有关对象基础的语法，并且回顾一些之前学过的 JavaScript 的一些特点，使你明白你所使用过的一些功能实际上是由对象提供的。
 
@@ -41,7 +40,7 @@ original_slug: Learn/JavaScript/Objects/Basics
 const person = {};
 ```
 
-打开你的浏览器的 [JavaScript 控制台](/zh-CN/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools#javascript_控制台)输入 `person`，然后按下 <kbd>Enter</kbd>/<kbd>Return</kbd>，你可能会得到以下结果中的一种：
+打开你的浏览器的 [JavaScript 控制台](/zh-CN/docs/Learn_web_development/Howto/Tools_and_setup/What_are_browser_developer_tools#javascript_控制台)输入 `person`，然后按下 <kbd>Enter</kbd>/<kbd>Return</kbd>，你可能会得到以下结果中的一种：
 
 ```plain
 [object Object]
@@ -339,7 +338,7 @@ frankie.introduceSelf();
 // "你好！我是 Frankie。"
 ```
 
-这样可以正常工作，但有点冗长：我们必须创建一个空对象，初始化它，并返回它。更好的方法是使用**构造函数**。构造函数只是使用 {{jsxref("operators/new", "new")}} 关键字调用的函数。当你调用构造函数时，它将：
+这样可以正常工作，但有点冗长：我们必须创建一个空对象，初始化它，并返回它。更好的方法是使用**构造函数**。构造函数只是使用 {{jsxref("new")}} 关键字调用的函数。当你调用构造函数时，它将：
 
 - 创建一个新对象
 - 将 `this` 绑定到新对象，以便你可以在构造函数代码中引用 `this`
@@ -402,7 +401,7 @@ const myNotification = new Notification("你好！");
 
 ## 技能测试！
 
-你已经读到这篇文章的末尾了，但是你还记得最重要的知识吗？进行下一步之前，你可以找到一些进一步的测试来验证你已经记住了这些知识——参见 [“技能测试：对象基础”](/zh-CN/docs/Learn_web_development/Core/Scripting/Test_your_skills:_Object_basics)。
+你已经读到这篇文章的末尾了，但是你还记得最重要的知识吗？进行下一步之前，你可以找到一些进一步的测试来验证你已经记住了这些知识——参见 [“技能测试：对象基础”](/zh-CN/docs/Learn_web_development/Core/Scripting/Test_your_skills/Object_basics)。
 
 ## 总结
 

@@ -1,12 +1,11 @@
 ---
 title: 函数——可复用的代码块
 slug: Learn_web_development/Core/Scripting/Functions
-original_slug: Learn/JavaScript/Building_blocks/Functions
 l10n:
   sourceCommit: d36a0f08f71bc7e17a013da81ed63144a96f7699
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Core/Scripting/Loops","Learn_web_development/Core/Scripting/Build_your_own_function", "Learn_web_development/Core/Scripting")}}
+{{PreviousMenuNext("Learn_web_development/Core/Scripting/Loops","Learn_web_development/Core/Scripting/Build_your_own_function", "Learn_web_development/Core/Scripting")}}
 
 在 JavaScript 中另一个基本概念是**函数**, 它允许你在一个代码块中存储一段用于处理单任务的代码，然后在任何你需要的时候用一个简短的命令来调用，而不是把相同的代码写很多次。在本文中，我们将探索函数的基本概念，如函数的基本语法、如何定义和调用函数、函数的作用域和参数。
 
@@ -30,7 +29,7 @@ l10n:
 
 在 JavaScript 中，你将发现函数无处不在。事实上，到目前为止，我们一直在使用函数；我们只是还没正式地讨论它们。然而现在是时候了，让我们开始聊聊函数，并探索它们的语法。
 
-几乎任何时候，只要你使用一个带有一对圆括号（`()`）的 JavaScript 结构，并且你**没有**使用比如 [for 循环](/zh-CN/docs/Learn/JavaScript/Building_blocks/Looping_code#循环的标准)、[while 或 do...while 循环](/zh-CN/docs/Learn/JavaScript/Building_blocks/Looping_code#while_语句和_do_..._while_语句)，或者 [if...else 语句](/zh-CN/docs/Learn/JavaScript/Building_blocks/conditionals#if...else_语句)这样的常见的内置语言结构时，那么你就正在使用函数。
+几乎任何时候，只要你使用一个带有一对圆括号（`()`）的 JavaScript 结构，并且你**没有**使用比如 [for 循环](/zh-CN/docs/Learn_web_development/Core/Scripting/Loops#循环的标准)、[while 或 do...while 循环](/zh-CN/docs/Learn_web_development/Core/Scripting/Loops#while_语句和_do_..._while_语句)，或者 [if...else 语句](/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#if...else_语句)这样的常见的内置语言结构时，那么你就正在使用函数。
 
 ## 浏览器内置函数
 
@@ -71,7 +70,7 @@ const myNumber = Math.random();
 
 JavaScript 语言中有许多内置的函数，它们可以让你无需自己编写所有的代码，就能做很多有用的事情。事实上，许多你**调用**（专业词语，意指“运行”或“执行”）浏览器内置函数时调用的代码并不能用 JavaScript 来编写——大多数调用浏览器后台的函数的代码，是使用像 C++ 这样更低级的系统语言编写的，而不是像 JavaScript 这样的 web 编程语言。
 
-请记住，这些内置浏览器函数不是核心 JavaScript 语言的一部分——其中部分函数被定义为浏览器 API 的一部分，它建立在默认语言之上，以提供更多的功能（请参阅[本课程的早期部分](/zh-CN/docs/Learn/JavaScript/First_steps/What_is_JavaScript#它到底可以做什么？)以获得更多的描述）。我们将在以后的模块中更详细地介绍如何使用浏览器 API。
+请记住，这些内置浏览器函数不是核心 JavaScript 语言的一部分——其中部分函数被定义为浏览器 API 的一部分，它建立在默认语言之上，以提供更多的功能（请参阅[本课程的早期部分](/zh-CN/docs/Learn_web_development/Core/Scripting/What_is_JavaScript#它到底可以做什么？)以获得更多的描述）。我们将在以后的模块中更详细地介绍如何使用浏览器 API。
 
 ## 函数与方法
 
@@ -158,7 +157,7 @@ const newString = myText.replace("字符串", "香肠");
 const myArray = ["我", "爱", "巧克力", "青蛙"];
 const madeAString = myArray.join(" ");
 console.log(madeAString);
-// 返回 '我爱巧克力青蛙'
+// 返回“我 爱 巧克力 青蛙”
 
 const madeAnotherString = myArray.join();
 console.log(madeAnotherString);
@@ -463,7 +462,7 @@ function greeting() {
 
 ## 技能测试！
 
-你已经来到了本文章的结尾，但是你还能记得最重要的知识吗？你可以在离开这里找到一些更深度的测试来证实你已经记住了这些知识——查看[技能测试：函数](/zh-CN/docs/Learn_web_development/Core/Scripting/Test_your_skills:_Functions)。后两章文本包含了这个测试需要的技能，所以你可能先需要阅读再尝试该测试。
+你已经来到了本文章的结尾，但是你还能记得最重要的知识吗？你可以在离开这里找到一些更深度的测试来证实你已经记住了这些知识——查看[技能测试：函数](/zh-CN/docs/Learn_web_development/Core/Scripting/Test_your_skills/Functions)。后两章文本包含了这个测试需要的技能，所以你可能先需要阅读再尝试该测试。
 
 ## 总结
 

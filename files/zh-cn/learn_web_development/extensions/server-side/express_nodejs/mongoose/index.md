@@ -1,14 +1,13 @@
 ---
 title: Express 教程 3：使用数据库  (Mongoose)
 slug: Learn_web_development/Extensions/Server-side/Express_Nodejs/mongoose
-original_slug: Learn/Server-side/Express_Nodejs/mongoose
 ---
 
-{{LearnSidebar}}{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Express_Nodejs/skeleton_website", "Learn_web_development/Extensions/Server-side/Express_Nodejs/routes", "Learn_web_development/Extensions/Server-side/Express_Nodejs")}}
+{{PreviousMenuNext("Learn_web_development/Extensions/Server-side/Express_Nodejs/skeleton_website", "Learn_web_development/Extensions/Server-side/Express_Nodejs/routes", "Learn_web_development/Extensions/Server-side/Express_Nodejs")}}
 
 本文简要介绍了数据库以及 Node/Express 应用的数据库集成。然后演示了 [Mongoose](http://mongoosejs.com/) 为 [LocalLibrary](/zh-CN/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/Tutorial_local_library_website) 提供数据库访问的方式。还讲解了对象模式（Schema）和模型（Model）的声明方式、主要域的类型、基础验证机制。同时还简短演示了访问模型数据的一些方法。
 
-<table class="learn-box standard-table">
+<table>
   <tbody>
     <tr>
       <th scope="row">前提：</th>
@@ -226,7 +225,6 @@ const schema = new Schema({
 
 - 字段名和类型名作为键 - 值对（就像 `name`、`binary` 和 `living`）。
 - 字段名后跟一个对象，在对象中定义 `type` 和字段的其他选项，可以是：
-
   - 默认值。
   - 内置验证器（例如最大/最小值）和自定义验证函数。
   - 该字段是否必需。
@@ -243,7 +241,6 @@ Mongoose 提供内置的和自定义的验证器，以及同步的和异步的�
 - 所有 [模式类型](http://mongoosejs.com/docs/schematypes.html) 都具有内置的 [required](http://mongoosejs.com/docs/api.html#schematype_SchemaType-required) 验证器。用于指定当前字段是否为保存文档所必需的。
 - [Number](https://mongoosejs.com/docs/api.html#mongoose_Mongoose-Number) 有数值范围验证器 [min](http://mongoosejs.com/docs/api.html#schema_number_SchemaNumber-min) 和 [max](http://mongoosejs.com/docs/api.html#schema_number_SchemaNumber-max)。
 - [String](http://mongoosejs.com/docs/api.html#schema-string-js) 有：
-
   - [enum](http://mongoosejs.com/docs/api.html#schema_string_SchemaString-enum)：指定当前字段允许值的集合。
   - [match](http://mongoosejs.com/docs/api.html#schema_string_SchemaString-match)：指定字符串必须匹配的正则表达式。
   - 字符串的最大长度 [maxlength](http://mongoosejs.com/docs/api.html#schema_string_SchemaString-maxlength) 和最小长度 [minlength](http://mongoosejs.com/docs/api.html#schema_string_SchemaString-minlength)
@@ -527,7 +524,6 @@ SomeModel.find(callback_function);
 1. 单击 _MongoDB Deployments_（MongoDB 部署）部分中的 **Create New（新建）**。![](mlabcreatenewdeployment.png)
 2. 将打开 Cloud Provider（云服务提供商）选择屏幕。
    ![MLab - screen for new deployment](mlab_new_deployment_form_v2.png)
-
    - 在 Plan Type（方案类型）部分中，选择 SANDBOX（Free）免费沙箱方案。
    - 从 _Cloud Provider_（云服务提供商）部分选择任意提供商。不同地区适用不同提供商（显示在选定的计划类型下面）。
    - 点击 **Continue（继续）**按钮。
@@ -535,17 +531,14 @@ SomeModel.find(callback_function);
 3. 此时将打开 _Select Region_（选择区域）屏幕。
 
    ![Select new region screen](mlab_new_deployment_select_region_v2.png)
-
    - 选择离你最近的地区，然后 **Continue**。
 
 4. 将打开 Final Details（最后的细节）屏幕。
    ![New deployment database name](mlab_new_deployment_final_details.png)
-
    - 输入新数据库的名称 `local_library`，然后 **Continue**。
 
 5. 将打开 _Order Confirmation_（订单确认）屏幕。
    ![Order confirmation screen](mlab_new_deployment_order_confirmation.png)
-
    - 点击 **Submit Order（提交订单）**以创建数据库。
 
 6. 将返回到主屏幕。点击刚创建的新数据库可以打开详细信息屏幕。当前数据库还没有任何数据。

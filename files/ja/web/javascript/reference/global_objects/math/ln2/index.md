@@ -1,15 +1,23 @@
 ---
 title: Math.LN2
+short-title: LN2
 slug: Web/JavaScript/Reference/Global_Objects/Math/LN2
 l10n:
-  sourceCommit: 761b9047d78876cbd153be811efb1aa77b419877
+  sourceCommit: 544b843570cb08d1474cfc5ec03ffb9f4edc0166
 ---
-
-{{JSRef}}
 
 **`Math.LN2`** は静的データプロパティで、 2 の自然対数、およそ 0.693 を表します。
 
-{{EmbedInteractiveExample("pages/js/math-ln2.html", "shorter")}}
+{{InteractiveExample("JavaScript デモ: Math.LN2", "shorter")}}
+
+```js interactive-example
+function getNatLog2() {
+  return Math.LN2;
+}
+
+console.log(getNatLog2());
+// 予想される結果: 0.6931471805599453
+```
 
 ## 値
 
